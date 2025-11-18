@@ -1,114 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nobel Timeline | Nobel Quest</title>
-  <meta name="description" content="Sort Nobel Prize events in chronological order">
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-  
-  <!-- Shared modules -->
-  <script src="../../shared/firebase-config.js"></script>
-  <script src="../../shared/js/auth.js"></script>
-  <script src="../../shared/js/repository.js"></script>
-  <script src="../../shared/js/ui-components.js"></script>
-  <script src="../../shared/js/utils.js"></script>
-  
-  <!-- Shared styles -->
-  <link rel="stylesheet" href="../../shared/css/shared.css">
-  
-  <!-- Game-specific styles -->
-  <link rel="stylesheet" href="css/game.css">
-</head>
-<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen">
-  
-  <!-- Auth Section -->
-  <div id="auth-section" class="container mx-auto p-4 flex items-center justify-center min-h-screen">
-    <div class="max-w-md w-full bg-white rounded-lg shadow-xl p-8">
-      <h1 class="text-4xl font-bold mb-2 nobel-text-gradient">Nobel Timeline</h1>
-      <p class="text-gray-600 mb-6">Sort Nobel Prize events chronologically</p>
-      
-      <div class="mb-6">
-        <img src="https://via.placeholder.com/400x200/10b981/ffffff?text=Timeline" 
-             alt="Timeline Game" 
-             class="w-full rounded-lg">
-      </div>
-      
-      <button id="login-btn" class="nobel-btn nobel-btn-primary w-full text-lg">
-        🔐 Login with Google to Play
-      </button>
-      
-      <p class="text-xs text-gray-500 mt-4 text-center">
-        Part of the Nobel Quest series
-      </p>
-    </div>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nobel Timeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="starter-kit/styles.css" />
+  </head>
 
-  <!-- Game Section -->
-  <div id="game-section" class="hidden container mx-auto p-4">
-    
-    <!-- Header -->
-    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
-      <div class="flex justify-between items-center">
-        <div>
-          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Timeline</h1>
-          <p class="text-sm text-gray-600">Welcome, <span id="user-name" class="font-semibold"></span>!</p>
-        </div>
-        <button id="logout-btn" class="text-sm text-red-600 hover:text-red-800 font-medium">
-          Logout
-        </button>
+  <body class="bg-neutral-50">
+    <header class="header top-0 pt-[env(safe-area-inset-top)] z-40">
+      <h1 class="text-3xl text-center font-extrabold">Nobel Timeline</h1>
+      <section label ="name">
+      <div id="name-input" class="flex items-center justify-center my-4">
+      <input type="text" id="nameInput" class="nameInput" placeholder="Namn..."/>
       </div>
+      </section>
     </header>
-
-    <!-- Game Stats -->
-    <div class="grid grid-cols-3 gap-4 mb-6">
-      <div class="bg-white rounded-lg shadow p-4 text-center">
-        <div class="text-3xl font-bold text-green-600" id="score-display">0</div>
-        <div class="text-sm text-gray-600">Score</div>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4 text-center">
-        <div class="text-3xl font-bold text-blue-600" id="level-display">1</div>
-        <div class="text-sm text-gray-600">Level</div>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4 text-center">
-        <div class="text-3xl font-bold text-purple-600" id="timer-display">0:00</div>
-        <div class="text-sm text-gray-600">Time</div>
-      </div>
-    </div>
-
-    <!-- Game Controls -->
-    <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
-      <div class="flex gap-4 justify-center">
-        <button id="start-btn" class="nobel-btn nobel-btn-primary">
-          ▶️ Start Game
-        </button>
-        <button id="reset-btn" class="nobel-btn nobel-btn-secondary" disabled>
-          🔄 Reset
-        </button>
-      </div>
-    </div>
-    
-    <!-- Game Container -->
-    <div id="game-container" class="bg-white rounded-lg shadow-lg p-6 mb-6">
-      <p class="text-center text-gray-500">Click "Start Game" to begin!</p>
-    </div>
-
-    <!-- Leaderboard -->
-    <div id="leaderboard"></div>
-    
+    <main id="app" class="game-container"></main>
+<section class="max-w-3xl mx-auto my-8">
+  <h3 class="font-bold text-2xl text-center mb-4">Leaderboard</h3>
+  <div id="leaderboard-entries" class="space-y-2">
+    <!-- Kommer fyllas med JavaScript -->
   </div>
-
-  <!-- Game Scripts -->
-  <script src="js/game.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/config.js"></script>
-  
-</body>
+</section>
+    <script type="module" src="main.js"></script>
+  </body>
 </html>
+
+<style>
+  
+  :root{
+    --forest:#2E7D32;
+    --moss:#4E8B5A;
+    --sand:#EFEAE3;
+    --walnut:#5B4636;
+    --gold:#C5A572;
+    --gold-dark:#A38A5F;
+  }
+  body {
+    color:var(--charcoal); background:#FAF9F6;}
+
+.header {
+   color:var(--walnut);
+  }
+
+  .btn{border-radius:0.75rem;}
+  .btn-primary{ background:var(--gold) !important; color:#fff !important; }
+  .btn-primary:hover{ background:var(--gold-dark) !important; }
+  .btn-secondary{ background:var(--forest) !important; color:#fff !important;}
+  .btn-secondary:hover{ background:var(--moss) !important; }
+
+ .card{ border-radius:0.75rem; }
+ .card-deck{ background-color:#fff; }
+
+  .timeline-slot{
+  background:var(--sand);
+  Border:1px solid transparent;
+  min-height:6rem;
+  display:flex; align-items:center; justify-content:center;
+  color:#6b7280; border-radius:0.75rem;
+}
+
+.timeline-slot:hover,.timeline-slot:focus-within{
+  border-color:var(--gold);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+.badge-gold{background:var(--gold); color:#fff; padding:2px 8px; border-radius:9999px; font-size:12px;}
+.restart-btn{background:var(--gold); color:#fff; padding:5px 8px; border-radius:5px; font-size:20px; box-shadow: 1px 2px 1px 1px #947c56;}
+.ring-gold{box-shadow:0 0 0 3px var(--gold)inset;}
+.ring-correct{box-shadow:0 0 0 2px #16a34a inset; }
+.ring-wrong{box-shadow:0 0 0 2px #dc2626 inset;}
+.draggable { border-radius: 0.75rem; }
+.draggable:focus, .draggable:focus-visable { outline: none; box-shadow: 0 0 0 3px var(--gold) inset;  }
+.nameInput{ border-radius:0.5rem; padding:5px; border:1px solid var(--walnut); }
+
+</style>
