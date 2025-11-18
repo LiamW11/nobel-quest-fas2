@@ -1,0 +1,49 @@
+/**
+ * Nobel Match Master - Game Specific Styles
+ * 
+ * Add game-specific styling here
+ */
+
+/* Card styles */
+.card {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  user-select: none;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card.flipped {
+  background: white;
+  border: 2px solid #667eea;
+}
+
+.card.matched {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Game board grid */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .game-board {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+}

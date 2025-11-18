@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nobel Match Master | Nobel Quest</title>
+  <meta name="description" content="Test your memory with Nobel Prize laureates in this matching card game">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  
+  <!-- Shared modules -->
+  <script src="../../shared/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/repository.js"></script>
+  <script src="../../shared/js/ui-components.js"></script>
+  <script src="../../shared/js/utils.js"></script>
+  
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="../../shared/css/shared.css">
+  
+  <!-- Game-specific styles -->
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
+  
+  <!-- Auth Section (shown when not logged in) -->
+  <div id="auth-section" class="container mx-auto p-4 flex items-center justify-center min-h-screen">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-xl p-8">
+      <h1 class="text-4xl font-bold mb-2 nobel-text-gradient">Nobel Match Master</h1>
+      <p class="text-gray-600 mb-6">Test your memory with Nobel Prize laureates</p>
+      
+      <div class="mb-6">
+        <img src="https://via.placeholder.com/400x200/1e40af/ffffff?text=Match+Master" 
+             alt="Match Master Game" 
+             class="w-full rounded-lg">
+      </div>
+      
+      <button id="login-btn" class="nobel-btn nobel-btn-primary w-full text-lg">
+        🔐 Login with Google to Play
+      </button>
+      
+      <p class="text-xs text-gray-500 mt-4 text-center">
+        Part of the Nobel Quest series
+      </p>
+    </div>
+  </div>
+
+  <!-- Game Section (shown when logged in) -->
+  <div id="game-section" class="hidden container mx-auto p-4">
+    
+    <!-- Header -->
+    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Match Master</h1>
+          <p class="text-sm text-gray-600">Welcome, <span id="user-name" class="font-semibold"></span>!</p>
+        </div>
+        <button id="logout-btn" class="text-sm text-red-600 hover:text-red-800 font-medium">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- Game Stats -->
+    <div class="grid grid-cols-3 gap-4 mb-6">
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <div class="text-3xl font-bold text-blue-600" id="score-display">0</div>
+        <div class="text-sm text-gray-600">Score</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <div class="text-3xl font-bold text-green-600" id="matches-display">0</div>
+        <div class="text-sm text-gray-600">Matches</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <div class="text-3xl font-bold text-purple-600" id="timer-display">0:00</div>
+        <div class="text-sm text-gray-600">Time</div>
+      </div>
+    </div>
+
+    <!-- Game Controls -->
+    <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex gap-4 justify-center">
+        <button id="start-btn" class="nobel-btn nobel-btn-primary">
+          ▶️ Start Game
+        </button>
+        <button id="reset-btn" class="nobel-btn nobel-btn-secondary" disabled>
+          🔄 Reset
+        </button>
+      </div>
+    </div>
+    
+    <!-- Game Container -->
+    <div id="game-container" class="bg-white rounded-lg shadow-lg p-6 mb-6">
+      <p class="text-center text-gray-500">Click "Start Game" to begin!</p>
+    </div>
+
+    <!-- Leaderboard -->
+    <div id="leaderboard"></div>
+    
+  </div>
+
+  <!-- Game Scripts -->
+  <script src="js/game.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/config.js"></script>
+  
+</body>
+</html>

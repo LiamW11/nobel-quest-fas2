@@ -1,0 +1,116 @@
+name: Nobel Quest CI
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+
+jobs:
+  validate:
+    name: Validate Code
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Validate JavaScript files
+        run: |
+          echo "Validating JavaScript syntax..."
+          find . -name "*.js" -not -path "*/node_modules/*" -type f | while read file; do
+            echo "Checking: $file"
+            node -c "$file" || exit 1
+          done
+      
+      - name: Check for TODO comments
+        run: |
+          echo "Checking for TODO comments in code..."
+          TODO_COUNT=$(grep -r "TODO:" apps/ shared/ --include="*.js" | wc -l || echo "0")
+          echo "Found $TODO_COUNT TODO comments"
+          
+      - name: Lint Check (Basic)
+        run: |
+          echo "Running basic lint checks..."
+          # Check for console.log in production code (warning only)
+          CONSOLE_COUNT=$(grep -r "console\.log" apps/ --include="*.js" | grep -v "TODO" | wc -l || echo "0")
+          if [ "$CONSOLE_COUNT" -gt 0 ]; then
+            echo "⚠️  Warning: Found $CONSOLE_COUNT console.log statements"
+          fi
+
+  security-check:
+    name: Security Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check for exposed secrets
+        run: |
+          echo "Checking for potential exposed secrets..."
+          # Check for API keys in code (should use environment variables)
+          if grep -r "apiKey.*:" apps/ shared/ --include="*.js" | grep -v "YOUR_API_KEY"; then
+            echo "⚠️  Warning: Potential API key found in code"
+          fi
+          
+      - name: Verify Firebase config placeholder
+        run: |
+          if grep -q "YOUR_API_KEY" shared/firebase-config.js; then
+            echo "✅ Firebase config uses placeholders (good)"
+          else
+            echo "⚠️  Warning: Firebase config might contain real credentials"
+          fi
+
+  test-build:
+    name: Test Build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Verify file structure
+        run: |
+          echo "Verifying project structure..."
+          
+          # Check required directories exist
+          required_dirs=("apps/match-master" "apps/timeline" "apps/trivia-rush" "shared/js" "firebase")
+          for dir in "${required_dirs[@]}"; do
+            if [ -d "$dir" ]; then
+              echo "✅ Found: $dir"
+            else
+              echo "❌ Missing: $dir"
+              exit 1
+            fi
+          done
+          
+          # Check required files exist
+          required_files=("shared/firebase-config.js" "shared/js/auth.js" "shared/js/repository.js" "firebase/firestore.rules")
+          for file in "${required_files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ Found: $file"
+            else
+              echo "❌ Missing: $file"
+              exit 1
+            fi
+          done
+
+  report:
+    name: Build Report
+    runs-on: ubuntu-latest
+    needs: [validate, security-check, test-build]
+    if: always()
+    
+    steps:
+      - name: Check job statuses
+        run: |
+          echo "CI Pipeline completed"
+          echo "Validate: ${{ needs.validate.result }}"
+          echo "Security: ${{ needs.security-check.result }}"
+          echo "Build: ${{ needs.test-build.result }}"

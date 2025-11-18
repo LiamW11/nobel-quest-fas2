@@ -1,0 +1,36 @@
+# Nobel Quest - Code Owners
+# 
+# This file defines who is responsible for reviewing changes to different parts of the codebase.
+# When a pull request is created, GitHub will automatically request reviews from the appropriate team(s).
+#
+# Format: path/to/file @username @team-name
+# 
+# Learn more: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+# Platform team reviews all changes by default
+* @team-platform
+
+# Shared infrastructure - requires platform team approval
+/shared/ @team-platform
+/firebase/ @team-platform
+/.github/ @team-platform
+/firebase.json @team-platform
+/.firebaserc @team-platform
+
+# Game-specific code - respective teams own their apps
+/apps/match-master/ @team-match-master
+/apps/timeline/ @team-timeline
+/apps/trivia-rush/ @team-trivia-rush
+
+# Documentation - can be edited by anyone but reviewed by platform
+/docs/ @team-platform
+/README.md @team-platform
+/*.md @team-platform
+
+# Data files - platform team maintains
+/data/ @team-platform
+
+# Configuration files - platform team only
+netlify.toml @team-platform
+.gitignore @team-platform
