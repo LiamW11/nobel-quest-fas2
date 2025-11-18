@@ -45,7 +45,7 @@ function startGame(selectedCategories) {
 
   if (state.questions.length === 0) {
   alert("Inga giltiga frågor hittades. Kontrollera datan.");
-  return;
+  return false;
 }
 
   // Reset the 'answered' flag on all questions
@@ -76,6 +76,9 @@ function startGame(selectedCategories) {
   nextBtn.disabled = true;
   nextBtn.classList.add("opacity-60", "cursor-not-allowed");
   nextBtn.classList.remove("hover:bg-[#C5A572]/20");
+
+    return true;
+
 }
 
 // Start timer for current question
