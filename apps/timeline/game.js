@@ -19,9 +19,7 @@ export function setDifficulty(level) {
 
 // bestäm antal kort soms ka användas beroende på svårighetsgrad
 export function countBy(level) {
-  if (level === "easy") return 5;
-  if (level === "medium") return 8;
-  return 12;
+return 8;
 }
 // spara vilka nobelpristagare som används i denna omgång, och räkna ut den korrekta ordningen baserad på årtal
 export function setPools(laureates) {
@@ -42,7 +40,7 @@ export function setPools(laureates) {
 // räkna ut spelarens poäng baserat på rätt placeringar, fel placeringar och tid
 export function submitAndScore(userIds) {
   // poäng per rätt svar beroende på svårighetsgrad
-  const per = { easy: 100, medium: 125, hard: 150 }[gameState.difficulty];
+  const per = 100;
 
   // räkna antal rätt placerade kort 
   // räkna antal fel placerade kort
@@ -78,7 +76,7 @@ export function submitAndScore(userIds) {
 // returnerar hur många poäng varje rätt svar är värt för aktuell svårighetsgrad
 // används när vi visar "+100 Poäng" (eller motsvarande) på resultatkortet
 export function showScore() {
-  const per = { easy: 100, medium: 125, hard: 150 }[gameState.difficulty];
+  const per = 100;
   return per;
 }
 
@@ -87,9 +85,7 @@ export function startTimer(difficulty) {
   const timeLeftEl = document.getElementById("timer");
 
   // sätt starttid beroende på svårighetsgrad
-  if (difficulty === "easy") gameState.timeLeft = 3000;
-  if (difficulty === "medium") gameState.timeLeft = 45;
-  if (difficulty === "hard") gameState.timeLeft = 60;
+  if (difficulty === "play") gameState.timeLeft = 45;
 
   
   // setInterval() kör en funktion upprepade gånger med ett visst intervall
