@@ -1,42 +1,68 @@
-/**
- * Nobel Match Master - UI Module
- * 
- * Handles game-specific UI rendering and interactions
- * 
- * TODO: Implement actual UI logic based on Fas-1 version
- */
+const CATS = ["physics", "chemistry", "medicine", "literature", "peace", "economics"];
 
-/**
- * Render a card element
- * @param {Object} card - Card data
- * @returns {string} HTML string
- */
-function renderCard(card) {
-  // TODO: Implement card rendering
-  return `
-    <div class="card">
-      ${card.name}
-    </div>
-  `;
-}
+window.__nobelCategories = CATS.slice(); 
 
-/**
- * Render the game board
- * @param {Array} cards - Array of card objects
- */
-function renderGameBoard(cards) {
-  // TODO: Implement board rendering
-  const container = document.getElementById('game-container');
-  container.innerHTML = cards.map(renderCard).join('');
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const elAll = document.getElementById("cat-all");
+  const boxes = CATS.map((c) => document.getElementById("cat-" + c));
 
-/**
- * Show game over modal
- * @param {Object} results - Game results
- */
-function showGameOverModal(results) {
-  // TODO: Implement game over modal
-  NobelUI.showToast(`Game Over! Score: ${results.score}`, 'success');
-}
+ 
+  function setIndividualsDisabled(disabled) {
+    boxes.forEach((b) => {
+      if (!b) return;
+      b.disabled = disabled;
+      
+      const pill = b.nextElementSibling;
+      if (pill) {
+        pill.classList.toggle("opacity-40", disabled);
+        pill.classList.toggle("cursor-not-allowed", disabled);
+        pill.classList.toggle("pointer-events-none", disabled);
+      }
+    });
+  }
 
-console.log('✅ Match Master UI module loaded');
+  
+  function setAllDisabled(disabled) {
+    if (!elAll) return;
+    elAll.disabled = disabled;
+    const pill = elAll.nextElementSibling;
+    if (pill) {
+      pill.classList.toggle("opacity-40", disabled);
+      pill.classList.toggle("cursor-not-allowed", disabled);
+      pill.classList.toggle("pointer-events-none", disabled);
+    }
+  }
+
+  function updateGlobalFromUI() {
+    if (!elAll) return;
+
+    if (elAll.checked) {
+  
+      window.__nobelCategories = CATS.slice();
+      boxes.forEach((b) => b && (b.checked = false));
+      setIndividualsDisabled(true);
+      setAllDisabled(false);
+    } else {
+      const picked = CATS.filter((c, i) => boxes[i] && boxes[i].checked);
+      window.__nobelCategories = picked.length ? picked : [];
+     
+      const anyPicked = picked.length > 0;
+      setAllDisabled(anyPicked);
+      setIndividualsDisabled(false);
+     
+    }
+  }
+
+  if (elAll) elAll.addEventListener("change", updateGlobalFromUI);
+  boxes.forEach((b) => {
+    if (!b) return;
+    b.addEventListener("change", () => {
+     
+      if (boxes.some((x) => x && x.checked)) elAll.checked = false;
+      updateGlobalFromUI();
+    });
+  });
+
+ 
+  updateGlobalFromUI();
+});

@@ -1,114 +1,261 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nobel Trivia Rush | Nobel Quest</title>
-  <meta name="description" content="Answer Nobel Prize trivia questions against the clock">
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-  
-  <!-- Shared modules -->
-  <script src="../../shared/firebase-config.js"></script>
-  <script src="../../shared/js/auth.js"></script>
-  <script src="../../shared/js/repository.js"></script>
-  <script src="../../shared/js/ui-components.js"></script>
-  <script src="../../shared/js/utils.js"></script>
-  
-  <!-- Shared styles -->
-  <link rel="stylesheet" href="../../shared/css/shared.css">
-  
-  <!-- Game-specific styles -->
-  <link rel="stylesheet" href="css/game.css">
-</head>
-<body class="bg-gradient-to-br from-yellow-50 to-red-50 min-h-screen">
-  
-  <!-- Auth Section -->
-  <div id="auth-section" class="container mx-auto p-4 flex items-center justify-center min-h-screen">
-    <div class="max-w-md w-full bg-white rounded-lg shadow-xl p-8">
-      <h1 class="text-4xl font-bold mb-2 nobel-text-gradient">Nobel Trivia Rush</h1>
-      <p class="text-gray-600 mb-6">Test your Nobel Prize knowledge</p>
-      
-      <div class="mb-6">
-        <img src="https://via.placeholder.com/400x200/f59e0b/ffffff?text=Trivia+Rush" 
-             alt="Trivia Rush Game" 
-             class="w-full rounded-lg">
-      </div>
-      
-      <button id="login-btn" class="nobel-btn nobel-btn-primary w-full text-lg">
-        🔐 Login with Google to Play
-      </button>
-      
-      <p class="text-xs text-gray-500 mt-4 text-center">
-        Part of the Nobel Quest series
-      </p>
-    </div>
-  </div>
 
-  <!-- Game Section -->
-  <div id="game-section" class="hidden container mx-auto p-4">
-    
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nobel Trivia Rush</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="min-h-screen bg-[#0b1e39] text-white flex flex-col">
     <!-- Header -->
-    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
-      <div class="flex justify-between items-center">
-        <div>
-          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Trivia Rush</h1>
-          <p class="text-sm text-gray-600">Welcome, <span id="user-name" class="font-semibold"></span>!</p>
-        </div>
-        <button id="logout-btn" class="text-sm text-red-600 hover:text-red-800 font-medium">
-          Logout
-        </button>
-      </div>
+    <header class="text-center py-10">
+      <h1 class="text-4xl font-extrabold tracking-tight drop-shadow-md pt-4">
+        Nobel Trivia Rush
+      </h1>
+      <p class="text-white/70 mt-2 text-sm">
+        Testa dina kunskaper om Nobelpriser – fråga för fråga.
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="ui/style.css" />
+      </p>
     </header>
 
-    <!-- Game Stats -->
-    <div class="grid grid-cols-3 gap-4 mb-6">
-      <div class="bg-white rounded-lg shadow p-4 text-center">
-        <div class="text-3xl font-bold text-yellow-600" id="score-display">0</div>
-        <div class="text-sm text-gray-600">Score</div>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4 text-center">
-        <div class="text-3xl font-bold text-green-600" id="correct-display">0</div>
-        <div class="text-sm text-gray-600">Correct</div>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4 text-center">
-        <div class="text-3xl font-bold text-red-600" id="timer-display">30</div>
-        <div class="text-sm text-gray-600">Time Left</div>
-      </div>
-    </div>
+    <!-- MAIN -->
+    <main class="flex-1 flex items-center justify-center px-6 pb-12">
+      <div class="w-full max-w-2xl">
+        <!-- Panel -->
+        <div
+          class="rounded-3xl bg-[#142845]/95 shadow-2xl ring-1 ring-white/10 p-8 md:p-10 text-center "
+        >
+        <button
+  id="btn-sound"
+  class="absolute top-5 right-5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm"
+>
+  Ljud på
+</button>
+          <!-- STARTVY -->
+          <section id="view-start" class="space-y-8">
+              <p class="text-white/85 leading-relaxed mb-8 text-lg">
+            Välj vilka kategorier du vill ha med och tryck sen
+            <span class="font-semibold text-white">Starta Quiz</span>.
+          </p>
 
-    <!-- Game Controls -->
-    <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
-      <div class="flex gap-4 justify-center">
-        <button id="start-btn" class="nobel-btn nobel-btn-primary">
-          ▶️ Start Game
-        </button>
-        <button id="reset-btn" class="nobel-btn nobel-btn-secondary" disabled>
-          🔄 Reset
-        </button>
+              <!-- Kategorier och Start-knapp -->
+<form id="category-form">
+  <fieldset class="space-y-5">
+    <legend class="text-center font-semibold text-[#C5A572] text-lg">
+      Kategorier
+    </legend>
+
+    <!-- Alla kategorier -->
+    <label class="relative flex items-center justify-center gap-3">
+      <input id="cat-all" name="categories" value="all" type="checkbox" class="peer sr-only" checked aria-label="Alla kategorier" />
+      <span
+        class="px-5 py-2 rounded-full border border-[#C5A572]/70 text-white/90 bg-white/5
+               hover:bg-white/10 transition select-none
+               peer-checked:bg-[#C5A572] peer-checked:hover:bg-[#B08F57] peer-checked:text-[#002952] peer-checked:border-[#C5A572] peer-checked:hover:border-[#9C7640]
+               shadow-sm"
+      >
+        Alla kategorier
+      </span>
+    </label>
+
+              <!-- Enskilda kategorier -->
+              <div
+                class="grid grid-cols-2 sm:grid-cols-3 gap-4 justify-items-center text-center"
+              >
+                <label class="relative flex items-center justify-center w-full">
+                  <input id="cat-physics" name="categories" value="physics" type="checkbox" class="peer sr-only" />
+                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
+                              hover:bg-white/10 transition select-none text-center
+                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
+                    Fysik
+                  </span>
+                </label>
+
+                <label class="relative flex items-center justify-center w-full">
+                  <input id="cat-chemistry" name="categories" value="chemistry" type="checkbox" class="peer sr-only" />
+                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
+                              hover:bg-white/10 transition select-none text-center
+                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
+                    Kemi
+                  </span>
+                </label>
+
+                <label class="relative flex items-center justify-center w-full">
+                  <input id="cat-medicine" name="categories" value="medicine" type="checkbox" class="peer sr-only" />
+                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
+                              hover:bg-white/10 transition select-none text-center
+                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
+                    Medicin
+                  </span>
+                </label>
+
+                <label class="relative flex items-center justify-center w-full">
+                  <input id="cat-literature" name="categories" value="literature" type="checkbox" class="peer sr-only" />
+                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
+                              hover:bg-white/10 transition select-none text-center
+                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
+                    Litteratur
+                  </span>
+                </label>
+
+                <label class="relative flex items-center justify-center w-full">
+                  <input id="cat-peace" name="categories" value="peace" type="checkbox" class="peer sr-only" />
+                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
+                              hover:bg-white/10 transition select-none text-center
+                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
+                    Fred
+                  </span>
+                </label>
+
+                <label class="relative flex items-center justify-center w-full">
+                  <input id="cat-economics" name="categories" value="economics" type="checkbox" class="peer sr-only" />
+                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
+                              hover:bg-white/10 transition select-none text-center
+                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
+                    Ekonomi
+                  </span>
+                </label>
+              </div>
+
+              <p class="text-center text-white/70 text-sm mt-2 px-6 mb-8 py-3">
+                Tips: Lämna "Alla kategorier" ikryssad för maximal variation.
+              </p>
+            </fieldset>
+
+            <!-- Submit-knapp -->
+            <div class="text-center">
+              <button
+                type="submit"
+                id="btn-start"
+                class="inline-flex items-center justify-center px-10 py-3 rounded-xl
+                      bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c]
+                      text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
+              >
+                Starta Quiz
+              </button>
+            </div>
+          </form>
+
+          </section>
+
+          <!-- QUIZVY -->
+          <section id="view-quiz" class="hidden text-center">
+            <div id="quizvy"
+              class="flex items-center justify-between mb-4 text-white/80 text-sm"
+            >
+              <div id="question-number">Fråga 1 av 10</div>
+              <div class="flex items-center gap-3">
+                <div id="timer" class="font-semibold text-lg">15s</div>
+                <div class="border-l border-white/20 h-5"></div>
+                <div id="score-pill" class="font-semibold">Poäng: 0</div>
+                <div id="time-score-pill" class="font-semibold text-[#C5A572]">Tidspoäng: 0</div>
+                <div id="streak-pill" class="font-semibold text-[#76DB7E]">Streak: 0</div>
+              </div>
+            </div>
+
+            <!-- Timer bar -->
+            <div
+              class="w-full h-2 bg-white/10 rounded-full mb-2 overflow-hidden"
+            >
+              <div
+                id="timer-bar"
+                class="h-2 bg-[#C5A572] rounded-full transition-all duration-1000"
+                style="width: 100%"
+              ></div>
+            </div>
+
+            <!-- Progress bar -->
+            <div
+              class="w-full h-2 bg-white/10 rounded-full mb-6 overflow-hidden"
+            >
+              <div
+                id="progress-bar"
+                class="h-2 bg-[#C5A572] rounded-full transition-all duration-150"
+                style="width: 0%"
+              ></div>
+            </div>
+
+            <div
+              id="question-category"
+              class="inline-block px-3 py-1 rounded-full bg-white/10 text-white/90 mb-2"
+            >
+              Kategori
+            </div>
+
+            <h2
+              id="question-text"
+              class="text-2xl font-semibold mb-6 text-center"
+            ></h2>
+
+            <div id="options" class="grid gap-3"></div>
+
+            <button
+              id="btn-next"
+              disabled
+              class="w-full mt-6 px-5 py-2 rounded-lg border border-[#C5A572]/70 text-[#C5A572] opacity-60 cursor-not-allowed"
+            >
+              Nästa
+            </button>
+          </section>
+
+          <!-- RESULTAT -->
+           
+          <section id="view-result" class="hidden text-center space-y-4">
+            <!--Confetti animation-->
+                            <div id="confetti-wrapper" class="z--10 absolute inset-0 pointer-events-none overflow-hidden">
+              <div class="confetti"></div>
+              <div class="confetti"></div>
+              <div class="confetti"></div>
+              <div class="confetti"></div>
+              <div class="confetti"></div>
+              <div class="confetti"></div>
+              <div class="confetti"></div>
+              <div class="confetti"></div>
+              <div class="confetti"></div>
+              <div class="confetti"></div>
+            </div>
+            <h2 class="text-3xl font-bold text-[#C5A572]">Resultat</h2>
+            <div class="space-y-2">
+              <p id="final-score" class="text-white/90 text-lg font-semibold"></p>
+              <p id="final-time-score" class="text-[#C5A572] text-base"></p>
+              <p id="final-bonus-score" class="text-green-400 text-base"></p> <!-- 🆕 -->
+              <p id="final-total-score" class="text-white text-xl font-bold border-t border-white/20 pt-2 mt-2"></p>
+            </div>
+            
+            <p id="final-feedback" class="text-white/75 text-lg mt-4"></p>
+            
+            <div class="text-sm text-white/60 space-y-1 border-t border-white/10 pt-4 mt-4">
+              <p class="font-semibold text-white/80 mb-2">Bästa resultat:</p>
+              <p><span id="best-score">—</span></p>
+              <p><span id="best-time-score">—</span></p>
+              <p class="font-semibold"><span id="best-total-score">—</span></p>
+            </div>
+            <button
+              id="btn-restart"
+              class="w-full mt-2 px-6 py-3 rounded-lg bg-[#C5A572] hover:bg-[#b08f57] text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
+            >
+              Starta om
+            </button>
+          </section>
+        </div>
       </div>
-    </div>
-    
-    <!-- Game Container -->
-    <div id="game-container" class="bg-white rounded-lg shadow-lg p-6 mb-6">
-      <p class="text-center text-gray-500">Click "Start Game" to begin!</p>
-    </div>
+    </main>
 
-    <!-- Leaderboard -->
-    <div id="leaderboard"></div>
-    
-  </div>
+    <footer class="py-6 text-center text-xs text-white/50">
+      © Nobel Trivia Rush
+    </footer>
 
-  <!-- Game Scripts -->
-  <script src="js/game.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/config.js"></script>
-  
-</body>
+    <script src="js/data.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
