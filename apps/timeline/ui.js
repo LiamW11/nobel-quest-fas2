@@ -5,11 +5,8 @@ import { getLeaderboard } from "./storage.js";
 export function renderStart(root) {
   root.innerHTML = `
   <section class="mx-auto max-w-2xl text-center">
-    <h2 class="text-2xl font-bold mb-6">Välj svårighetsgrad</h2>
     <div class="flex flex-col gap-4 items-center">
-      <button class="btn btn-primary py-4 text-base w-3/4 sm:w-2/3 md:w-1/2" data-level="easy">Lätt (5)</button>
-      <button class="btn btn-primary py-4 text-base w-3/4 sm:w-2/3 md:w-1/2" data-level="medium">Medel (8)</button>
-      <button class="btn btn-primary py-4 text-base w-3/4 sm:w-2/3 md:w-1/2" data-level="hard">Svår (12)</button>
+      <button class="btn btn-primary mt-2 py-4 text-base w-3/4 sm:w-2/3 md:w-1/2" data-level="play">Spela</button>
     </div>
   </section>`;
 
@@ -84,9 +81,9 @@ export function renderLeaderboard() {
       <div class="flex items-center gap-3">
         <span class="font-bold text-lg w-6">${index + 1}.</span>
         <div>
-          <p class="font-bold">${entry.name}</p>
+          <p class="font-bold max-w-80 block truncate">${entry.name}</p>
           <p class="text-sm text-neutral-500">
-            ${entry.correctCount}/${entry.total} rätt • ${entry.difficulty}
+            ${entry.correctCount}/${entry.total} rätt • Tid kvar: ${entry.timeLeft}
           </p>
         </div>
       </div>
