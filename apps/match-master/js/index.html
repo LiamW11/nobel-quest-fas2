@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nobel Match Master</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">  
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+  <div class="bg-gray-800 rounded-2xl shadow-2xl p-8 w-full max-w-2xl border border-gray-700">
+    <!--STARTSKÄRM-->
+    <div id="startScreen" class="w-full text-center">
+      <h1 class="text-4xl font-bold mb-8">Nobel Match Master</h1>
+      <!--ANVÄNDARNAMN-->
+      <div class="mb-6">
+        <label for="playerName" class="block text-sm font-medium mb-2"
+          >Ditt namn:</label
+        >
+        <input
+          type="text"
+          id="playerName"
+          placeholder="Ange ditt namn..."
+          class="w-full px-4 py-3 rounded-lg bg-gray-800 border-2 border-gray-700 focus:border-blue-500 focus:outline-none text-white"
+          maxlength="20"
+        />
+      </div>
+      <div class="space-y-4">
+        <button
+          game-difficulty="easy"
+          class="bg-green-500 text-white px-8 py-4 font-bold hover:bg-green-600 rounded-lg w-full sm:w-64"
+        >
+          Enkel (6 par)
+        </button>
+        <button
+          game-difficulty="medium"
+          class="bg-yellow-500 text-white px-8 py-4 font-bold hover:bg-yellow-600 rounded-lg w-full sm:w-64"
+        >
+          Medel (9 par)
+        </button>
+        <button
+          game-difficulty="hard"
+          class="bg-red-500 text-white px-8 py-4 font-bold hover:bg-red-600 rounded-lg w-full sm:w-64"
+        >
+          Svår (12 par)
+        </button>
+
+    <!--LEADERBOARD-->
+    <button
+    id="showLeaderboardBtn"
+    class="bg-purple-500 text-white px-8 py-4 font-bold hover:bg-purple-600 rounded-lg w-full sm:w-64"
+    >Leaderboard</button>
+    </div>
+  </div>
+
+    <!--SPELSKÄRM-->
+    <div id="gameScreen" class="w-full text-center hidden">
+      <h1 class="text-4xl font-bold mb-8 space-y-4 mt-8">Nobel Match Master</h1>
+
+      <div class="bg-gray-800 p-6 rounded-lg mb-6">
+        <div class="w-full text-center flex flex-col items-center space-y-2">
+          <div>
+            Tid:
+            <span id="timer" class="font-bold text-blue-400 sm:w-64">0:00</span>
+          </div>
+          <div>
+            Försök:
+            <span id="attempts" class="font-bold text-yellow-400 sm:w-64"
+              >0</span
+            >
+          </div>
+          <div>
+            Matchningar:
+            <span id="matches" class="font-bold text-green-400 sm:w-64"
+              >0/6</span
+            >
+          </div>
+          <div>
+            Poäng:
+            <span id="score" class="font-bold text-purple-400 sm:w-64">0</span>
+          </div>
+        </div>
+      </div>
+      <div id="cardGrid" class="grid gap-4"></div>
+      
+    <!--GE UPP-->
+
+<button id="giveUpBtn" class="mt-8 bg-green-500 text-white px-8 py-4 font-bold hover:bg-green-600 rounded-lg w-full sm:w-64">
+  Ge upp
+</button>
+    </div>
+
+    <!--SLUTSKÄRM-->
+    <div id="endScreen" class="w-full text-center hidden">
+      <h2 class="text-4xl font-bold mb-8 text-green-400">Grattis! 🎉</h2>
+      <div class="bg-gray-800 p-8 rounded-lg mb-6 space-y-4">
+        <div>
+          Poäng:
+          <span id="finalScore" class="font-bold text-purple-400">0</span>
+        </div>
+        <div>
+          Tid: <span id="time" class="font-bold text-blue-400">0:00</span>
+        </div>
+        <div>
+          Försök:
+          <span id="finalAttempts" class="font-bold text-yellow-400">0</span>
+        </div>
+        <div>
+          Leaderboard placering:
+          <span id="leaderboardRank" class="font-bold text-purple-400">-</span>
+        </div>
+      </div>
+      <button
+        id="playAgain"
+        class="bg-blue-500 text-white px-8 py-4 font-bold hover:bg-blue-600 rounded-lg space-y-4 mt-8"
+      >
+        Spela igen
+      </button>
+    </div>
+
+    <!--LEADERBOARD-->
+    <div id="leaderboardScreen" class="max-w-2xl mx-auto text-center hidden">
+      <h2 class="text-4xl font-bold mb-8 text-yellow-400">🏆 Leaderboard</h2>
+
+      <!--SVÅRIGHETSGRADSMENY-->
+      <div class="flex justify-center gap-4 mb-6">
+        <button
+          class="leaderboard-filter bg-green-500 px-4 py-2 rounded-lg font-bold hover:bg-green-600"
+          data-difficulty="easy"
+        >
+          Enkel
+        </button>
+        <button
+          class="leaderboard-filter bg-yellow-500 px-4 py-2 rounded-lg font-bold hover:bg-yellow-600"
+          data-difficulty="medium"
+        >
+          Medel
+        </button>
+        <button
+          class="leaderboard-filter bg-red-500 px-4 py-2 rounded-lg font-bold hover:bg-red-600"
+          data-difficulty="hard"
+        >
+          Svår
+        </button>
+      </div>
+      <!--LEADERBOARDSORTERING-->
+      <div class="flex justify-center gap-4 mb-6">
+        <button
+          id="sortByScore"
+          class="sort-btn bg-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-blue-700 border-2 border-white"
+        >
+          📊 Högst Poäng ✓
+        </button>
+        <button
+          id="sortByTime"
+          class="sort-btn bg-gray-700 px-6 py-3 rounded-lg font-bold hover:bg-gray-600 border-2 border-transparent opacity-50"
+        >
+          ⚡ Snabbast Tid
+        </button>
+      </div>
+
+      <!--LEADERBOARDLISTA-->
+      <div
+      id="leaderboardList"
+      class="bg-gray-800 p-6 rounded-lg mb-6 max-h-96 overflow-y-auto overflow-x-hidden break-words"
+      >
+      </div>
+
+      <!--BACKA-->
+      <button
+        id="backToStart"
+        class="bg-blue-500 text-white px-8 py-4 font-bold hover:bg-blue-600 rounded-lg"
+      >
+        Tillbaka
+      </button>
+    </div>
+   
+    
+        <!--KONFETTI-->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script src="utils.js"></script>
+    <script src="data.js"></script>
+    <script src="storage.js"></script>
+    <script src="game.js"></script>
+    <script src="ui.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
