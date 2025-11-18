@@ -1,0 +1,686 @@
+{
+  "laureates": [
+    {
+      "id": 1,
+      "name": "Marie Curie",
+      "year": 1903,
+      "category": "Fysik",
+      "achievement": "Upptäckt av radioaktivitet",
+      "country": "Polen/Frankrike",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Marie_Curie_c1920.jpg/220px-Marie_Curie_c1920.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Albert Einstein",
+      "year": 1921,
+      "category": "Fysik",
+      "achievement": "Fotoelektrisk effekt",
+      "country": "Tyskland/USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Einstein_1921_by_F_Schmutzer_-_restoration.jpg/220px-Einstein_1921_by_F_Schmutzer_-_restoration.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Malala Yousafzai",
+      "year": 2014,
+      "category": "Fred",
+      "achievement": "Kamp för barns rätt till utbildning",
+      "country": "Pakistan",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Malala_Yousafzai_at_Girl_Summit_2014.jpg/220px-Malala_Yousafzai_at_Girl_Summit_2014.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Nelson Mandela",
+      "year": 1993,
+      "category": "Fred",
+      "achievement": "Arbete för demokrati och jämlikhet",
+      "country": "Sydafrika",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Nelson_Mandela_1994.jpg/220px-Nelson_Mandela_1994.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Ernest Hemingway",
+      "year": 1954,
+      "category": "Litteratur",
+      "achievement": "Den gamle och havet",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/ErnestHemingway.jpg/220px-ErnestHemingway.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Alexander Fleming",
+      "year": 1945,
+      "category": "Medicin",
+      "achievement": "Upptäckt av penicillin",
+      "country": "Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Synthetic_Production_of_Penicillin_TR1468.jpg/220px-Synthetic_Production_of_Penicillin_TR1468.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Martin Luther King Jr.",
+      "year": 1964,
+      "category": "Fred",
+      "achievement": "Fredlig kamp mot rasism",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Martin_Luther_King%2C_Jr..jpg/220px-Martin_Luther_King%2C_Jr..jpg"
+    },
+    {
+      "id": 8,
+      "name": "Niels Bohr",
+      "year": 1922,
+      "category": "Fysik",
+      "achievement": "Atomstruktur och kvantteori",
+      "country": "Danmark",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Niels_Bohr.jpg/220px-Niels_Bohr.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Toni Morrison",
+      "year": 1993,
+      "category": "Litteratur",
+      "achievement": "Beloved",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Toni_Morrison_2008.jpg/220px-Toni_Morrison_2008.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Linus Pauling",
+      "year": 1954,
+      "category": "Kemi",
+      "achievement": "Kemiska bindningar",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Linus_Pauling_1962.jpg/220px-Linus_Pauling_1962.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Rosalind Franklin",
+      "year": 1962,
+      "category": "Kemi",
+      "achievement": "DNA-strukturens upptäckt",
+      "country": "Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Rosalind_Franklin.jpg/220px-Rosalind_Franklin.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Mother Teresa",
+      "year": 1979,
+      "category": "Fred",
+      "achievement": "Arbete bland de fattiga",
+      "country": "Indien/Albanien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Mother_Teresa.jpg/220px-Mother_Teresa.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Gabriel García Márquez",
+      "year": 1982,
+      "category": "Litteratur",
+      "achievement": "Hundra års ensamhet",
+      "country": "Colombia",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Gabriel_Garcia_Marquez.jpg/220px-Gabriel_Garcia_Marquez.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Dorothy Hodgkin",
+      "year": 1964,
+      "category": "Kemi",
+      "achievement": "Kristallografi av biomolekyler",
+      "country": "Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Dorothy_Hodgkin_Nobel.jpg/220px-Dorothy_Hodgkin_Nobel.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Richard Feynman",
+      "year": 1965,
+      "category": "Fysik",
+      "achievement": "Kvantelektrodynamik",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/4/42/Richard_Feynman_Nobel.jpg/220px-Richard_Feynman_Nobel.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Jane Addams",
+      "year": 1931,
+      "category": "Fred",
+      "achievement": "Socialt reformarbete",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Jane_Addams_profile.jpg/220px-Jane_Addams_profile.jpg"
+    },
+    {
+      "id": 17,
+      "name": "Tu Youyou",
+      "year": 2015,
+      "category": "Medicin",
+      "achievement": "Behandling av malaria",
+      "country": "Kina",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Youyou_Tu_portrait.jpg/220px-Youyou_Tu_portrait.jpg"
+    },
+    {
+      "id": 18,
+      "name": "Barack Obama",
+      "year": 2009,
+      "category": "Fred",
+      "achievement": "Diplomati och internationellt samarbete",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/220px-President_Barack_Obama.jpg"
+    },
+    {
+      "id": 19,
+      "name": "Selma Lagerlöf",
+      "year": 1909,
+      "category": "Litteratur",
+      "achievement": "Gösta Berlings saga",
+      "country": "Sverige",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Selma_Lagerl%C3%B6f_1908.jpg/220px-Selma_Lagerl%C3%B6f_1908.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Werner Heisenberg",
+      "year": 1932,
+      "category": "Fysik",
+      "achievement": "Osäkerhetsprincipen",
+      "country": "Tyskland",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Bundesarchiv_Bild183-R57262%2C_Werner_Heisenberg.jpg/220px-Bundesarchiv_Bild183-R57262%2C_Werner_Heisenberg.jpg"
+    },
+    {
+      "id": 21,
+      "name": "Francis Crick",
+      "year": 1962,
+      "category": "Medicin",
+      "achievement": "DNA-strukturen",
+      "country": "Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Francis_Crick_crop.jpg/220px-Francis_Crick_crop.jpg"
+    },
+    {
+      "id": 22,
+      "name": "James Watson",
+      "year": 1962,
+      "category": "Medicin",
+      "achievement": "DNA-strukturen",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/James_D_Watson.jpg/220px-James_D_Watson.jpg"
+    },
+    {
+      "id": 23,
+      "name": "Aung San Suu Kyi",
+      "year": 1991,
+      "category": "Fred",
+      "achievement": "Demokratikamp i Myanmar",
+      "country": "Myanmar",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Aung_San_Suu_Kyi_2016.jpg/220px-Aung_San_Suu_Kyi_2016.jpg"
+    },
+    {
+      "id": 24,
+      "name": "Pablo Neruda",
+      "year": 1971,
+      "category": "Litteratur",
+      "achievement": "Passion och poesi",
+      "country": "Chile",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Pablo_Neruda.jpg/220px-Pablo_Neruda.jpg"
+    },
+    {
+      "id": 25,
+      "name": "Frederick Banting",
+      "year": 1923,
+      "category": "Medicin",
+      "achievement": "Upptäckt av insulin",
+      "country": "Kanada",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Frederick_Banting_ca_1920.jpg/220px-Frederick_Banting_ca_1920.jpg"
+    },
+    {
+      "id": 26,
+      "name": "Enrico Fermi",
+      "year": 1938,
+      "category": "Fysik",
+      "achievement": "Kärnreaktioner och radioaktivitet",
+      "country": "Italien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Enrico_Fermi_1943-49.jpg/220px-Enrico_Fermi_1943-49.jpg"
+    },
+    {
+      "id": 27,
+      "name": "Gertrude Elion",
+      "year": 1988,
+      "category": "Medicin",
+      "achievement": "Utveckling av läkemedel",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Gertrude_Elion.jpg/220px-Gertrude_Elion.jpg"
+    },
+    {
+      "id": 28,
+      "name": "Marie Curie",
+      "year": 1911,
+      "category": "Kemi",
+      "achievement": "Upptäckt av radium och polonium",
+      "country": "Polen/Frankrike",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Marie_Curie_c1920.jpg/220px-Marie_Curie_c1920.jpg"
+    },
+    {
+      "id": 29,
+      "name": "Kofi Annan",
+      "year": 2001,
+      "category": "Fred",
+      "achievement": "FN:s generalsekreterare",
+      "country": "Ghana",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Kofi_Annan.jpg/220px-Kofi_Annan.jpg"
+    },
+    {
+      "id": 30,
+      "name": "Rabindranath Tagore",
+      "year": 1913,
+      "category": "Litteratur",
+      "achievement": "Gitanjali",
+      "country": "Indien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Rabindranath_Tagore_in_1909.jpg/220px-Rabindranath_Tagore_in_1909.jpg"
+    },
+    {
+      "id": 31,
+      "name": "Stephen Hawking",
+      "year": 1988,
+      "category": "Fysik",
+      "achievement": "Svarta hål och kosmologi",
+      "country": "Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Stephen_Hawking.StarChild.jpg/220px-Stephen_Hawking.StarChild.jpg"
+    },
+    {
+      "id": 32,
+      "name": "Wangari Maathai",
+      "year": 2004,
+      "category": "Fred",
+      "achievement": "Miljöskydd och demokrati",
+      "country": "Kenya",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Wangari_Maathai_in_Nairobi.jpg/220px-Wangari_Maathai_in_Nairobi.jpg"
+    },
+    {
+      "id": 33,
+      "name": "William Faulkner",
+      "year": 1949,
+      "category": "Litteratur",
+      "achievement": "Ljuset i augusti",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/William_Faulkner_1949.jpg/220px-William_Faulkner_1949.jpg"
+    },
+    {
+      "id": 34,
+      "name": "Ahmed Zewail",
+      "year": 1999,
+      "category": "Kemi",
+      "achievement": "Femtokemi",
+      "country": "Egypten/USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Ahmed_Zewail.jpg/220px-Ahmed_Zewail.jpg"
+    },
+    {
+      "id": 35,
+      "name": "Rita Levi-Montalcini",
+      "year": 1986,
+      "category": "Medicin",
+      "achievement": "Tillväxtfaktorer",
+      "country": "Italien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Rita_Levi-Montalcini.jpg/220px-Rita_Levi-Montalcini.jpg"
+    },
+    {
+      "id": 36,
+      "name": "Jimmy Carter",
+      "year": 2002,
+      "category": "Fred",
+      "achievement": "Fredsförhandlingar",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/JimmyCarterPortrait2.jpg/220px-JimmyCarterPortrait2.jpg"
+    },
+    {
+      "id": 37,
+      "name": "John Steinbeck",
+      "year": 1962,
+      "category": "Litteratur",
+      "achievement": "Vredens druvor",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/John_Steinbeck_1962.jpg/220px-John_Steinbeck_1962.jpg"
+    },
+    {
+      "id": 38,
+      "name": "Paul Dirac",
+      "year": 1933,
+      "category": "Fysik",
+      "achievement": "Kvanmekanik",
+      "country": "Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Paul_Dirac%2C_1933.jpg/220px-Paul_Dirac%2C_1933.jpg"
+    },
+    {
+      "id": 39,
+      "name": "Barbara McClintock",
+      "year": 1983,
+      "category": "Medicin",
+      "achievement": "Genetiska element",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Barbara_McClintock_%281902-1992%29.jpg/220px-Barbara_McClintock_%281902-1992%29.jpg"
+    },
+    {
+      "id": 40,
+      "name": "Dalai Lama",
+      "year": 1989,
+      "category": "Fred",
+      "achievement": "Fredlig kamp för Tibet",
+      "country": "Tibet/Indien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Dalai_Lama_1430_Luca_Galuzzi_2007crop.jpg/220px-Dalai_Lama_1430_Luca_Galuzzi_2007crop.jpg"
+    },
+    {
+      "id": 41,
+      "name": "Tomas Tranströmer",
+      "year": 2011,
+      "category": "Litteratur",
+      "achievement": "Lyrisk poesi",
+      "country": "Sverige",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Tomas_Transtr%C3%B6mer_2008.jpg/220px-Tomas_Transtr%C3%B6mer_2008.jpg"
+    },
+    {
+      "id": 42,
+      "name": "Max Planck",
+      "year": 1918,
+      "category": "Fysik",
+      "achievement": "Kvantteorin",
+      "country": "Tyskland",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Max_Planck_1933.jpg/220px-Max_Planck_1933.jpg"
+    },
+    {
+      "id": 43,
+      "name": "Jennifer Doudna",
+      "year": 2020,
+      "category": "Kemi",
+      "achievement": "CRISPR-genredigering",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Jennifer_Doudna.jpg/220px-Jennifer_Doudna.jpg"
+    },
+    {
+      "id": 44,
+      "name": "Emmanuelle Charpentier",
+      "year": 2020,
+      "category": "Kemi",
+      "achievement": "CRISPR-genredigering",
+      "country": "Frankrike",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emmanuelle_Charpentier.jpg/220px-Emmanuelle_Charpentier.jpg"
+    },
+    {
+      "id": 45,
+      "name": "Shinya Yamanaka",
+      "year": 2012,
+      "category": "Medicin",
+      "achievement": "Stamcellsforskning",
+      "country": "Japan",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Shinya_yamanaka10.jpg/220px-Shinya_yamanaka10.jpg"
+    },
+    {
+      "id": 46,
+      "name": "Desmond Tutu",
+      "year": 1984,
+      "category": "Fred",
+      "achievement": "Kamp mot apartheid",
+      "country": "Sydafrika",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Desmond_Tutu_-_Ank_Kumar.jpg/220px-Desmond_Tutu_-_Ank_Kumar.jpg"
+    },
+    {
+      "id": 47,
+      "name": "Kazuo Ishiguro",
+      "year": 2017,
+      "category": "Litteratur",
+      "achievement": "Återstoden av dagen",
+      "country": "Storbritannien/Japan",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Kazuo_Ishiguro_in_2017.jpg/220px-Kazuo_Ishiguro_in_2017.jpg"
+    },
+    {
+      "id": 48,
+      "name": "Murray Gell-Mann",
+      "year": 1969,
+      "category": "Fysik",
+      "achievement": "Elementarpartiklar",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Murray_Gell-Mann_at_Caltech.jpg/220px-Murray_Gell-Mann_at_Caltech.jpg"
+    },
+    {
+      "id": 49,
+      "name": "May-Britt Moser",
+      "year": 2014,
+      "category": "Medicin",
+      "achievement": "Platsceller i hjärnan",
+      "country": "Norge",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/May-Britt_Moser_2014.jpg/220px-May-Britt_Moser_2014.jpg"
+    },
+    {
+      "id": 50,
+      "name": "Edvard Moser",
+      "year": 2014,
+      "category": "Medicin",
+      "achievement": "Platsceller i hjärnan",
+      "country": "Norge",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Edvard_Moser_2014.jpg/220px-Edvard_Moser_2014.jpg"
+    },
+    {
+      "id": 51,
+      "name": "Rigoberta Menchú",
+      "year": 1992,
+      "category": "Fred",
+      "achievement": "Urfolkens rättigheter",
+      "country": "Guatemala",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Rigoberta_Mench%C3%BA.jpg/220px-Rigoberta_Mench%C3%BA.jpg"
+    },
+    {
+      "id": 52,
+      "name": "Alice Munro",
+      "year": 2013,
+      "category": "Litteratur",
+      "achievement": "Novellkonst",
+      "country": "Kanada",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Alice_Munro.jpg/220px-Alice_Munro.jpg"
+    },
+    {
+      "id": 53,
+      "name": "Maria Goeppert Mayer",
+      "year": 1963,
+      "category": "Fysik",
+      "achievement": "Atomkärnans struktur",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mayer,_Maria_Goeppert_1909-1972.jpg/220px-Mayer,_Maria_Goeppert_1909-1972.jpg"
+    },
+    {
+      "id": 54,
+      "name": "Yoshinori Ohsumi",
+      "year": 2016,
+      "category": "Medicin",
+      "achievement": "Autofagi-mekanismer",
+      "country": "Japan",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Yoshinori_Ohsumi_201511.jpg/220px-Yoshinori_Ohsumi_201511.jpg"
+    },
+    {
+      "id": 55,
+      "name": "Elie Wiesel",
+      "year": 1986,
+      "category": "Fred",
+      "achievement": "Vittnesbörd om Förintelsen",
+      "country": "Rumänien/USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elie_Wiesel_in_2012.jpg/220px-Elie_Wiesel_in_2012.jpg"
+    },
+    {
+      "id": 56,
+      "name": "Doris Lessing",
+      "year": 2007,
+      "category": "Litteratur",
+      "achievement": "Den gyllene anteckningsboken",
+      "country": "Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Doris_Lessing_2006.jpg/220px-Doris_Lessing_2006.jpg"
+    },
+    {
+      "id": 57,
+      "name": "Carl Sagan",
+      "year": 1994,
+      "category": "Fysik",
+      "achievement": "Populärvetenskap och kosmologi",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Carl_Sagan_Planetary_Society.JPG/220px-Carl_Sagan_Planetary_Society.JPG"
+    },
+    {
+      "id": 58,
+      "name": "Peter Higgs",
+      "year": 2013,
+      "category": "Fysik",
+      "achievement": "Higgs-partikeln",
+      "country": "Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Higgs_CERN.jpg/220px-Higgs_CERN.jpg"
+    },
+    {
+      "id": 59,
+      "name": "Elizabeth Blackburn",
+      "year": 2009,
+      "category": "Medicin",
+      "achievement": "Telomerer och åldrande",
+      "country": "Australien/USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Elizabeth_Blackburn_CHF_Heritage_Day_2012_Rush_002.JPG/220px-Elizabeth_Blackburn_CHF_Heritage_Day_2012_Rush_002.JPG"
+    },
+    {
+      "id": 60,
+      "name": "Shirin Ebadi",
+      "year": 2003,
+      "category": "Fred",
+      "achievement": "Mänskliga rättigheter i Iran",
+      "country": "Iran",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Shirin_Ebadi_in_Tallinn_2006.jpg/220px-Shirin_Ebadi_in_Tallinn_2006.jpg"
+    },
+    {
+      "id": 61,
+      "name": "Orhan Pamuk",
+      "year": 2006,
+      "category": "Litteratur",
+      "achievement": "Mitt namn är Rött",
+      "country": "Turkiet",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Orhan_Pamuk_-_18032023_%28cropped%29.jpg/220px-Orhan_Pamuk_-_18032023_%28cropped%29.jpg"
+    },
+    {
+      "id": 62,
+      "name": "Subrahmanyan Chandrasekhar",
+      "year": 1983,
+      "category": "Fysik",
+      "achievement": "Stjärnors evolution",
+      "country": "Indien/USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Subrahmanyan_Chandrasekhar.jpg/220px-Subrahmanyan_Chandrasekhar.jpg"
+    },
+    {
+      "id": 63,
+      "name": "Katalin Karikó",
+      "year": 2023,
+      "category": "Medicin",
+      "achievement": "mRNA-vacciner",
+      "country": "Ungern/USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Katalin_Karik%C3%B3_in_2022.jpg/220px-Katalin_Karik%C3%B3_in_2022.jpg"
+    },
+    {
+      "id": 64,
+      "name": "Leymah Gbowee",
+      "year": 2011,
+      "category": "Fred",
+      "achievement": "Kvinnors fredsarbete",
+      "country": "Liberia",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Leymah-Gbowee.jpg/220px-Leymah-Gbowee.jpg"
+    },
+    {
+      "id": 65,
+      "name": "Mo Yan",
+      "year": 2012,
+      "category": "Litteratur",
+      "achievement": "Hallucinatorisk realism",
+      "country": "Kina",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Mo_Yan_2012.jpg/220px-Mo_Yan_2012.jpg"
+    },
+    {
+      "id": 66,
+      "name": "André Geim",
+      "year": 2010,
+      "category": "Fysik",
+      "achievement": "Grafen",
+      "country": "Nederländerna/Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Andre_Geim_2010-1.jpg/220px-Andre_Geim_2010-1.jpg"
+    },
+    {
+      "id": 67,
+      "name": "Konstantin Novoselov",
+      "year": 2010,
+      "category": "Fysik",
+      "achievement": "Grafen",
+      "country": "Ryssland/Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Konstantin_Novoselov_2010-1.jpg/220px-Konstantin_Novoselov_2010-1.jpg"
+    },
+    {
+      "id": 68,
+      "name": "Kailash Satyarthi",
+      "year": 2014,
+      "category": "Fred",
+      "achievement": "Barnrättskamp",
+      "country": "Indien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Kailash_Satyarthi.jpg/220px-Kailash_Satyarthi.jpg"
+    },
+    {
+      "id": 69,
+      "name": "Svetlana Alexievich",
+      "year": 2015,
+      "category": "Litteratur",
+      "achievement": "Polyfon berättarkonst",
+      "country": "Vitryssland",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Svetlana_Alexievich_2013.jpg/220px-Svetlana_Alexievich_2013.jpg"
+    },
+    {
+      "id": 70,
+      "name": "Saul Perlmutter",
+      "year": 2011,
+      "category": "Fysik",
+      "achievement": "Universums expansion",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Saul_Perlmutter_2011.jpg/220px-Saul_Perlmutter_2011.jpg"
+    },
+    {
+      "id": 71,
+      "name": "Esther Duflo",
+      "year": 2019,
+      "category": "Ekonomi",
+      "achievement": "Fattigdomsforskning",
+      "country": "Frankrike/USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Esther_Duflo_-_cropped.jpg/220px-Esther_Duflo_-_cropped.jpg"
+    },
+    {
+      "id": 72,
+      "name": "Juan Manuel Santos",
+      "year": 2016,
+      "category": "Fred",
+      "achievement": "Fredsprocess i Colombia",
+      "country": "Colombia",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Juan_Manuel_Santos_2016.jpg/220px-Juan_Manuel_Santos_2016.jpg"
+    },
+    {
+      "id": 73,
+      "name": "Louise Glück",
+      "year": 2020,
+      "category": "Litteratur",
+      "achievement": "Lyrisk poesi",
+      "country": "USA",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Louise_Gl%C3%BCck_2010.jpg/220px-Louise_Gl%C3%BCck_2010.jpg"
+    },
+    {
+      "id": 74,
+      "name": "Roger Penrose",
+      "year": 2020,
+      "category": "Fysik",
+      "achievement": "Svarta hål",
+      "country": "Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Roger_Penrose-6Nov2005.jpg/220px-Roger_Penrose-6Nov2005.jpg"
+    },
+    {
+      "id": 75,
+      "name": "Abdulrazak Gurnah",
+      "year": 2021,
+      "category": "Litteratur",
+      "achievement": "Kolonialismens effekter",
+      "country": "Tanzania/Storbritannien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Abdulrazak_Gurnah_2021.jpg/220px-Abdulrazak_Gurnah_2021.jpg"
+    }
+  ],
+  "categories": ["Fysik", "Kemi", "Medicin", "Litteratur", "Fred", "Ekonomi"],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-11-06",
+    "totalLaureates": 75,
+    "purpose": "Nobel Quest - Fas 1 game data"
+  }
+}
