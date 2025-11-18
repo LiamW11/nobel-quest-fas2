@@ -4,45 +4,46 @@ document.addEventListener("DOMContentLoaded", () => {
   const viewQuiz = document.getElementById("view-quiz");
 
   if (startBtn) {
-  startBtn.addEventListener("click", async () => {
-    console.log("Startknappen klickad!");
+    startBtn.addEventListener("click", async () => {
+      console.log("Startknappen klickad!");
 
-    // Wait until questions are loaded
-    await window.quizReady;
+      // Vänta tills Nobel-datan är laddad
+      await window.quizReady;
 
-    // Hide start view, show quiz view
-    viewStart.classList.add("hidden");
-    viewQuiz.classList.remove("hidden");
+      // Hämta valda kategorier
+      const selected = Array.from(
+        document.querySelectorAll("input[name='categories']:checked")
+      ).map((i) => i.value);
 
-    // Collect selected categories
-    const selected = Array.from(
-      document.querySelectorAll("input[name='categories']:checked")
-    ).map((i) => i.value);
+      // Försök starta spelet
+      const success = startGame(selected);
 
-    // Start the game
-    startGame(selected);
-  });
-}
+      // Gå endast vidare om spelet faktiskt startade
+      if (success) {
+        viewStart.classList.add("hidden");
+        viewQuiz.classList.remove("hidden");
+      }
+    });
+  }
 
+  // Hanterar formuläret (behövs inte för spelstart men lämnas kvar)
   const form = document.getElementById("category-form");
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault(); // stop the page from reloading
+    e.preventDefault(); // stoppa reload
 
-    // collect all checked categories
-    const selected = Array.from(form.querySelectorAll("input[name='categories']:checked"))
-      .map((input) => input.value);
+    const selected = Array.from(
+      form.querySelectorAll("input[name='categories']:checked")
+    ).map((input) => input.value);
 
     console.log("Valda kategorier:", selected);
-    // 👉 Here you can start your quiz logic:
-    // startQuiz(selected);
   });
-
 });
 
+// Ljud på som standard
 window.soundEnabled = true;
 
-// Setup sound toggle button
+// Ljud-knapp
 const soundBtn = document.getElementById("btn-sound");
 if (soundBtn) {
   soundBtn.addEventListener("click", () => {
