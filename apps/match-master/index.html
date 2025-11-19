@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nobel Match Master</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header
+      class="bg-blue-600 text-white p-4 flex justify-between items-center"
+    >
+      <button onclick="window.history.back()">← Back</button>
+      <h1 id="page-title">Nobel Quest</h1>
+      <button onclick="window.location.href='/menu.html'">☰</button>
+    </header>
+
+    <!--SPELSKÄRM-->
+    <div id="gameScreen">
+      <h1
+        style="
+          font-size: 2.25rem;
+          font-weight: bold;
+          margin-bottom: 2rem;
+          margin-top: 2rem;
+          text-align: center;
+        "
+      >
+        Nobel Match Master
+      </h1>
+
+      <div
+        style="
+          background-color: #1f2937;
+          padding: 1.5rem;
+          border-radius: 0.5rem;
+          margin-bottom: 1.5rem;
+        "
+      >
+        <div
+          style="
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+          "
+        >
+          <div>
+            Tid:
+            <span id="timer" style="font-weight: bold; color: #60a5fa"
+              >0:00</span
+            >
+          </div>
+          <div>
+            Försök:
+            <span id="attempts" style="font-weight: bold; color: #fbbf24"
+              >0</span
+            >
+          </div>
+          <div>
+            Matchningar:
+            <span id="matches" style="font-weight: bold; color: #34d399"
+              >0/6</span
+            >
+          </div>
+          <div>
+            Poäng:
+            <span id="score" style="font-weight: bold; color: #a78bfa">0</span>
+          </div>
+        </div>
+      </div>
+      <div id="cardGrid" class="game-board"></div>
+
+      <!--GE UPP-->
+
+      <button
+        id="giveUpBtn"
+        style="
+          margin-top: 2rem;
+          background-color: #10b981;
+          color: white;
+          padding: 1rem 2rem;
+          font-weight: bold;
+          border-radius: 0.5rem;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          max-width: 16rem;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        Ge upp
+      </button>
+    </div>
+
+    <!--SLUTSKÄRM-->
+    <div id="endScreen" class="hidden">
+      <h2
+        style="
+          font-size: 2.25rem;
+          font-weight: bold;
+          margin-bottom: 2rem;
+          color: #34d399;
+          text-align: center;
+        "
+      >
+        Grattis! 🎉
+      </h2>
+      <div
+        style="
+          background-color: #1f2937;
+          padding: 2rem;
+          border-radius: 0.5rem;
+          margin-bottom: 1.5rem;
+          color: white;
+        "
+      >
+        <div style="margin-bottom: 1rem">
+          Poäng:
+          <span id="finalScore" style="font-weight: bold; color: #a78bfa"
+            >0</span
+          >
+        </div>
+        <div style="margin-bottom: 1rem">
+          Tid:
+          <span id="time" style="font-weight: bold; color: #60a5fa">0:00</span>
+        </div>
+        <div style="margin-bottom: 1rem">
+          Försök:
+          <span id="finalAttempts" style="font-weight: bold; color: #fbbf24"
+            >0</span
+          >
+        </div>
+        <div>
+          Leaderboard placering:
+          <span id="leaderboardRank" style="font-weight: bold; color: #a78bfa"
+            >-</span
+          >
+        </div>
+      </div>
+      <button
+        id="playAgain"
+        style="
+          background-color: #3b82f6;
+          color: white;
+          padding: 1rem 2rem;
+          font-weight: bold;
+          border-radius: 0.5rem;
+          border: none;
+          cursor: pointer;
+          margin-top: 2rem;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        Spela igen
+      </button>
+    </div>
+
+    <footer class="bg-gray-100 p-4 text-center text-sm mt-8">
+      <div class="mb-2">
+        <a
+          id="help-link"
+          href="help.html"
+          class="text-blue-600 hover:underline mx-2"
+          >How to Play</a
+        >
+        <a
+          id="leaderboard-link"
+          href="leaderboard.html"
+          class="text-blue-600 hover:underline mx-2"
+          >Leaderboard</a
+        >
+        <a
+          id="menu-link"
+          href="/menu.html"
+          class="text-blue-600 hover:underline mx-2"
+          >Main Menu</a
+        >
+      </div>
+      <p>&copy; 2025 Nobel Quest</p>
+    </footer>
+   
+   
+   <script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+  </body>
+</html>
