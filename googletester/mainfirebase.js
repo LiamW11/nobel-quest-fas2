@@ -1,7 +1,7 @@
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 
  
   const firebaseConfig = {
@@ -41,23 +41,3 @@
 
   });
   });
-
-
-  function updateUserProfile(user) {
-    const userName = user.displayName;
-    const userEmail = user.email;
-
-    document.getElementById('userName').textContent = userName;
-    document.getElementById('userEmail').textContent = userEmail;
-  }
-
-  
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      updateUserProfile(user);
-      const uid = user.uid;
-      return uid;
-    } else {
-      alert('create account and login');
-      window.location.href = "register.html";
-    }});
