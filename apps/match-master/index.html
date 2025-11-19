@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="bg-gray-50 min-h-screen">
     <header
       class="bg-blue-600 text-white p-4 flex justify-between items-center"
     >
@@ -15,155 +15,72 @@
       <h1 id="page-title">Nobel Quest</h1>
       <button onclick="window.location.href='/menu.html'">☰</button>
     </header>
-
+<div class="container mx-auto px-4 max-w-4xl">
     <!--SPELSKÄRM-->
     <div id="gameScreen">
-      <h1
-        style="
-          font-size: 2.25rem;
-          font-weight: bold;
-          margin-bottom: 2rem;
-          margin-top: 2rem;
-          text-align: center;
-        "
-      >
-        Nobel Match Master
-      </h1>
+     <h1 class="text-4xl font-bold text-center my-8 nobel-text-gradient">
+  Nobel Match Master
+</h1>
 
-      <div
-        style="
-          background-color: #1f2937;
-          padding: 1.5rem;
-          border-radius: 0.5rem;
-          margin-bottom: 1.5rem;
-        "
-      >
-        <div
-          style="
-            width: 100%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-          "
-        >
-          <div>
-            Tid:
-            <span id="timer" style="font-weight: bold; color: #60a5fa"
-              >0:00</span
-            >
-          </div>
-          <div>
-            Försök:
-            <span id="attempts" style="font-weight: bold; color: #fbbf24"
-              >0</span
-            >
-          </div>
-          <div>
-            Matchningar:
-            <span id="matches" style="font-weight: bold; color: #34d399"
-              >0/6</span
-            >
-          </div>
-          <div>
-            Poäng:
-            <span id="score" style="font-weight: bold; color: #a78bfa">0</span>
-          </div>
-        </div>
-      </div>
-      <div id="cardGrid" class="game-board"></div>
+     <div class="nobel-card mb-6">
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+    <div>
+      <div class="text-gray-600 text-sm">Tid</div>
+      <div id="timer" class="text-2xl font-bold text-blue-600">0:00</div>
+    </div>
+    <div>
+      <div class="text-gray-600 text-sm">Försök</div>
+      <div id="attempts" class="text-2xl font-bold text-yellow-600">0</div>
+    </div>
+    <div>
+      <div class="text-gray-600 text-sm">Matchningar</div>
+      <div id="matches" class="text-2xl font-bold text-green-600">0/6</div>
+    </div>
+    <div>
+      <div class="text-gray-600 text-sm">Poäng</div>
+      <div id="score" class="text-2xl font-bold text-purple-600">0</div>
+    </div>
+  </div>
+</div>
+      <div id="cardGrid" class="game-board mb-6"></div>
 
       <!--GE UPP-->
 
-      <button
-        id="giveUpBtn"
-        style="
-          margin-top: 2rem;
-          background-color: #10b981;
-          color: white;
-          padding: 1rem 2rem;
-          font-weight: bold;
-          border-radius: 0.5rem;
-          border: none;
-          cursor: pointer;
-          width: 100%;
-          max-width: 16rem;
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-        "
-      >
-        Ge upp
-      </button>
+      <button id="giveUpBtn" class="nobel-btn nobel-btn-primary w-full max-w-xs mx-auto block">
+  Ge upp
+</button>
     </div>
 
     <!--SLUTSKÄRM-->
     <div id="endScreen" class="hidden">
-      <h2
-        style="
-          font-size: 2.25rem;
-          font-weight: bold;
-          margin-bottom: 2rem;
-          color: #34d399;
-          text-align: center;
-        "
-      >
-        Grattis! 🎉
-      </h2>
-      <div
-        style="
-          background-color: #1f2937;
-          padding: 2rem;
-          border-radius: 0.5rem;
-          margin-bottom: 1.5rem;
-          color: white;
-        "
-      >
-        <div style="margin-bottom: 1rem">
-          Poäng:
-          <span id="finalScore" style="font-weight: bold; color: #a78bfa"
-            >0</span
-          >
-        </div>
-        <div style="margin-bottom: 1rem">
-          Tid:
-          <span id="time" style="font-weight: bold; color: #60a5fa">0:00</span>
-        </div>
-        <div style="margin-bottom: 1rem">
-          Försök:
-          <span id="finalAttempts" style="font-weight: bold; color: #fbbf24"
-            >0</span
-          >
-        </div>
-        <div>
-          Leaderboard placering:
-          <span id="leaderboardRank" style="font-weight: bold; color: #a78bfa"
-            >-</span
-          >
-        </div>
-      </div>
-      <button
-        id="playAgain"
-        style="
-          background-color: #3b82f6;
-          color: white;
-          padding: 1rem 2rem;
-          font-weight: bold;
-          border-radius: 0.5rem;
-          border: none;
-          cursor: pointer;
-          margin-top: 2rem;
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-        "
-      >
-        Spela igen
-      </button>
+     <h2 class="text-4xl font-bold text-center mb-8 text-green-600">
+  Grattis! 🎉
+</h2>
+      <div class="nobel-card max-w-md mx-auto mb-6">
+  <div class="space-y-4">
+    <div class="flex justify-between items-center">
+      <span class="text-gray-600">Poäng:</span>
+      <span id="finalScore" class="text-2xl font-bold text-purple-600">0</span>
     </div>
-
+    <div class="flex justify-between items-center">
+      <span class="text-gray-600">Tid:</span>
+      <span id="time" class="text-2xl font-bold text-blue-600">0:00</span>
+    </div>
+    <div class="flex justify-between items-center">
+      <span class="text-gray-600">Försök:</span>
+      <span id="finalAttempts" class="text-2xl font-bold text-yellow-600">0</span>
+    </div>
+    <div class="flex justify-between items-center">
+      <span class="text-gray-600">Leaderboard placering:</span>
+      <span id="leaderboardRank" class="text-2xl font-bold text-purple-600">-</span>
+    </div>
+  </div>
+</div>
+      <button id="playAgain" class="nobel-btn nobel-btn-primary mx-auto block">
+  Spela igen
+</button>
+    </div>
+</div>
     <footer class="bg-gray-100 p-4 text-center text-sm mt-8">
       <div class="mb-2">
         <a

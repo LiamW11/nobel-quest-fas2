@@ -158,52 +158,57 @@
     font-size: 0.875rem;
   }
 }
-/**
- * Nobel Match Master - Game Specific Styles
- * 
- * Add game-specific styling here
- */
+.game-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  perspective: 1000px;
+}
 
-/* Card styles */
-.card {
-  aspect-ratio: 1;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.game-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.game-card.flipped .game-card-inner {
+  transform: rotateY(180deg);
+}
+
+.game-card-front,
+.game-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  user-select: none;
+  padding: 0.5rem;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.game-card-front {
+  background: linear-gradient(135deg, var(--nobel-primary), var(--nobel-secondary));
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-.card.flipped {
-  background: white;
-  border: 2px solid #667eea;
+.game-card-back {
+  background: linear-gradient(135deg, var(--nobel-secondary), var(--nobel-accent));
+  transform: rotateY(180deg);
+  overflow: hidden;
 }
 
-.card.matched {
-  opacity: 0.5;
-  cursor: not-allowed;
+.game-card.matched {
+  opacity: 0.6;
+  pointer-events: none;
 }
 
-/* Game board grid */
-.game-board {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-@media (max-width: 640px) {
-  .game-board {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
-  }
+.game-card.matched .game-card-inner {
+  animation: pulse-scale 0.5s ease-in-out;
 }

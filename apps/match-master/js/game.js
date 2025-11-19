@@ -6,7 +6,7 @@ const game = {
   isFlipping: false,
   timer: 0,
   timerInterval: null,
-  pairsNeeded: 3,
+  pairsNeeded: 6,
   score: 0,
 };
 function createNobelCards() {
@@ -44,23 +44,24 @@ function createNobelCards() {
   });
     return shuffleCard(cards);
 }
-async function startGame(difficulty, playerName) {
-
-  document.getElementById("startScreen").classList.add("hidden");
-  document.getElementById("gameScreen").classList.remove("hidden");
+async function startGame() {
+  console.log("🎮 Startar spel...");
 
   if (nobelData.length === 0) {
+    console.log("📥 Laddar Nobel-data...");
     await loadNobelData();
   }
-game.pairsNeeded = 6;
-
-
+  
+  game.pairsNeeded = 6;
   game.cards = createNobelCards();
+
+  console.log("✅ Kort skapade:", game.cards.length);
 
   if (game.cards.length === 0) {
     console.error("❌ Inga kort skapades!");
     return;
   }
+  
   game.flippedCards = [];
   game.moves = 0;
   game.matches = 0;
@@ -70,5 +71,6 @@ game.pairsNeeded = 6;
   document.getElementById("score").textContent = 0;
   document.getElementById("timer").textContent = "0:00";
 
+  console.log("🎨 Renderar kort...");
   renderCards();
 }
