@@ -19,7 +19,6 @@ function renderCards() {
     const backEl = document.createElement("div");
     backEl.classList.add("game-card-back");
 
-    // Fyll baksidan med innehåll
     if (card.type === "person") {
       backEl.innerHTML = `
         <div class="flex flex-col items-center gap-1 text-center text-white">
@@ -42,9 +41,17 @@ function renderCards() {
     innerEl.appendChild(frontEl);
     innerEl.appendChild(backEl);
     cardEl.appendChild(innerEl);
+cardEl.onclick = () => flipCard(card.id);
     container.appendChild(cardEl);
     
-    // Vänd alla kort så du ser innehållet (temporärt för test)
+    if (card.matched) {
+  cardEl.classList.add("flipped");
+} else if (card.flipped && !cardEl.classList.contains("flipped")) {
+  setTimeout(() => {
     cardEl.classList.add("flipped");
+  }, 10);
+}
   });
 }
+document.getElementById("attempts").textContent = game.moves;
+  document.getElementById("matches").textContent = `${game.matches}/${game.pairsNeeded}`;

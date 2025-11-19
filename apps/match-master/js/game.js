@@ -44,6 +44,93 @@ function createNobelCards() {
   });
     return shuffleCard(cards);
 }
+
+function flipCard(cardId) {
+  const card = game.cards.find((c) => c.id === cardId);
+  
+  // Kolla om kortet kan vändas
+  if (!card) return;
+  if (card.flipped) return;  // Redan vänt
+  if (card.matched) return;  // Redan matchat
+  if (game.flippedCards.length >= 2) return;  // Max 2 kort åt gången
+  if (game.isFlipping) return;  // Animation pågår
+
+  // Starta timer vid första draget
+  if (game.moves === 0 && game.flippedCards.length === 0) {
+    startTimer();
+  }
+
+  // Vänd kortet
+  card.flipped = true;
+  game.flippedCards.push(cardId);
+  renderCards();
+  
+  // Om 2 kort är vända, kolla matchning
+  if (game.flippedCards.length === 2) {
+    setTimeout(() => {
+      checkMatch();
+    }, 500);
+  }
+}
+
+function checkMatch() {
+  const [id1, id2] = game.flippedCards;
+  const card1 = game.cards.find((c) => c.id === id1);
+  const card2 = game.cards.find((c) => c.id === id2);
+
+  game.moves++;
+
+  if (card1.pairId === card2.pairId) {
+    // ✅ MATCH!
+    card1.matched = true;
+    card2.matched = true;
+    game.matches++;
+    game.score += 100;
+    game.flippedCards = [];
+
+    renderCards();
+    document.getElementById("score").textContent = game.score;
+    document.getElementById("attempts").textContent = game.moves;
+    document.getElementById("matches").textContent = `${game.matches}/${game.pairsNeeded}`;
+
+    // Kolla om spelet är klart
+    if (game.matches === game.pairsNeeded) {
+      stopTimer();
+      setTimeout(() => {
+        alert("Grattis! Du klarade spelet!");
+        // showEndScreen() kommer senare
+      }, 800);
+    }
+  } else {
+    // ❌ INGEN MATCH
+    game.score -= 10;
+    document.getElementById("score").textContent = game.score;
+    document.getElementById("attempts").textContent = game.moves;
+    
+    game.isFlipping = true;
+    
+    // Hitta kort-elementen för shake-animation
+    const card1Element = document.querySelector(`[data-card-id="${id1}"]`);
+    const card2Element = document.querySelector(`[data-card-id="${id2}"]`);
+
+    if (card1Element) card1Element.classList.add("shake");
+    if (card2Element) card2Element.classList.add("shake");
+
+    // Vänd tillbaka efter 600ms
+    setTimeout(() => {
+      if (card1Element) card1Element.classList.remove("shake");
+      if (card2Element) card2Element.classList.remove("shake");
+      
+      card1.flipped = false;
+      card2.flipped = false;
+      game.flippedCards = [];
+      game.isFlipping = false;
+      renderCards();
+    }, 600); 
+  }
+}
+
+
 async function startGame() {
   console.log("🎮 Startar spel...");
 
@@ -73,4 +160,21 @@ async function startGame() {
 
   console.log("🎨 Renderar kort...");
   renderCards();
+}
+
+function startTimer() {
+  game.timer = 0;
+  clearInterval(game.timerInterval);
+  game.timerInterval = setInterval(() => {
+    game.timer++;
+    const mins = Math.floor(game.timer / 60);
+    const secs = game.timer % 60;
+    document.getElementById("timer").textContent = `${mins}:${secs
+      .toString()
+      .padStart(2, "0")}`;
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(game.timerInterval);
 }
