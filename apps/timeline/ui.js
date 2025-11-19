@@ -8,12 +8,31 @@ export function renderStart(root) {
     <div class="flex flex-col gap-4 items-center">
       <button class="btn btn-primary mt-2 py-4 text-base w-3/4 sm:w-2/3 md:w-1/2" data-level="play">Spela</button>
     </div>
+
+    <details class="border rounded-lg p-2 mt-4 w-2/3 mx-auto ring-gold">
+  <summary class="cursor-pointer text-center font-semibold gap-2">
+    <span class="text-center">Hur spelar man?</span>
+  </summary>
+  <div class="mt-4 text-gray-700">
+    <p>Här är instruktionerna för hur man spelar spelet:</p>
+    <ol class="list-decimal list-inside mt-2 space-y-1">
+      <li class="pt-1">Du får åtta nobelpristagare i en slumpad lista.</li>
+      <li class="pt-1">Ordna dem så att den som fick priset tidigast hamnar högst och den som fick det senast hamnar längst ned.</li>
+      <li class="pt-1">Poängberäkning: +100 per rätt, –25 per fel och (tid kvar)/100.</li>
+      <li class="pt-1">Exempel: Tre rätt och 30 sekunder kvar → (300 x 1.3) - (25 x 5) = 265 poäng.</li>
+    </ol>
+  </div>
+</details>
+
+
+
   </section>`;
 
   // koppla click-event till varje svårighetsknapp
   root.querySelectorAll("[data-level]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const level = e.currentTarget.dataset.level;
+      document.getElementById("nameInput").style.display = "none";
 
       // skicka en custom event så main.js kan reagera och starta spelet 
       document.dispatchEvent(
@@ -25,20 +44,23 @@ export function renderStart(root) {
 
 // visa själva spelet: lista med kort som går att sortera och knapp för att skicka in
 export function renderBoard(root, cards) {
-  root.innerHTML = `
+root.innerHTML = `
 <section class="max-w-3xl mx-auto">
-    <div class="top-[env(safe-area-inset-top)] z-10 bg-neutral-50/80 backdrop-blur pb-3">
-    <h2 class="text-xl font-bold pt-2 text-center">Sortera nobelpristagarna i ordningen de vann nobelpriset, från äldst till yngst</h2>
+    <div class="top-[env(safe-area-inset-top)] z-10 bg-neutral-50/80 backdrop-blur pb-3 -mt-6">
     <p id="timer" class="text-xl font-bold text-center">Tid kvar: </p>
     </div>
 
-    <ul id="sortable-list" class="mt-2 space-y-3" aria-label="Sortera pristagarna"></ul>
+    <p class="text-center text-white font-bold w-full bg-[#A38A5F] rounded-lg">Äldst</p>
+    <ul id="sortable-list" class="p-1 space-y-3" aria-label="Sortera pristagarna"></ul>
+    <p class="text-center text-white font-bold w-full bg-[#A38A5F] rounded-lg">Yngst</p>
+
 
     <div class="mt-4">
     <button id="submit" class="btn btn-primary w-full py-4 text-base ">Kolla ordning</button>
     </div>
     </section>
     `;
+
 
   const list = root.querySelector("#sortable-list");
 
