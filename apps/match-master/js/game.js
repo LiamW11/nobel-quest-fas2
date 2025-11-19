@@ -97,8 +97,7 @@ function checkMatch() {
     if (game.matches === game.pairsNeeded) {
       stopTimer();
       setTimeout(() => {
-        alert("Grattis! Du klarade spelet!");
-        // showEndScreen() kommer senare
+        showEndScreen();
       }, 800);
     }
   } else {
@@ -177,4 +176,20 @@ function startTimer() {
 
 function stopTimer() {
   clearInterval(game.timerInterval);
+}
+
+function finalizeScore() {
+  let bonus = 0;
+  
+  // Tidsbonus
+  if (game.timer < 60) bonus += 100;
+  else if (game.timer < 120) bonus += 50;
+  else if (game.timer < 180) bonus += 25;
+  
+  // Perfect game bonus
+  if (game.moves === game.pairsNeeded) bonus += 200;
+  
+  const maxBase = 600;  
+  const final = Math.min(game.score + bonus, maxBase + 300);
+  return final;
 }

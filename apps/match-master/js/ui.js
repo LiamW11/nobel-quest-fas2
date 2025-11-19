@@ -4,11 +4,11 @@ function renderCards() {
 
   container.className = "grid gap-2 sm:gap-4 grid-cols-3 sm:grid-cols-4";
   container.innerHTML = "";
-  
+
   game.cards.forEach((card) => {
     const cardEl = document.createElement("div");
     cardEl.classList.add("game-card");
-    
+
     const innerEl = document.createElement("div");
     innerEl.classList.add("game-card-inner");
 
@@ -22,7 +22,11 @@ function renderCards() {
     if (card.type === "person") {
       backEl.innerHTML = `
         <div class="flex flex-col items-center gap-1 text-center text-white">
-          ${card.imageUrl ? `<img src="${card.imageUrl}" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-contain bg-white p-1" alt="${card.name}">` : ""}
+          ${
+            card.imageUrl
+              ? `<img src="${card.imageUrl}" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-contain bg-white p-1" alt="${card.name}">`
+              : ""
+          }
           <div class="font-bold text-xs sm:text-sm">${card.name}</div>
           <div class="text-xs hidden sm:block">${card.country}</div>
         </div>
@@ -41,17 +45,43 @@ function renderCards() {
     innerEl.appendChild(frontEl);
     innerEl.appendChild(backEl);
     cardEl.appendChild(innerEl);
-cardEl.onclick = () => flipCard(card.id);
+    cardEl.onclick = () => flipCard(card.id);
     container.appendChild(cardEl);
-    
+
     if (card.matched) {
-  cardEl.classList.add("flipped");
-} else if (card.flipped && !cardEl.classList.contains("flipped")) {
-  setTimeout(() => {
-    cardEl.classList.add("flipped");
-  }, 10);
-}
+      cardEl.classList.add("flipped");
+    } else if (card.flipped && !cardEl.classList.contains("flipped")) {
+      setTimeout(() => {
+        cardEl.classList.add("flipped");
+      }, 10);
+    }
   });
 }
 document.getElementById("attempts").textContent = game.moves;
-  document.getElementById("matches").textContent = `${game.matches}/${game.pairsNeeded}`;
+document.getElementById(
+  "matches"
+).textContent = `${game.matches}/${game.pairsNeeded}`;
+
+function showEndScreen() {
+  const finalScore = finalizeScore();
+  const minutes = Math.floor(game.timer / 60);
+  const seconds = game.timer % 60;
+  const timeFormatted = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+  // Göm gameScreen, visa endScreen
+  document.getElementById("gameScreen").classList.add("hidden");
+  const endScreen = document.getElementById("endScreen");
+  endScreen.classList.remove("hidden");
+
+  // Uppdatera resultat
+  document.getElementById("finalScore").textContent = finalScore;
+  document.getElementById("time").textContent = timeFormatted;
+  document.getElementById("finalAttempts").textContent = game.moves;
+
+  // "Spela igen"-knapp
+  document.getElementById("playAgain").onclick = () => {
+    endScreen.classList.add("hidden");
+    document.getElementById("gameScreen").classList.remove("hidden");
+    startGame();
+  };
+}
