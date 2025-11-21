@@ -4,7 +4,20 @@
  * Common CSS utilities and animations used across all games.
  * This file supplements Tailwind CSS with custom styles.
  */
+/* Shake animation måste fungera med 3D flip */
+.game-card.shake {
+  animation: shake 0.5s;
+}
 
+.game-card.shake .game-card-inner {
+  animation: shake-inner 0.5s;
+}
+
+@keyframes shake-inner {
+  0%, 100% { transform: rotateY(180deg) translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: rotateY(180deg) translateX(-10px); }
+  20%, 40%, 60%, 80% { transform: rotateY(180deg) translateX(10px); }
+}
 /* Custom Animations */
 @keyframes slide-in {
   from {

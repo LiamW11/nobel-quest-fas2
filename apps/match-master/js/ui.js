@@ -2,12 +2,13 @@ function renderCards() {
   const container = document.getElementById("cardGrid");
   if (!container) return;
 
-  container.className = "grid gap-2 sm:gap-4 grid-cols-3 sm:grid-cols-4";
-  container.innerHTML = "";
+  if (container.children.length === 0) {
+    container.className = "grid gap-2 sm:gap-4 grid-cols-3 sm:grid-cols-4";
 
   game.cards.forEach((card) => {
     const cardEl = document.createElement("div");
     cardEl.classList.add("game-card");
+    cardEl.setAttribute("data-card-id", card.id);
 
     const innerEl = document.createElement("div");
     innerEl.classList.add("game-card-inner");
@@ -41,19 +42,30 @@ function renderCards() {
 `;
     }
 
-    // Sätt ihop kortet
+// Sätt ihop kortet
     innerEl.appendChild(frontEl);
-    innerEl.appendChild(backEl);
-    cardEl.appendChild(innerEl);
-    cardEl.onclick = () => flipCard(card.id);
-    container.appendChild(cardEl);
+      innerEl.appendChild(backEl);
+      cardEl.appendChild(innerEl);
+      cardEl.onclick = () => flipCard(card.id);
+      container.appendChild(cardEl);
+    });
+  }
+
+    game.cards.forEach((card) => {
+    const cardEl = container.querySelector(`[data-card-id="${card.id}"]`);
+    if (!cardEl) return;
 
     if (card.matched) {
       cardEl.classList.add("flipped", "matched");
-    } else if (card.flipped && !cardEl.classList.contains("flipped")) {
-      setTimeout(() => {
-        cardEl.classList.add("flipped");
-      }, 10);
+      cardEl.onclick = null; // Ta bort click-handler från matchade kort!
+    } else if (card.flipped) {
+      if (!cardEl.classList.contains("flipped")) {
+        setTimeout(() => {
+          cardEl.classList.add("flipped");
+        }, 10);
+      }
+    } else {
+      cardEl.classList.remove("flipped");
     }
   });
 }
