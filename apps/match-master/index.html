@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nobel Match Master</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <header
+      class="bg-blue-600 text-white p-4 flex justify-between items-center"
+    >
+      <button onclick="window.history.back()">← Back</button>
+      <h1 id="page-title">Nobel Quest</h1>
+      <button onclick="window.location.href='/menu.html'">☰</button>
+    </header>
+<div class="container mx-auto px-4 max-w-4xl">
+    <!--SPELSKÄRM-->
+    <div id="gameScreen">
+     <h1 class="text-4xl font-bold text-center my-8 nobel-text-gradient">
+  Nobel Match Master
+</h1>
+
+     <div class="nobel-card mb-6">
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+    <div>
+      <div class="text-gray-600 text-sm">Tid</div>
+      <div id="timer" class="text-2xl font-bold text-blue-600">0:00</div>
+    </div>
+    <div>
+      <div class="text-gray-600 text-sm">Försök</div>
+      <div id="attempts" class="text-2xl font-bold text-yellow-600">0</div>
+    </div>
+    <div>
+      <div class="text-gray-600 text-sm">Matchningar</div>
+      <div id="matches" class="text-2xl font-bold text-green-600">0/6</div>
+    </div>
+    <div>
+      <div class="text-gray-600 text-sm">Poäng</div>
+      <div id="score" class="text-2xl font-bold text-purple-600">0</div>
+    </div>
+  </div>
+</div>
+      <div id="cardGrid" class="game-board mb-6"></div>
+
+      <!--GE UPP-->
+
+      <button id="giveUpBtn" class="nobel-btn nobel-btn-primary w-full max-w-xs mx-auto block">
+  Ge upp
+</button>
+    </div>
+
+    <!--SLUTSKÄRM-->
+    <div id="endScreen" class="hidden">
+     <h2 class="text-4xl font-bold text-center mb-8 text-green-600">
+  Grattis! 🎉
+</h2>
+      <div class="nobel-card max-w-md mx-auto mb-6">
+  <div class="space-y-4">
+    <div class="flex justify-between items-center">
+      <span class="text-gray-600">Poäng:</span>
+      <span id="finalScore" class="text-2xl font-bold text-purple-600">0</span>
+    </div>
+    <div class="flex justify-between items-center">
+      <span class="text-gray-600">Tid:</span>
+      <span id="time" class="text-2xl font-bold text-blue-600">0:00</span>
+    </div>
+    <div class="flex justify-between items-center">
+      <span class="text-gray-600">Försök:</span>
+      <span id="finalAttempts" class="text-2xl font-bold text-yellow-600">0</span>
+    </div>
+  </div>
+</div>
+      <button id="playAgain" class="nobel-btn nobel-btn-primary mx-auto block">
+  Spela igen
+</button>
+    </div>
+</div>
+    <footer class="bg-gray-100 p-4 text-center text-sm mt-8">
+      <div class="mb-2">
+        <a
+          id="help-link"
+          href="help.html"
+          class="text-blue-600 hover:underline mx-2"
+          >How to Play</a
+        >
+        <a
+          id="leaderboard-link"
+          href="leaderboard.html"
+          class="text-blue-600 hover:underline mx-2"
+          >Leaderboard</a
+        >
+        <a
+          id="menu-link"
+          href="/menu.html"
+          class="text-blue-600 hover:underline mx-2"
+          >Main Menu</a
+        >
+      </div>
+      <p>&copy; 2025 Nobel Quest</p>
+    </footer>
+   
+   
+   <script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+  </body>
+</html>
