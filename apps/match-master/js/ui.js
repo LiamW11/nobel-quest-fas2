@@ -21,24 +21,24 @@ function renderCards() {
 
     if (card.type === "person") {
       backEl.innerHTML = `
-        <div class="flex flex-col items-center gap-1 text-center text-white">
-          ${
-            card.imageUrl
-              ? `<img src="${card.imageUrl}" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-contain bg-white p-1" alt="${card.name}">`
-              : ""
-          }
-          <div class="font-bold text-xs sm:text-sm">${card.name}</div>
-          <div class="text-xs hidden sm:block">${card.country}</div>
-        </div>
-      `;
+  <div class="flex flex-col items-center gap-1 text-center text-white">
+    ${
+      card.imageUrl
+        ? `<img src="${card.imageUrl}" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-contain bg-white p-1" alt="${card.name}">`
+        : ""
+    }
+    <div class="font-bold text-sm sm:text-base">${card.name}</div>
+    <div class="text-xs sm:text-sm">${card.country}</div>
+  </div>
+`;
     } else if (card.type === "achievement") {
       backEl.innerHTML = `
-        <div class="flex flex-col items-center gap-1 text-center text-white p-1">
-          <div class="font-bold text-xs">${card.category}</div>
-          <div class="text-xs line-clamp-3">${card.achievement}</div>
-          <div class="text-xs text-white">${card.year}</div>
-        </div>
-      `;
+  <div class="flex flex-col items-center gap-1 text-center text-white p-1">
+    <div class="font-bold text-sm">${card.category}</div>
+    <div class="text-xs sm:text-sm line-clamp-3">${card.achievement}</div>
+    <div class="text-xs sm:text-sm text-white">${card.year}</div>
+  </div>
+`;
     }
 
     // Sätt ihop kortet
@@ -49,7 +49,7 @@ function renderCards() {
     container.appendChild(cardEl);
 
     if (card.matched) {
-      cardEl.classList.add("flipped");
+      cardEl.classList.add("flipped", "matched");
     } else if (card.flipped && !cardEl.classList.contains("flipped")) {
       setTimeout(() => {
         cardEl.classList.add("flipped");
