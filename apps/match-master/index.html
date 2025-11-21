@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="bg-gray-50 min-h-screen">
+  <body class="bg-gray-50 min-h-screen flex flex-col">
     <header
       class="bg-blue-600 text-white p-4 flex justify-between items-center"
     >
@@ -15,9 +15,50 @@
       <h1 id="page-title">Nobel Quest</h1>
       <button onclick="window.location.href='/menu.html'">☰</button>
     </header>
-<div class="container mx-auto px-4 max-w-4xl">
+<div class="container mx-auto px-4 max-w-4xl flex-1">
+  <!--Startskärm-->
+    <div id="startScreen">
+     <h1 class="text-4xl font-bold text-center my-8 nobel-text-gradient">
+  Nobel Match Master
+</h1>
+      <div class="bg-gray-800 p-6 rounded-lg mb-6 text-left">
+        <h2 class="text-2xl font-bold mb-4 text-center text-blue-400">📖 Hur man spelar</h2>
+        
+        <div class="space-y-4 text-gray-300">
+          <p><strong class="text-white">Mål:</strong> Matcha Nobelpristagare med deras upptäckter/verk!</p>
+          
+          <p><strong class="text-white"> Spelregler:</strong></p>
+          <ul class="list-disc list-inside ml-4 space-y-2">
+            <li>Klicka på två kort åt gången för att vända dem</li>
+            <li>Ett kort visar pristagarens namn och bild</li>
+            <li>Andra kortet visar deras upptäckt/verk</li>
+            <li>Om de matchar - de stannar vända!</li>
+            <li>Om de inte matchar - de vänds tillbaka </li>
+            <li>Hitta alla par för att vinna!</li>
+          </ul>
+
+          <p><strong class="text-white"> Poängsystem:</strong></p>
+          <ul class="list-disc list-inside ml-4 space-y-2">
+            <li><span class="text-green-400">+100 poäng</span> per matchat par</li>
+            <li><span class="text-red-400">-10 poäng</span> per felaktigt försök</li>
+            <li><span class="text-yellow-400">Tidsbonus:</span>
+              <ul class="list-circle list-inside ml-6 mt-1">
+                <li>Under 1 min: +100p </li>
+                <li>Under 2 min: +50p </li>
+                <li>Under 3 min: +25p </li>
+              </ul>
+            </li>
+            <li><span class="text-purple-400">Perfect Game:</span> +200p om du använder minimalt antal försök! 🏆</li>
+          </ul>
+        </div>
+      </div>
+<button id="startBtn" class="nobel-btn nobel-btn-primary mx-auto block">
+  Spela
+</button>
+    </div>
+
     <!--SPELSKÄRM-->
-    <div id="gameScreen">
+    <div id="gameScreen" class="hidden">
      <h1 class="text-4xl font-bold text-center my-8 nobel-text-gradient">
   Nobel Match Master
 </h1>
@@ -46,7 +87,7 @@
 
       <!--GE UPP-->
 
-      <button id="giveUpBtn" class="nobel-btn nobel-btn-primary w-full max-w-xs mx-auto block">
+      <button id="giveUpBtn" class="nobel-btn nobel-btn-primary w-full max-w-xs mx-auto block mt-4">
   Ge upp
 </button>
     </div>
@@ -72,12 +113,17 @@
     </div>
   </div>
 </div>
-      <button id="playAgain" class="nobel-btn nobel-btn-primary mx-auto block">
-  Spela igen
-</button>
+      <div class="flex gap-4 justify-center">
+  <button id="backToStart" class="nobel-btn nobel-btn-secondary">
+    ← Tillbaka
+  </button>
+  <button id="playAgain" class="nobel-btn nobel-btn-primary">
+    Spela igen
+  </button>
+</div>
     </div>
 </div>
-    <footer class="bg-gray-100 p-4 text-center text-sm mt-8">
+    <footer class="bg-gray-100 p-4 text-center text-sm mt-auto">
       <div class="mb-2">
         <a
           id="help-link"
