@@ -179,6 +179,9 @@ function stopTimer() {
 }
 
 function finalizeScore() {
+  if (game.matches !== game.pairsNeeded) {
+    return game.score;
+  }
   let bonus = 0;
   
   // Tidsbonus
