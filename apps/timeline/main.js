@@ -89,7 +89,7 @@ document.addEventListener("difficulty:selected", async (e) => {
     // Bygg upp HTML för resultatskärmen 
     let resultHTML = `
         <section class="max-w-3xl mx-auto">
-        <div class="text-center mb-6">
+        <div class="text-center mb-2 -mt-6">
         <h2 class="text-2xl font-bold mb-2">Resultat</h2>
         <p class="mb-4">Rätt: ${correctCount}/${pool.length} • Poäng: <span class="score-display">${score}</span> • ${
               gameState.timeLeft <= 0 ? "Tiden tog slut" : `Tid kvar: ${gameState.timeLeft}`}</p>
