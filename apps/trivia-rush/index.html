@@ -10,21 +10,22 @@
 
   <body class="min-h-screen bg-[#0b1e39] text-white flex flex-col">
     <!-- Header -->
-    <header class="text-center py-10">
-      <h1 class="text-4xl font-extrabold tracking-tight drop-shadow-md pt-4">
-        Nobel Trivia Rush
-      </h1>
-      <p class="text-white/70 mt-2 text-sm">
-        Testa dina kunskaper om Nobelpriser – fråga för fråga.
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+ 
+    <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+  <button onclick="window.history.back()">← Back</button>
+  <h1 id="page-title">Nobel Quest</h1>
+  <button onclick="window.location.href='/menu.html'">☰</button>
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
           rel="stylesheet"
         />
         <link rel="stylesheet" href="ui/style.css" />
-      </p>
-    </header>
+</header>
+
+
+
 
     <!-- MAIN -->
     <main class="flex-1 flex items-center justify-center px-6 pb-12">
@@ -35,7 +36,7 @@
         >
         <button
   id="btn-sound"
-  class="absolute top-5 right-5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm"
+  class="absolute top-2 right-9 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm"
 >
   Ljud på
 </button>
@@ -226,7 +227,7 @@
             <div class="space-y-2">
               <p id="final-score" class="text-white/90 text-lg font-semibold"></p>
               <p id="final-time-score" class="text-[#C5A572] text-base"></p>
-              <p id="final-bonus-score" class="text-green-400 text-base"></p> <!-- 🆕 -->
+              <p id="final-bonus-score" class="text-green-400 text-base"></p> 
               <p id="final-total-score" class="text-white text-xl font-bold border-t border-white/20 pt-2 mt-2"></p>
             </div>
             
@@ -249,9 +250,31 @@
       </div>
     </main>
 
-    <footer class="py-6 text-center text-xs text-white/50">
-      © Nobel Trivia Rush
-    </footer>
+ <footer class="bg-gray-100 p-4 text-center text-sm mt-8">
+  <div class="mb-2">
+    <a
+      id="help-link"
+      href="help.html"
+      class="text-blue-600 hover:underline mx-2"
+      >How to Play</a
+    >
+    <a
+      id="leaderboard-link"
+      href="leaderboard.html"
+      class="text-blue-600 hover:underline mx-2"
+      >Leaderboard</a
+    >
+    <a
+      id="menu-link"
+      href="menu.html"
+      class="text-blue-600 hover:underline mx-2"
+      >Main Menu</a
+    >
+    <span id="user-status"></span>
+  </div>
+  <p>&copy; 2025 Nobel Quest</p>
+</footer>
+
 
     <script src="js/data.js"></script>
     <script src="js/game.js"></script>
