@@ -10,7 +10,7 @@ function loginUser() {
 
 function logoutUser() {
   localStorage.removeItem("username");
-  window.location.href = "/menu.html";
+  window.location.href = "menu.html";
 }
 
 function getUsername() {
