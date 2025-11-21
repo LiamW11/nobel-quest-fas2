@@ -1,0 +1,250 @@
+/**
+ * Nobel Quest - Shared Styles
+ * 
+ * Common CSS utilities and animations used across all games.
+ * This file supplements Tailwind CSS with custom styles.
+ */
+/* Shake animation måste fungera med 3D flip */
+.game-card.shake {
+  animation: shake 0.5s;
+}
+
+.game-card.shake .game-card-inner {
+  animation: shake-inner 0.5s;
+}
+
+@keyframes shake-inner {
+  0%, 100% { transform: rotateY(180deg) translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: rotateY(180deg) translateX(-10px); }
+  20%, 40%, 60%, 80% { transform: rotateY(180deg) translateX(10px); }
+}
+/* Custom Animations */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.3s ease-out;
+}
+
+.animate-pulse-scale {
+  animation: pulse-scale 2s ease-in-out infinite;
+}
+
+/* Nobel Quest Branding */
+:root {
+  --nobel-primary: #1e40af;
+  --nobel-secondary: #7c3aed;
+  --nobel-accent: #f59e0b;
+  --nobel-success: #10b981;
+  --nobel-error: #ef4444;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nobel-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nobel-secondary);
+}
+
+/* Button Styles */
+.nobel-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.nobel-btn-primary {
+  background-color: var(--nobel-primary);
+  color: white;
+}
+
+.nobel-btn-primary:hover {
+  background-color: var(--nobel-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nobel-btn-secondary {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.nobel-btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+/* Card Styles */
+.nobel-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.nobel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading Spinner */
+.nobel-spinner {
+  border: 4px solid #f3f4f6;
+  border-top: 4px solid var(--nobel-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Utility Classes */
+.nobel-text-gradient {
+  background: linear-gradient(135deg, var(--nobel-primary), var(--nobel-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nobel-shadow-glow {
+  box-shadow: 0 0 20px rgba(30, 64, 175, 0.3);
+}
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+  .nobel-card {
+    padding: 1rem;
+  }
+  
+  .nobel-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+.game-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.game-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.game-card.flipped .game-card-inner {
+  transform: rotateY(180deg);
+}
+
+
+
+.game-card-front,
+.game-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.game-card-front {
+  background: linear-gradient(135deg, #1e40af, #3b82f6); 
+  color: white;
+  font-size: 2.5rem;  
+  font-weight: bold;
+  border: 3px solid #1e3a8a;  
+}
+
+.game-card-back {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa); 
+  transform: rotateY(180deg);
+  overflow: hidden;
+  border: 3px solid #2563eb; 
+}
+
+
+.game-card.matched .game-card-front {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  border: 3px solid #d97706;
+}
+
+.game-card.matched .game-card-back {
+  background: linear-gradient(135deg, #fbbf24, #fcd34d);
+  border: 3px solid #f59e0b;
+  animation: pulse-gold 0.6s ease-in-out;
+}
+
+.game-card.matched {
+  pointer-events: none;  
+}
+
+@keyframes pulse-gold {
+  0%, 100% {
+    transform: rotateY(180deg) scale(1);
+    box-shadow: 0 4px 8px rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    transform: rotateY(180deg) scale(1.05);
+    box-shadow: 0 8px 16px rgba(245, 158, 11, 0.6);
+  }
+}

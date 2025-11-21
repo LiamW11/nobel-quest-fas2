@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="starter-kit/styles.css" />
   </head>
 
-  <body class="bg-neutral-50">
+  <body class="bg-neutral-50 p-2">
     <header class="header top-0 pt-[env(safe-area-inset-top)] z-40">
       <h1 class="text-3xl text-center font-extrabold">Nobel Timeline</h1>
       <section label ="name">
@@ -76,4 +76,8 @@
 .draggable:focus, .draggable:focus-visable { outline: none; box-shadow: 0 0 0 3px var(--gold) inset;  }
 .nameInput{ border-radius:0.5rem; padding:5px; border:1px solid var(--walnut); }
 
+details[open] .details-arrow {
+  transform: rotate(180deg);
+}
 </style>
+
