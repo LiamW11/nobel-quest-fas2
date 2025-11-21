@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nobel Quest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body data-page-title="Nobel Quest">
+    <div id="app-header"></div>
+
+    <!-- Login check: Show login or game content -->
+    <div id="login-container"></div>
+
+    <div id="game-content" class="hidden">
+      <!-- GAME-SPECIFIC CONTENT: This is YOUR game! -->
+      <div class="max-w-2xl mx-auto p-4">
+      <div class="mb-4 text-gray-600">
+  You're logged in! Game is ready.<br>
+</div>
+
+        <div class="bg-blue-100 p-6 rounded-lg shadow mb-4">
+          <!-- Game Section -->    
+    <!-- Header -->
+    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Timeline</h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- Game Stats -->
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <div class="text-3xl font-bold text-green-600" id="score-display">0</div>
+        <div class="text-sm text-gray-600">Score</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <div class="text-3xl font-bold text-purple-600" id="timer-display">0:00</div>
+        <div class="text-sm text-gray-600">Time</div>
+      </div>
+    </div>
+
+    <!-- Game Controls -->
+<div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+  <div class="flex gap-4 justify-center">
+    <button 
+      id="start-btn" 
+      class="nobel-btn nobel-btn-primary"
+      onclick="window.location.href='matchmaster.html'">
+      ▶️ Start Game
+    </button>
+  </div>
+</div>
+
+
+    <!-- Header memory -->
+    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Match Master</h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- Game Stats memory -->
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <div class="text-3xl font-bold text-green-600" id="score-display">0</div>
+        <div class="text-sm text-gray-600">Score</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <div class="text-3xl font-bold text-purple-600" id="timer-display">0:00</div>
+        <div class="text-sm text-gray-600">Time</div>
+      </div>
+    </div>
+
+    <!-- Game Controls memory -->
+    <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex gap-4 justify-center">
+        <button id="start-btn" class="nobel-btn nobel-btn-primary">
+          ▶️ Start Game
+        </button>
+      </div>
+
+    <!-- Leaderboard trivia -->
+    <div id="leaderboard"></div>
+  </div>
+
+    <!-- Header trivia -->
+    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Trivia</h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- Game Stats trivia -->
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <div class="text-3xl font-bold text-green-600" id="score-display">0</div>
+        <div class="text-sm text-gray-600">Score</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <div class="text-3xl font-bold text-purple-600" id="timer-display">0:00</div>
+        <div class="text-sm text-gray-600">Time</div>
+      </div>
+    </div>
+
+    <!-- Game Controls trivia -->
+    <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex gap-4 justify-center">
+        <button id="start-btn" class="nobel-btn nobel-btn-primary">
+          ▶️ Start Game
+        </button>
+      </div>
+    </div>
+
+  <!-- Game Scripts -->
+  <script src="js/game.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/config.js"></script>
+
+    <script src="/shared/js/load-components.js"></script>
+  </body>
+</html>
+        </div>
+      </div>
+    </div>
+
+    <div id="app-footer"></div>
+
+    <script src="/shared/js/load-components.js"></script>
+    <script src="/shared/js/auth-check.js"></script>
+    <script>
+      checkAuth();
+    </script>
+  </body>
+</html>
