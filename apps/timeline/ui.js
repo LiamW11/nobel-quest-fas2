@@ -103,7 +103,7 @@ export function renderLeaderboard() {
       <div class="flex items-center gap-3">
         <span class="font-bold text-lg w-6">${index + 1}.</span>
         <div>
-          <p class="font-bold max-w-80 block truncate">${entry.name}</p>
+          <p class="font-bold max-w-60 block truncate">${entry.name}</p>
           <p class="text-sm text-neutral-500">
             ${entry.correctCount}/${entry.total} rätt • Tid kvar: ${entry.timeLeft}
           </p>
