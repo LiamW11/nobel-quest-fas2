@@ -8,6 +8,7 @@ const game = {
   timerInterval: null,
   pairsNeeded: 6,
   score: 0,
+  gaveUp: false,
 };
 function createNobelCards() {
   if (!nobelData || nobelData.length === 0) {
@@ -154,6 +155,7 @@ async function startGame() {
   game.isFlipping = false;
   game.timer = 0;
   game.score = 0;
+  game.gaveUp = false;
   document.getElementById("score").textContent = 0;
   document.getElementById("timer").textContent = "0:00";
 

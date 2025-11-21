@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="bg-gray-50 min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col" style="background-color: #0b1e39;">
     <header
       class="bg-blue-600 text-white p-4 flex justify-between items-center"
     >
@@ -15,14 +15,14 @@
       <h1 id="page-title">Nobel Quest</h1>
       <button onclick="window.location.href='/menu.html'">☰</button>
     </header>
-<div class="container mx-auto px-4 max-w-4xl flex-1">
+<div class="container mx-auto px-4 max-w-4xl flex-1 py-8">
   <!--Startskärm-->
     <div id="startScreen">
-     <h1 class="text-4xl font-bold text-center my-8 nobel-text-gradient">
+     <h1 class="text-4xl font-bold text-center my-8 text-white">
   Nobel Match Master
 </h1>
-      <div class="bg-gray-800 p-6 rounded-lg mb-6 text-left">
-        <h2 class="text-2xl font-bold mb-4 text-center text-blue-400">📖 Hur man spelar</h2>
+      <div class="bg-[#142845]/95 p-6 rounded-2xl mb-6 text-left ring-1 ring-white/10 shadow-2xl">
+        <h2 class="text-2xl font-bold mb-4 text-center text-[#C5A572]">Hur man spelar</h2>
         
         <div class="space-y-4 text-gray-300">
           <p><strong class="text-white">Mål:</strong> Matcha Nobelpristagare med deras upptäckter/verk!</p>
@@ -52,34 +52,34 @@
           </ul>
         </div>
       </div>
-<button id="startBtn" class="nobel-btn nobel-btn-primary mx-auto block">
+<button id="startBtn" class="px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952] font-semibold shadow-lg mx-auto block">
   Spela
 </button>
     </div>
 
     <!--SPELSKÄRM-->
     <div id="gameScreen" class="hidden">
-     <h1 class="text-4xl font-bold text-center my-8 nobel-text-gradient">
+     <h1 class="text-4xl font-bold text-center my-8 text-white">
   Nobel Match Master
 </h1>
 
-     <div class="nobel-card mb-6">
+     <div class="bg-[#142845]/95 p-6 rounded-2xl mb-6 ring-1 ring-white/10 shadow-2xl">
   <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
     <div>
-      <div class="text-gray-600 text-sm">Tid</div>
-      <div id="timer" class="text-2xl font-bold text-blue-600">0:00</div>
+      <div class="text-white/80 text-sm">Tid</div>
+<div id="timer" class="text-2xl font-bold text-[#C5A572]">0:00</div>
     </div>
     <div>
-      <div class="text-gray-600 text-sm">Försök</div>
-      <div id="attempts" class="text-2xl font-bold text-yellow-600">0</div>
+      <div class="text-white/80 text-sm">Försök</div>
+      <div id="attempts" class="text-2xl font-bold text-[#C5A572]">0</div>
     </div>
     <div>
-      <div class="text-gray-600 text-sm">Matchningar</div>
-      <div id="matches" class="text-2xl font-bold text-green-600">0/6</div>
+      <div class="text-white/80 text-sm">Matchningar</div>
+      <div id="matches" class="text-2xl font-bold text-[#C5A572]">0/6</div>
     </div>
     <div>
-      <div class="text-gray-600 text-sm">Poäng</div>
-      <div id="score" class="text-2xl font-bold text-purple-600">0</div>
+      <div class="text-white/80 text-sm">Poäng</div>
+      <div id="score" class="text-2xl font-bold text-[#C5A572]">0</div>
     </div>
   </div>
 </div>
@@ -87,37 +87,37 @@
 
       <!--GE UPP-->
 
-      <button id="giveUpBtn" class="nobel-btn nobel-btn-primary w-full max-w-xs mx-auto block mt-4">
+      <button id="giveUpBtn" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold w-full max-w-xs mx-auto block mt-4 border border-white/20">
   Ge upp
 </button>
     </div>
 
     <!--SLUTSKÄRM-->
     <div id="endScreen" class="hidden">
-     <h2 class="text-4xl font-bold text-center mb-8 text-green-600">
+     <h2 class="text-4xl font-bold text-center mb-8 text-[#C5A572]">
   Grattis! 🎉
 </h2>
-      <div class="nobel-card max-w-md mx-auto mb-6">
+      <div class="bg-[#142845]/95 p-6 rounded-2xl max-w-md mx-auto mb-6 ring-1 ring-white/10 shadow-2xl">
   <div class="space-y-4">
     <div class="flex justify-between items-center">
-      <span class="text-gray-600">Poäng:</span>
-      <span id="finalScore" class="text-2xl font-bold text-purple-600">0</span>
+      <span class="text-white/80">Poäng:</span>
+      <span id="finalScore" class="text-2xl font-bold text-[#C5A572]">0</span>
     </div>
     <div class="flex justify-between items-center">
-      <span class="text-gray-600">Tid:</span>
-      <span id="time" class="text-2xl font-bold text-blue-600">0:00</span>
+      <span class="text-white/80">Tid:</span>
+      <span id="time" class="text-2xl font-bold text-[#C5A572]">0:00</span>
     </div>
     <div class="flex justify-between items-center">
-      <span class="text-gray-600">Försök:</span>
-      <span id="finalAttempts" class="text-2xl font-bold text-yellow-600">0</span>
+      <span class="text-white/80">Försök:</span>
+      <span id="finalAttempts" class="text-2xl font-bold text-[#C5A572]">0</span>
     </div>
   </div>
 </div>
       <div class="flex gap-4 justify-center">
-  <button id="backToStart" class="nobel-btn nobel-btn-secondary">
+  <button id="backToStart" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20">
     ← Tillbaka
   </button>
-  <button id="playAgain" class="nobel-btn nobel-btn-primary">
+  <button id="playAgain" class="px-6 py-3 rounded-xl bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952] font-semibold shadow-lg">
     Spela igen
   </button>
 </div>

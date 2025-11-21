@@ -8,9 +8,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Koppla "Ge upp"-knappen
   document.getElementById("giveUpBtn").onclick = () => {
-    stopTimer();
-    showEndScreen();
-  };
+  game.gaveUp = true;
+  stopTimer();
+  showEndScreen();
+};
   // Koppla "Tillbaka"-knappen i endScreen
   document.getElementById("backToStart").onclick = () => {
     document.getElementById("endScreen").classList.add("hidden");
