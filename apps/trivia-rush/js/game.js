@@ -50,9 +50,9 @@ function startGame(selectedCategories) {
   state.questions = pool.slice(0, 10);
 
   if (state.questions.length === 0) {
-    alert("Inga giltiga frågor hittades. Kontrollera datan.");
-    return;
-  }
+  alert("Inga giltiga frågor hittades. Kontrollera datan.");
+  return false;
+}
 
   // Reset the 'answered' flag on all questions
   state.questions.forEach((q) => delete q.answered);
@@ -82,6 +82,9 @@ function startGame(selectedCategories) {
   nextBtn.disabled = true;
   nextBtn.classList.add("opacity-60", "cursor-not-allowed");
   nextBtn.classList.remove("hover:bg-[#C5A572]/20");
+
+    return true;
+
 }
 
 // Start timer for current question

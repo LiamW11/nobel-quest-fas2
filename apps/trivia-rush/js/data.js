@@ -39,25 +39,6 @@ function getCategoryName(category) {
 window.getCategoryName = getCategoryName;
 
 // Helper function to create a "who won for X" question
-function generateWrongNames(correctName, category, laureates) {
-  let names = laureates
-    .filter(
-      (l) =>
-        l.category &&
-        l.category.toLowerCase() === category &&
-        l.name !== correctName
-    )
-    .map((l) => l.name);
-
-  if (names.length < 3) {
-    const extras = laureates
-      .filter((l) => l.name !== correctName)
-      .map((l) => l.name);
-    names = Array.from(new Set([...names, ...extras]));
-  }
-
-  return getUniqueRandomItems(names, 3);
-}
 
 function generateQuizQuestions() {
   // Physics questions
@@ -281,6 +262,21 @@ function generateWrongCountries(correctCountry, laureates) {
 function getRandomItems(array, count) {
   const shuffled = [...array].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count);
+}
+
+function generateWrongNames(correctName, category, laureates) {
+  let names = laureates
+    .filter(l => l.category && l.category.toLowerCase() === category && l.name !== correctName)
+    .map(l => l.name);
+
+  if (names.length < 3) {
+    const extras = laureates
+      .filter(l => l.name !== correctName)
+      .map(l => l.name);
+    names = Array.from(new Set([...names, ...extras]));
+  }
+
+  return getUniqueRandomItems(names, 3);
 }
 
 function generateWrongAchievements(correctAchievement, category, laureates) {
