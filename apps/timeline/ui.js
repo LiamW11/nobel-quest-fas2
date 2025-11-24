@@ -99,7 +99,7 @@ export function renderLeaderboard() {
 
   // skapa en rad per resultat i leaderboarden
     container.innerHTML = leaderboard.map((entry, index) => `
-    <div class="text-white flex items-center justify-between gap-4 p-3 bg-[#142845]/95 rounded-lg shadow-sm mb-2">
+    <div class="text-white flex items-center justify-between gap-4 p-3 bg-[#142845]/95 rounded-lg ring-1 ring-white/30 shadow-sm mb-2">
       <div class="flex items-center gap-3">
         <span class="font-bold text-lg w-6">${index + 1}.</span>
         <div>
