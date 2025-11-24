@@ -29,6 +29,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("user-status").innerHTML =
       '<span class="text-[#142844]"> | Användarnamn: ' +
       user +
-      ' | </span><button onclick="logoutUser()" class="text-[#142844] hover:underline">Sign Out</button>';
+      ' | </span><button onclick="logoutUser()" class="text-[#142844] hover:underline">Logga ut</button>';
   }
 });
