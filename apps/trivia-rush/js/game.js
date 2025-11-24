@@ -66,12 +66,10 @@ function startGame(selectedCategories) {
 
   const scorePill = document.getElementById("score-pill");
   const timeScorePill = document.getElementById("time-score-pill");
-  const progressBar = document.getElementById("progress-bar");
   const nextBtn = document.getElementById("btn-next");
 
   scorePill.textContent = "Poäng: 0";
   if (timeScorePill) timeScorePill.textContent = "Tidspoäng: 0";
-  progressBar.style.width = "0%";
 
   nextBtn.disabled = true;
   nextBtn.classList.add("opacity-60", "cursor-not-allowed");
@@ -104,24 +102,7 @@ function startTimer() {
 
 // Update timer display
 function updateTimerDisplay() {
-  const timerEl = document.getElementById("timer");
   const timerBar = document.getElementById("timer-bar");
-  
-  if (timerEl) {
-    timerEl.textContent = `${state.timeLeft}s`;
-    
-    // Change color based on time left
-   if (state.timeLeft <= 5) {
-  timerEl.classList.add("text-[#D96666]");
-  timerEl.classList.remove("text-[#C5A572]", "text-[#76DB7E]");
-} else if (state.timeLeft <= 10) {
-  timerEl.classList.add("text-[#C5A572]");
-  timerEl.classList.remove("text-[#D96666]", "text-[#76DB7E]");
-} else {
-  timerEl.classList.add("text-[#76DB7E]");
-    timerEl.classList.remove("text-[#D96666]", "text-[#C5A572]");
-}
-  }
 
   if (timerBar) {
     const percentage = (state.timeLeft / 15) * 100;
@@ -167,13 +148,6 @@ function handleTimeOut() {
   nextBtn.disabled = false;
   nextBtn.classList.remove("opacity-60", "cursor-not-allowed");
   nextBtn.classList.add("hover:bg-[#C5A572]/20", "transition");
-
-  // Show time out message (optional)
-  const timerEl = document.getElementById("timer");
-  if (timerEl) {
-    timerEl.textContent = "Tiden ute!";
-    timerEl.classList.add("text-red-400");
-  }
 }
 
 // Load current question
@@ -192,7 +166,6 @@ function loadQuestion() {
   startTimer();
 
   // Update UI
-  document.getElementById("question-number").textContent = `Fråga ${state.currentIndex + 1} av ${state.totalQuestions}`;
   document.getElementById("question-category").textContent =
     getCategoryName(question.category).charAt(0).toUpperCase() + getCategoryName(question.category).slice(1);
   document.getElementById("question-text").textContent = question.question;
@@ -273,7 +246,7 @@ function checkAnswer(selected) {
   nextBtn.classList.add("hover:bg-[#C5A572]/20", "transition");
 
   // Update score display
-  document.getElementById("score-pill").textContent = `Poäng: ${state.score}`;
+  document.getElementById("score-pill").textContent = `Poäng: ${state.score + state.timeScore + state.bonusScore}`;
   const timeScorePill = document.getElementById("time-score-pill");
   if (timeScorePill) {
     timeScorePill.textContent = `Tidspoäng: ${state.timeScore}`;
@@ -294,8 +267,7 @@ document.getElementById("btn-next").addEventListener("click", () => {
 // Update progress bar
 function updateProgress() {
   const progress = ((state.currentIndex) / state.totalQuestions) * 100;
-  document.getElementById("progress-bar").style.width = `${progress}%`;
-  document.getElementById("score-pill").textContent = `Poäng: ${state.score}`;
+  document.getElementById("score-pill").textContent = `Poäng: ${state.score + state.timeScore + state.bonusScore}`;
   const timeScorePill = document.getElementById("time-score-pill");
   if (timeScorePill) {
     timeScorePill.textContent = `Tidspoäng: ${state.timeScore}`;
@@ -370,8 +342,6 @@ function endGame() {
   document.getElementById("best-score").textContent = `${bestCorrect} rätt`;
   document.getElementById("best-time-score").textContent = `${bestTime} tidspoäng`;
   document.getElementById("best-total-score").textContent = `${bestTotal} totalt`;
-
-  document.getElementById("progress-bar").style.width = "100%";
 }
 
 // Restart the game
