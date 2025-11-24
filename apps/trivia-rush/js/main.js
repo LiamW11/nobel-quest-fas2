@@ -53,7 +53,7 @@ const soundBtn = document.getElementById("btn-sound");
 if (soundBtn) {
   soundBtn.addEventListener("click", () => {
     window.soundEnabled = !window.soundEnabled;
-    soundBtn.textContent = window.soundEnabled ? "🔊 Ljud på" : "🔇 Ljud av";
+    soundBtn.textContent = window.soundEnabled ? "🔊" : "🔇";
     console.log("Ljud:", window.soundEnabled ? "På" : "Av");
   });
 }
