@@ -6,14 +6,14 @@ export function renderStart(root) {
   root.innerHTML = `
   <section class="mx-auto max-w-2xl text-center">
     <div class="flex flex-col gap-4 items-center">
-      <button class="btn btn-primary mt-2 py-4 text-base w-3/4 sm:w-2/3 md:w-1/2" data-level="play">Spela</button>
+      <button class="mt-2 py-4 text-base w-3/4 sm:w-2/3 md:w-1/2 rounded-lg bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952]" data-level="play">Spela</button>
     </div>
 
-    <details class="border rounded-lg p-2 mt-4 w-2/3 mx-auto ring-gold">
+    <details class="bg-[#C5A572] hover:bg-[#A38A5F] ring-1 ring-white/10 rounded-lg shadow-2xl p-2 mt-4 w-2/3 mx-auto">
   <summary class="cursor-pointer text-center font-semibold gap-2">
-    <span class="text-center">Hur spelar man?</span>
+    <span class="text-center text-[#002952]">Hur spelar man?</span>
   </summary>
-  <div class="mt-4 text-gray-700">
+  <div class="mt-4 text-[#002952]">
     <p>Här är instruktionerna för hur man spelar spelet:</p>
     <ol class="list-decimal list-inside mt-2 space-y-1">
       <li class="pt-1">Du får åtta nobelpristagare i en slumpad lista.</li>
@@ -46,17 +46,17 @@ export function renderStart(root) {
 export function renderBoard(root, cards) {
 root.innerHTML = `
 <section class="max-w-3xl mx-auto">
-    <div class="top-[env(safe-area-inset-top)] z-10 bg-neutral-50/80 backdrop-blur pb-3 -mt-6">
-    <p id="timer" class="text-xl font-bold text-center">Tid kvar: </p>
+    <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur pb-3 -mt-6">
+    <p id="timer" class="text-xl font-bold text-center text-white">Tid kvar: </p>
     </div>
 
-    <p class="text-center text-white font-bold w-full bg-[#A38A5F] rounded-lg">Äldst</p>
+    <p class="text-center text-[#002952] font-bold w-full bg-[#C5A572] rounded-lg">Äldst</p>
     <ul id="sortable-list" class="p-1 space-y-3" aria-label="Sortera pristagarna"></ul>
-    <p class="text-center text-white font-bold w-full bg-[#A38A5F] rounded-lg">Yngst</p>
+    <p class="text-center text-[#002952] font-bold w-full bg-[#C5A572] rounded-lg">Yngst</p>
 
 
     <div class="mt-4">
-    <button id="submit" class="btn btn-primary w-full py-4 text-base ">Kolla ordning</button>
+    <button id="submit" class="bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952] w-full rounded-lg py-4 text-base">Kolla ordning</button>
     </div>
     </section>
     `;
@@ -69,16 +69,16 @@ root.innerHTML = `
     const li = document.createElement("li");
     li.className =
      //bra fix för scroll problemet oskar upptäckte
-      "draggable card p-3 w-10/12 md:w-full bg-white shadow-sm flex items-center gap-4";
+      "draggable card p-3 w-10/12 md:w-full bg-[#142845]/95 shadow-sm flex items-center gap-4 ring-1 ring-white/20";
     li.draggable = true;
     li.dataset.id = c.id;
     li.innerHTML = 
     //Första raden är onödig tycker jag
     `
-        <div class="shrink-0 grid place-items-center w-6 h-6 rounded-lg bg-neutral-100 text-neutral-500 select-none" aria-hidden="true">⋮⋮</div>
+        <div class="shrink-0 grid place-items-center w-6 h-6 rounded-lg text-white select-none" aria-hidden="true">⋮⋮</div>
         <img src="${c.imageUrl}" alt="${c.name}" class="w-14 h-14 sm:w-16 sm:h-16 object-cover rounded-lg" loading="lazy"/>
         <div class="flex-1 min-w-0">
-        <h4 class="font-bold truncate">${c.name}</h4>
+        <h4 class="text-white font-bold truncate">${c.name}</h4>
         <span class="badge-gold">${c.category}</span>
         </div>
         `;
@@ -99,17 +99,17 @@ export function renderLeaderboard() {
 
   // skapa en rad per resultat i leaderboarden
     container.innerHTML = leaderboard.map((entry, index) => `
-    <div class="flex items-center justify-between gap-4 p-3 bg-white rounded-lg shadow-sm mb-2 ring-gold">
+    <div class="text-white flex items-center justify-between gap-4 p-3 bg-[#142845]/95 rounded-lg shadow-sm mb-2">
       <div class="flex items-center gap-3">
         <span class="font-bold text-lg w-6">${index + 1}.</span>
         <div>
-          <p class="font-bold max-w-60 block truncate">${entry.name}</p>
-          <p class="text-sm text-neutral-500">
+          <p class="font-bold max-w-60 text-white block truncate">${entry.name}</p>
+          <p class="text-sm text-neutral-300">
             ${entry.correctCount}/${entry.total} rätt • Tid kvar: ${entry.timeLeft}
           </p>
         </div>
       </div>
-      <span class="text-xl font-bold text-gold">${entry.score}</span>
+      <span class="text-xl font-bold text-white">${entry.score}</span>
     </div>
   `).join('');
 }

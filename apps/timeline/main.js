@@ -90,11 +90,11 @@ document.addEventListener("difficulty:selected", async (e) => {
     let resultHTML = `
         <section class="max-w-3xl mx-auto">
         <div class="text-center mb-2 -mt-6">
-        <h2 class="text-2xl font-bold mb-2">Resultat</h2>
-        <p class="mb-4">Rätt: ${correctCount}/${pool.length} • Poäng: <span class="score-display">${score}</span> • ${
+        <h2 class="text-2xl text-white font-bold mb-2">Resultat</h2>
+        <p class="text-white mb-4">Rätt: ${correctCount}/${pool.length} • Poäng: <span class="score-display">${score}</span> • ${
               gameState.timeLeft <= 0 ? "Tiden tog slut" : `Tid kvar: ${gameState.timeLeft}`}</p>
-        <button id="again" class="btn btn-outline py-4 text-base w-2/4 md:w-auto restart-btn ">Spela igen</button>
-        <p id="time-multiplier" class="text-2xl font-bold text-center py-2">Extrapoäng baserat på tid: ${gameState.timeBonus}</p>
+        <button id="again" class="text-[#002952] hover:bg-[#A38A5F] py-4 text-base w-2/4 md:w-auto restart-btn">Spela igen</button>
+        <p id="time-multiplier" class="text-2xl font-bold text-center text-white py-2">Extrapoäng baserat på tid: ${gameState.timeBonus}</p>
         </div>
         <div class="space-y-3">
         `;
@@ -106,18 +106,18 @@ document.addEventListener("difficulty:selected", async (e) => {
       const isCorrect = placedId === correctId;
 
       resultHTML += `
-            <div class="card p-2 rounded-lg ${
+            <div class="card p-2 bg-[#142845]/95 rounded-lg ${
               isCorrect ? "ring-correct" : "ring-wrong"
             }">
                 <div class="flex items-center justify-between gap-4">
                     <div class="flex-1">
-                        <h4 class="font-bold">${laureate.name}</h4>
-                        <p class="text-sm text-neutral-500">${
+                        <h4 class="text-white font-bold">${laureate.name}</h4>
+                        <p class="text-sm text-white/60">${
                           laureate.category
                         }</p>
                     </div>
                     <div class="text-right">
-                        <p class="text-sm text-neutral-500">${isCorrect ? `+${showScore()} Poäng` : "-25 Poäng"}</p>
+                        <p class="text-sm text-white/60">${isCorrect ? `+${showScore()} Poäng` : "-25 Poäng"}</p>
                         <p class="text-2xl font-bold ${
                           isCorrect ? "text-green-600" : "text-red-600"
                         }">${laureate.year}</p>
