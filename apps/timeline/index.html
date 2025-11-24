@@ -5,27 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nobel Timeline</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="starter-kit/styles.css" />
+    <link rel="stylesheet" href="starter-kit\styles.css" />
   </head>
 
-  <body class="bg-neutral-50 p-2">
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+  <button onclick="window.history.back()">← Back</button>
+  <h1 id="page-title">Nobel Quest</h1>
+  <button onclick="window.location.href='menu.html'">☰</button>
+</header>
+
+  
+  <body class="bg-[#0b1e39]">
     <header class="header top-0 pt-[env(safe-area-inset-top)] z-40">
-      <h1 class="text-3xl text-center font-extrabold">Nobel Timeline</h1>
+      <h1 class="text-3xl text-white text-center font-extrabold">Nobel Timeline</h1>
       <section label ="name">
       <div id="name-input" class="flex items-center justify-center my-4">
-      <input type="text" id="nameInput" class="nameInput" placeholder="Namn..."/>
+      <input type="text" id="nameInput" class="nameInput bg-[#142845]/95 text-white ring-1 ring-white/50" placeholder="Namn..."/>
       </div>
       </section>
     </header>
-    <main id="app" class="game-container"></main>
+    <main id="app" class="game-container px-2"></main>
 <section class="max-w-3xl mx-auto my-8">
-  <h3 class="font-bold text-2xl text-center mb-4">Leaderboard</h3>
-  <div id="leaderboard-entries" class="space-y-2">
+  <h3 class="font-bold text-2xl text-white text-center mb-4">Leaderboard</h3>
+  <div id="leaderboard-entries" class="space-y-2 px-2">
     <!-- Kommer fyllas med JavaScript -->
   </div>
 </section>
     <script type="module" src="main.js"></script>
   </body>
+
+<footer class="bg-gray-100 p-4 text-center text-sm mt-8">
+  <div class="mb-2">
+    <a
+      id="help-link"
+      href="help.html"
+      class="text-blue-600 hover:underline mx-2"
+      >How to Play</a
+    >
+    <a
+      id="leaderboard-link"
+      href="leaderboard.html"
+      class="text-blue-600 hover:underline mx-2"
+      >Leaderboard</a
+    >
+    <a
+      id="menu-link"
+      href="menu.html"
+      class="text-blue-600 hover:underline mx-2"
+      >Main Menu</a
+    >
+    <span id="user-status"></span>
+  </div>
+  <p>&copy; 2025 Nobel Quest</p>
+</footer>
+
+
 </html>
 
 <style>
@@ -39,7 +73,7 @@
     --gold-dark:#A38A5F;
   }
   body {
-    color:var(--charcoal); background:#FAF9F6;}
+    color:var(--charcoal);}
 
 .header {
    color:var(--walnut);
@@ -68,7 +102,7 @@
 }
 
 .badge-gold{background:var(--gold); color:#fff; padding:2px 8px; border-radius:9999px; font-size:12px;}
-.restart-btn{background:var(--gold); color:#fff; padding:5px 8px; border-radius:5px; font-size:20px; box-shadow: 1px 2px 1px 1px #947c56;}
+.restart-btn{background:var(--gold); padding:5px 8px; border-radius:5px; font-size:20px; box-shadow: 1px 2px 1px 1px #947c56;}
 .ring-gold{box-shadow:0 0 0 3px var(--gold)inset;}
 .ring-correct{box-shadow:0 0 0 2px #16a34a inset; }
 .ring-wrong{box-shadow:0 0 0 2px #dc2626 inset;}
