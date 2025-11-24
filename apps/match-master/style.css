@@ -178,6 +178,21 @@
   cursor: pointer;
   perspective: 1000px;
 }
+.game-card:not(.matched):hover .game-card-inner {
+  box-shadow: 0 8px 24px rgba(197, 165, 114, 0.4);
+}
+
+.game-card-front::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(197, 165, 114, 0.1), transparent);
+  border-radius: 0.75rem;
+  pointer-events: none;
+}
 
 .game-card-inner {
   position: relative;
@@ -208,30 +223,34 @@
 }
 
 .game-card-front {
-  background: linear-gradient(135deg, #1e40af, #3b82f6); 
-  color: white;
+  background: linear-gradient(135deg, #142845, #1e3a5f); 
+  color: #C5A572;
   font-size: 2.5rem;  
   font-weight: bold;
-  border: 3px solid #1e3a8a;  
+  border: 2px solid #C5A572/30;
+  box-shadow: 0 4px 12px rgba(197, 165, 114, 0.2);
 }
 
 .game-card-back {
-  background: linear-gradient(135deg, #3b82f6, #60a5fa); 
+  background: linear-gradient(135deg, #1e3a5f, #2a4a70); 
   transform: rotateY(180deg);
   overflow: hidden;
-  border: 3px solid #2563eb; 
+  border: 2px solid #C5A572/40;
+  box-shadow: 0 4px 12px rgba(197, 165, 114, 0.3);
 }
 
 
 .game-card.matched .game-card-front {
-  background: linear-gradient(135deg, #f59e0b, #fbbf24);
-  border: 3px solid #d97706;
+  background: linear-gradient(135deg, #C5A572, #D4B88C);
+  border: 2px solid #A38A5F;
+  box-shadow: 0 6px 20px rgba(197, 165, 114, 0.6);
 }
 
 .game-card.matched .game-card-back {
-  background: linear-gradient(135deg, #fbbf24, #fcd34d);
-  border: 3px solid #f59e0b;
+  background: linear-gradient(135deg, #D4B88C, #E5D4B0);
+  border: 2px solid #C5A572;
   animation: pulse-gold 0.6s ease-in-out;
+  box-shadow: 0 6px 20px rgba(197, 165, 114, 0.6);
 }
 
 .game-card.matched {
@@ -241,10 +260,10 @@
 @keyframes pulse-gold {
   0%, 100% {
     transform: rotateY(180deg) scale(1);
-    box-shadow: 0 4px 8px rgba(245, 158, 11, 0.4);
+    box-shadow: 0 6px 20px rgba(197, 165, 114, 0.6);
   }
   50% {
-    transform: rotateY(180deg) scale(1.05);
-    box-shadow: 0 8px 16px rgba(245, 158, 11, 0.6);
+    transform: rotateY(180deg) scale(1.08);
+    box-shadow: 0 10px 30px rgba(197, 165, 114, 0.8), 0 0 40px rgba(212, 184, 140, 0.4);
   }
 }
