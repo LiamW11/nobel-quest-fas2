@@ -32,12 +32,7 @@
         <div
           class="rounded-3xl bg-[#142845]/95 shadow-2xl ring-1 ring-white/10 p-8 md:p-10 text-center"
         >
-          <button
-            id="btn-sound"
-            class="absolute top-5 right-5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm"
-          >
-            🔊
-          </button>
+          
 
           <!-- STARTVY -->
           <section id="view-start" class="space-y-8">
@@ -49,144 +44,8 @@
             <!-- Kategorier och Start-knapp -->
             <form id="category-form">
               <fieldset class="space-y-5">
-                <legend
-                  class="text-center font-semibold text-[#C5A572] text-lg"
-                >
-                  Kategorier
-                </legend>
 
-                <!-- Alla kategorier -->
-                <label class="relative flex items-center justify-center gap-3">
-                  <input
-                    id="cat-all"
-                    name="categories"
-                    value="all"
-                    type="checkbox"
-                    class="peer sr-only"
-                    checked
-                    aria-label="Alla kategorier"
-                  />
-                  <span
-                    class="px-5 py-2 rounded-full border border-[#C5A572]/70 text-white/90 bg-white/5 hover:bg-white/10 transition select-none peer-checked:bg-[#C5A572] peer-checked:hover:bg-[#B08F57] peer-checked:text-[#002952] peer-checked:border-[#C5A572] peer-checked:hover:border-[#9C7640] shadow-sm"
-                  >
-                    Alla kategorier
-                  </span>
-                </label>
-
-                <!-- Enskilda kategorier -->
-                <div
-                  class="grid grid-cols-2 sm:grid-cols-3 gap-4 justify-items-center text-center"
-                >
-                  <label
-                    class="relative flex items-center justify-center w-full"
-                  >
-                    <input
-                      id="cat-physics"
-                      name="categories"
-                      value="physics"
-                      type="checkbox"
-                      class="peer sr-only"
-                    />
-                    <span
-                      class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90 hover:bg-white/10 transition select-none text-center peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow"
-                    >
-                      Fysik
-                    </span>
-                  </label>
-
-                  <label
-                    class="relative flex items-center justify-center w-full"
-                  >
-                    <input
-                      id="cat-chemistry"
-                      name="categories"
-                      value="chemistry"
-                      type="checkbox"
-                      class="peer sr-only"
-                    />
-                    <span
-                      class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90 hover:bg-white/10 transition select-none text-center peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow"
-                    >
-                      Kemi
-                    </span>
-                  </label>
-
-                  <label
-                    class="relative flex items-center justify-center w-full"
-                  >
-                    <input
-                      id="cat-medicine"
-                      name="categories"
-                      value="medicine"
-                      type="checkbox"
-                      class="peer sr-only"
-                    />
-                    <span
-                      class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90 hover:bg-white/10 transition select-none text-center peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow"
-                    >
-                      Medicin
-                    </span>
-                  </label>
-
-                  <label
-                    class="relative flex items-center justify-center w-full"
-                  >
-                    <input
-                      id="cat-literature"
-                      name="categories"
-                      value="literature"
-                      type="checkbox"
-                      class="peer sr-only"
-                    />
-                    <span
-                      class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90 hover:bg-white/10 transition select-none text-center peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow"
-                    >
-                      Litteratur
-                    </span>
-                  </label>
-
-                  <label
-                    class="relative flex items-center justify-center w-full"
-                  >
-                    <input
-                      id="cat-peace"
-                      name="categories"
-                      value="peace"
-                      type="checkbox"
-                      class="peer sr-only"
-                    />
-                    <span
-                      class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90 hover:bg-white/10 transition select-none text-center peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow"
-                    >
-                      Fred
-                    </span>
-                  </label>
-
-                  <label
-                    class="relative flex items-center justify-center w-full"
-                  >
-                    <input
-                      id="cat-economics"
-                      name="categories"
-                      value="economics"
-                      type="checkbox"
-                      class="peer sr-only"
-                    />
-                    <span
-                      class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90 hover:bg-white/10 transition select-none text-center peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow"
-                    >
-                      Ekonomi
-                    </span>
-                  </label>
-                </div>
-
-                <p
-                  class="text-center text-white/70 text-sm mt-2 px-6 mb-8 py-3"
-                >
-                  Tips: Lämna "Alla kategorier" ikryssad för maximal variation.
-                </p>
-              </fieldset>
-
+                
               <!-- Submit-knapp -->
               <div class="text-center">
                 <button
@@ -207,14 +66,9 @@
               id="quizvy"
               class="flex items-center justify-between mb-4 text-white/80 text-sm"
             >
-              <div id="question-number">Fråga 1 av 10</div>
               <div class="flex items-center gap-3">
-                <div id="timer" class="font-semibold text-lg">15s</div>
                 <div class="border-l border-white/20 h-5"></div>
                 <div id="score-pill" class="font-semibold">Poäng: 0</div>
-                <div id="time-score-pill" class="font-semibold text-[#C5A572]">
-                  Tidspoäng: 0
-                </div>
                 <div id="streak-pill" class="font-semibold text-[#76DB7E]">
                   Streak: 0
                 </div>

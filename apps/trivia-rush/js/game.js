@@ -189,9 +189,6 @@ function loadQuestion() {
   startTimer();
 
   // Update UI
-  document.getElementById("question-number").textContent = `Fråga ${
-    state.currentIndex + 1
-  } av ${state.totalQuestions}`;
   document.getElementById("question-category").textContent =
     getCategoryName(question.category).charAt(0).toUpperCase() +
     getCategoryName(question.category).slice(1);
@@ -299,7 +296,7 @@ document.getElementById("btn-next").addEventListener("click", () => {
 // Update progress bar
 function updateProgress() {
   const progress = (state.currentIndex / state.totalQuestions) * 100;
-  document.getElementById("score-pill").textContent = `Poäng: ${state.score}`;
+  document.getElementById("score-pill").textContent = `Poäng: ${state.score + state.timeScore + state.bonusScore}`;
   const timeScorePill = document.getElementById("time-score-pill");
   if (timeScorePill) {
     timeScorePill.textContent = `Tidspoäng: ${state.timeScore}`;
