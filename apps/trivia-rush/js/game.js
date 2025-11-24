@@ -10,7 +10,7 @@ let state = {
   totalQuestions: 0,
   selectedCategories: [],
   timer: null,
-  timeLeft: 30
+  timeLeft: 30,
 };
 
 // Start the quiz
@@ -21,18 +21,24 @@ function startGame(selectedCategories) {
   // Gather questions from selected categories
   let pool = [];
   if (selectedCategories.includes("all")) {
-    Object.values(window.quizData).forEach(arr => pool.push(...arr));
+    Object.values(window.quizData).forEach((arr) => pool.push(...arr));
   } else {
-    selectedCategories.forEach(cat => {
+    selectedCategories.forEach((cat) => {
       if (window.quizData[cat]) pool.push(...window.quizData[cat]);
     });
   }
 
   // Filter out invalid or empty questions
-  pool = pool.filter(q => q && q.question && Array.isArray(q.options) && q.options.length >= 2 && q.correct);
+  pool = pool.filter(
+    (q) =>
+      q &&
+      q.question &&
+      Array.isArray(q.options) &&
+      q.options.length >= 2 &&
+      q.correct
+  );
 
   if (pool.length === 0) {
-
     alert("Inga frågor hittades för valda kategorier.");
     return;
   }
@@ -49,7 +55,7 @@ function startGame(selectedCategories) {
 }
 
   // Reset the 'answered' flag on all questions
-  state.questions.forEach(q => delete q.answered);
+  state.questions.forEach((q) => delete q.answered);
 
   // Initialize state
   state.totalQuestions = state.questions.length;
@@ -66,7 +72,6 @@ function startGame(selectedCategories) {
 
   const scorePill = document.getElementById("score-pill");
   const timeScorePill = document.getElementById("time-score-pill");
-  const progressBar = document.getElementById("progress-bar");
   const nextBtn = document.getElementById("btn-next");
 
   scorePill.textContent = "Poäng: 0";
@@ -104,29 +109,28 @@ function startTimer() {
 
 // Update timer display
 function updateTimerDisplay() {
-  const timerEl = document.getElementById("timer");
   const timerBar = document.getElementById("timer-bar");
-  
+
   if (timerEl) {
     timerEl.textContent = `${state.timeLeft}s`;
-    
+
     // Change color based on time left
-   if (state.timeLeft <= 5) {
-  timerEl.classList.add("text-[#D96666]");
-  timerEl.classList.remove("text-[#C5A572]", "text-[#76DB7E]");
-} else if (state.timeLeft <= 10) {
-  timerEl.classList.add("text-[#C5A572]");
-  timerEl.classList.remove("text-[#D96666]", "text-[#76DB7E]");
-} else {
-  timerEl.classList.add("text-[#76DB7E]");
-    timerEl.classList.remove("text-[#D96666]", "text-[#C5A572]");
-}
+    if (state.timeLeft <= 5) {
+      timerEl.classList.add("text-[#D96666]");
+      timerEl.classList.remove("text-[#C5A572]", "text-[#76DB7E]");
+    } else if (state.timeLeft <= 10) {
+      timerEl.classList.add("text-[#C5A572]");
+      timerEl.classList.remove("text-[#D96666]", "text-[#76DB7E]");
+    } else {
+      timerEl.classList.add("text-[#76DB7E]");
+      timerEl.classList.remove("text-[#D96666]", "text-[#C5A572]");
+    }
   }
 
   if (timerBar) {
     const percentage = (state.timeLeft / 15) * 100;
     timerBar.style.width = `${percentage}%`;
-    
+
     // Change color based on time left
     if (state.timeLeft <= 5) {
       timerBar.classList.add("bg-[#D96666]");
@@ -152,7 +156,7 @@ function handleTimeOut() {
   question.answered = true;
 
   // Disable all buttons and show correct answer
-  buttons.forEach(btn => {
+  buttons.forEach((btn) => {
     btn.disabled = true;
     if (btn.textContent === question.correct) {
       btn.classList.add("bg-green-600");
@@ -167,13 +171,6 @@ function handleTimeOut() {
   nextBtn.disabled = false;
   nextBtn.classList.remove("opacity-60", "cursor-not-allowed");
   nextBtn.classList.add("hover:bg-[#C5A572]/20", "transition");
-
-  // Show time out message (optional)
-  const timerEl = document.getElementById("timer");
-  if (timerEl) {
-    timerEl.textContent = "Tiden ute!";
-    timerEl.classList.add("text-red-400");
-  }
 }
 
 // Load current question
@@ -192,9 +189,12 @@ function loadQuestion() {
   startTimer();
 
   // Update UI
-  document.getElementById("question-number").textContent = `Fråga ${state.currentIndex + 1} av ${state.totalQuestions}`;
+  document.getElementById("question-number").textContent = `Fråga ${
+    state.currentIndex + 1
+  } av ${state.totalQuestions}`;
   document.getElementById("question-category").textContent =
-    getCategoryName(question.category).charAt(0).toUpperCase() + getCategoryName(question.category).slice(1);
+    getCategoryName(question.category).charAt(0).toUpperCase() +
+    getCategoryName(question.category).slice(1);
   document.getElementById("question-text").textContent = question.question;
 
   const optionsContainer = document.getElementById("options");
@@ -203,13 +203,16 @@ function loadQuestion() {
   question.options.forEach((option) => {
     const btn = document.createElement("button");
     btn.textContent = option;
-    btn.className = "w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition";
+    btn.className =
+      "w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition";
     btn.addEventListener("click", () => checkAnswer(option));
     optionsContainer.appendChild(btn);
   });
 
   document.getElementById("btn-next").disabled = true;
-  document.getElementById("btn-next").classList.add("opacity-60", "cursor-not-allowed");
+  document
+    .getElementById("btn-next")
+    .classList.add("opacity-60", "cursor-not-allowed");
 }
 
 // Check the selected answer
@@ -217,7 +220,9 @@ function checkAnswer(selected) {
   const question = state.questions[state.currentIndex];
   const buttons = document.querySelectorAll("#options button");
   const nextBtn = document.getElementById("btn-next");
-  document.getElementById("streak-pill").textContent = `Streak: ${state.streak}`;
+  document.getElementById(
+    "streak-pill"
+  ).textContent = `Streak: ${state.streak}`;
 
   // Prevent double scoring
   if (question.answered) return;
@@ -232,7 +237,7 @@ function checkAnswer(selected) {
   const timeBonus = state.timeLeft;
 
   // Disable all buttons and color them
-  buttons.forEach(btn => {
+  buttons.forEach((btn) => {
     btn.disabled = true;
     if (btn.textContent === question.correct) {
       btn.classList.add("bg-green-600");
@@ -247,25 +252,25 @@ function checkAnswer(selected) {
 
   // Add scores if answer is correct
   if (selected === question.correct) {
-  state.score += 1;
-  state.timeScore += timeBonus;
+    state.score += 1;
+    state.timeScore += timeBonus;
 
-  // Streak logic
-  state.streak++;
-  const bonusPercent = Math.min((state.streak - 1) * 0.4, 1.2); // 10% per streak, max 50%
-  const basePoints = 1 + timeBonus;
-  const bonusPoints = Math.round(basePoints * bonusPercent);
-  state.bonusScore += bonusPoints;
-  
-  console.log(`Streak: ${state.streak}, Bonus +${bonusPoints}`);
- const streakPill = document.getElementById("streak-pill");
-  if (streakPill) streakPill.textContent = `Streak: ${state.streak}`;
-} else {
-  // Wrong answer breaks streak
-  state.streak = 0;
-  const streakPill = document.getElementById("streak-pill");
-  if (streakPill) streakPill.textContent = `Streak: 0`;
-}
+    // Streak logic
+    state.streak++;
+    const bonusPercent = Math.min((state.streak - 1) * 0.4, 1.2); // 10% per streak, max 50%
+    const basePoints = 1 + timeBonus;
+    const bonusPoints = Math.round(basePoints * bonusPercent);
+    state.bonusScore += bonusPoints;
+
+    console.log(`Streak: ${state.streak}, Bonus +${bonusPoints}`);
+    const streakPill = document.getElementById("streak-pill");
+    if (streakPill) streakPill.textContent = `Streak: ${state.streak}`;
+  } else {
+    // Wrong answer breaks streak
+    state.streak = 0;
+    const streakPill = document.getElementById("streak-pill");
+    if (streakPill) streakPill.textContent = `Streak: 0`;
+  }
 
   // Enable next button
   nextBtn.disabled = false;
@@ -273,7 +278,7 @@ function checkAnswer(selected) {
   nextBtn.classList.add("hover:bg-[#C5A572]/20", "transition");
 
   // Update score display
-  document.getElementById("score-pill").textContent = `Poäng: ${state.score}`;
+  document.getElementById("score-pill").textContent = `Poäng: ${state.score + state.timeScore + state.bonusScore}`;
   const timeScorePill = document.getElementById("time-score-pill");
   if (timeScorePill) {
     timeScorePill.textContent = `Tidspoäng: ${state.timeScore}`;
@@ -303,16 +308,15 @@ function updateProgress() {
   }
 }
 
-
 function playSound() {
   // Check if sound is enabled
   if (!window.soundEnabled) {
     console.log("Ljud är avstängt");
     return;
   }
-  
-  const audio = new Audio('sounds/ConfettiSound.mp3');
-  audio.play().catch(err => {
+
+  const audio = new Audio("sounds/ConfettiSound.mp3");
+  audio.play().catch((err) => {
     console.log("Kunde inte spela ljud:", err);
   });
   console.log("Ljud spelas nu");
@@ -320,13 +324,13 @@ function playSound() {
 
 // End the game
 function endGame() {
-      playSound();
+  playSound();
 
   // Clear timer
   if (state.timer) {
     clearInterval(state.timer);
   }
-  
+
   document.getElementById("view-quiz").classList.add("hidden");
   document.getElementById("view-result").classList.remove("hidden");
 
@@ -334,16 +338,27 @@ function endGame() {
   const maxTimeScore = state.totalQuestions * 15;
   const totalScore = state.score + state.timeScore + state.bonusScore;
   const maxTotalScore = state.totalQuestions + maxTimeScore;
-  
-  document.getElementById("final-bonus-score").textContent = `Bonuspoäng: ${state.bonusScore}`;
-  document.getElementById("final-score").textContent = `Du fick ${state.score} av ${state.totalQuestions} rätt.`;
-  document.getElementById("final-time-score").textContent = `Tidspoäng: ${state.timeScore} av ${maxTimeScore} möjliga`;
-  document.getElementById("final-total-score").textContent = `Totalt: ${totalScore} poäng`;
+
+  document.getElementById(
+    "final-bonus-score"
+  ).textContent = `Bonuspoäng: ${state.bonusScore}`;
+  document.getElementById(
+    "final-score"
+  ).textContent = `Du fick ${state.score} av ${state.totalQuestions} rätt.`;
+  document.getElementById(
+    "final-time-score"
+  ).textContent = `Tidspoäng: ${state.timeScore} av ${maxTimeScore} möjliga`;
+  document.getElementById(
+    "final-total-score"
+  ).textContent = `Totalt: ${totalScore} poäng`;
 
   let feedback;
   // Provide feedback based on performance
   const percentage = (state.score / state.totalQuestions) * 100;
-  if (state.score === state.totalQuestions && state.timeScore >= maxTimeScore * 0.8) {
+  if (
+    state.score === state.totalQuestions &&
+    state.timeScore >= maxTimeScore * 0.8
+  ) {
     feedback = "Otroligt! Perfekt poäng OCH blixtsnabb! 🏆";
   } else if (state.score === state.totalQuestions) {
     feedback = "Perfekt! Du är en Nobelmästare!";
@@ -360,17 +375,30 @@ function endGame() {
   document.getElementById("final-feedback").textContent = feedback;
 
   // Save best scores in localStorage
-  const bestCorrect = Math.max(state.score, parseInt(localStorage.getItem("bestScore") || "0"));
-  const bestTime = Math.max(state.timeScore, parseInt(localStorage.getItem("bestTimeScore") || "0"));
-  const bestTotal = Math.max(totalScore, parseInt(localStorage.getItem("bestTotalScore") || "0"));
-  
+  const bestCorrect = Math.max(
+    state.score,
+    parseInt(localStorage.getItem("bestScore") || "0")
+  );
+  const bestTime = Math.max(
+    state.timeScore,
+    parseInt(localStorage.getItem("bestTimeScore") || "0")
+  );
+  const bestTotal = Math.max(
+    totalScore,
+    parseInt(localStorage.getItem("bestTotalScore") || "0")
+  );
+
   localStorage.setItem("bestScore", bestCorrect);
   localStorage.setItem("bestTimeScore", bestTime);
   localStorage.setItem("bestTotalScore", bestTotal);
-  
+
   document.getElementById("best-score").textContent = `${bestCorrect} rätt`;
-  document.getElementById("best-time-score").textContent = `${bestTime} tidspoäng`;
-  document.getElementById("best-total-score").textContent = `${bestTotal} totalt`;
+  document.getElementById(
+    "best-time-score"
+  ).textContent = `${bestTime} tidspoäng`;
+  document.getElementById(
+    "best-total-score"
+  ).textContent = `${bestTotal} totalt`;
 
   const pb = document.getElementById("progress-bar");
   if (pb) pb.style.width = `100%`;
@@ -385,25 +413,22 @@ document.getElementById("btn-restart").addEventListener("click", () => {
 
   document.getElementById("view-result").classList.add("hidden");
   document.getElementById("view-start").classList.remove("hidden");
-  
+
   const intro = document.getElementById("intro-text");
   if (intro) intro.classList.remove("hidden");
 });
 
-document.getElementById('muteButton').addEventListener('click', () => {
-});
+document.getElementById("muteButton").addEventListener("click", () => {});
 
 function muteSounds() {
-    const mediaElements = document.querySelectorAll('audio, video');
-  mediaElements.forEach(media => {
+  const mediaElements = document.querySelectorAll("audio, video");
+  mediaElements.forEach((media) => {
     media.muted = !media.muted;
     console.log(`Media muted: ${media.muted}`);
-  });}
-
-
+  });
+}
 
 // Expose startGame for main.js
 window.startGame = startGame;
 
 console.log("game.js ready!");
-

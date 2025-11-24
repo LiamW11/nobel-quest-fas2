@@ -11,9 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
       await window.quizReady;
 
       // Hämta valda kategorier
-      const selected = Array.from(
-        document.querySelectorAll("input[name='categories']:checked")
-      ).map((i) => i.value);
+      let selected = Array.from(
+          document.querySelectorAll("input[name='categories']:checked")
+        ).map((i) => i.value);
+
+        // If nothing selected → use all categories
+        if (selected.length === 0) {
+          selected = ["physics", "chemistry", "medicine", "literature", "peace", "economics"];
+        }
 
       // Försök starta spelet
       const success = startGame(selected);
@@ -48,7 +53,7 @@ const soundBtn = document.getElementById("btn-sound");
 if (soundBtn) {
   soundBtn.addEventListener("click", () => {
     window.soundEnabled = !window.soundEnabled;
-    soundBtn.textContent = window.soundEnabled ? "🔊 Ljud på" : "🔇 Ljud av";
+    soundBtn.textContent = window.soundEnabled ? "🔊" : "🔇";
     console.log("Ljud:", window.soundEnabled ? "På" : "Av");
   });
 }
