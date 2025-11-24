@@ -36,10 +36,10 @@ function renderCards() {
   `;
       } else if (card.type === "achievement") {
         backEl.innerHTML = `
-    <div class="flex flex-col items-center gap-1 text-center text-white p-1">
-      <div class="font-bold text-sm">${card.category}</div>
-      <div class="text-xs sm:text-sm line-clamp-3">${card.achievement}</div>
-      <div class="text-xs sm:text-sm text-white">${card.year}</div>
+    <div class="flex flex-col justify-between h-full text-white p-2">
+      <div class="font-bold text-base sm:text-lg text-center text-yellow-400" >${card.category}</div>
+<div class="text-base sm:text-lg font-semibold text-center flex-1 flex items-center justify-center px-1 text-white break-words">${card.achievement}</div>
+    <div class="text-xs sm:text-center text-center text-white/90">${card.year}</div>
     </div>
   `;
       }
