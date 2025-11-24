@@ -2,7 +2,7 @@ let nobelData = [];
 
 async function loadNobelData() {
   try {
-    const response = await fetch("./nobel-data.json");
+    const response = await fetch("./js/nobel-data.json");
     if (!response.ok) {
       throw new Error("Kunde inte ladda Nobel-data");
     }

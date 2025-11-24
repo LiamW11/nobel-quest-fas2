@@ -1,5 +1,16 @@
-<header class="bg-blue-600 text-white p-4 flex justify-between items-center">
-    <button onclick="window.history.back()">← Back</button>
-    <h1 id="page-title">Nobel Quest</h1>
-    <button onclick="window.location.href='/menu.html'">☰</button>
+<header class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2">
+  <button onclick="window.history.back()">← Back</button>
+  <h1 id="page-title">Nobel Quest</h1>
+  <button onclick="window.location.href='menu.html'">☰</button>
 </header>
+
+<style>
+  /* Nobel Quest Branding */
+  :root {
+    --nobel-primary: #C5A572;
+  }
+
+  .header-brand {
+    background-color: var(--nobel-primary);
+  }
+</style>

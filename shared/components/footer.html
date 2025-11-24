@@ -1,8 +1,21 @@
-<footer class="bg-gray-100 p-4 text-center text-sm mt-8">
-    <div class="mb-2">
-        <a id="help-link" href="help.html" class="text-blue-600 hover:underline mx-2">How to Play</a>
-        <a id="leaderboard-link" href="leaderboard.html" class="text-blue-600 hover:underline mx-2">Leaderboard</a>
-        <a id="menu-link" href="/menu.html" class="text-blue-600 hover:underline mx-2">Main Menu</a>
-    </div>
-    <p>&copy; 2025 Nobel Quest</p>
+<footer class="footer-brand p-4 text-center text-sm mt-8">
+  <div class="mb-2">
+    <a id="help-link" href="help.html" class="text-[#142844] hover:underline mx-2">How to Play</a>
+    <a id="leaderboard-link" href="leaderboard.html" class="text-[#142844] hover:underline mx-2">Leaderboard</a>
+    <a id="menu-link" href="menu.html" class="text-[#142844] hover:underline mx-2">Main Menu</a>
+    <a id="information-link" href="information.html" class="text-[#142844] hover:underline mx-2">Information</a>
+    <span id="user-status"></span>
+  </div>
+  <p class="text-[#142844]">&copy; 2025 Nobel Quest</p>
 </footer>
+
+<style>
+  /* Nobel Quest Branding */
+  :root {
+    --nobel-secondary: #C5A572;
+  }
+.footer-brand {
+  background-color: var(--nobel-secondary);
+  color: white; /* valfritt men rekommenderat */
+}
+</style>
