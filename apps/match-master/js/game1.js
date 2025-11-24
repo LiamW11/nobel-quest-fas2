@@ -91,7 +91,6 @@ function checkMatch() {
 
     renderCards();
     document.getElementById("score").textContent = game.score;
-    document.getElementById("attempts").textContent = game.moves;
     document.getElementById("matches").textContent = `${game.matches}/${game.pairsNeeded}`;
 
     // Kolla om spelet är klart
@@ -105,7 +104,7 @@ function checkMatch() {
     // ❌ INGEN MATCH
     game.score -= 10;
     document.getElementById("score").textContent = game.score;
-    document.getElementById("attempts").textContent = game.moves;
+    document.getElementById("matches").textContent = game.moves;
     
     game.isFlipping = true;
     

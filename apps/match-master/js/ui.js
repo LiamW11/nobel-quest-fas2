@@ -81,8 +81,8 @@ function renderCards() {
   });
   
   // Uppdatera stats
-  document.getElementById("attempts").textContent = game.moves;
-  document.getElementById("matches").textContent = `${game.matches}/${game.pairsNeeded}`;
+  document.getElementById("matches").textContent = game.moves;
+  document.getElementById("score").textContent = `${game.matches}/${game.pairsNeeded}`;
 }
 
 function showEndScreen() {
