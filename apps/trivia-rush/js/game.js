@@ -72,12 +72,10 @@ function startGame(selectedCategories) {
 
   const scorePill = document.getElementById("score-pill");
   const timeScorePill = document.getElementById("time-score-pill");
-  const progressBar = document.getElementById("progress-bar");
   const nextBtn = document.getElementById("btn-next");
 
   scorePill.textContent = "Poäng: 0";
   if (timeScorePill) timeScorePill.textContent = "Tidspoäng: 0";
-  progressBar.style.width = "0%";
 
   nextBtn.disabled = true;
   nextBtn.classList.add("opacity-60", "cursor-not-allowed");
@@ -110,7 +108,6 @@ function startTimer() {
 
 // Update timer display
 function updateTimerDisplay() {
-  const timerEl = document.getElementById("timer");
   const timerBar = document.getElementById("timer-bar");
 
   if (timerEl) {
@@ -173,13 +170,6 @@ function handleTimeOut() {
   nextBtn.disabled = false;
   nextBtn.classList.remove("opacity-60", "cursor-not-allowed");
   nextBtn.classList.add("hover:bg-[#C5A572]/20", "transition");
-
-  // Show time out message (optional)
-  const timerEl = document.getElementById("timer");
-  if (timerEl) {
-    timerEl.textContent = "Tiden ute!";
-    timerEl.classList.add("text-red-400");
-  }
 }
 
 // Load current question
@@ -287,7 +277,7 @@ function checkAnswer(selected) {
   nextBtn.classList.add("hover:bg-[#C5A572]/20", "transition");
 
   // Update score display
-  document.getElementById("score-pill").textContent = `Poäng: ${state.score}`;
+  document.getElementById("score-pill").textContent = `Poäng: ${state.score + state.timeScore + state.bonusScore}`;
   const timeScorePill = document.getElementById("time-score-pill");
   if (timeScorePill) {
     timeScorePill.textContent = `Tidspoäng: ${state.timeScore}`;
