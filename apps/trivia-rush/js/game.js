@@ -76,7 +76,6 @@ function startGame(selectedCategories) {
 
   scorePill.textContent = "Poäng: 0";
   if (timeScorePill) timeScorePill.textContent = "Tidspoäng: 0";
-  if (progressBar) progressBar.style.width = "0%";
 
   nextBtn.disabled = true;
   nextBtn.classList.add("opacity-60", "cursor-not-allowed");
@@ -110,6 +109,7 @@ function startTimer() {
 // Update timer display
 function updateTimerDisplay() {
   const timerBar = document.getElementById("timer-bar");
+  const timerEl = document.getElementById("timer");
 
   if (timerEl) {
     timerEl.textContent = `${state.timeLeft}s`;
