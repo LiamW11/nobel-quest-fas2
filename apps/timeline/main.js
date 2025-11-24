@@ -1,16 +1,16 @@
 // kopplar ihop data, spel-logik, drag and drop och användargränssnittet
 import { renderStart } from "./ui.js";
 import { loadNobelData } from "./data.js";
-import { countBy, setDifficulty } from "./game.js";
+import { countBy, setDifficulty } from "./game2.js";
 import { shuffle } from "./data.js";
 import { renderBoard } from "./ui.js";
 import { wireDnD } from "./dnd.js";
-import { setPools, submitAndScore, showScore } from "./game.js";
+import { setPools, submitAndScore, showScore } from "./game2.js";
 import { readUserOrder } from "./dnd.js";
 import { saveLastScore } from "./storage.js";
-import { gameState } from "./game.js";
-import { startTimer } from "./game.js";
-import { stopTimer } from "./game.js";
+import { gameState } from "./game2.js";
+import { startTimer } from "./game2.js";
+import { stopTimer } from "./game2.js";
 import { renderLeaderboard } from "./ui.js";
 import { addToLeaderboard } from "./storage.js";
 

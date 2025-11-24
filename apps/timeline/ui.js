@@ -69,17 +69,17 @@ root.innerHTML = `
     const li = document.createElement("li");
     li.className =
      //bra fix för scroll problemet oskar upptäckte
-      "draggable card p-3 w-10/12 md:w-full bg-[#142845]/95 shadow-sm flex items-center gap-4 ring-1 ring-white/20";
+      "draggable card p-2 w-10/12 md:w-full bg-[#142845]/95 shadow-sm flex items-center gap-4 ring-1 ring-white/20";
     li.draggable = true;
     li.dataset.id = c.id;
     li.innerHTML = 
     //Första raden är onödig tycker jag
     `
-        <div class="shrink-0 grid place-items-center w-6 h-6 rounded-lg text-white select-none" aria-hidden="true">⋮⋮</div>
-        <img src="${c.imageUrl}" alt="${c.name}" class="w-14 h-14 sm:w-16 sm:h-16 object-cover rounded-lg" loading="lazy"/>
-        <div class="flex-1 min-w-0">
+        <img src="${c.imageUrl}" alt="${c.name}" class="w-20 h-20 object-cover rounded-lg" loading="lazy"/>
+        <div class="">
         <h4 class="text-white font-bold truncate">${c.name}</h4>
-        <span class="badge-gold">${c.category}</span>
+        <span class="text-[#EBCB96]">${c.category}</span>
+        <span class="text-white text-sm">: ${c.achievement}</span>
         </div>
         `;
     list.appendChild(li);
