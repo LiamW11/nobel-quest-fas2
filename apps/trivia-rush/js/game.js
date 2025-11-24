@@ -261,12 +261,12 @@ function checkAnswer(selected) {
 
     console.log(`Streak: ${state.streak}, Bonus +${bonusPoints}`);
     const streakPill = document.getElementById("streak-pill");
-    if (streakPill) streakPill.textContent = `Streak: ${state.streak}`;
+    if (streakPill) streakPill.textContent = `${state.streak}`;
   } else {
     // Wrong answer breaks streak
     state.streak = 0;
     const streakPill = document.getElementById("streak-pill");
-    if (streakPill) streakPill.textContent = `Streak: 0`;
+    if (streakPill) streakPill.textContent = `0`;
   }
 
   // Enable next button
@@ -425,3 +425,4 @@ function muteSounds() {
 window.startGame = startGame;
 
 console.log("game.js ready!");
+
