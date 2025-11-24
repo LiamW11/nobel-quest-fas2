@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("input[name='categories']:checked")
       ).map((i) => i.value);
 
+      if (selected.length === 0) {
+        selected.push("all").map((i) => i.value);
+        console.log("Inga kategorier valda, använder alla.");
+        
+        return;
+      }
+
       // Försök starta spelet
       const success = startGame(selected);
 

@@ -334,7 +334,7 @@ function endGame() {
   const totalScore = state.score + state.timeScore + state.bonusScore;
   const maxTotalScore = state.totalQuestions + maxTimeScore;
   
-  document.getElementById("final-bonus-score").textContent = `Bonuspoäng: ${state.bonusScore}`;
+  document.getElementById("final-bonus-score").textContent = `Streak Bonus: ${state.bonusScore}`;
   document.getElementById("final-score").textContent = `Du fick ${state.score} av ${state.totalQuestions} rätt.`;
   document.getElementById("final-time-score").textContent = `Tidspoäng: ${state.timeScore} av ${maxTimeScore} möjliga`;
   document.getElementById("final-total-score").textContent = `Totalt: ${totalScore} poäng`;
