@@ -22,16 +22,17 @@ function renderCards() {
       const backEl = document.createElement("div");
       backEl.classList.add("game-card-back");
 
-      if (card.type === "person") {
-        backEl.innerHTML = `
-    <div class="flex flex-col items-center gap-1 text-center text-white">
+ if (card.type === "person") {
+  backEl.innerHTML = `
+    <div class="flex flex-col h-full w-full">
       ${
         card.imageUrl
-          ? `<img src="${card.imageUrl}" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-contain bg-white p-1" alt="${card.name}">`
+          ? `<img src="${card.imageUrl}" class="w-full flex-1 object-cover rounded-t-xl" alt="${card.name}">`
           : ""
       }
-      <div class="font-bold text-sm sm:text-base">${card.name}</div>
-      <div class="text-xs sm:text-sm">${card.country}</div>
+      <div class="w-full py-2 px-2 bg-gradient-to-b from-transparent to-[#1e3a5f]/50">
+        <div class="font-bold text-sm sm:text-base leading-tight text-white">${card.name}</div>
+      </div>
     </div>
   `;
       } else if (card.type === "achievement") {
