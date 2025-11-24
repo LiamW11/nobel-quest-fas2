@@ -45,15 +45,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Ljud på som standard
-window.soundEnabled = true;
 
-// Ljud-knapp
-const soundBtn = document.getElementById("btn-sound");
-if (soundBtn) {
-  soundBtn.addEventListener("click", () => {
-    window.soundEnabled = !window.soundEnabled;
-    soundBtn.textContent = window.soundEnabled ? "🔊" : "🔇";
-    console.log("Ljud:", window.soundEnabled ? "På" : "Av");
-  });
-}
