@@ -80,7 +80,7 @@ root.innerHTML = `
         <h4 class="text-white font-bold truncate">${c.name}</h4>
         <span class="text-[#EBCB96]">${c.category}</span>
         <span class="text-white text-sm">: ${c.achievement}</span>
-        <p class="text-white">${c.country}</p>
+        <p class="text-white text-sm">${c.country}</p>
         </div>
         `;
     list.appendChild(li);

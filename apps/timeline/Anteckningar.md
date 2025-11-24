@@ -4,7 +4,6 @@ Kolla på trivia tid
 Behåll bilderna vid resultatskärm
 Få bilden större
 Eventuellt lägga till vilket pris de vann
-Olika färger för kategorier
 Kunna se rätt ordning
 Sätta skrollbaren som synlig samt bestämma bredden på den
 Äldst/Yngst är otydligt.
