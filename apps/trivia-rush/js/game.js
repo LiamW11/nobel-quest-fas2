@@ -76,7 +76,6 @@ function startGame(selectedCategories) {
 
   scorePill.textContent = "Poäng: 0";
   if (timeScorePill) timeScorePill.textContent = "Tidspoäng: 0";
-  if (progressBar) progressBar.style.width = "0%";
 
   nextBtn.disabled = true;
   nextBtn.classList.add("opacity-60", "cursor-not-allowed");
@@ -110,6 +109,7 @@ function startTimer() {
 // Update timer display
 function updateTimerDisplay() {
   const timerBar = document.getElementById("timer-bar");
+  const timerEl = document.getElementById("timer");
 
   if (timerEl) {
     timerEl.textContent = `${state.timeLeft}s`;
@@ -298,9 +298,7 @@ document.getElementById("btn-next").addEventListener("click", () => {
 
 // Update progress bar
 function updateProgress() {
-  const progress = ((state.currentIndex) / state.totalQuestions) * 100;
-  const pb = document.getElementById("progress-bar");
-  if (pb) pb.style.width = `${progress}%`;
+  const progress = (state.currentIndex / state.totalQuestions) * 100;
   document.getElementById("score-pill").textContent = `Poäng: ${state.score}`;
   const timeScorePill = document.getElementById("time-score-pill");
   if (timeScorePill) {
@@ -400,8 +398,6 @@ function endGame() {
     "best-total-score"
   ).textContent = `${bestTotal} totalt`;
 
-  const pb = document.getElementById("progress-bar");
-  if (pb) pb.style.width = `100%`;
 }
 
 // Restart the game

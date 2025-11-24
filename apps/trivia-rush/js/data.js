@@ -5,7 +5,7 @@ let quizData = {
   medicine: [],
   literature: [],
   peace: [],
-  economics: [],
+  economics: []
 };
 
 // Array som fylls med all nobelpristagardata från JSON-filen
@@ -30,7 +30,7 @@ function getCategoryName(category) {
     medicine: "medicin",
     literature: "litteratur",
     peace: "fred",
-    economics: "ekonomi",
+    economics: "ekonomi"
   };
   return names[category] || category;
 }
@@ -52,7 +52,7 @@ function generateQuizQuestions() {
     createYearQuestion("Max Planck", "physics", allLaureates),
     createCountryQuestion("Paul Dirac", "physics", allLaureates),
     createYearQuestion("Peter Higgs", "physics", allLaureates),
-    createAchievementQuestion("Roger Penrose", allLaureates),
+    createAchievementQuestion("Roger Penrose", allLaureates)
   ];
 
   // Chemistry questions
@@ -66,7 +66,7 @@ function generateQuizQuestions() {
     createYearQuestion("Rosalind Franklin", "chemistry", allLaureates),
     createWhoWonQuestion("CRISPR-genredigering", "chemistry", allLaureates),
     createWhoWonQuestion("Kemiska bindningar", "chemistry", allLaureates),
-    createWhoWonQuestion("Femtokemi", "chemistry", allLaureates),
+    createWhoWonQuestion("Femtokemi", "chemistry", allLaureates)
   ];
 
   // Medicine questions
@@ -80,7 +80,7 @@ function generateQuizQuestions() {
     createYearQuestion("Shinya Yamanaka", "medicine", allLaureates),
     createCountryQuestion("May-Britt Moser", "medicine", allLaureates),
     createYearQuestion("Katalin Karikó", "medicine", allLaureates),
-    createAchievementQuestion("Elizabeth Blackburn", allLaureates),
+    createAchievementQuestion("Elizabeth Blackburn", allLaureates)
   ];
 
   // Literature questions
@@ -94,7 +94,7 @@ function generateQuizQuestions() {
     createYearQuestion("John Steinbeck", "literature", allLaureates),
     createWhoWonQuestion("Novellkonst", "literature", allLaureates),
     createYearQuestion("Kazuo Ishiguro", "literature", allLaureates),
-    createCountryQuestion("Orhan Pamuk", "literature", allLaureates),
+    createCountryQuestion("Orhan Pamuk", "literature", allLaureates)
   ];
 
   // Peace questions
@@ -108,7 +108,7 @@ function generateQuizQuestions() {
     createYearQuestion("Barack Obama", "peace", allLaureates),
     createWhoWonQuestion("Kamp mot apartheid", "peace", allLaureates),
     createYearQuestion("Desmond Tutu", "peace", allLaureates),
-    createCountryQuestion("Kofi Annan", "peace", allLaureates),
+    createCountryQuestion("Kofi Annan", "peace", allLaureates)
   ];
 
   // Economics questions
@@ -123,77 +123,61 @@ function generateQuizQuestions() {
       question: "Vilket år delades det första ekonomipriset ut?",
       options: ["1969", "1901", "1975", "1955"],
       correct: "1969",
-      category: "economics",
+      category: "economics"
     },
     {
       question: "Hur många nobelpristagare i ekonomi finns med i vår databas?",
       options: ["1", "5", "10", "15"],
       correct: "1",
-      category: "economics",
+      category: "economics"
     },
     {
       question: "Vilken organisation delar ut ekonomipriset?",
-      options: [
-        "Sveriges Riksbank",
-        "FN",
-        "Nobelstiftelsen",
-        "Europaparlamentet",
-      ],
+      options: ["Sveriges Riksbank", "FN", "Nobelstiftelsen", "Europaparlamentet"],
       correct: "Sveriges Riksbank",
-      category: "economics",
+      category: "economics"
     },
 
     {
       question: "Vilket område belönas oftast i ekonomipriset?",
       options: ["Makroekonomi", "Astrologi", "Arkeologi", "Botanik"],
       correct: "Makroekonomi",
-      category: "economics",
+      category: "economics"
     },
     {
-      question:
-        "Vilken av följande är ett vanligt forskningsområde inom ekonomi?",
+      question: "Vilken av följande är ett vanligt forskningsområde inom ekonomi?",
       options: ["Spelteori", "Fotosyntes", "Cellbiologi", "Astrofysik"],
       correct: "Spelteori",
-      category: "economics",
+      category: "economics"
     },
     {
-      question:
-        "Vilket begrepp används ofta inom ekonomi för att beskriva hur människor fattar beslut?",
-      options: [
-        "Rationellt beteende",
-        "Fotosyntes",
-        "Gravitation",
-        "Evolution",
-      ],
+      question: "Vilket begrepp används ofta inom ekonomi för att beskriva hur människor fattar beslut?",
+      options: ["Rationellt beteende", "Fotosyntes", "Gravitation", "Evolution"],
       correct: "Rationellt beteende",
-      category: "economics",
-    },
+      category: "economics"
+    }
   ];
 }
 
 // Helper function to create a "year" question
 function createYearQuestion(name, category, laureates, specificYear = null) {
-  const laureate = laureates.find(
-    (l) => l.name === name && (specificYear ? l.year === specificYear : true)
-  );
+  const laureate = laureates.find(l => l.name === name && (specificYear ? l.year === specificYear : true));
   if (!laureate) return null;
 
   const correctYear = laureate.year.toString();
   const wrongYears = generateWrongYears(correctYear, laureates);
 
   return {
-    question: `Vilket år fick ${name} nobelpriset i ${getCategoryName(
-      category
-    )}?`,
+    question: `Vilket år fick ${name} nobelpriset i ${getCategoryName(category)}?`,
     options: shuffle([correctYear, ...wrongYears]),
     correct: correctYear,
-    category: category,
+    category: category
   };
 }
 
 // Helper function to create a "which country" question
 function createCountryQuestion(name, category, laureates) {
-  const laureate = laureates.find((l) => l.name === name);
+  const laureate = laureates.find(l => l.name === name);
   if (!laureate) return null;
 
   const correctCountry = laureate.country;
@@ -203,33 +187,31 @@ function createCountryQuestion(name, category, laureates) {
     question: `Från vilket land kommer ${name}?`,
     options: shuffle([correctCountry, ...wrongCountries]),
     correct: correctCountry,
-    category: category,
+    category: category
   };
 }
 
+
 // skapar en "vad fick X nobelpriset för?" fråga
 function createAchievementQuestion(name, laureates) {
-  const laureate = laureates.find((l) => l.name === name);
+  const laureate = laureates.find(l => l.name === name);
   if (!laureate) return null;
 
   const correctAchievement = laureate.achievement;
-  const wrongAchievements = generateWrongAchievements(
-    correctAchievement,
-    laureate.category,
-    laureates
-  );
+  const wrongAchievements = generateWrongAchievements(correctAchievement, laureate.category, laureates);
 
   return {
     question: `Vad fick ${name} nobelpriset för?`,
     options: shuffle([correctAchievement, ...wrongAchievements]),
     correct: correctAchievement,
-    category: laureate.category.toLowerCase(),
+    category: laureate.category.toLowerCase()
   };
 }
 
+
 // skapar en "vem fick nobelpriset för X?" fråga
 function createWhoWonQuestion(achievement, category, laureates) {
-  const laureate = laureates.find((l) => l.achievement === achievement);
+  const laureate = laureates.find(l => l.achievement === achievement);
   if (!laureate) return null;
 
   const correctName = laureate.name;
@@ -239,22 +221,18 @@ function createWhoWonQuestion(achievement, category, laureates) {
     question: `Vem fick nobelpriset för ${achievement}?`,
     options: shuffle([correctName, ...wrongNames]),
     correct: correctName,
-    category: category,
+    category: category
   };
 }
 
 // Helper functions to generate wrong answers
 function generateWrongYears(correctYear, laureates) {
-  const years = laureates
-    .map((l) => l.year.toString())
-    .filter((y) => y !== correctYear);
+  const years = laureates.map(l => l.year.toString()).filter(y => y !== correctYear);
   return getUniqueRandomItems(years, 3);
 }
 
 function generateWrongCountries(correctCountry, laureates) {
-  const countries = [...new Set(laureates.map((l) => l.country))].filter(
-    (c) => c !== correctCountry
-  );
+  const countries = [...new Set(laureates.map(l => l.country))].filter(c => c !== correctCountry);
   return getUniqueRandomItems(countries, 3);
 }
 
@@ -281,35 +259,34 @@ function generateWrongNames(correctName, category, laureates) {
 
 function generateWrongAchievements(correctAchievement, category, laureates) {
   let achievements = laureates
-    .filter(
-      (l) => l.category === category && l.achievement !== correctAchievement
-    )
-    .map((l) => l.achievement);
+    .filter(l => l.category === category && l.achievement !== correctAchievement)
+    .map(l => l.achievement);
 
-  // Ensure we have at least 3 wrong answers
+// Ensure we have at least 3 wrong answers
   if (achievements.length < 3) {
     const extras = laureates
-      .filter((l) => l.achievement !== correctAchievement)
-      .map((l) => l.achievement);
+      .filter(l => l.achievement !== correctAchievement)
+      .map(l => l.achievement);
     achievements = Array.from(new Set([...achievements, ...extras]));
   }
 
   return getUniqueRandomItems(achievements, 3);
 }
 
+
 // Export quizData and allLaureates for use in other modules
 window.quizData = quizData;
 window.allLaureates = allLaureates;
 
 // Signal som andra filer kan vänta på innan quizet är klart
-window.quizReady = new Promise((resolve) => {
-  fetch("nobel-data.json")
-    .then((response) => response.json())
-    .then((data) => {
+window.quizReady = new Promise(resolve => {
+  fetch('nobel-data.json')
+    .then(response => response.json())
+    .then(data => {
       console.log("Nobel data loaded:", data);
       allLaureates = data.laureates;
       generateQuizQuestions();
       resolve();
     })
-    .catch((error) => console.error("Error loading Nobel data:", error));
+    .catch(error => console.error("Error loading Nobel data:", error));
 });
