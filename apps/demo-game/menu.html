@@ -6,7 +6,7 @@
     <title>Main Menu</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body data-page-title="Main Menu">
+  <body class="bg-[#0b1e39] text-white" data-page-title="Main Menu">
     <div id="app-header"></div>
 
     <!-- Login check: Show login or game content -->
@@ -15,20 +15,21 @@
     <div id="game-content" class="hidden">
       <!-- GAME-SPECIFIC CONTENT: This is YOUR game! -->
       <div class="max-w-2xl mx-auto p-4">
-      <div class="mb-4 text-gray-600">
+      <div class="mb-4 text-[#C5A572]">
   You're logged in! Game is ready.<br>
 </div>
 
-        <div class="bg-blue-100 p-6 rounded-lg shadow mb-4">
+        <div class="bg-[#142844] p-6 rounded-lg shadow mb-4">
           <!-- Game Section -->   
             
 <!-- GAME-SPECIFIC CONTENT: Nobel Timeline -->
-    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
+    <header class="bg-[#C5A572] rounded-lg shadow-lg p-4 mb-6">
       <div class="flex justify-between items-center">
         <div>
-          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Timeline</h1>
+          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Timeline</h1>
         </div>
         <button 
+        class="text-[#142844]"
         onclick="window.location.href='../timeline/index.html'">
         ▶️ Start Game
       </button>
@@ -36,12 +37,13 @@
     </header>
 
     <!-- GAME-SPECIFIC CONTENT: Nobel Match Master -->
-    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
+    <header class="bg-[#C5A572] rounded-lg shadow-lg p-4 mb-6">
       <div class="flex justify-between items-center">
         <div>
-          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Match Master</h1>
+          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Match Master</h1>
         </div>
         <button 
+        class="text-[#142844]"
         onclick="window.location.href='../match-master/index.html'">
         ▶️ Start Game
       </button>
@@ -49,12 +51,13 @@
     </header>
 
     <!-- GAME-SPECIFIC CONTENT: Nobel Trivia -->
-    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
+    <header class="bg-[#C5A572] rounded-lg shadow-lg p-4 mb-6">
       <div class="flex justify-between items-center">
         <div>
-          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Trivia</h1>
+          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Trivia</h1>
         </div>
         <button 
+        class="text-[#142844]"
         onclick="window.location.href='../trivia-rush/index.html'">
         ▶️ Start Game
       </button>
