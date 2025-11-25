@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const viewStart = document.getElementById("view-start");
   const viewQuiz = document.getElementById("view-quiz");
 
+  
+
   if (startBtn) {
     startBtn.addEventListener("click", async () => {
       console.log("Startknappen klickad!");
@@ -44,5 +46,44 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Valda kategorier:", selected);
   });
 });
+
+ const howtoBtn = document.getElementById("btn-howto");
+    const howtoOverlay = document.getElementById("howto-overlay");
+    const howtoClose = document.getElementById("howto-close");
+    const howtoGotIt = document.getElementById("howto-gotit");
+
+    function openHowTo() {
+        if (!howtoOverlay) return;
+        howtoOverlay.classList.remove("hidden");
+    }
+
+    function closeHowTo() {
+        if (!howtoOverlay) return;
+        howtoOverlay.classList.add("hidden");
+    }
+
+    if (howtoBtn) {
+        howtoBtn.addEventListener("click", openHowTo);
+    }
+
+    if (howtoClose) {
+        howtoClose.addEventListener("click", closeHowTo);
+    }
+
+    if (howtoGotIt) {
+        howtoGotIt.addEventListener("click", closeHowTo);
+    }
+
+    // Stäng om man klickar utanför själva rutan
+    if (howtoOverlay) {
+        howtoOverlay.addEventListener("click", (e) => {
+            if (e.target === howtoOverlay) closeHowTo();
+        });
+    }
+
+    // Stäng med ESC
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeHowTo();
+    });
   
 

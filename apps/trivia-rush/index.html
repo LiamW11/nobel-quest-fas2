@@ -22,24 +22,21 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet"
       />
-      <link rel="stylesheet" href="css/style.css" />
+     <link rel="stylesheet" href="css/style.css" />
     </header>
 
     <!-- MAIN -->
     <main class="flex-1 flex items-center justify-center px-6 pb-12">
       <div class="w-full max-w-2xl">
         <!-- Panel -->
-        <div
-          class="rounded-3xl bg-[#142845]/95 shadow-2xl ring-1 ring-white/10 p-8 md:p-10 text-center"
-        >
           
-
           <!-- STARTVY -->
           <section id="view-start" class="space-y-8">
+            <div class="rounded-3xl bg-[#142845]/95 shadow-2xl ring-1 ring-white/10 p-8 md:p-10 text-center">
             <p class="text-white/85 leading-relaxed mb-8 text-lg">
               Välj vilka kategorier du vill ha med och tryck sen
               <span class="font-semibold text-white">Starta Quiz</span>.
-            </p>
+            </p>  
 
             <!-- Kategorier och Start-knapp -->
             <form id="category-form">
@@ -55,8 +52,15 @@
                 >
                   Starta Quiz
                 </button>
+              
               </div>
             </form>
+
+            <button type="button" id="btn-howto" class="mt-4 block w-full text-sm text-white/80 underline hover:text-white">
+            How to play – så funkar spelet
+            </button>
+              </div>
+
           </section>
 
           
@@ -189,6 +193,61 @@
       </div>
       <p>&copy; 2025 Nobel Quest</p>
     </footer>
+
+<!-- HOW TO PLAY MODAL -->
+<div
+  id="howto-overlay"
+  class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
+>
+  <div
+    class="bg-[#142845] text-white max-w-lg w-full mx-4 rounded-2xl p-6 relative shadow-2xl"
+  >
+    <!-- Stäng-kors -->
+    <button
+      type="button"
+      id="howto-close"
+      class="absolute top-3 right-4 text-white/60 hover:text-white text-2xl leading-none"
+      aria-label="Stäng"
+    >
+      &times;
+    </button>
+
+    <h2 class="text-2xl font-semibold mb-4 text-center">
+      How to play – Nobel Trivia Rush
+    </h2>
+
+    <p class="text-sm md:text-base text-white/80 mb-4">
+      Spelet är gjort för gymnasieelever och går ut på att testa dina kunskaper
+      om Nobelpristagare på tid.
+    </p>
+
+    <ol class="list-decimal list-inside space-y-3 text-sm md:text-base text-white/85 text-left">
+      <li>Välj en eller flera kategorier (t.ex. fysik, medicin, litteratur).</li>
+      <li>Klicka på <span class="font-semibold">Starta Quiz</span> för att börja.</li>
+      <li>Du får <span class="font-semibold">10 frågor</span> om Nobelpriset och pristagare.</li>
+      <li>
+        Du har <span class="font-semibold">15 sekunder</span> per fråga. Svara så
+        snabbt och rätt du kan för att samla poäng.
+      </li>
+      <li>
+        Rätt svar ger poäng + tidspoäng. Flera rätt i rad ger en
+        <span class="font-semibold">streak-bonus</span>.
+      </li>
+      <li>
+        När quizet är klart ser du <span class="font-semibold">din totalpoäng</span>
+        och kan jämföra med ditt bästa resultat – och spela igen.
+      </li>
+    </ol>
+
+    <button
+      type="button"
+      id="howto-gotit"
+      class="mt-6 w-full px-4 py-2 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
+    >
+      Jag fattar – kör igång!
+    </button>
+  </div>
+</div>
 
     <script src="js/data.js"></script>
     <script src="js/game.js"></script>
