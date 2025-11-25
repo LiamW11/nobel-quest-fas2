@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
- const howtoBtn = document.getElementById("btn-howto");
+    const howtoBtn = document.getElementById("btn-howto");
     const howtoOverlay = document.getElementById("howto-overlay");
     const howtoClose = document.getElementById("howto-close");
     const howtoGotIt = document.getElementById("howto-gotit");
