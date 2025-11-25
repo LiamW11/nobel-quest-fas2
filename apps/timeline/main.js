@@ -123,7 +123,8 @@ document.addEventListener("difficulty:selected", async (e) => {
     </p>
     </div>
 
-    <h3 class="text-xl text-white font-bold text-center mb-2">
+    <h3 id="order-title" 
+    class="text-xl text-white font-bold text-center mb-2">
      Din ordning
      </h3>
      <div id="user-order" class="space-y-3">
@@ -164,9 +165,6 @@ document.addEventListener("difficulty:selected", async (e) => {
 
     resultHTML += `
         </div>
-        <h3 class="text-xl text-white font-bold text-center mb-2 mt-6">
-        Rätt ordning 
-        </h3>
         <div id="correct-order" class="space-y-3 hidden">
         `;
 
@@ -207,13 +205,26 @@ document.addEventListener("difficulty:selected", async (e) => {
     const showCorrectBtn = app.querySelector("#show-correct");
     const userOrderEl = app.querySelector("#user-order");
     const correctOrderEl = app.querySelector("#correct-order");
+    const orderTitle = app.querySelector("#order-title");
+
+    let showingCorrect = false;
 
     showCorrectBtn.addEventListener("click", () => {
-      userOrderEl.classList.add("hidden");
-      correctOrderEl.classList.remove("hidden");
+      if (!showingCorrect) {
+        userOrderEl.classList.add("hidden");
+        correctOrderEl.classList.remove("hidden");
 
-      showCorrectBtn.disabled = true;
-      showCorrectBtn.classList.add("opacity-70", "cursor-default");
+        showCorrectBtn.textContent = "Din ordning";
+        orderTitle.textContent = "Rätt ordning";
+        showingCorrect = true;
+      } else {
+        correctOrderEl.classList.add("hidden");
+        userOrderEl.classList.remove("hidden");
+
+        showCorrectBtn.textContent = "Rätt ordning";
+        orderTitle.textContent = "Din ordning";
+        showingCorrect = false;
+      }
     });
   });
 });
