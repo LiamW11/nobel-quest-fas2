@@ -426,3 +426,8 @@ window.startGame = startGame;
 
 console.log("game.js ready!");
 
+
+
+
+
+
