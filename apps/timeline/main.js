@@ -130,6 +130,7 @@ document.addEventListener("difficulty:selected", async (e) => {
      <div id="user-order" class="space-y-3">
      `;
 
+     // lägg till ett kort i resultatlistan för varje placerad pristagare
     // lägg till ett kort i resultatlistan för varje placerad pristagare
     order.forEach((placedId, index) => {
       const laureate = laureateMap[placedId];
@@ -137,20 +138,20 @@ document.addEventListener("difficulty:selected", async (e) => {
       const isCorrect = placedId === correctId;
 
       resultHTML += `
-        <div class="card p-2 w-10/12 md:w-full mx-auto bg-[#142845]/95 shadow-sm flex items-start gap-4 ring-1 ring-white/20 ${
+        <div class="card p-2 w-full mx-auto bg-[#142845]/95 shadow-sm flex items-start gap-4 ring-1 ring-white/20 ${
           isCorrect ? "ring-correct" : "ring-wrong"
         }">
           <img src="${laureate.imageUrl}" alt="${
         laureate.name
-      }" class="w-20 h-20 object-cover rounded-lg" loading="lazy" />
-          <div class="flex-1">
-            <h4 class="text-white font-bold truncate">${laureate.name}</h4>
-            <span class="text-[#EBCB96]">${laureate.category}</span>
-            <span class="text-white text-sm">: ${laureate.achievement}</span>
-            <p class="text-white text-sm">${laureate.country}</p>
+      }" class="w-20 h-20 object-cover rounded-lg flex-shrink-0" loading="lazy" />
+          <div class="flex-1 min-w-0">
+            <h4 class="text-white font-bold break-words">${laureate.name}</h4>
+            <span class="text-[#EBCB96] text-sm break-words">${laureate.category}</span>
+            <span class="text-white text-sm break-words">: ${laureate.achievement}</span>
+            <p class="text-white text-sm break-words">${laureate.country}</p>
           </div>
-          <div class="text-right">
-            <p class="text-sm text-white/60">
+          <div class="text-right flex-shrink-0">
+            <p class="text-sm text-white/60 whitespace-nowrap">
               ${isCorrect ? `+${showScore()} Poäng` : "-25 Poäng"}
             </p>
             <p class="text-2xl font-bold ${
@@ -172,7 +173,7 @@ document.addEventListener("difficulty:selected", async (e) => {
       const laureate = laureateMap[id];
 
       resultHTML += `
-          <div class="card p-2 w-10/12 md:w-full mx-auto bg-[#142845]/95 shadow-sm flex items-start gap-4 ring-1 ring-white/20 ring-correct">
+          <div class="card p-2 w-full mx-auto bg-[#142845]/95 shadow-sm flex items-start gap-4 ring-1 ring-white/20 ring-correct">
           <img src="${laureate.imageUrl}" alt="${laureate.name}" class="w-20 h-20 object-cover rounded-lg" loading="lazy" />
            <div class="flex-1">
             <h4 class="text-white font-bold truncate">${laureate.name}</h4>
