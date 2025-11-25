@@ -18,6 +18,10 @@
   10%, 30%, 50%, 70%, 90% { transform: rotateY(180deg) translateX(-10px); }
   20%, 40%, 60%, 80% { transform: rotateY(180deg) translateX(10px); }
 }
+
+
+
+
 /* Custom Animations */
 @keyframes slide-in {
   from {
@@ -218,7 +222,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
@@ -229,6 +232,7 @@
   font-weight: bold;
   border: 2px solid #C5A572/30;
   box-shadow: 0 4px 12px rgba(197, 165, 114, 0.2);
+  padding: 0.75rem;
 }
 
 .game-card-back {

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="sv">
   <head>
@@ -10,155 +9,77 @@
 
   <body class="min-h-screen bg-[#0b1e39] text-white flex flex-col">
     <!-- Header -->
- 
-    <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
-  <button onclick="window.history.back()">← Back</button>
-  <h1 id="page-title">Nobel Quest</h1>
-  <button onclick="window.location.href='/menu.html'">☰</button>
-     <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="stylesheet" href="ui/style.css" />
-</header>
 
-
-
+    <header
+      class="bg-blue-600 text-white p-4 flex justify-between items-center"
+    >
+      <button onclick="window.history.back()">← Back</button>
+      <h1 id="page-title">Nobel Quest</h1>
+      <button onclick="window.location.href='/menu.html'">☰</button>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+      />
+     <link rel="stylesheet" href="css/style.css" />
+    </header>
 
     <!-- MAIN -->
     <main class="flex-1 flex items-center justify-center px-6 pb-12">
       <div class="w-full max-w-2xl">
         <!-- Panel -->
         <div
-          class="rounded-3xl bg-[#142845]/95 shadow-2xl ring-1 ring-white/10 p-8 md:p-10 text-center "
+          class="rounded-3xl bg-[#142845]/95 shadow-2xl ring-1 ring-white/10 p-8 md:p-10 text-center"
         >
-        <button
-  id="btn-sound"
-  class="absolute top-2 right-9 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm"
->
-  Ljud på
-</button>
+          
+
           <!-- STARTVY -->
           <section id="view-start" class="space-y-8">
-              <p class="text-white/85 leading-relaxed mb-8 text-lg">
-            Välj vilka kategorier du vill ha med och tryck sen
-            <span class="font-semibold text-white">Starta Quiz</span>.
-          </p>
+            <p class="text-white/85 leading-relaxed mb-8 text-lg">
+              Välj vilka kategorier du vill ha med och tryck sen
+              <span class="font-semibold text-white">Starta Quiz</span>.
+            </p>
 
-              <!-- Kategorier och Start-knapp -->
-<form id="category-form">
-  <fieldset class="space-y-5">
-    <legend class="text-center font-semibold text-[#C5A572] text-lg">
-      Kategorier
-    </legend>
+            <!-- Kategorier och Start-knapp -->
+            <form id="category-form">
+              <fieldset class="space-y-5">
 
-    <!-- Alla kategorier -->
-    <label class="relative flex items-center justify-center gap-3">
-      <input id="cat-all" name="categories" value="all" type="checkbox" class="peer sr-only" checked aria-label="Alla kategorier" />
-      <span
-        class="px-5 py-2 rounded-full border border-[#C5A572]/70 text-white/90 bg-white/5
-               hover:bg-white/10 transition select-none
-               peer-checked:bg-[#C5A572] peer-checked:hover:bg-[#B08F57] peer-checked:text-[#002952] peer-checked:border-[#C5A572] peer-checked:hover:border-[#9C7640]
-               shadow-sm"
-      >
-        Alla kategorier
-      </span>
-    </label>
-
-              <!-- Enskilda kategorier -->
-              <div
-                class="grid grid-cols-2 sm:grid-cols-3 gap-4 justify-items-center text-center"
-              >
-                <label class="relative flex items-center justify-center w-full">
-                  <input id="cat-physics" name="categories" value="physics" type="checkbox" class="peer sr-only" />
-                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
-                              hover:bg-white/10 transition select-none text-center
-                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
-                    Fysik
-                  </span>
-                </label>
-
-                <label class="relative flex items-center justify-center w-full">
-                  <input id="cat-chemistry" name="categories" value="chemistry" type="checkbox" class="peer sr-only" />
-                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
-                              hover:bg-white/10 transition select-none text-center
-                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
-                    Kemi
-                  </span>
-                </label>
-
-                <label class="relative flex items-center justify-center w-full">
-                  <input id="cat-medicine" name="categories" value="medicine" type="checkbox" class="peer sr-only" />
-                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
-                              hover:bg-white/10 transition select-none text-center
-                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
-                    Medicin
-                  </span>
-                </label>
-
-                <label class="relative flex items-center justify-center w-full">
-                  <input id="cat-literature" name="categories" value="literature" type="checkbox" class="peer sr-only" />
-                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
-                              hover:bg-white/10 transition select-none text-center
-                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
-                    Litteratur
-                  </span>
-                </label>
-
-                <label class="relative flex items-center justify-center w-full">
-                  <input id="cat-peace" name="categories" value="peace" type="checkbox" class="peer sr-only" />
-                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
-                              hover:bg-white/10 transition select-none text-center
-                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
-                    Fred
-                  </span>
-                </label>
-
-                <label class="relative flex items-center justify-center w-full">
-                  <input id="cat-economics" name="categories" value="economics" type="checkbox" class="peer sr-only" />
-                  <span class="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white/90
-                              hover:bg-white/10 transition select-none text-center
-                              peer-checked:bg-[#2d6aa6] peer-checked:border-[#2d6aa6] peer-checked:text-white shadow">
-                    Ekonomi
-                  </span>
-                </label>
+                
+              <!-- Submit-knapp -->
+              <div class="text-center">
+                <button
+                  type="submit"
+                  id="btn-start"
+                  class="inline-flex items-center justify-center px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
+                >
+                  Starta Quiz
+                </button>
+              
               </div>
-
-              <p class="text-center text-white/70 text-sm mt-2 px-6 mb-8 py-3">
-                Tips: Lämna "Alla kategorier" ikryssad för maximal variation.
-              </p>
-            </fieldset>
-
-            <!-- Submit-knapp -->
-            <div class="text-center">
-              <button
-                type="submit"
-                id="btn-start"
-                class="inline-flex items-center justify-center px-10 py-3 rounded-xl
-                      bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c]
-                      text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
-              >
-                Starta Quiz
-              </button>
-            </div>
-          </form>
-
+            </form>
           </section>
+          <button
+    type="button"
+    id="btn-howto"
+    class="mt-4 block w-full text-sm text-white/80 underline hover:text-white"
+  >
+    How to play – så funkar spelet
+  </button>
+</div>
 
+          
           <!-- QUIZVY -->
           <section id="view-quiz" class="hidden text-center">
-            <div id="quizvy"
+            <div
+              id="quizvy"
               class="flex items-center justify-between mb-4 text-white/80 text-sm"
             >
-              <div id="question-number">Fråga 1 av 10</div>
               <div class="flex items-center gap-3">
-                <div id="timer" class="font-semibold text-lg">15s</div>
                 <div class="border-l border-white/20 h-5"></div>
                 <div id="score-pill" class="font-semibold">Poäng: 0</div>
-                <div id="time-score-pill" class="font-semibold text-[#C5A572]">Tidspoäng: 0</div>
-                <div id="streak-pill" class="font-semibold text-[#76DB7E]">Streak: 0</div>
+                <div id="streak-pill" class="text-lg font-bold">0</div>
+                
               </div>
             </div>
 
@@ -174,15 +95,7 @@
             </div>
 
             <!-- Progress bar -->
-            <div
-              class="w-full h-2 bg-white/10 rounded-full mb-6 overflow-hidden"
-            >
-              <div
-                id="progress-bar"
-                class="h-2 bg-[#C5A572] rounded-full transition-all duration-150"
-                style="width: 0%"
-              ></div>
-            </div>
+            
 
             <div
               id="question-category"
@@ -208,10 +121,13 @@
           </section>
 
           <!-- RESULTAT -->
-           
+
           <section id="view-result" class="hidden text-center space-y-4">
             <!--Confetti animation-->
-                            <div id="confetti-wrapper" class="z--10 absolute inset-0 pointer-events-none overflow-hidden">
+            <div
+              id="confetti-wrapper"
+              class="z--10 absolute inset-0 pointer-events-none overflow-hidden"
+            >
               <div class="confetti"></div>
               <div class="confetti"></div>
               <div class="confetti"></div>
@@ -225,15 +141,23 @@
             </div>
             <h2 class="text-3xl font-bold text-[#C5A572]">Resultat</h2>
             <div class="space-y-2">
-              <p id="final-score" class="text-white/90 text-lg font-semibold"></p>
+              <p
+                id="final-score"
+                class="text-white/90 text-lg font-semibold"
+              ></p>
               <p id="final-time-score" class="text-[#C5A572] text-base"></p>
-              <p id="final-bonus-score" class="text-green-400 text-base"></p> 
-              <p id="final-total-score" class="text-white text-xl font-bold border-t border-white/20 pt-2 mt-2"></p>
+              <p id="final-bonus-score" class="text-green-400 text-base"></p>
+              <p
+                id="final-total-score"
+                class="text-white text-xl font-bold border-t border-white/20 pt-2 mt-2"
+              ></p>
             </div>
-            
+
             <p id="final-feedback" class="text-white/75 text-lg mt-4"></p>
-            
-            <div class="text-sm text-white/60 space-y-1 border-t border-white/10 pt-4 mt-4">
+
+            <div
+              class="text-sm text-white/60 space-y-1 border-t border-white/10 pt-4 mt-4"
+            >
               <p class="font-semibold text-white/80 mb-2">Bästa resultat:</p>
               <p><span id="best-score">—</span></p>
               <p><span id="best-time-score">—</span></p>
@@ -250,30 +174,85 @@
       </div>
     </main>
 
- <footer class="bg-gray-100 p-4 text-center text-sm mt-8">
-  <div class="mb-2">
-    <a
-      id="help-link"
-      href="help.html"
-      class="text-blue-600 hover:underline mx-2"
-      >How to Play</a
+    <footer class="bg-gray-100 p-4 text-center text-sm mt-8">
+      <div class="mb-2">
+        <a
+          id="help-link"
+          href="help.html"
+          class="text-blue-600 hover:underline mx-2"
+          >How to Play</a
+        >
+        <a
+          id="leaderboard-link"
+          href="leaderboard.html"
+          class="text-blue-600 hover:underline mx-2"
+          >Leaderboard</a
+        >
+        <a
+          id="menu-link"
+          href="menu.html"
+          class="text-blue-600 hover:underline mx-2"
+          >Main Menu</a
+        >
+        <span id="user-status"></span>
+      </div>
+      <p>&copy; 2025 Nobel Quest</p>
+    </footer>
+
+<!-- HOW TO PLAY MODAL -->
+<div
+  id="howto-overlay"
+  class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
+>
+  <div
+    class="bg-[#142845] text-white max-w-lg w-full mx-4 rounded-2xl p-6 relative shadow-2xl"
+  >
+    <!-- Stäng-kors -->
+    <button
+      type="button"
+      id="howto-close"
+      class="absolute top-3 right-4 text-white/60 hover:text-white text-2xl leading-none"
+      aria-label="Stäng"
     >
-    <a
-      id="leaderboard-link"
-      href="leaderboard.html"
-      class="text-blue-600 hover:underline mx-2"
-      >Leaderboard</a
+      &times;
+    </button>
+
+    <h2 class="text-2xl font-semibold mb-4 text-center">
+      How to play – Nobel Trivia Rush
+    </h2>
+
+    <p class="text-sm md:text-base text-white/80 mb-4">
+      Spelet är gjort för gymnasieelever och går ut på att testa dina kunskaper
+      om Nobelpristagare på tid.
+    </p>
+
+    <ol class="list-decimal list-inside space-y-3 text-sm md:text-base text-white/85 text-left">
+      <li>Välj en eller flera kategorier (t.ex. fysik, medicin, litteratur).</li>
+      <li>Klicka på <span class="font-semibold">Starta Quiz</span> för att börja.</li>
+      <li>Du får <span class="font-semibold">10 frågor</span> om Nobelpriset och pristagare.</li>
+      <li>
+        Du har <span class="font-semibold">15 sekunder</span> per fråga. Svara så
+        snabbt och rätt du kan för att samla poäng.
+      </li>
+      <li>
+        Rätt svar ger poäng + tidspoäng. Flera rätt i rad ger en
+        <span class="font-semibold">streak-bonus</span>.
+      </li>
+      <li>
+        När quizet är klart ser du <span class="font-semibold">din totalpoäng</span>
+        och kan jämföra med ditt bästa resultat – och spela igen.
+      </li>
+    </ol>
+
+    <button
+      type="button"
+      id="howto-gotit"
+      class="mt-6 w-full px-4 py-2 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
     >
-    <a
-      id="menu-link"
-      href="menu.html"
-      class="text-blue-600 hover:underline mx-2"
-      >Main Menu</a
-    >
-    <span id="user-status"></span>
+      Jag fattar – kör igång!
+    </button>
   </div>
-  <p>&copy; 2025 Nobel Quest</p>
-</footer>
+</div>
 
     <script src="js/data.js"></script>
     <script src="js/game.js"></script>
