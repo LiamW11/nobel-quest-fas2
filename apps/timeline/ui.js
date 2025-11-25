@@ -108,9 +108,9 @@ export function renderBoard(root, cards) {
   </div>
 
 
-    <p class="text-center text-[#002952] font-bold w-full bg-[#C5A572] rounded-lg">Äldst</p>
+    <p class="text-center text-[#002952] font-bold w-full bg-[#C5A572] rounded-lg">Äldsta Priset</p>
     <ul id="sortable-list" class="p-1 space-y-3" aria-label="Sortera pristagarna"></ul>
-    <p class="text-center text-[#002952] font-bold w-full bg-[#C5A572] rounded-lg">Yngst</p>
+    <p class="text-center text-[#002952] font-bold w-full bg-[#C5A572] rounded-lg">Yngsta Priset</p>
 
 
     <div class="mt-4">
