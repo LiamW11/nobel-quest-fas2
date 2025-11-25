@@ -89,14 +89,24 @@ export function renderStart(root) {
   });
 }
 
-
 // visa själva spelet: lista med kort som går att sortera och knapp för att skicka in
 export function renderBoard(root, cards) {
   root.innerHTML = `
 <section class="max-w-3xl mx-auto">
-    <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur pb-3 -mt-6">
-    <p id="timer" class="text-xl font-bold text-center text-white">Tid kvar: </p>
+  <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur pb-3 -mt-6">
+    <p id="timer" class="text-xl font-bold text-center text-white">
+      Tid kvar:
+    </p>
+
+    <div class="w-full h-2 bg-white/10 rounded-full mt-2 overflow-hidden">
+      <div
+        id="timer-bar"
+        class="h-2 bg-[#76DB7E] rounded-full transition-all duration-1000"
+        style="width: 100%"
+      ></div>
     </div>
+  </div>
+
 
     <p class="text-center text-[#002952] font-bold w-full bg-[#C5A572] rounded-lg">Äldst</p>
     <ul id="sortable-list" class="p-1 space-y-3" aria-label="Sortera pristagarna"></ul>
@@ -115,7 +125,7 @@ export function renderBoard(root, cards) {
   cards.forEach((c) => {
     const li = document.createElement("li");
     li.className =
-     //bra fix för scroll problemet oskar upptäckte
+      //bra fix för scroll problemet oskar upptäckte
       "draggable card p-2 w-10/12 md:w-full bg-[#142845]/95 shadow-sm flex items-start gap-4 ring-1 ring-white/20";
     li.draggable = true;
     li.dataset.id = c.id;
