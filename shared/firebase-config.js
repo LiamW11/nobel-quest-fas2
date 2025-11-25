@@ -1,30 +1,28 @@
-/**
- * Nobel Quest - Firebase Configuration
- * 
- * This file initializes Firebase for all Nobel Quest games.
- * Replace the placeholder values with your actual Firebase project credentials.
- * 
- * To get these values:
- * 1. Go to https://console.firebase.google.com/
- * 2. Select your project
- * 3. Click on the gear icon > Project settings
- * 4. Scroll down to "Your apps" > Web app > Firebase SDK snippet
- */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+  
+  // Din webbapps Firebase-konfiguration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD_rYe_EMMxlIQ1CLzVly9UtfVROLwawpQ",
+    authDomain: "te4-nobelquest.firebaseapp.com",
+    projectId: "te4-nobelquest",
+    storageBucket: "te4-nobelquest.firebasestorage.app",
+    messagingSenderId: "1067428082128",
+    appId: "1:1067428082128:web:a53068bd2ae98bb9c489d5",
+    measurementId: "G-NMF366H8XL"
+  };
 
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
+  // Initialisera Firebase
+  const app = initializeApp(firebaseConfig);
+  
+  
+  // Exportera 'app' för andra Firebase-tjänster (som Auth) att använda
+  // Vi exporterar inte 'analytics' då den inte används av auth.js
+  export { app };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
 
-// Export Firebase instances for use in other modules
-window.firebaseAuth = firebase.auth();
-window.firebaseDb = firebase.firestore();
-
-console.log('✅ Firebase initialized successfully');
+// Spara inloggning i LocalStorage (auto-inloggning)
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);

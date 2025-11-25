@@ -6,43 +6,59 @@
     <title>How to Play</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-[#0b1e39] text-[#C5A572]" data-page-title="How to Play">
+  <body class="bg-[#0b1e39] text-[#C5A572]" data-page-title="Spelinstruktioner">
     <div id="app-header"></div>
 
+        <!-- DROPDOWN -->
+     <script>
+     function toggleMenu() {
+      document.getElementById("dropdownMenu").classList.toggle("hidden");
+      }
+      </script>
+
+      <!-- HALVGRÅ BAKGRUND STYLING -->
+      <div class="max-w-2xl mx-auto p-4">
+      <div class="mb-4 text-[#C5A572]">
+      </div>
+      <div class="bg-[#142844] p-6 rounded-lg shadow">
+
     <!-- GAME-SPECIFIC CONTENT: Match Master -->
-    <div class="max-w-2xl mx-auto p-4">
-      <h2 class="text-2xl font-bold mb-4">How to Play Match Master</h2>
-      <p class="mb-4">These are the rules specific to THIS game:</p>
-      <ol class="list-decimal ml-6 mb-4">
-        <li>Start game</li>
-        <li>Match the nobel price winner with the correct category</li>
-        <li>Press the give up button in order to abandon the game</li>
+    <div class="mb-6 max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
+      <h2 class="text-2xl font-bold mb-4">Match Master - Spelinstruktioner</h2>
+      <ol class="list-decimal ml-6">
+        <li>Du får åtta nobelpristagare i en slumpad lista.</li>
+        <li>Ordna dem så att den som fick priset tidigast hamnar högst och den som fick senast hamnar längst ned.</li>
+        <li>Poängberäkning: +100 per rätt, -25 per fel och (tid kvar)/100.</li>
       </ol>
     </div>
         <!-- GAME-SPECIFIC CONTENT: Timeline -->
-    <div class="max-w-2xl mx-auto p-4">
-      <h2 class="text-2xl font-bold mb-4">How to Play Timeline</h2>
-      <p class="mb-4">These are the rules specific to THIS game:</p>
-      <ol class="list-decimal ml-6 mb-4">
-        <li>Start game</li>
-        <li>Match the nobel price winner with the correct category</li>
+    <div class="mb-6 max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
+      <h2 class="text-2xl font-bold mb-4">Timeline - Spelinstruktioner</h2>
+      <ol class="list-decimal ml-6">
+        <li>Starta spelet.</li>
+        <li>Matcha nobelpristagaren med rätt kategori.</li>
         <li>Vinn spelet!</li>
       </ol>
     </div>
         <!-- GAME-SPECIFIC CONTENT: Trivia Rush -->
-    <div class="max-w-2xl mx-auto p-4">
-      <h2 class="text-2xl font-bold mb-4">How to Play Trivia Rush</h2>
-      <p class="mb-4">These are the rules specific to THIS game:</p>
-      <ol class="list-decimal ml-6 mb-4">
-        <li>Start game</li>
-        <li>Select category</li>
-        <li>Start quiz</li>
-        <li>Match the nobel price winner with the correct category</li>
+    <div class="max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
+      <h2 class="text-2xl font-bold mb-4">Trivia Rush - Spelinstruktioner</h2>
+      <ol class="list-decimal ml-6">
+        <li>Välj en eller flera kategorier (t.ex. fysik, medicin, litteratur).</li>
+        <li>Klicka på Starta Quiz för att börja.</li>
+        <li>Du får 10 frågor om Nobelpriset och pristagare.</li>
+        <li>Du har 15 sekunder per fråga. Svara så snabbt och rätt du kan för att samla poäng.</li>
+        <li>Rätt svar ger poäng + tidspoäng. Flera rätt i rad ger en streak-bonus.</li>
+        <li>När quizet är klart ser du din totalpoäng och kan jämföra med ditt bästa resultat – och spela igen.</li>
       </ol>
+    </div>
+            </div>
+      </div>
     </div>
 
     <div id="app-footer"></div>
 
     <script src="/shared/js/load-components.js"></script>
+    <script src="/shared/js/auth-check.js"></script>
   </body>
 </html>

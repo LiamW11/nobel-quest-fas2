@@ -29,21 +29,19 @@
     <main class="flex-1 flex items-center justify-center px-6 pb-12">
       <div class="w-full max-w-2xl">
         <!-- Panel -->
-        <div
-          class="rounded-3xl bg-[#142845]/95 shadow-2xl ring-1 ring-white/10 p-8 md:p-10 text-center"
-        >
           
-
           <!-- STARTVY -->
           <section id="view-start" class="space-y-8">
+            <div class="rounded-3xl bg-[#142845]/95 shadow-2xl ring-1 ring-white/10 p-8 md:p-10 text-center">
             <p class="text-white/85 leading-relaxed mb-8 text-lg">
-              Välj vilka kategorier du vill ha med och tryck sen
-              <span class="font-semibold text-white">Starta Quiz</span>.
-            </p>
+              Läs How to play, och tryck sedan Starta quiz för att påbörja spelet
+              <span class="font-semibold text-white">Lycka Till!</span>
+            </p>  
 
             <!-- Kategorier och Start-knapp -->
             <form id="category-form">
               <fieldset class="space-y-5">
+                </fieldset>
 
                 
               <!-- Submit-knapp -->
@@ -55,19 +53,16 @@
                 >
                   Starta Quiz
                 </button>
-                  <button
-    type="button"
-    id="btn-howto"
-    class="mt-4 block w-full text-sm text-white/80 underline hover:text-white"
-  >
-    How to play – så funkar spelet
-  </button>
               
               </div>
             </form>
+
+            <button type="button" id="btn-howto" class="mt-4 block w-full text-sm text-white/80 underline hover:text-white">
+            How to play – så funkar spelet
+            </button>
+              </div>
+
           </section>
-        
-</div>
 
           
           <!-- QUIZVY -->
@@ -79,9 +74,8 @@
               <div class="flex items-center gap-3">
                 <div class="border-l border-white/20 h-5"></div>
                 <div id="score-pill" class="font-semibold">Poäng: 0</div>
-                <div id="streak-pill" class="font-semibold text-[#76DB7E]">
-                  Streak: 0
-                </div>
+                <div id="streak-pill" class="text-lg font-bold">0</div>
+                
               </div>
             </div>
 

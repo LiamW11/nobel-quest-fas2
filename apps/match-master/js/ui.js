@@ -22,24 +22,25 @@ function renderCards() {
       const backEl = document.createElement("div");
       backEl.classList.add("game-card-back");
 
-      if (card.type === "person") {
-        backEl.innerHTML = `
-    <div class="flex flex-col items-center gap-1 text-center text-white">
+ if (card.type === "person") {
+  backEl.innerHTML = `
+    <div class="flex flex-col h-full w-full">
       ${
         card.imageUrl
-          ? `<img src="${card.imageUrl}" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-contain bg-white p-1" alt="${card.name}">`
+          ? `<img src="${card.imageUrl}" class="w-full flex-1 object-cover rounded-t-xl" alt="${card.name}">`
           : ""
       }
-      <div class="font-bold text-sm sm:text-base">${card.name}</div>
-      <div class="text-xs sm:text-sm">${card.country}</div>
+      <div class="w-full py-2 px-2 bg-gradient-to-b from-transparent to-[#1e3a5f]/50">
+        <div class="font-bold text-sm sm:text-base leading-tight text-white">${card.name}</div>
+      </div>
     </div>
   `;
       } else if (card.type === "achievement") {
         backEl.innerHTML = `
-    <div class="flex flex-col items-center gap-1 text-center text-white p-1">
-      <div class="font-bold text-sm">${card.category}</div>
-      <div class="text-xs sm:text-sm line-clamp-3">${card.achievement}</div>
-      <div class="text-xs sm:text-sm text-white">${card.year}</div>
+    <div class="flex flex-col justify-between h-full text-white p-2">
+      <div class="font-bold text-base sm:text-lg text-center text-yellow-400" >${card.category}</div>
+<div class="text-base sm:text-lg font-semibold text-center flex-1 flex items-center justify-center px-1 text-white break-words">${card.achievement}</div>
+    <div class="text-xs sm:text-center text-center text-white/90">${card.year}</div>
     </div>
   `;
       }
@@ -81,8 +82,6 @@ function renderCards() {
   });
   
   // Uppdatera stats
-  document.getElementById("matches").textContent = game.moves;
-  document.getElementById("score").textContent = `${game.matches}/${game.pairsNeeded}`;
 }
 
 function showEndScreen() {
