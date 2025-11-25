@@ -114,20 +114,20 @@ function checkMatch() {
     if (card1Element) card1Element.classList.add("shake");
     if (card2Element) card2Element.classList.add("shake");
 
-    // Vänd tillbaka efter 600ms
-    setTimeout(() => {
-      if (card1Element) card1Element.classList.remove("shake");
-      if (card2Element) card2Element.classList.remove("shake");
-      
-      card1.flipped = false;
-      card2.flipped = false;
-      game.flippedCards = [];
-      game.isFlipping = false;
-      renderCards();
-    }, 600); 
-  }
-}
+     setTimeout(() => {
+    if (card1Element) card1Element.classList.remove("shake");
+    if (card2Element) card2Element.classList.remove("shake");
+  }, 500);
 
+       setTimeout(() => {
+    card1.flipped = false;
+    card2.flipped = false;
+    game.flippedCards = [];
+    game.isFlipping = false;
+    renderCards();
+  }, 2000); 
+}
+}
 
 async function startGame() {
   console.log("🎮 Startar spel...");
