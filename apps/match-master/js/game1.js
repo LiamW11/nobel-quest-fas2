@@ -43,29 +43,32 @@ function createNobelCards() {
       flipped: false,
     });
   });
-    return shuffleCard(cards);
+  return shuffleCard(cards);
 }
 
 function flipCard(cardId) {
   const card = game.cards.find((c) => c.id === cardId);
-  
+
   // Kolla om kortet kan vändas
   if (!card) return;
-  if (card.flipped) return;  // Redan vänt
-  if (card.matched) return;  // Redan matchat
-  if (game.flippedCards.length >= 2) return;  // Max 2 kort åt gången
-  if (game.isFlipping) return;  // Animation pågår
+  if (card.flipped) return; // Redan vänt
+  if (card.matched) return; // Redan matchat
+  if (game.flippedCards.length >= 2) return; // Max 2 kort åt gången
+  if (game.isFlipping) return; // Animation pågår
 
   // Starta timer vid första draget
   if (game.moves === 0 && game.flippedCards.length === 0) {
     startTimer();
   }
 
+  gameSound.flip.currentTime = 0;
+  gameSound.flip.play().catch((e) => console.log("ljud"));
+
   // Vänd kortet
   card.flipped = true;
   game.flippedCards.push(cardId);
   renderCards();
-  
+
   // Om 2 kort är vända, kolla matchning
   if (game.flippedCards.length === 2) {
     setTimeout(() => {
@@ -88,14 +91,21 @@ function checkMatch() {
     game.matches++;
     game.score += 100;
     game.flippedCards = [];
+    gameSound.match.currentTime = 0;
+    gameSound.match.play().catch((e) => console.log("Ljud"));
 
     renderCards();
     document.getElementById("score").textContent = game.score;
-    document.getElementById("matches").textContent = `${game.matches}/${game.pairsNeeded}`;
+    document.getElementById(
+      "matches"
+    ).textContent = `${game.matches}/${game.pairsNeeded}`;
 
     // Kolla om spelet är klart
     if (game.matches === game.pairsNeeded) {
       stopTimer();
+      gameSound.win.currentTime = 0;
+      gameSound.win.play().catch((e) => console.log("Win-ljud fel:", e));
+
       setTimeout(() => {
         showEndScreen();
       }, 800);
@@ -104,29 +114,31 @@ function checkMatch() {
     // ❌ INGEN MATCH
     game.score -= 10;
     document.getElementById("score").textContent = game.score;
-    
+
     game.isFlipping = true;
-    
+
     // Hitta kort-elementen för shake-animation
     const card1Element = document.querySelector(`[data-card-id="${id1}"]`);
     const card2Element = document.querySelector(`[data-card-id="${id2}"]`);
 
+    gameSound.wrong.play().catch((e) => console.log("ljud"));
+
     if (card1Element) card1Element.classList.add("shake");
     if (card2Element) card2Element.classList.add("shake");
 
-     setTimeout(() => {
-    if (card1Element) card1Element.classList.remove("shake");
-    if (card2Element) card2Element.classList.remove("shake");
-  }, 500);
+    setTimeout(() => {
+      if (card1Element) card1Element.classList.remove("shake");
+      if (card2Element) card2Element.classList.remove("shake");
+    }, 500);
 
-       setTimeout(() => {
-    card1.flipped = false;
-    card2.flipped = false;
-    game.flippedCards = [];
-    game.isFlipping = false;
-    renderCards();
-  }, 2000); 
-}
+    setTimeout(() => {
+      card1.flipped = false;
+      card2.flipped = false;
+      game.flippedCards = [];
+      game.isFlipping = false;
+      renderCards();
+    }, 2000);
+  }
 }
 
 async function startGame() {
@@ -136,7 +148,7 @@ async function startGame() {
     console.log("📥 Laddar Nobel-data...");
     await loadNobelData();
   }
-  
+
   game.pairsNeeded = 6;
   game.cards = createNobelCards();
 
@@ -146,7 +158,7 @@ async function startGame() {
     console.error("❌ Inga kort skapades!");
     return;
   }
-  
+
   game.flippedCards = [];
   game.moves = 0;
   game.matches = 0;
@@ -183,16 +195,16 @@ function finalizeScore() {
     return game.score;
   }
   let bonus = 0;
-  
+
   // Tidsbonus
   if (game.timer < 60) bonus += 100;
   else if (game.timer < 120) bonus += 50;
   else if (game.timer < 180) bonus += 25;
-  
+
   // Perfect game bonus
   if (game.moves === game.pairsNeeded) bonus += 200;
-  
-  const maxBase = 600;  
+
+  const maxBase = 600;
   const final = Math.min(game.score + bonus, maxBase + 300);
   return final;
 }
