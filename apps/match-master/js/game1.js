@@ -104,7 +104,6 @@ function checkMatch() {
     // ❌ INGEN MATCH
     game.score -= 10;
     document.getElementById("score").textContent = game.score;
-    document.getElementById("matches").textContent = game.moves;
     
     game.isFlipping = true;
     
