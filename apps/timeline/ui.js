@@ -124,7 +124,7 @@ export function renderBoard(root, cards) {
       `
         <img src="${c.imageUrl}" alt="${c.name}" class="w-20 h-20 object-cover rounded-lg" loading="lazy"/>
         <div class="">
-        <h4 class="text-white font-bold truncate">${c.name}</h4>
+        <h4 class="text-white font-bold truncate w-[90%]">${c.name}</h4>
         <span class="text-[#EBCB96]">${c.category}</span>
         <span class="text-white text-sm">: ${c.achievement}</span>
         <p class="text-white text-sm">${c.country}</p>
