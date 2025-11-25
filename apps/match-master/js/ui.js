@@ -103,6 +103,32 @@ if (game.gaveUp) {
 } else {
   heading.textContent = "Grattis! 🎉";
   heading.className = "text-4xl font-bold text-center mb-8 text-[#C5A572]";
+   confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 },
+    colors: ['#C5A572', '#D4B88C', '#E5D4B0', '#A38A5F']
+  });
+
+  setTimeout(() => {
+    confetti({
+      particleCount: 50,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: ['#C5A572', '#D4B88C', '#E5D4B0', '#A38A5F']
+    });
+  }, 250);
+  
+  setTimeout(() => {
+    confetti({
+      particleCount: 50,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: ['#C5A572', '#D4B88C', '#E5D4B0', '#A38A5F']
+    });
+  }, 400);
 }
 
   // Uppdatera resultat
