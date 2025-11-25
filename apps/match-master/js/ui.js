@@ -24,14 +24,14 @@ function renderCards() {
 
  if (card.type === "person") {
   backEl.innerHTML = `
-    <div class="flex flex-col h-full w-full">
+    <div class="flex flex-col h-full w-full relative">
       ${
         card.imageUrl
-          ? `<img src="${card.imageUrl}" class="w-full flex-1 object-cover rounded-t-xl" alt="${card.name}">`
+          ? `<img src="${card.imageUrl}" class="w-full h-full object-cover rounded-t-xl" alt="${card.name}">`
           : ""
       }
-      <div class="w-full py-2 px-2 bg-gradient-to-b from-transparent to-[#1e3a5f]/50">
-        <div class="font-bold text-sm sm:text-base leading-tight text-white">${card.name}</div>
+      <div class="absolute bottom-0 left-0 right-0 w-full py-2.5 px-2 bg-[#1e3a5f]/90 backdrop-blur-sm">
+        <div class="font-bold text-sm sm:text-base leading-tight text-white drop-shadow-lg">${card.name}</div>
       </div>
     </div>
   `;
