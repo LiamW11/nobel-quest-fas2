@@ -2,11 +2,19 @@ import { auth, db } from "./firebase-config.js";
 import { 
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    setPersistence,
+    browserLocalPersistence
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// 🔹Login / skapa konto
+// Sätt persistence till LOCAL (håller användaren inloggad för evigt)
+setPersistence(auth, browserLocalPersistence)
+    .catch((error) => {
+        console.error("Kunde inte sätta persistence:", error);
+    });
+
+// 🔹 Login / skapa ägare
 export async function login() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -50,7 +58,7 @@ export async function login() {
     }
 }
 
-// 🔹Auth-guard (ska köras på varje skyddad sida)
+// 🔹 Auth-guard (ska köras på varje skyddad sida)
 export function protectPage() {
     onAuthStateChanged(auth, user => {
         if (!user) {
@@ -59,7 +67,7 @@ export function protectPage() {
     });
 }
 
-// 🔹Blockera back-knapp på skyddad sida
+// 🔹 Blockera back-knapp på skyddad sida
 export function blockBackButton() {
     history.pushState(null, null, location.href);
     window.onpopstate = function () {
