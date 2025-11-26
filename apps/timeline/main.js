@@ -100,19 +100,17 @@ document.addEventListener("difficulty:selected", async (e) => {
         }
     </p>
 
-    <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
-    <button
-    id="again"
-    class="text-[#002952] hover:bg-[#A38A5F] py-4 px-6 text-base restart-btn"
-    > Spela igen </button>
-
-    <button 
-    id="show-correct"
-    class="bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952] py-3 px-6 rounded-lg text-base"
-    >
-    Rätt ordning 
-    </button>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+      <button
+        id="again"
+        class="text-[#002952] hover:bg-[#A38A5F] py-4 px-6 text-base restart-btn"
+      >
+        Spela igen
+      </button>
     </div>
+
+   
+
 
     <p 
     id="time-multiplier"
@@ -122,14 +120,33 @@ document.addEventListener("difficulty:selected", async (e) => {
     </p>
     </div>
 
+ <div class="flex flex-row justify-between items-center w-full max-w-3xl mx-auto mt-4 px-4 pb-2">
+  <button
+    id="btn-user-order"
+    class="bg-[#C5A572] text-[#002952] py-2 px-4 rounded-lg text-sm font-semibold"
+  >
+    Din ordning
+  </button>
+
     <h3 id="order-title" 
     class="text-xl text-white font-bold text-center mb-2">
      Din ordning
      </h3>
+
+  <button
+    id="btn-correct-order"
+    class="bg-transparent text-white border border-[#C5A572] py-2 px-4 rounded-lg text-sm font-semibold"
+  >
+    Rätt ordning
+  </button>
+</div>
+
      <div id="user-order" class="space-y-3">
+
+
      `;
 
-     // lägg till ett kort i resultatlistan för varje placerad pristagare
+    // lägg till ett kort i resultatlistan för varje placerad pristagare
     // lägg till ett kort i resultatlistan för varje placerad pristagare
     order.forEach((placedId, index) => {
       const laureate = laureateMap[placedId];
@@ -145,8 +162,12 @@ document.addEventListener("difficulty:selected", async (e) => {
       }" class="w-20 h-20 object-cover rounded-lg flex-shrink-0" loading="lazy" />
           <div class="flex-1 min-w-0">
             <h4 class="text-white font-bold break-words">${laureate.name}</h4>
-            <span class="text-[#EBCB96] text-sm break-words">${laureate.category}</span>
-            <span class="text-white text-sm break-words">: ${laureate.achievement}</span>
+            <span class="text-[#EBCB96] text-sm break-words">${
+              laureate.category
+            }</span>
+            <span class="text-white text-sm break-words">: ${
+              laureate.achievement
+            }</span>
           </div>
           <div class="text-right flex-shrink-0">
             <p class="text-sm text-white/60 whitespace-nowrap">
@@ -194,39 +215,76 @@ document.addEventListener("difficulty:selected", async (e) => {
         </section>
         `;
 
-
-
     // visa resultatskärmen istället för spelet
     app.innerHTML = resultHTML;
-    // restart-knappen laddar om sidan och börjar om från startskärmen
+    // restart-knappen startar ny omgång med samma svårighetsgrad
     app.querySelector("#again").addEventListener("click", () => {
-      document.dispatchEvent(new CustomEvent("difficulty:selected", {detail: {level: gameState.difficulty}})
-    );
+      document.dispatchEvent(
+        new CustomEvent("difficulty:selected", {
+          detail: { level: gameState.difficulty },
+        })
+      );
     });
 
-    const showCorrectBtn = app.querySelector("#show-correct");
     const userOrderEl = app.querySelector("#user-order");
     const correctOrderEl = app.querySelector("#correct-order");
     const orderTitle = app.querySelector("#order-title");
 
-    let showingCorrect = false;
+    const userOrderBtn = app.querySelector("#btn-user-order");
+    const correctOrderBtn = app.querySelector("#btn-correct-order");
 
-    showCorrectBtn.addEventListener("click", () => {
-      if (!showingCorrect) {
-        userOrderEl.classList.add("hidden");
-        correctOrderEl.classList.remove("hidden");
-
-        showCorrectBtn.textContent = "Din ordning";
-        orderTitle.textContent = "Rätt ordning";
-        showingCorrect = true;
-      } else {
-        correctOrderEl.classList.add("hidden");
+    function setActiveButton(mode) {
+      if (mode === "user") {
+        // visa DIN ordning
         userOrderEl.classList.remove("hidden");
-
-        showCorrectBtn.textContent = "Rätt ordning";
+        correctOrderEl.classList.add("hidden");
         orderTitle.textContent = "Din ordning";
-        showingCorrect = false;
+
+        // stil för aktiv/inaktiv knapp
+        userOrderBtn.classList.add("bg-[#C5A572]", "text-[#002952]");
+        userOrderBtn.classList.remove(
+          "bg-transparent",
+          "text-white",
+          "border",
+          "border-[#C5A572]"
+        );
+
+        correctOrderBtn.classList.add(
+          "bg-transparent",
+          "text-white",
+          "border",
+          "border-[#C5A572]"
+        );
+        correctOrderBtn.classList.remove("bg-[#C5A572]", "text-[#002952]");
+      } else {
+        // visa RÄTT ordning
+        correctOrderEl.classList.remove("hidden");
+        userOrderEl.classList.add("hidden");
+        orderTitle.textContent = "Rätt ordning";
+
+        correctOrderBtn.classList.add("bg-[#C5A572]", "text-[#002952]");
+        correctOrderBtn.classList.remove(
+          "bg-transparent",
+          "text-white",
+          "border",
+          "border-[#C5A572]"
+        );
+
+        userOrderBtn.classList.add(
+          "bg-transparent",
+          "text-white",
+          "border",
+          "border-[#C5A572]"
+        );
+        userOrderBtn.classList.remove("bg-[#C5A572]", "text-[#002952]");
       }
-    });
+    }
+
+    // koppla knapparna
+    userOrderBtn.addEventListener("click", () => setActiveButton("user"));
+    correctOrderBtn.addEventListener("click", () => setActiveButton("correct"));
+
+    // startläge: visa din ordning
+    setActiveButton("user");
   });
 });
