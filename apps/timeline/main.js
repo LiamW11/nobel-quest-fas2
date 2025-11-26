@@ -118,7 +118,7 @@ document.addEventListener("difficulty:selected", async (e) => {
 
     </div>
 
- <div class="flex flex-row justify-between items-center w-full max-w-3xl mx-auto mt-4 px-4 pb-2">
+ <div class="flex flex-row justify-between items-center w-full max-w-3xl mx-auto mt-4 pb-2">
   <button
     id="btn-user-order"
     class="bg-[#C5A572] text-[#002952] py-2 px-4 rounded-lg text-sm font-semibold"
