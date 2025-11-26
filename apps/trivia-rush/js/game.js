@@ -91,7 +91,6 @@ function startGame(selectedCategories) {
     return true;
 
 }
-
 // Start timer for current question
 function startTimer() {
   // Clear any existing timer
@@ -352,8 +351,6 @@ function updateProgress() {
 
 // End the game
 function endGame() {
-  playSound();
-
   // Clear timer
   if (state.timer) {
     clearInterval(state.timer);
@@ -444,11 +441,8 @@ document.getElementById("btn-restart").addEventListener("click", () => {
   if (intro) intro.classList.remove("hidden");
 });
 
-
 // Expose startGame for main.js
 window.startGame = startGame;
-
-
 
 if (state.streak == 1){
   console.log("First streak achieved!");
