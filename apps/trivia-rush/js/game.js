@@ -72,7 +72,6 @@ function startGame(selectedCategories) {
                   <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none">0</div>
                 </div>
               </div>`;
-  }
 
   console.log(`Totalt ${state.totalQuestions} frågor valda:`, state.questions);
 
