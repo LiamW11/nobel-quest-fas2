@@ -89,8 +89,8 @@ document.addEventListener("difficulty:selected", async (e) => {
     // Bygg upp HTML för resultatskärmen
     let resultHTML = `
         <section class="max-w-3xl mx-auto">
-        <div class="text-center mb-2 -mt-6">
-        <p class="text-white mb-4">
+        <div class="text-center -mt-6">
+        <p class="text-white mb-1 text-2xl">
         Rätt: ${correctCount}/${pool.length} • 
         Poäng: <span class="score-display">${score}</span> • 
         ${
@@ -100,24 +100,22 @@ document.addEventListener("difficulty:selected", async (e) => {
         }
     </p>
 
+    <p 
+    id="time-multiplier"
+    class="text-xl font-bold text-center text-white py-2 mb-2"
+    >
+    Extrapoäng baserat på tid: ${gameState.timeBonus}
+    </p>
+
         <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
       <button
         id="again"
-        class="text-[#002952] hover:bg-[#A38A5F] py-4 px-6 text-base restart-btn"
+        class="text-[#002952] hover:bg-[#A38A5F] py-4 px-6 mb-2 text-base restart-btn"
       >
         Spela igen
       </button>
     </div>
 
-   
-
-
-    <p 
-    id="time-multiplier"
-    class="text-2xl font-bold text-center text-white py-2"
-    >
-    Extrapoäng baserat på tid: ${gameState.timeBonus}
-    </p>
     </div>
 
  <div class="flex flex-row justify-between items-center w-full max-w-3xl mx-auto mt-4 px-4 pb-2">
@@ -170,14 +168,15 @@ document.addEventListener("difficulty:selected", async (e) => {
             }</span>
           </div>
           <div class="text-right flex-shrink-0">
+           <p class="text-2xl font-bold ${
+             isCorrect ? "text-green-400" : "text-red-400"
+           }">
+              ${laureate.year}
+            </p>
             <p class="text-sm text-white/60 whitespace-nowrap">
               ${isCorrect ? `+${showScore()} Poäng` : "-25 Poäng"}
             </p>
-            <p class="text-2xl font-bold ${
-              isCorrect ? "text-green-400" : "text-red-400"
-            }">
-              ${laureate.year}
-            </p>
+           
           </div>
         </div>
       `;
@@ -201,10 +200,11 @@ document.addEventListener("difficulty:selected", async (e) => {
           
           </div>
           <div class="text-right">
-            <p class="text-sm text-white/60">Rätt plats</p>
-            <p class="text-2xl font-bold text-green-400">
+          <p class="text-2xl font-bold text-green-400">
               ${laureate.year}
             </p>
+            <p class="text-sm text-white/60">Rätt plats</p>
+            
           </div>
           </div>
           `;
