@@ -65,6 +65,13 @@ function startGame(selectedCategories) {
   state.score = 0;
   state.bonusScore = 0;
   state.streak = 0;
+  document.getElementById("streak-pill").textContent = `0`;
+  document.getElementById("quizvy").innerHTML = `<div class="flex items-center gap-3">
+                <div id="score-pill" class="font-semibold">Poäng: 0</div>
+                <div id="streak-box" class="relative left-24">
+                  <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none">0</div>
+                </div>
+              </div>`;
 
   console.log(`Totalt ${state.totalQuestions} frågor valda:`, state.questions);
 
@@ -186,6 +193,7 @@ function loadQuestion() {
   }
 
   // Start timer for this question
+  console.log(state.streak);
   startTimer();
 
   // Update UI
@@ -251,9 +259,38 @@ function checkAnswer(selected) {
   if (selected === question.correct) {
     state.score += 1;
     state.timeScore += timeBonus;
-
     // Streak logic
     state.streak++;
+
+    if (state.streak == 1) {
+  const streakBox = document.getElementById("streak-box");
+  streakBox.innerHTML = `
+    <div id="streak-pill"
+         class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none">
+      ${state.streak}
+    </div>
+
+    <div class="fire absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="fire-left">
+        <div class="main-fire"></div>
+        <div class="particle-fire"></div>
+      </div>
+      <div class="fire-center">
+        <div class="main-fire"></div>
+        <div class="particle-fire"></div>
+      </div>
+      <div class="fire-right">
+        <div class="main-fire"></div>
+        <div class="particle-fire"></div>
+      </div>
+      <div class="fire-bottom">
+        <div class="main-fire"></div>
+      </div>
+    </div>
+  `;
+}
+
+
     const bonusPercent = Math.min((state.streak - 1) * 0.4, 1.2); // 10% per streak, max 50%
     const basePoints = 1 + timeBonus;
     const bonusPoints = Math.round(basePoints * bonusPercent);
@@ -267,9 +304,17 @@ function checkAnswer(selected) {
     state.streak = 0;
     const streakPill = document.getElementById("streak-pill");
     if (streakPill) streakPill.textContent = `0`;
+    
+    // Remove the flame when streak breaks
+    document.getElementById("quizvy").innerHTML = `<div class="flex items-center gap-3">
+                <div id="score-pill" class="font-semibold">Poäng: 0</div>
+                <div id="streak-box" class="relative left-24">
+                  <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none">0</div>
+                </div>
+              </div>`;
   }
 
-  // Enable next button
+  // Enable next buttonx
   nextBtn.disabled = false;
   nextBtn.classList.remove("opacity-60", "cursor-not-allowed");
   nextBtn.classList.add("hover:bg-[#C5A572]/20", "transition");
@@ -425,4 +470,12 @@ function muteSounds() {
 window.startGame = startGame;
 
 console.log("game.js ready!");
+
+if (state.streak == 1){
+  console.log("First streak achieved!");
+}
+
+
+
+
 
