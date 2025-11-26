@@ -84,7 +84,6 @@ function startGame(selectedCategories) {
     return true;
 
 }
-
 // Start timer for current question
 function startTimer() {
   // Clear any existing timer
@@ -410,8 +409,6 @@ document.getElementById("btn-restart").addEventListener("click", () => {
   const intro = document.getElementById("intro-text");
   if (intro) intro.classList.remove("hidden");
 });
-
-document.getElementById("muteButton").addEventListener("click", () => {});
 
 function muteSounds() {
   const mediaElements = document.querySelectorAll("audio, video");
