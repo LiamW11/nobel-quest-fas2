@@ -194,9 +194,9 @@ document.addEventListener("difficulty:selected", async (e) => {
           <div class="card p-2 w-full mx-auto bg-[#142845]/95 shadow-sm flex items-start gap-4 ring-1 ring-white/20 ring-correct">
           <img src="${laureate.imageUrl}" alt="${laureate.name}" class="w-20 h-20 object-cover rounded-lg" loading="lazy" />
            <div class="flex-1">
-            <h4 class="text-white font-bold truncate">${laureate.name}</h4>
-            <span class="text-[#EBCB96]">${laureate.category}</span>
-            <span class="text-white text-sm">: ${laureate.achievement}</span>
+            <h4 class="text-white font-bold break-words">${laureate.name}</h4>
+            <span class="text-[#EBCB96] break-words">${laureate.category}</span>
+            <span class="text-white text-sm break-words">: ${laureate.achievement}</span>
           
           </div>
           <div class="text-right">
