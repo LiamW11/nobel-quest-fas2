@@ -303,19 +303,7 @@ function updateProgress() {
   }
 }
 
-function playSound() {
-  // Check if sound is enabled
-  if (!window.soundEnabled) {
-    console.log("Ljud är avstängt");
-    return;
-  }
 
-  const audio = new Audio("sounds/ConfettiSound.mp3");
-  audio.play().catch((err) => {
-    
-  });
-  
-}
 
 // End the game
 function endGame() {

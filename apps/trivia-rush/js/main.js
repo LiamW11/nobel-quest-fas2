@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (startBtn) {
     startBtn.addEventListener("click", async () => {
-      console.log("Startknappen klickad!");
+     
 
       // Vänta tills Nobel-datan är laddad
       await window.quizReady;
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       form.querySelectorAll("input[name='categories']:checked")
     ).map((input) => input.value);
 
-    console.log("Valda kategorier:", selected);
+   
   });
 });
 
