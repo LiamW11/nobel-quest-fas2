@@ -137,7 +137,6 @@ export function renderBoard(root, cards) {
         <h4 class="text-white font-bold truncate w-[90%]">${c.name}</h4>
         <span class="text-[#EBCB96]">${c.category}</span>
         <span class="text-white text-sm">: ${c.achievement}</span>
-        <p class="text-white text-sm">${c.country}</p>
         </div>
         `;
     list.appendChild(li);

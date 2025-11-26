@@ -90,7 +90,6 @@ document.addEventListener("difficulty:selected", async (e) => {
     let resultHTML = `
         <section class="max-w-3xl mx-auto">
         <div class="text-center mb-2 -mt-6">
-        <h2 class="text-2xl text-white font-bold mb-2">Resultat</h2>
         <p class="text-white mb-4">
         Rätt: ${correctCount}/${pool.length} • 
         Poäng: <span class="score-display">${score}</span> • 
@@ -148,7 +147,6 @@ document.addEventListener("difficulty:selected", async (e) => {
             <h4 class="text-white font-bold break-words">${laureate.name}</h4>
             <span class="text-[#EBCB96] text-sm break-words">${laureate.category}</span>
             <span class="text-white text-sm break-words">: ${laureate.achievement}</span>
-            <p class="text-white text-sm break-words">${laureate.country}</p>
           </div>
           <div class="text-right flex-shrink-0">
             <p class="text-sm text-white/60 whitespace-nowrap">
@@ -179,7 +177,7 @@ document.addEventListener("difficulty:selected", async (e) => {
             <h4 class="text-white font-bold truncate">${laureate.name}</h4>
             <span class="text-[#EBCB96]">${laureate.category}</span>
             <span class="text-white text-sm">: ${laureate.achievement}</span>
-            <p class="text-white text-sm">${laureate.country}</p>
+          
           </div>
           <div class="text-right">
             <p class="text-sm text-white/60">Rätt plats</p>
