@@ -426,7 +426,7 @@ function updateProgress() {
     "best-total-score"
   ).textContent = `${bestTotal} totalt`;
 
-}
+
 
 // Restart the game
 document.getElementById("btn-restart").addEventListener("click", () => {
