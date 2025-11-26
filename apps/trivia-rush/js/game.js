@@ -350,9 +350,7 @@ function updateProgress() {
 
 
 
-// End the game
-function endGame() {
-  playSound();
+
 
   // Clear timer
   if (state.timer) {
