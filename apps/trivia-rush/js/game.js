@@ -65,17 +65,19 @@ function startGame(selectedCategories) {
   state.score = 0;
   state.bonusScore = 0;
   state.streak = 0;
-  document.getElementById("streak-pill").textContent = `0`;
+  document.getElementById("streak-pill").textContent = ``;
   document.getElementById("quizvy").innerHTML = `<div class="flex items-center gap-3">
                 <div id="score-pill" class="font-semibold">Poäng: 0</div>
                 <div id="streak-box" class="relative left-24">
-                  <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none">0</div>
+                  <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none"></div>
                 </div>
               </div>`;
 
   console.log(`Totalt ${state.totalQuestions} frågor valda:`, state.questions);
 
   loadQuestion();
+
+  document.getElementById("question-progress-bar").style.width = "0%";
 
   const scorePill = document.getElementById("score-pill");
   const timeScorePill = document.getElementById("time-score-pill");
@@ -225,9 +227,10 @@ function checkAnswer(selected) {
   const question = state.questions[state.currentIndex];
   const buttons = document.querySelectorAll("#options button");
   const nextBtn = document.getElementById("btn-next");
+  if (state.streak > 0)
   document.getElementById(
     "streak-pill"
-  ).textContent = `Streak: ${state.streak}`;
+  ).textContent = `${state.streak}`;
 
   // Prevent double scoring
   if (question.answered) return;
@@ -270,6 +273,40 @@ function checkAnswer(selected) {
       ${state.streak}
     </div>
 
+    <div class="Smallfire absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="fire-center">
+        <div class="main-fire"></div>
+        <div class="particle-fire"></div>
+      </div>
+    </div>
+  `;
+}
+
+if (state.streak == 2) {
+  const streakBox = document.getElementById("streak-box");
+  streakBox.innerHTML = `
+    <div id="streak-pill"
+         class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none">
+      ${state.streak}
+    </div>
+
+    <div class="Mediumfire absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="fire-center">
+        <div class="main-fire"></div>
+        <div class="particle-fire"></div>
+      </div>
+    </div>
+  `;
+}
+
+    if (state.streak == 3) {
+  const streakBox = document.getElementById("streak-box");
+  streakBox.innerHTML = `
+    <div id="streak-pill"
+         class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none">
+      ${state.streak}
+    </div>
+
     <div class="fire absolute inset-0 flex items-center justify-center pointer-events-none">
       <div class="fire-left">
         <div class="main-fire"></div>
@@ -303,13 +340,13 @@ function checkAnswer(selected) {
     // Wrong answer breaks streak
     state.streak = 0;
     const streakPill = document.getElementById("streak-pill");
-    if (streakPill) streakPill.textContent = `0`;
+    if (streakPill) streakPill.textContent = ``;
     
     // Remove the flame when streak breaks
     document.getElementById("quizvy").innerHTML = `<div class="flex items-center gap-3">
                 <div id="score-pill" class="font-semibold">Poäng: 0</div>
                 <div id="streak-box" class="relative left-24">
-                  <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none">0</div>
+                  <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none"></div>
                 </div>
               </div>`;
   }
@@ -341,11 +378,21 @@ document.getElementById("btn-next").addEventListener("click", () => {
 // Update progress bar
 function updateProgress() {
   const progress = (state.currentIndex / state.totalQuestions) * 100;
-  document.getElementById("score-pill").textContent = `Poäng: ${state.score + state.timeScore + state.bonusScore}`;
+
+  // Update scoreboard
+  document.getElementById("score-pill").textContent =
+    `Poäng: ${state.score + state.timeScore + state.bonusScore}`;
   const timeScorePill = document.getElementById("time-score-pill");
   if (timeScorePill) {
     timeScorePill.textContent = `Tidspoäng: ${state.timeScore}`;
   }
+
+  // Update new progress bar
+  const bar = document.getElementById("question-progress-bar");
+  const text = document.getElementById("progress-text");
+
+  if (bar) bar.style.width = `${progress}%`;
+  if (text) text.textContent = `${state.currentIndex} / ${state.totalQuestions}`;
 }
 
 function playSound() {
