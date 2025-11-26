@@ -90,7 +90,6 @@ document.addEventListener("difficulty:selected", async (e) => {
     let resultHTML = `
         <section class="max-w-3xl mx-auto">
         <div class="text-center mb-2 -mt-6">
-        <h2 class="text-2xl text-white font-bold mb-2">Resultat</h2>
         <p class="text-white mb-4">
         Rätt: ${correctCount}/${pool.length} • 
         Poäng: <span class="score-display">${score}</span> • 
