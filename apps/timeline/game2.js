@@ -6,6 +6,10 @@ export const gameState = {
   // id för setInterval som används för timern
   timerInterval: null,
 
+  orderCorrect: null,
+
+  yearCorrect: null,
+
   // antal sekunder kvar på timern
   timeLeft: 0,
   // extrapoäng som spelaren får baserat på hur mycket tid som är kvar
@@ -35,6 +39,10 @@ export function setPools(laureates) {
     // ta ut ENDAST id
     // bygg en helt ny lista med id-värden
     .map((x) => x.id);
+
+  gameState.yearCorrect = [...laureates]
+    .sort((a, b) => a.year - b.year)
+    .map((x) => x.year);
 }
 
 // räkna ut spelarens poäng baserat på rätt placeringar, fel placeringar och tid
