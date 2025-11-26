@@ -38,14 +38,14 @@ document.addEventListener("difficulty:selected", async (e) => {
   // välj ut ett antal slumpade pristagare
   const pool = shuffle(all).slice(0, count);
 
+  // spara poolen och den korrekta ordningen i gameState
+  setPools(pool);
+
   // rita ut spelbrädet med dessa pristagare
   renderBoard(app, pool);
 
   // aktivera drag and drop på listan
   wireDnD(app);
-
-  // spara poolen och den korrekta ordningen i gameState
-  setPools(pool);
 
   // starta timern för denna svårighetsgrad
   startTimer(level);

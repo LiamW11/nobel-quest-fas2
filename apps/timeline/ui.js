@@ -1,5 +1,7 @@
 // bygger upp användargränssnittet: startskärm, spelbråde och leaderboard
 import { getLeaderboard } from "./storage.js";
+import { gameState } from "./game2.js";
+
 
 // visa startskärmen där spelaren väljer svårighetsgrad
 // visa startskärmen där spelaren väljer svårighetsgrad
@@ -91,6 +93,7 @@ export function renderStart(root) {
 
 // visa själva spelet: lista med kort som går att sortera och knapp för att skicka in
 export function renderBoard(root, cards) {
+  console.log(gameState.yearCorrect);
   root.innerHTML = `
 <section class="max-w-3xl mx-auto">
   <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur pb-3 -mt-6">
@@ -108,9 +111,9 @@ export function renderBoard(root, cards) {
   </div>
 
 
-    <p class="text-center text-[#002952] font-bold w-full bg-[#C5A572] rounded-lg">Äldsta Priset</p>
+    <p class="text-center text-[#002952] text-xl font-bold w-full bg-[#C5A572] rounded-lg">${gameState.yearCorrect[0]}</p>
     <ul id="sortable-list" class="p-1 space-y-3" aria-label="Sortera pristagarna"></ul>
-    <p class="text-center text-[#002952] font-bold w-full bg-[#C5A572] rounded-lg">Yngsta Priset</p>
+    <p class="text-center text-[#002952] text-xl font-bold w-full bg-[#C5A572] rounded-lg">${gameState.yearCorrect[gameState.yearCorrect.length - 1]}</p>
 
 
     <div class="mt-4">
