@@ -194,12 +194,15 @@ document.addEventListener("difficulty:selected", async (e) => {
         </section>
         `;
 
+
+
     // visa resultatskärmen istället för spelet
     app.innerHTML = resultHTML;
     // restart-knappen laddar om sidan och börjar om från startskärmen
-    app
-      .querySelector("#again")
-      .addEventListener("click", () => location.reload());
+    app.querySelector("#again").addEventListener("click", () => {
+      document.dispatchEvent(new CustomEvent("difficulty:selected", {detail: {level: gameState.difficulty}})
+    );
+    });
 
     const showCorrectBtn = app.querySelector("#show-correct");
     const userOrderEl = app.querySelector("#user-order");
