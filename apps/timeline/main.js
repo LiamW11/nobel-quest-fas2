@@ -203,7 +203,7 @@ document.addEventListener("difficulty:selected", async (e) => {
           <p class="text-2xl font-bold text-green-400">
               ${laureate.year}
             </p>
-            <p class="text-sm text-white/60">Rätt plats</p>
+            
             
           </div>
           </div>
