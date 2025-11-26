@@ -10,24 +10,47 @@ gameSound.match.volume= 0.6;
 gameSound.win.volume= 0.7;
 
 window.addEventListener("DOMContentLoaded", () => {
-  // Koppla startknappen
-  document.getElementById("startBtn").onclick = () => {
-    document.getElementById("startScreen").classList.add("hidden");
-    document.getElementById("gameScreen").classList.remove("hidden");
-    startGame();
-  };
+  // Starta spelet direkt när sidan laddas
+  startGame();
 
   // Koppla "Ge upp"-knappen
   document.getElementById("giveUpBtn").onclick = () => {
-  game.gaveUp = true;
-  stopTimer();
-  showEndScreen();
-};
-  // Koppla "Tillbaka"-knappen i endScreen
-  document.getElementById("backToStart").onclick = () => {
-    document.getElementById("endScreen").classList.add("hidden");
-    document.getElementById("startScreen").classList.remove("hidden");
-    // Återställ cardGrid
-    document.getElementById("cardGrid").innerHTML = "";
+    game.gaveUp = true;
+    stopTimer();
+    showEndScreen();
   };
 });
+
+  const helpLink = document.getElementById("help-link");
+  const howtoOverlay = document.getElementById("howto-overlay");
+  const howtoClose = document.getElementById("howto-close");
+  const howtoGotIt = document.getElementById("howto-gotit");
+
+  // Funktion för att öppna modal
+  function openHowTo(e) {
+    if (e) e.preventDefault(); // Förhindra länkens standardbeteende
+    if (!howtoOverlay) return;
+    howtoOverlay.classList.remove("hidden");
+  }
+
+  // Funktion för att stänga modal
+  function closeHowTo() {
+    if (!howtoOverlay) return;
+    howtoOverlay.classList.add("hidden");
+  }
+
+  // Koppla "How to Play"-länken i footern
+  if (helpLink) {
+    helpLink.addEventListener("click", openHowTo);
+  }
+
+  // Koppla stäng-knappen (X)
+  if (howtoClose) {
+    howtoClose.addEventListener("click", closeHowTo);
+  }
+
+  // Koppla "Jag fattar"-knappen
+  if (howtoGotIt) {
+    howtoGotIt.addEventListener("click", closeHowTo);
+  }
+

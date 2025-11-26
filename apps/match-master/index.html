@@ -12,54 +12,13 @@
       class="bg-blue-600 text-white p-4 flex justify-between items-center"
     >
       <button onclick="window.history.back()">← Back</button>
-      <h1 id="page-title">Nobel Quest</h1>
+      <h1 id="page-title">Nobel Match Master</h1>
       <button onclick="window.location.href='menu.html'">☰</button>
     </header>
 <div class="container mx-auto px-4 max-w-4xl flex-1 py-4">
-  <!--Startskärm-->
-    <div id="startScreen">
-     <h1 class="text-4xl font-bold text-center my-8 text-white">
-  Nobel Match Master
-</h1>
-      <div class="bg-[#142845]/95 p-6 rounded-2xl mb-6 text-left ring-1 ring-white/10 shadow-2xl">
-        <h2 class="text-2xl font-bold mb-4 text-center text-[#C5A572]">Hur man spelar</h2>
-        
-        <div class="space-y-4 text-gray-300">
-          <p><strong class="text-white">Mål:</strong> Matcha Nobelpristagare med deras upptäckter/verk!</p>
-          
-          <p><strong class="text-white"> Spelregler:</strong></p>
-          <ul class="list-disc list-inside ml-4 space-y-2">
-            <li>Klicka på två kort åt gången för att vända dem</li>
-            <li>Ett kort visar pristagarens namn och bild</li>
-            <li>Andra kortet visar deras upptäckt/verk</li>
-            <li>Om de matchar - de stannar vända!</li>
-            <li>Om de inte matchar - de vänds tillbaka </li>
-            <li>Hitta alla par för att vinna!</li>
-          </ul>
-
-          <p><strong class="text-white"> Poängsystem:</strong></p>
-          <ul class="list-disc list-inside ml-4 space-y-2">
-            <li><span class="text-green-400">+100 poäng</span> per matchat par</li>
-            <li><span class="text-red-400">-10 poäng</span> per felaktigt försök</li>
-            <li><span class="text-yellow-400">Tidsbonus:</span>
-              <ul class="list-circle list-inside ml-6 mt-1">
-                <li>Under 1 min: +100p </li>
-                <li>Under 2 min: +50p </li>
-                <li>Under 3 min: +25p </li>
-              </ul>
-            </li>
-            <li><span class="text-purple-400">Perfect Game:</span> +200p om du använder minimalt antal försök! 🏆</li>
-          </ul>
-        </div>
-      </div>
-<button id="startBtn" class="px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952] font-semibold shadow-lg mx-auto block">
-  Spela
-</button>
-    </div>
 
     <!--SPELSKÄRM-->
-    <div id="gameScreen" class="hidden">
-     
+    <div id="gameScreen">
 
      <div class="bg-[#142845]/95 px-4 py-4 rounded-xl mb-4 ring-1 ring-white/10 shadow-xl">
   <div class="flex justify-around items-center gap-4 text-center">
@@ -108,12 +67,11 @@
   </div>
 </div>
       <div class="flex gap-4 justify-center">
-  <button id="backToStart" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20">
-    ← Tillbaka
-  </button>
-  <button id="playAgain" class="px-6 py-3 rounded-xl bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952] font-semibold shadow-lg">
+  <div class="flex justify-center">
+  <button id="playAgain" class="px-8 py-3 rounded-xl bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952] font-semibold shadow-lg">
     Spela igen
   </button>
+</div>
 </div>
     </div>
 </div>
@@ -121,7 +79,7 @@
       <div class="mb-2">
         <a
           id="help-link"
-          href="help.html"
+          href="#"
           class="text-blue-600 hover:underline mx-2"
           >How to Play</a
         >
@@ -140,7 +98,65 @@
       </div>
       <p>&copy; 2025 Nobel Quest</p>
     </footer>
-   
+
+   <div
+  id="howto-overlay"
+  class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
+>
+  <div
+    class="bg-[#142845] text-white max-w-lg w-full mx-4 rounded-2xl p-6 relative shadow-2xl"
+  >
+    <!-- Stäng-kors -->
+    <button
+      type="button"
+      id="howto-close"
+      class="absolute top-3 right-4 text-white/60 hover:text-white text-2xl leading-none"
+      aria-label="Stäng"
+    >
+      &times;
+    </button>
+
+    <h2 class="text-2xl font-semibold mb-4 text-center text-[#C5A572]">
+      Hur man spelar
+    </h2>
+
+    <div class="space-y-4 text-gray-300">
+      <p><strong class="text-white">Mål:</strong> Matcha Nobelpristagare med deras upptäckter/verk!</p>
+      
+      <p><strong class="text-white">🎮 Spelregler:</strong></p>
+      <ul class="list-disc list-inside ml-4 space-y-2">
+        <li>Klicka på två kort åt gången för att vända dem</li>
+        <li>Ett kort visar pristagarens namn och bild</li>
+        <li>Andra kortet visar deras upptäckt/verk</li>
+        <li>Om de matchar - de stannar vända!</li>
+        <li>Om de inte matchar - de vänds tillbaka</li>
+        <li>Hitta alla par för att vinna!</li>
+      </ul>
+
+      <p><strong class="text-white">🏆 Poängsystem:</strong></p>
+      <ul class="list-disc list-inside ml-4 space-y-2">
+        <li><span class="text-green-400">+100 poäng</span> per matchat par</li>
+        <li><span class="text-red-400">-10 poäng</span> per felaktigt försök</li>
+        <li><span class="text-yellow-400">Tidsbonus:</span>
+          <ul class="list-circle list-inside ml-6 mt-1">
+            <li>Under 1 min: +100p</li>
+            <li>Under 2 min: +50p</li>
+            <li>Under 3 min: +25p</li>
+          </ul>
+        </li>
+        <li><span class="text-purple-400">Perfect Game:</span> +200p om du använder minimalt antal försök! 🏆</li>
+      </ul>
+    </div>
+
+    <button
+      type="button"
+      id="howto-gotit"
+      class="mt-6 w-full px-4 py-2 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
+    >
+      Jag fattar – kör igång!
+    </button>
+  </div>
+</div>
    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
    <script src="js/utils.js"></script>
 <script src="js/data.js"></script>

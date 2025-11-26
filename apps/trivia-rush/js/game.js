@@ -349,8 +349,8 @@ function updateProgress() {
 
 
 
-
-
+// End the game
+function endGame() {
   // Clear timer
   if (state.timer) {
     clearInterval(state.timer);
@@ -425,7 +425,7 @@ function updateProgress() {
     "best-total-score"
   ).textContent = `${bestTotal} totalt`;
 
-
+}
 
 // Restart the game
 document.getElementById("btn-restart").addEventListener("click", () => {
