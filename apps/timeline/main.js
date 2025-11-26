@@ -288,3 +288,6 @@ document.addEventListener("difficulty:selected", async (e) => {
     setActiveButton("user");
   });
 });
+
+//Gömmer namnfältet för tillfället
+document.getElementById("name-input").style.display = "none";
