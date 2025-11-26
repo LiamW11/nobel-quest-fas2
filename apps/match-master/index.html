@@ -39,8 +39,7 @@
       <div id="cardGrid" class="game-board mb-6"></div>
 
       <!--GE UPP-->
-
-      <button id="giveUpBtn" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold w-full max-w-xs mx-auto block mt-4 border border-white/20">
+<button id="giveUpBtn" class="px-6 py-3 rounded-xl bg-red-900/80 hover:bg-red-800/90 text-white font-semibold w-full mx-auto block mt-4 border border-red-700/40 transition">
   Ge upp
 </button>
     </div>
@@ -155,6 +154,42 @@
     >
       Jag fattar – kör igång!
     </button>
+  </div>
+ </div>
+
+   <!-- GE UPP BEKRÄFTELSE MODAL -->
+   <div
+  id="giveup-overlay"
+  class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
+>
+  <div
+    class="bg-[#142845] text-white max-w-md w-full mx-4 rounded-2xl p-6 relative shadow-2xl border border-red-900/30"
+  >
+    <h2 class="text-2xl font-semibold mb-4 text-center text-red-400">
+      Är du säker?
+    </h2>
+
+    <p class="text-gray-300 text-center mb-6">
+      Om du ger upp sparas inte dina poäng.<br>
+      Vill du verkligen avsluta spelet?
+    </p>
+
+    <div class="flex gap-3 justify-center">
+      <button
+        type="button"
+        id="giveup-cancel"
+        class="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold border border-white/20 transition"
+      >
+        Avbryt
+      </button>
+      <button
+        type="button"
+        id="giveup-confirm"
+        class="px-6 py-2.5 rounded-xl bg-red-900/80 hover:bg-red-800 text-white font-semibold border border-red-700/40 transition"
+      >
+        Ge upp
+      </button>
+    </div>
   </div>
 </div>
    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
