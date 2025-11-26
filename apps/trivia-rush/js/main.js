@@ -27,8 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Gå endast vidare om spelet faktiskt startade
       if (success) {
-        viewStart.classList.add("hidden");
-        viewQuiz.classList.remove("hidden");
+       if (success) {
+    document.getElementById("view-start").classList.add("hidden");
+    document.getElementById("view-quiz").classList.remove("hidden");
+}
+
       }
     });
   }

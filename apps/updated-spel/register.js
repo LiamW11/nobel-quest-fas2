@@ -1,19 +1,16 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+import { auth, db } from "./firebase-config.js";
+import { 
+    createUserWithEmailAndPassword,
+    setPersistence,
+    browserLocalPersistence 
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// Firebase konfiguration
-const firebaseConfig = {
-    apiKey: "AIzaSyD_rYe_EMMxlIQ1CLzVly9UtfVROLwawpQ",
-    authDomain: "te4-nobelquest.firebaseapp.com",
-    projectId: "te4-nobelquest",
-    storageBucket: "te4-nobelquest.firebasestorage.app",
-    messagingSenderId: "1067428082128",
-    appId: "1:1067428082128:web:a53068bd2ae98bb9c489d5"
-};
-
-// Initialisera Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+// Sätt persistence till LOCAL (håller användaren inloggad för evigt)
+setPersistence(auth, browserLocalPersistence)
+    .catch((error) => {
+        console.error("Kunde inte sätta persistence:", error);
+    });
 
 // DOM-element
 const form = document.getElementById("registerForm");
@@ -69,11 +66,38 @@ form.addEventListener("submit", async (e) => {
     registerBtn.textContent = "Registrerar...";
 
     try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        
+        // Kontrollera om det redan finns en ägare
+        const ownerRef = doc(db, "meta", "owner");
+        const ownerSnap = await getDoc(ownerRef);
+
+        if (ownerSnap.exists()) {
+            showError("Det finns redan ett konto. Du kan inte skapa fler.");
+            registerBtn.disabled = false;
+            registerBtn.textContent = "Registrera";
+            return;
+        }
+
+        // Skapa användare
+        const userCred = await createUserWithEmailAndPassword(auth, email, password);
+        const uid = userCred.user.uid;
+
+        // Spara som ägare
+        await setDoc(ownerRef, {
+            ownerUid: uid,
+            email: email,
+            createdAt: new Date()
+        });
+
+        // Spara användardata
+        await setDoc(doc(db, "users", uid), {
+            email: email,
+            createdAt: new Date()
+        });
+
         // Lyckad registrering
         alert("Konto skapat! Välkommen!");
-        window.location.href = "../apps/demo-game/menu.html";
+        window.location.href = "meny.html";
+        
     } catch (error) {
         // Visa felmeddelande
         showError(getErrorMessage(error.code));

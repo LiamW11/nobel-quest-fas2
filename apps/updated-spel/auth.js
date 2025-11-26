@@ -2,9 +2,17 @@ import { auth, db } from "./firebase-config.js";
 import { 
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword,
-    onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    onAuthStateChanged,
+    setPersistence,
+    browserLocalPersistence
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// Sätt persistence till LOCAL (håller användaren inloggad för evigt)
+setPersistence(auth, browserLocalPersistence)
+    .catch((error) => {
+        console.error("Kunde inte sätta persistence:", error);
+    });
 
 // 🔹 Login / skapa ägare
 export async function login() {
