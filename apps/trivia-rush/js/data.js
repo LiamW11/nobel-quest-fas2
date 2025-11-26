@@ -283,7 +283,7 @@ window.quizReady = new Promise(resolve => {
   fetch('nobel-data.json')
     .then(response => response.json())
     .then(data => {
-      console.log("Nobel data loaded:", data);
+
       allLaureates = data.laureates;
       generateQuizQuestions();
       resolve();

@@ -312,9 +312,9 @@ function playSound() {
 
   const audio = new Audio("sounds/ConfettiSound.mp3");
   audio.play().catch((err) => {
-    console.log("Kunde inte spela ljud:", err);
+    
   });
-  console.log("Ljud spelas nu");
+  
 }
 
 // End the game
@@ -411,18 +411,7 @@ document.getElementById("btn-restart").addEventListener("click", () => {
   if (intro) intro.classList.remove("hidden");
 });
 
-document.getElementById("muteButton").addEventListener("click", () => {});
-
-function muteSounds() {
-  const mediaElements = document.querySelectorAll("audio, video");
-  mediaElements.forEach((media) => {
-    media.muted = !media.muted;
-    console.log(`Media muted: ${media.muted}`);
-  });
-}
 
 // Expose startGame for main.js
 window.startGame = startGame;
-
-console.log("game.js ready!");
 
