@@ -8,28 +8,28 @@
     <link rel="stylesheet" href="style.css" />
  </head>
 <body class="min-h-screen flex flex-col bg-gradient-to-br from-[#0b1e39] to-[#142845]">
- <header class="header-brand  text-[#142844] p-4 flex justify-between items-center mb-2 relative">
-  <button onclick="window.history.back()">← Backa</button>
-  <h1 id="page-title">Nobel Match Master</h1>
-
-  <!-- Detta är knappen som ska öppna dropdownen -->
-  <button onclick="toggleMenu()">☰</button>
-
-  <!-- Dropdown placerad i headern och kopplad till knappen ovan -->
-<div id="dropdownMenu" class="absolute right-4 top-full hidden bg-[#C5A572] rounded-xl shadow-xl mt-2 p-2 space-y-1">
-  <a href="help.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
-  <a href="leaderboard.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
-  <a href="menu.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
-  <a href="information.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
-  <a href="development.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
-</div>
-</header>
+  <header class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative sticky top-0 z-[100] shadow-lg">
+    <button onclick="window.history.back()" class="hover:text-[#002952] transition">← Backa</button>
+    <h1 id="page-title" class="text-xl font-bold">Nobel Match Master</h1>
+    
+    <!-- Detta är knappen som ska öppna dropdownen -->
+    <button onclick="toggleMenu()" class="text-2xl hover:text-[#002952] transition">☰</button>
+    
+    <!-- Dropdown placerad i headern och kopplad till knappen ovan -->
+    <div id="dropdownMenu" class="absolute right-4 top-full hidden bg-[#C5A572] rounded-xl shadow-xl mt-2 p-2 space-y-1 z-50">
+      <a href="help.html" class="block px-4 py-2 rounded-lg hover:bg-white/20 text-[#142844] transition">Instruktioner</a>
+      <a href="leaderboard.html" class="block px-4 py-2 rounded-lg hover:bg-white/20 text-[#142844] transition">Topplista</a>
+      <a href="menu.html" class="block px-4 py-2 rounded-lg hover:bg-white/20 text-[#142844] transition">Huvudmeny</a>
+      <a href="information.html" class="block px-4 py-2 rounded-lg hover:bg-white/20 text-[#142844] transition">Information</a>
+      <a href="development.html" class="block px-4 py-2 rounded-lg hover:bg-white/20 text-[#142844] transition">Utvecklingsteam</a>
+    </div>
+  </header>
 <div class="container mx-auto px-4 max-w-4xl flex-1 py-4">
 
     <!--SPELSKÄRM-->
     <div id="gameScreen">
 
-     <div class="bg-[#142845]/95 px-4 py-4 rounded-xl mb-4 ring-1 ring-white/10 shadow-xl">
+     <div class="bg-[#142845]/95 px-4 py-4 rounded-xl mb-4 ring-1 ring-white/10 shadow-xl sticky top-[60px] z-30 backdrop-blur-sm">
   <div class="flex justify-around items-center gap-4 text-center">
     <div>
       <div class="text-white/80 text-sm">Tid</div>
