@@ -1403,15 +1403,39 @@ body {
   }
 }
 
+.Smallfire {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  overflow: visible;
+  z-index: 5;
+}
+
+.Mediumfire {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 35px;
+  height: 35px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  overflow: visible;
+  z-index: 5;
+}
+
 .fire {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 40px;       /* bigger */
-  height: 40px;      /* bigger */
+  width: 40px;
+  height: 40px;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  overflow: visible; /* IMPORTANT */
+  overflow: visible;
   z-index: 5;
 }
 

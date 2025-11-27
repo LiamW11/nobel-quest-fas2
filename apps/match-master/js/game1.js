@@ -95,7 +95,7 @@ function checkMatch() {
     gameSound.match.play().catch((e) => console.log("Ljud"));
 
     renderCards();
-    document.getElementById("score").textContent = game.score;
+    document.getElementById("score").textContent = game.score + "pts";
     document.getElementById(
       "matches"
     ).textContent = `${game.matches}/${game.pairsNeeded}`;
@@ -113,7 +113,7 @@ function checkMatch() {
   } else {
     // ❌ INGEN MATCH
     game.score -= 10;
-    document.getElementById("score").textContent = game.score;
+    document.getElementById("score").textContent = game.score + " pts";
 
     game.isFlipping = true;
 
@@ -166,7 +166,7 @@ async function startGame() {
   game.timer = 0;
   game.score = 0;
   game.gaveUp = false;
-  document.getElementById("score").textContent = 0;
+  document.getElementById("score").textContent = "0 pts";
   document.getElementById("timer").textContent = "0:00";
 
   console.log("🎨 Renderar kort...");

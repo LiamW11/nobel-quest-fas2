@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registera dig - NobelQuest</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrera dig - NobelQuest</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#0b1e39] text-white min-h-screen flex items-center justify-center p-4">
@@ -59,10 +59,122 @@
         <p class="text-center text-gray-400 text-sm mt-6">
             Skriv bara din e-post så sköter vi resten!
         </p>
+  </head>
+  <body
+    class="bg-[#0b1e39] text-white min-h-screen flex items-center justify-center p-4"
+  >
+    <div class="max-w-md w-full">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-[#C5A572] mb-2">🏆 Nobel Quest</h1>
+        <p class="text-gray-400 pt-2">Registrera dig för att börja spela</p>
+      </div>
+
+      <!-- Registreringsformulär -->
+      <div class="bg-[#142844] rounded-lg shadow-lg p-8">
+        <form id="registerForm">
+          <div class="mb-4">
+            <label
+              for="email"
+              class="block text-[#C5A572] font-semibold mb-4 text-center"
+            >
+              OBS! Skriv in ditt edu mail - inte privata!
+            </label>
+            <input
+              type="email"
+              id="email"
+              placeholder="...@edu.huddinge.se"
+              required
+              autocomplete="email"
+              class="w-full px-4 py-3 bg-[#0b1e39] border-2 border-[#C5A572] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#d4b882] transition"
+            />
+          </div>
+
+          <div class="text-center pb-4 text-[#C5A572] font-semibold">
+            <label for="klass">Välj din klass:</label>
+            <select
+              name="klass"
+              required
+              class="bg-[#0b1e39] text-[#C5A572] rounded-lg ml-2 px-2 py-1"
+            >
+            <option value="Placeholder" class="hidden"></option>
+
+              <optgroup label="Årskurs 1">
+                <option value="TETEES25">TETEES25</option>
+                <option value="TEIN25">TEIN25</option>
+                <option value="SABE25">SABE25</option>
+                <option value="SASAESME25">SASAESME25</option>
+                <option value="NANAA25">NANAA25</option>
+                <option value="NASAES25">NASAES25</option>
+                <option value="EKEKES25">EKEKES25</option>
+                <option value="EKJU25">EKJU25</option>
+                <option value="EE25">EE25</option>
+              </optgroup>
+
+              <optgroup label="Årskurs 2">
+                <option value="TETEES24">TETEES24</option>
+                <option value="TEIN24">TEIN24</option>
+                <option value="SABE24">SABE24</option>
+                <option value="SASAESME24">SASAESME24</option>
+                <option value="NANASAES24">NANASAES24</option>
+                <option value="NASA24">NASA24</option>
+                <option value="EKEK24">EKEK24</option>
+                <option value="EKJU24">EKJU24</option>
+                <option value="EE24">EE24</option>
+              </optgroup>
+              
+              <optgroup label="Årskurs 3">
+                <option value="TETEMU23">TETEMU23</option>
+                <option value="TEIN23">TEIN23</option>
+                <option value="SABE23">SABE23</option>
+                <option value="SASAMUME23">SASAMUME23</option>
+                <option value="NANASAMU23">NANASAMU23</option>
+                <option value="NANAA23">NANAA23</option>
+                <option value="EKEK23">EKEK23</option>
+                <option value="EKJU23">EKJU23</option>
+                <option value="EE23">EE23</option>
+              </optgroup>
+
+              <optgroup label="Sprint">
+                <option value="SPRINT1">SPRINT 1</option>
+                <option value="SPRINT23">SPRINT 23</option>
+                <option value="SPRINT4">SPRINT 4</option>
+                <option value="SPRINT5">SPRINT 5</option>
+              </optgroup>
+
+              <optgroup label="AGY">
+                <option value="EV22">EV22</option>
+                <option value="EV23">EV23</option>
+                <option value="EV24">EV24</option>
+                <option value="EV25">EV25</option>
+              </optgroup>
+
+              <optgroup label="Övrigt">
+                <option value="T4">T4</option>
+              </optgroup>
+            </select>
+          </div>
+          <button
+            type="submit"
+            id="saveEmail"
+            class="w-full bg-[#C5A572] hover:bg-[#d4b882] text-[#0b1e39] font-bold py-3 px-4 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Registrera och börja spela
+          </button>
+        </form>
+
+        <!-- Meddelande -->
+        <div id="message" class="mt-4 p-3 rounded-lg text-center hidden"></div>
+      </div>
+
+      <!-- Info text -->
+      <p class="text-center text-gray-400 text-sm mt-6">
+        Är du redo att bli en Nobel Quest-mästare?
+      </p>
     </div>
 
     <script src="register.js"></script>
-    
+
     <style>
         .message.error {
             background-color: rgba(239, 68, 68, 0.1);
@@ -160,6 +272,17 @@
                 box-shadow: 0 0 5px currentColor;
             }
         }
+      .message.error {
+        background-color: rgba(239, 68, 68, 0.1);
+        border: 1px solid #ef4444;
+        color: #fca5a5;
+      }
+
+      .message.success {
+        background-color: rgba(34, 197, 94, 0.1);
+        border: 1px solid #22c55e;
+        color: #86efac;
+      }
     </style>
-</body>
+  </body>
 </html>
