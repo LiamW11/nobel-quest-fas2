@@ -1,47 +1,38 @@
-// Authentication helper - checks if user is logged in
+import { auth } from './firebase-config.js'; 
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
-function loginUser() {
-  const username = document.getElementById("username-input").value;
-  if (username.trim()) {
-    localStorage.setItem("username", username);
-    location.reload(); // Reload page to show game content
-  }
+//kontrollera om användaren är inloggad
+export function requireAuth(redirectTo = 'register.html') {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Användaren är inloggad
+        console.log("Användaren är inloggad:", user.uid);
+        resolve(user);
+      } else {
+        // Användaren är inte inloggad, omdirigera till inloggningssidan
+        console.log("Användaren är inte inloggad");
+        window.location.href = redirectURl;
+        reject(new Error("Användaren är inte inloggad"));
+      }
+    });
+  });
 }
 
-function logoutUser() {
-  localStorage.removeItem("username");
-  window.location.href = "menu.html";
+export function getUserEmail() {
+  return localStorage.getItem('userEmail');
 }
 
-function getUsername() {
-  return localStorage.getItem("username");
+export function isUserLoggedIn() {
+  return localStorage.getItem('isLoggedIn') === 'true';
 }
 
-function isLoggedIn() {
-  return !!localStorage.getItem("username");
-}
-
-// Check authentication and show/hide game content
-async function checkAuth() {
-  const username = getUsername();
-
-  if (username) {
-    // User is logged in - show game
-    const gameContent = document.getElementById("game-content");
-    if (gameContent) {
-      gameContent.classList.remove("hidden");
+export function initAutoAuth() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userEmail', user.email);
+      console.log("Användaren är aktiv");
     }
-    const playerName = document.getElementById("player-name");
-    if (playerName) {
-      playerName.textContent = username;
-    }
-  } else {
-    // User not logged in - show login component
-    const loginContainer = document.getElementById("login-container");
-    if (loginContainer) {
-      const response = await fetch("/shared/components/login.html");
-      const html = await response.text();
-      loginContainer.innerHTML = html;
-    }
-  }
+  });
 }
