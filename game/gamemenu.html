@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nobel Timeline | Nobel Quest</title>
+  <meta name="description" content="Sort Nobel Prize events in chronological order">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="/firebase-config.js"></script>
+
+  <!-- Shared modules -->
+  <script src="../../shared/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/repository.js"></script>
+  <script src="../../shared/js/ui-components.js"></script>
+  <script src="../../shared/js/utils.js"></script>
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="../../shared/css/shared.css">
+
+  <!-- Game-specific styles -->
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen">
+
+  <!-- Auth Section -->
+  <div id="auth-section" class="container mx-auto p-4 flex items-center justify-center min-h-screen">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-xl p-8">
+      <h1 class="text-4xl font-bold mb-2 nobel-text-gradient">Nobel Timeline</h1>
+      <p class="text-gray-600 mb-6">Sort Nobel Prize events chronologically</p>
+
+      <div class="mb-6">
+        <img src="https://prv.imagevault.media/publishedmedia/235bqscnu2y0fyep97xq/nobel-2166136_1280.jpg" 
+             alt="Timeline Game" 
+             class="w-full rounded-lg">
+      </div>
+
+      <button id="login-btn" class="nobel-btn nobel-btn-primary w-full text-lg">
+        🔐 Login with Google to Play
+      </button>
+
+      <p class="text-xs text-gray-500 mt-4 text-center">
+        Part of the Nobel Quest series
+      </p>
+    </div>
+  </div>
+
+  <!-- Game Section -->
+  <div id="game-section" class=" container mx-auto p-4">
+
+    <!-- Header -->
+    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Timeline</h1>
+          <p class="text-sm text-gray-600">Welcome<span id="user-name" class="font-semibold"></span>!</p>
+        </div>
+        <button id="logout-btn" class="text-sm text-red-600 hover:text-red-800 font-medium">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- Game Controls -->
+    <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex gap-4 justify-center">
+        <button id="start-btn" class="nobel-btn nobel-btn-primary">
+          ▶️ Start Game
+        </button>
+        <button id="reset-btn" class="nobel-btn nobel-btn-secondary" disabled>
+          🔄 Reset
+        </button>
+      </div>
+    </div>
+
+    <!-- Game Container -->
+    <div id="game-container" class="bg-white rounded-lg shadow-lg p-6 mb-6">
+      <p class="text-center text-gray-500">Click "Start Game" to begin!</p>
+    </div>
+
+      <!-- Game Section -->
+  <div id="game-section" class=" container mx-auto p-4">
+
+    <!-- Header memory -->
+    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Memory</h1>
+          <p class="text-sm text-gray-600">Welcome<span id="user-name" class="font-semibold"></span>!</p>
+        </div>
+        <button id="logout-btn" class="text-sm text-red-600 hover:text-red-800 font-medium">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- Game Controls memory -->
+    <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex gap-4 justify-center">
+        <button id="start-btn" class="nobel-btn nobel-btn-primary">
+          ▶️ Start Game
+        </button>
+        <button id="reset-btn" class="nobel-btn nobel-btn-secondary" disabled>
+          🔄 Reset
+        </button>
+      </div>
+    </div>
+
+    <!-- Game Container memory -->
+    <div id="game-container" class="bg-white rounded-lg shadow-lg p-6 mb-6">
+      <p class="text-center text-gray-500">Click "Start Game" to begin!</p>
+    </div>
+
+    <!-- Leaderboard trivia -->
+    <div id="leaderboard"></div>
+  </div>
+
+    <!-- Game Section trivia -->
+  <div id="game-section" class=" container mx-auto p-4">
+
+    <!-- Header trivia -->
+    <header class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-2xl font-bold nobel-text-gradient">Nobel Trivia</h1>
+          <p class="text-sm text-gray-600">Welcome<span id="user-name" class="font-semibold"></span>!</p>
+        </div>
+        <button id="logout-btn" class="text-sm text-red-600 hover:text-red-800 font-medium">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- Game Controls trivia -->
+    <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+      <div class="flex gap-4 justify-center">
+        <button id="start-btn" class="nobel-btn nobel-btn-primary">
+          ▶️ Start Game
+        </button>
+        <button id="reset-btn" class="nobel-btn nobel-btn-secondary" disabled>
+          🔄 Reset
+        </button>
+      </div>
+    </div>
+
+    <!-- Game Container trivia -->
+    <div id="game-container" class="bg-white rounded-lg shadow-lg p-6 mb-6">
+      <p class="text-center text-gray-500">Click "Start Game" to begin!</p>
+    </div>
+
+  <!-- Game Scripts -->
+  <script src="js/game.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/config.js"></script>
+
+    <script src="/shared/js/load-components.js"></script>
+  </body>
+</html>
+
+
+<script type="module" src="./shared/firebase.js"></script>
+<script type="module" src="./login.js"></script>

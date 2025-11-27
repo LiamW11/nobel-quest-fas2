@@ -1,0 +1,1 @@
+Register test --> game --> apps
