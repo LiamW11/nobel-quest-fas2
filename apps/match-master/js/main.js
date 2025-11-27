@@ -13,14 +13,6 @@ window.addEventListener("DOMContentLoaded", () => {
   // Starta spelet direkt när sidan laddas
   startGame();
 
-  // Koppla "Ge upp"-knappen
-  document.getElementById("giveUpBtn").onclick = () => {
-    game.gaveUp = true;
-    stopTimer();
-    showEndScreen();
-  };
-});
-
   const helpLink = document.getElementById("help-link");
   const howtoOverlay = document.getElementById("howto-overlay");
   const howtoClose = document.getElementById("howto-close");
@@ -53,4 +45,41 @@ window.addEventListener("DOMContentLoaded", () => {
   if (howtoGotIt) {
     howtoGotIt.addEventListener("click", closeHowTo);
   }
+ 
+  // ========== GE UPP MODAL FUNKTIONALITET ==========
+  
+  const giveupOverlay = document.getElementById("giveup-overlay");
+  const giveupCancel = document.getElementById("giveup-cancel");
+  const giveupConfirm = document.getElementById("giveup-confirm");
 
+  // Funktion för att öppna ge upp-modal
+  function openGiveUpModal() {
+    if (!giveupOverlay) return;
+    giveupOverlay.classList.remove("hidden");
+  }
+
+  // Funktion för att stänga ge upp-modal
+  function closeGiveUpModal() {
+    if (!giveupOverlay) return;
+    giveupOverlay.classList.add("hidden");
+  }
+
+  // Koppla "Avbryt"-knappen
+  if (giveupCancel) {
+    giveupCancel.addEventListener("click", closeGiveUpModal);
+  }
+
+  // Koppla "Ge upp" (bekräfta)-knappen
+  if (giveupConfirm) {
+    giveupConfirm.addEventListener("click", () => {
+      closeGiveUpModal();
+      game.gaveUp = true;
+      stopTimer();
+      showEndScreen();
+   });
+  }
+  // Koppla "Ge upp"-knappen
+  document.getElementById("giveUpBtn").onclick = () => {
+    openGiveUpModal();
+  };
+});
