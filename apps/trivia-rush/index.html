@@ -27,7 +27,7 @@
 
     <!-- MAIN -->
     <main class="flex-1 flex items-center justify-center px-6 pb-12">
-      <div class="w-full max-w-2xl">
+      <div class="w-full max-w-2xl mx-auto">
         <!-- Panel -->
           
           <!-- STARTVY -->
@@ -114,7 +114,7 @@
             >
               Nästa
             </button>
-            <div class="mt-6"></div>
+            <div></div>
               <div class=" w-full h-2 bg-white/10 rounded-full overflow-hidden">
                 <div id="question-progress-bar" class="h-2 bg-[#C5A572] rounded-full" style="width: 0%"></div>
               </div>
@@ -122,55 +122,52 @@
           </section>
 
           <!-- RESULTAT -->
+          <section id="view-result"
+         class="hidden fixed inset-0 flex flex-col items-center justify-center text-center space-y-4 px-6">
+    
+    <!--Confetti animation-->
+    <div
+      id="confetti-wrapper"
+      class="z--10 absolute inset-0 pointer-events-none overflow-hidden"
+    >
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+    </div>
 
-          <section id="view-result" class="hidden text-center space-y-4">
-            <!--Confetti animation-->
-            <div
-              id="confetti-wrapper"
-              class="z--10 absolute inset-0 pointer-events-none overflow-hidden"
-            >
-              <div class="confetti"></div>
-              <div class="confetti"></div>
-              <div class="confetti"></div>
-              <div class="confetti"></div>
-              <div class="confetti"></div>
-              <div class="confetti"></div>
-              <div class="confetti"></div>
-              <div class="confetti"></div>
-              <div class="confetti"></div>
-              <div class="confetti"></div>
-            </div>
-            <h2 class="text-3xl font-bold text-[#C5A572]">Resultat</h2>
-            <div class="space-y-2">
-              <p
-                id="final-score"
-                class="text-white/90 text-lg font-semibold"
-              ></p>
-              <p id="final-time-score" class="text-[#C5A572] text-base"></p>
-              <p id="final-bonus-score" class="text-green-400 text-base"></p>
-              <p
-                id="final-total-score"
-                class="text-white text-xl font-bold border-t border-white/20 pt-2 mt-2"
-              ></p>
-            </div>
+    <h2 class="text-3xl font-bold text-[#C5A572]">Resultat</h2>
 
-            <p id="final-feedback" class="text-white/75 text-lg mt-4"></p>
+    <div class="space-y-2">
+      <p id="final-score" class="text-white/90 text-lg font-semibold"></p>
+      <p id="final-time-score" class="text-[#C5A572] text-base"></p>
+      <p id="final-bonus-score" class="text-green-400 text-base"></p>
+      <p id="final-total-score" class="text-white text-xl font-bold border-t border-white/20 pt-2 mt-2"></p>
+    </div>
 
-            <div
-              class="text-sm text-white/60 space-y-1 border-t border-white/10 pt-4 mt-4"
-            >
-              <p class="font-semibold text-white/80 mb-2">Bästa resultat:</p>
-              <p><span id="best-score">—</span></p>
-              <p><span id="best-time-score">—</span></p>
-              <p class="font-semibold"><span id="best-total-score">—</span></p>
-            </div>
-            <button
-              id="btn-restart"
-              class="w-full mt-2 px-6 py-3 rounded-lg bg-[#C5A572] hover:bg-[#b08f57] text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
-            >
-              Starta om
-            </button>
-          </section>
+    <p id="final-feedback" class="text-white/75 text-lg mt-4"></p>
+
+    <div class="text-sm text-white/60 space-y-1 border-t border-white/10 pt-4 mt-4">
+      <p class="font-semibold text-white/80 mb-2">Bästa resultat:</p>
+      <p><span id="best-score">—</span></p>
+      <p><span id="best-time-score">—</span></p>
+      <p class="font-semibold"><span id="best-total-score">—</span></p>
+    </div>
+
+    <button
+      id="btn-restart"
+      class="w-full mt-2 px-6 py-3 rounded-lg bg-[#C5A572] hover:bg-[#b08f57] text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
+    >
+      Starta om
+    </button>
+
+</section>
         </div>
       </div>
     </main>

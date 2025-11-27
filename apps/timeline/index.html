@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="starter-kit\styles.css" />
   </head>
 
-  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
-  <button onclick="window.history.back()">← Back</button>
-  <h1 id="page-title">Nobel Timeline</h1>
-  <button onclick="window.location.href='menu.html'">☰</button>
+  <header class="bg-blue-600 text-white p-4 flex items-center">
+  <button id="back-btn" class="text-[31px] float-left" onclick="window.history.back()">←</button>
+  <h1 id="page-title" class="text-center flex-grow" >Nobel Timeline</h1>
+  <button class="float-right text-[30px]" onclick="window.location.href='menu.html'">☰</button>
 </header>
 
   
@@ -101,7 +101,7 @@
 }
 
 .badge-gold{background:var(--gold); color:#fff; padding:2px 8px; border-radius:9999px; font-size:12px;}
-.restart-btn{background:var(--gold); padding:5px 8px; border-radius:5px; font-size:20px; box-shadow: 1px 2px 1px 1px #947c56;}
+.restart-btn{box-shadow: 1px 2px 1px 1px #947c56;}
 .ring-gold{box-shadow:0 0 0 3px var(--gold)inset;}
 .ring-correct{box-shadow:0 0 0 2px #16a34a inset; }
 .ring-wrong{box-shadow:0 0 0 2px #dc2626 inset;}
@@ -111,6 +111,10 @@
 
 details[open] .details-arrow {
   transform: rotate(180deg);
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 </style>
