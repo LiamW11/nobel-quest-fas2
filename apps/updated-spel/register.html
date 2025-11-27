@@ -7,9 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#0b1e39] text-white min-h-screen flex items-center justify-center p-4">
-    <div class="max-w-md w-full">
+<div class="max-w-md w-full relative">
+        <div class="christmas-lights">
+            <div class="wire"></div>
+            <div class="light light-red"></div>
+            <div class="light light-yellow"></div>
+            <div class="light light-blue"></div>
+            <div class="light light-green"></div>
+            <div class="light light-red"></div>
+            <div class="light light-yellow"></div>
+            <div class="light light-blue"></div>
+            <div class="light light-green"></div>
+        </div>
         <!-- Header -->
-        <div class="text-center mb-8">
+<div class="text-center mb-8 mt-12">
             <h1 class="text-4xl font-bold text-[#C5A572] mb-2">🏆 Nobel Quest</h1>
             <p class="text-gray-400">Registrera dig för att börja spela</p>
         </div>
@@ -63,6 +74,91 @@
             background-color: rgba(34, 197, 94, 0.1);
             border: 1px solid #22c55e;
             color: #86efac;
+        }
+        
+        .christmas-lights {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+
+        .wire {
+            position: absolute;
+            top: -70px;
+            left: 0;
+            right: 0;
+            height: 110px;
+            border-bottom: 3px solid #1f3a5f;
+            border-radius: 0 0 100% 100%;
+        }
+        
+        .light {
+            width: 12px;
+            height: 16px;
+            border-radius: 0 0 50% 50%;
+            position: relative;
+            box-shadow: 0 0 10px currentColor;
+            animation: glow 1.5s ease-in-out infinite;
+            z-index: 10;
+        }
+        .light:nth-child(2) { margin-top:10px;}
+        .light:nth-child(3) { margin-top:27px;}
+        .light:nth-child(4) { margin-top:35px;}
+        .light:nth-child(5) { margin-top:38px;}
+        .light:nth-child(6) { margin-top:38px;}
+        .light:nth-child(7) { margin-top:35px;}
+        .light:nth-child(8) { margin-top:27px;}
+        .light:nth-child(9) { margin-top:10px;}
+        
+
+        
+        .light::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: #2d4a6b;
+            border-radius: 50%;
+        }
+        
+        .light-red {
+            background: #ff4444;
+            color: #ff4444;
+            animation-delay: 0s;
+        }
+        
+        .light-yellow {
+            background: #ffdd44;
+            color: #ffdd44;
+            animation-delay: 0.3s;
+        }
+        .light-blue {
+            background: #4444ff;
+            color: #4444ff;
+            animation-delay: 0.6s;
+        }
+        .light-green {
+            background: #44ff44;
+            color: #44ff44;
+            animation-delay: 0.9s;
+        }
+        @keyframes glow {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 10px currentColor;
+            }
+            50% {
+                opacity: 0.3;
+                box-shadow: 0 0 5px currentColor;
+            }
         }
     </style>
 </body>
