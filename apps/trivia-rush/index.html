@@ -5,25 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Nobel Trivia Rush</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body class="min-h-screen bg-[#0b1e39] text-white flex flex-col">
     <!-- Header -->
 
-    <header
-      class="bg-blue-600 text-white p-4 flex justify-between items-center"
-    >
-      <button onclick="window.history.back()">← Back</button>
-      <h1 id="page-title">Nobel Quest</h1>
-      <button onclick="window.location.href='/menu.html'">☰</button>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+<header class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative">
+  <button onclick="window.history.back()">← Backa</button>
+  <h1 id="page-title">Nobel Trivia Rush</h1>
+
+  <!-- Detta är knappen som ska öppna dropdownen -->
+  <button onclick="toggleMenu()">☰</button>
+
+  <!-- Dropdown placerad i headern och kopplad till knappen ovan -->
+<div id="dropdownMenu" class="absolute right-4 top-full hidden bg-[#C5A572] rounded-xl shadow-xl mt-2 p-2 space-y-1">
+  <a href="help.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
+  <a href="leaderboard.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
+  <a href="menu.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
+  <a href="information.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
+  <a href="development.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet"
       />
-     <link rel="stylesheet" href="css/style.css" />
-    </header>
+</div>
+</header>
+
+<style>
+  :root {
+    --nobel-primary: #C5A572;
+  }
+
+  .header-brand {
+    background-color: var(--nobel-primary);
+  }
+</style>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("dropdownMenu").classList.toggle("hidden");
+  }
+</script>
+
+    
 
     <!-- MAIN -->
     <main class="flex-1 flex items-center justify-center px-6 pb-12">
@@ -172,30 +201,28 @@
       </div>
     </main>
 
-    <footer class="bg-gray-100 p-4 text-center text-sm mt-8">
-      <div class="mb-2">
-        <a
-          id="help-link"
-          href="help.html"
-          class="text-blue-600 hover:underline mx-2"
-          >How to Play</a
-        >
-        <a
-          id="leaderboard-link"
-          href="leaderboard.html"
-          class="text-blue-600 hover:underline mx-2"
-          >Leaderboard</a
-        >
-        <a
-          id="menu-link"
-          href="menu.html"
-          class="text-blue-600 hover:underline mx-2"
-          >Main Menu</a
-        >
-        <span id="user-status"></span>
-      </div>
-      <p>&copy; 2025 Nobel Quest</p>
-    </footer>
+   
+    <footer class="footer-brand p-4 text-center text-sm mt-8">
+  <div class="mb-2">
+    <a id="help-link" href="help.html" class="text-[#142844] hover:underline mx-2">Instruktioner</a>
+    <a id="leaderboard-link" href="leaderboard.html" class="text-[#142844] hover:underline mx-2">Topplista</a>
+    <a id="menu-link" href="menu.html" class="text-[#142844] hover:underline mx-2">Huvudmeny</a>
+    <a id="information-link" href="information.html" class="text-[#142844] hover:underline mx-2">Information</a>
+    <span id="user-status"></span>
+  </div>
+  <p class="text-[#142844]">&copy; 2025 Nobel Quest</p>
+</footer>
+
+<style>
+  /* Nobel Quest Branding */
+  :root {
+    --nobel-secondary: #C5A572;
+  }
+.footer-brand {
+  background-color: var(--nobel-secondary);
+  color: white;
+}
+</style>
 
 <!-- HOW TO PLAY MODAL -->
 <div

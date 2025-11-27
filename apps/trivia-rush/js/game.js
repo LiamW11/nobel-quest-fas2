@@ -265,6 +265,7 @@ function checkAnswer(selected) {
     state.streak++;
 
     if (state.streak == 1) {
+      console.log("First streak achieved!");
   const streakBox = document.getElementById("streak-box");
   streakBox.innerHTML = `
     <div id="streak-pill"

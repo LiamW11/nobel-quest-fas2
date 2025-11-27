@@ -271,3 +271,16 @@
     box-shadow: 0 10px 30px rgba(197, 165, 114, 0.8), 0 0 40px rgba(212, 184, 140, 0.4);
   }
 }
+
+  :root {
+  --nobel-primary: #002952;  
+  --nobel-secondary: #C5A572;
+}
+.footer-brand {
+  background-color: var(--nobel-secondary);
+  color: white;
+}
+  .header-brand {
+  background-color: var(--nobel-secondary);
+  color: #142844;
+}

@@ -6,15 +6,24 @@
     <title>Nobel Match Master</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="min-h-screen flex flex-col" style="background-color: #0b1e39;">
-    <header
-      class="bg-blue-600 text-white p-4 flex justify-between items-center sticky top-0 z-[100] shadow-lg"
-    >
-      <button onclick="window.history.back()">← Back</button>
-      <h1 id="page-title">Nobel Match Master</h1>
-      <button onclick="window.location.href='menu.html'">☰</button>
-    </header>
+</head>
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-[#0b1e39] to-[#142845]">
+  <header class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative sticky top-0 z-[100] shadow-lg">
+    <button onclick="window.history.back()" class="hover:text-[#002952] transition">← Backa</button>
+    <h1 id="page-title" class="text-xl font-bold">Nobel Match Master</h1>
+    
+    <!-- Detta är knappen som ska öppna dropdownen -->
+    <button onclick="toggleMenu()" class="text-2xl hover:text-[#002952] transition">☰</button>
+    
+    <!-- Dropdown placerad i headern och kopplad till knappen ovan -->
+    <div id="dropdownMenu" class="absolute right-4 top-full hidden bg-[#C5A572] rounded-xl shadow-xl mt-2 p-2 space-y-1 z-50">
+      <a href="help.html" class="block px-4 py-2 rounded-lg hover:bg-white/20 text-[#142844] transition">Instruktioner</a>
+      <a href="leaderboard.html" class="block px-4 py-2 rounded-lg hover:bg-white/20 text-[#142844] transition">Topplista</a>
+      <a href="menu.html" class="block px-4 py-2 rounded-lg hover:bg-white/20 text-[#142844] transition">Huvudmeny</a>
+      <a href="information.html" class="block px-4 py-2 rounded-lg hover:bg-white/20 text-[#142844] transition">Information</a>
+      <a href="development.html" class="block px-4 py-2 rounded-lg hover:bg-white/20 text-[#142844] transition">Utvecklingsteam</a>
+    </div>
+  </header>
 <div class="container mx-auto px-4 max-w-4xl flex-1 py-4">
 
     <!--SPELSKÄRM-->
@@ -71,29 +80,16 @@
 </div>
     </div>
 </div>
-    <footer class="bg-gray-100 p-4 text-center text-sm mt-auto">
-      <div class="mb-2">
-        <a
-          id="help-link"
-          href="#"
-          class="text-blue-600 hover:underline mx-2"
-          >How to Play</a
-        >
-        <a
-          id="leaderboard-link"
-          href="leaderboard.html"
-          class="text-blue-600 hover:underline mx-2"
-          >Leaderboard</a
-        >
-        <a
-          id="menu-link"
-          href="menu.html"
-          class="text-blue-600 hover:underline mx-2"
-          >Main Menu</a
-        >
-      </div>
-      <p>&copy; 2025 Nobel Quest</p>
-    </footer>
+    <footer class="footer-brand p-4 text-center text-sm mt-8">
+  <div class="mb-2">
+    <a id="help-link" href="#" class="text-[#142844] hover:underline mx-2">Instruktioner</a>
+    <a id="leaderboard-link" href="leaderboard.html" class="text-[#142844] hover:underline mx-2">Topplista</a>
+    <a id="menu-link" href="menu.html" class="text-[#142844] hover:underline mx-2">Huvudmeny</a>
+    <a id="information-link" href="information.html" class="text-[#142844] hover:underline mx-2">Information</a>
+    <span id="user-status"></span>
+  </div>
+  <p class="text-[#142844]">&copy; 2025 Nobel Quest</p>
+</footer>
 
    <div
   id="howto-overlay"
@@ -189,6 +185,11 @@
     </div>
   </div>
 </div>
+<script>
+  function toggleMenu() {
+    document.getElementById("dropdownMenu").classList.toggle("hidden");
+  }
+</script>
    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
    <script src="js/utils.js"></script>
 <script src="js/data.js"></script>

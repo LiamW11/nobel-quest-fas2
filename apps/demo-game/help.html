@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Play</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-[#0b1e39] text-[#C5A572]" data-page-title="Instruktioner">
+    <div id="app-header"></div>
+
+        <!-- DROPDOWN -->
+     <script>
+     function toggleMenu() {
+      document.getElementById("dropdownMenu").classList.toggle("hidden");
+      }
+      </script>
+
+      <!-- HALVGRÅ BAKGRUND STYLING -->
+      <div class="max-w-2xl mx-auto p-4">
+      <div class="mb-4 text-[#C5A572]">
+      </div>
+      <div class="bg-[#142844] p-6 rounded-lg shadow">
+
+                    <!-- KNAPPAR -->
+            <button id="btn-Max" onclick="toggleInfo('Max')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Max Rubinsson</div>
+            </button>
+
+            <button id="btn-Eylul" onclick="toggleInfo('Eylul')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Eylul Uzel</div>
+            </button>
+
+            <button id="btn-Melvin" onclick="toggleInfo('Melvin')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Melvin Stenholm</div>
+            </button>
+
+            <button id="btn-Malte" onclick="toggleInfo('Malte')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Malte Mohr</div>
+            </button>
+
+            <button id="btn-Oskar" onclick="toggleInfo('Oskar')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Oskar Sobala</div>
+            </button>
+
+            <button id="btn-Liam" onclick="toggleInfo('Liam')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Liam Wiklund</div>
+            </button>
+
+            <button id="btn-Theodor" onclick="toggleInfo('Theodor')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Theodor Landell</div>
+            </button>
+
+            <button id="btn-Jesper" onclick="toggleInfo('Jesper')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Jesper Lundholm</div>
+            </button>
+
+            <button id="btn-Christian" onclick="toggleInfo('Christian')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Christian Eriksson</div>
+            </button>
+
+            <button id="btn-Arthur" onclick="toggleInfo('Arthur')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Arthur Brobäck</div>
+            </button>
+
+            <button id="btn-Jonas" onclick="toggleInfo('Jonas')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Jonas Garbuzas</div>
+            </button>
+
+            <button id="btn-Michael" onclick="toggleInfo('Michael')" class="dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Michael Herkommer</div>
+            </button>
+
+            <div id ="kontakta-Teamet" class="dev-btn max-w-2xl p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
+                <h2 class="mb-4 font-bold">Kontakta teamet:</h2>
+                <ol class="space-y-2">
+                    <li>Email: NobelQuestContactTE4@gmail.com</li>
+                </ol>
+            </div>
+        </header>
+
+        <!-- DOLDA INFO-RUTOR -->
+        <div id="info-Max" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left"
+             onclick="toggleInfo('Max')">
+            <div class="font-bold text-xl mb-2">Max Rubinsson</div>
+            <div>
+            Befattning: Lead Frontend Developer<br>
+            Team: Platform <br>
+            Ålder: 19 <br>
+            Github: Maxrub06<br>
+            LinkedIn: <a href="https://www.linkedin.com/in/max-edvin-rubinsson-563084268/" target="_blank" class="underline hover:text-[#0b1e39]">Max Rubinsson</a>
+        </div>
+        </div>
+
+    <!-- GAME-SPECIFIC CONTENT: Match Master -->
+    <div class="mb-6 max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
+      <h2 class="text-2xl font-bold mb-4">Match Master - Spelinstruktioner</h2>
+      <ol class="list-decimal ml-6">
+        <li>Du får åtta nobelpristagare i en slumpad lista.</li>
+        <li>Ordna dem så att den som fick priset tidigast hamnar högst och den som fick senast hamnar längst ned.</li>
+        <li>Poängberäkning: +100 per rätt, -25 per fel och (tid kvar)/100.</li>
+      </ol>
+    </div>
+
+        <!-- GAME-SPECIFIC CONTENT: Timeline -->
+    <div class="mb-6 max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
+      <h2 class="text-2xl font-bold mb-4">Timeline - Spelinstruktioner</h2>
+      <ol class="list-decimal ml-6">
+        <li>Starta spelet.</li>
+        <li>Matcha nobelpristagaren med rätt kategori.</li>
+        <li>Vinn spelet!</li>
+      </ol>
+    </div>
+    
+        <!-- GAME-SPECIFIC CONTENT: Trivia Rush -->
+    <div class="max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
+      <h2 class="text-2xl font-bold mb-4">Trivia Rush - Spelinstruktioner</h2>
+      <ol class="list-decimal ml-6">
+        <li>Välj en eller flera kategorier (t.ex. fysik, medicin, litteratur).</li>
+        <li>Klicka på Starta Quiz för att börja.</li>
+        <li>Du får 10 frågor om Nobelpriset och pristagare.</li>
+        <li>Du har 15 sekunder per fråga. Svara så snabbt och rätt du kan för att samla poäng.</li>
+        <li>Rätt svar ger poäng + tidspoäng. Flera rätt i rad ger en streak-bonus.</li>
+        <li>När quizet är klart ser du din totalpoäng och kan jämföra med ditt bästa resultat – och spela igen.</li>
+      </ol>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div id="app-footer"></div>
+
+    <script src="/shared/js/load-components.js"></script>
+    <script src="/shared/js/auth-check.js"></script>
+  </body>
+</html>
