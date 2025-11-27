@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!isInAppFolder) {
     // On menu page - link to overview pages
-    document.getElementById("help-link").href = "/help.html";
-    document.getElementById("leaderboard-link").href = "/leaderboard.html";
+    document.getElementById("help-link").href = "help.html";
+    document.getElementById("leaderboard-link").href = "leaderboard.html";
   }
   // If in app folder, links stay as "help.html" and "leaderboard.html" (relative)
 
