@@ -107,33 +107,26 @@ document.addEventListener("difficulty:selected", async (e) => {
     Extrapoäng baserat på tid: ${gameState.timeBonus}
     </p>
 
-        <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
       <button
         id="again"
-        class="text-[#002952] hover:bg-[#A38A5F] py-4 px-6 mb-2 text-base restart-btn"
+        class="bg-[#C5A572] text-[#002952] hover:bg-[#A38A5F] mb-2 text-xl text-base font-bold py-2 px-4 rounded-lg restart-btn"
       >
         Spela igen
       </button>
-    </div>
 
     </div>
 
- <div class="flex flex-row justify-between items-center w-full max-w-3xl mx-auto mt-4 pb-2">
+ <div class="flex flex-row justify-between items-center w-full max-w-3xl mx-auto mt-4 pb-2 gap-2">
   <button
     id="btn-user-order"
-    class="bg-[#C5A572] text-[#002952] py-2 px-4 rounded-lg text-sm font-semibold"
+    class="bg-[#C5A572] text-[#002952] py-2 px-4 w-1/2 rounded-lg text-sm font-semibold"
   >
     Din ordning
   </button>
 
-    <h3 id="order-title" 
-    class="text-xl text-white font-bold text-center mb-2">
-     Din ordning
-     </h3>
-
   <button
     id="btn-correct-order"
-    class="bg-transparent text-white border border-[#C5A572] py-2 px-4 rounded-lg text-sm font-semibold"
+    class="bg-transparent text-white border border-[#C5A572] py-2 px-4 w-1/2 rounded-lg text-sm font-semibold"
   >
     Rätt ordning
   </button>
@@ -238,7 +231,6 @@ document.addEventListener("difficulty:selected", async (e) => {
         // visa DIN ordning
         userOrderEl.classList.remove("hidden");
         correctOrderEl.classList.add("hidden");
-        orderTitle.textContent = "Din ordning";
 
         // stil för aktiv/inaktiv knapp
         userOrderBtn.classList.add("bg-[#C5A572]", "text-[#002952]");
@@ -260,7 +252,6 @@ document.addEventListener("difficulty:selected", async (e) => {
         // visa RÄTT ordning
         correctOrderEl.classList.remove("hidden");
         userOrderEl.classList.add("hidden");
-        orderTitle.textContent = "Rätt ordning";
 
         correctOrderBtn.classList.add("bg-[#C5A572]", "text-[#002952]");
         correctOrderBtn.classList.remove(

@@ -56,6 +56,7 @@ export function renderStart(root) {
     btn.addEventListener("click", (e) => {
       const level = e.currentTarget.dataset.level;
       document.getElementById("nameInput").style.display = "none";
+      document.getElementById("back-btn").classList.add("invisible");
 
       document.dispatchEvent(
         new CustomEvent("difficulty:selected", { detail: { level } })
