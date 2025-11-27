@@ -56,6 +56,7 @@ export function renderStart(root) {
     btn.addEventListener("click", (e) => {
       const level = e.currentTarget.dataset.level;
       document.getElementById("nameInput").style.display = "none";
+      document.getElementById("back-btn").classList.add("invisible");
 
       document.dispatchEvent(
         new CustomEvent("difficulty:selected", { detail: { level } })
@@ -96,7 +97,7 @@ export function renderBoard(root, cards) {
   console.log(gameState.yearCorrect);
   root.innerHTML = `
 <section class="max-w-3xl mx-auto">
-  <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur pb-3 -mt-6">
+  <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur-sm pb-3 -mt-6 pt-3 sticky">
     <p id="timer" class="text-xl font-bold text-center text-white">
       Tid kvar:
     </p>

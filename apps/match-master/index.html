@@ -9,7 +9,7 @@
   </head>
   <body class="min-h-screen flex flex-col" style="background-color: #0b1e39;">
     <header
-      class="bg-blue-600 text-white p-4 flex justify-between items-center"
+      class="bg-blue-600 text-white p-4 flex justify-between items-center sticky top-0 z-[100] shadow-lg"
     >
       <button onclick="window.history.back()">← Back</button>
       <h1 id="page-title">Nobel Match Master</h1>
@@ -20,19 +20,16 @@
     <!--SPELSKÄRM-->
     <div id="gameScreen">
 
-     <div class="bg-[#142845]/95 px-4 py-4 rounded-xl mb-4 ring-1 ring-white/10 shadow-xl">
+     <div class="bg-[#142845]/95 px-4 py-4 rounded-xl mb-4 ring-1 ring-white/10 shadow-xl sticky top-[60px] z-30 backdrop-blur-sm">
   <div class="flex justify-around items-center gap-4 text-center">
     <div>
-      <div class="text-white/80 text-sm">Tid</div>
 <div id="timer" class="text-2xl font-bold text-[#C5A572]">0:00</div>
     </div>
     <div>
-      <div class="text-white/80 text-sm">Matchningar</div>
       <div id="matches" class="text-2xl font-bold text-[#C5A572]">0/6</div>
     </div>
     <div>
-      <div class="text-white/80 text-sm">Poäng</div>
-      <div id="score" class="text-2xl font-bold text-[#C5A572]">0</div>
+      <div id="score" class="text-2xl font-bold text-[#C5A572]">0 pts</div>
     </div>
   </div>
 </div>
