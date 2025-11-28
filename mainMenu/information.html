@@ -46,7 +46,7 @@
 
     <!-- KATEGORIKNAPP -->
      <div class="mb-4">
-      <button onclick="toggleCategoryMenu()" 
+      <button id="categoryButton" onclick="toggleCategoryMenu()" 
       class="text-[#0b1e39] rounded-lg font-bold">Kategorier ▼</button>
       <div id="categoryMenu" class="hidden mt-2 text-[#0b1e39] p-4 rounded-lg space-y-2">
         <button onclick="filterCategory('fysik')" class="block w-full text-left">Fysik</button>
@@ -130,21 +130,32 @@
 </div>
 </div>
 
-    <div id="app-footer"></div>
-
-    <script src="/shared/js/load-components.js"></script>
-    <script src="/shared/js/auth-check.js"></script>
+<!-- FOOTER -->
+ <div id="app-footer"></div>
+ 
+ <script src="/shared/js/load-components.js"></script>
+ <script src="/shared/js/auth-check.js"></script>
 
 <script>
 function toggleCategoryMenu() {
-  document.getElementById("categoryMenu").classList.toggle("hidden");
+  const menu = document.getElementById("categoryMenu");
+  const button = document.getElementById("categoryButton"); // du måste ge knappen detta id
+
+  menu.classList.toggle("hidden");
+
+  // PIL
+  if (menu.classList.contains("hidden")) {
+    button.innerHTML = "Kategorier ▼";
+  } else {
+    button.innerHTML = "Kategorier ▲";
+  }
 }
 
 function filterCategory(cat) {
-  // stäng menyn direkt
+  // STÄNG MENY
   document.getElementById("categoryMenu").classList.add("hidden");
 
-  // filtrera
+  // FILTER
   const items = document.querySelectorAll('li[data-cat]');
   items.forEach(li => {
     if (cat === 'alla' || li.dataset.cat === cat) {
@@ -155,7 +166,5 @@ function filterCategory(cat) {
   });
 }
 </script>
-
-
 </body>
 </html>
