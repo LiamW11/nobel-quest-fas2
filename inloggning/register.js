@@ -76,7 +76,7 @@ form.addEventListener("submit", async (e) => {
 
         // Omdirigera till meny-sidan efter en kort fördröjning
         setTimeout(() => {
-            window.location.href = "../game/menu.html";
+            window.location.href = "../mainMenu/menu.html";
         }, 1500);
 
     } catch (error) {
