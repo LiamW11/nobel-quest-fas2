@@ -54,7 +54,7 @@ export function renderStart(root) {
   root.querySelectorAll("[data-level]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const level = e.currentTarget.dataset.level;
-      document.getElementById("nameInput").style.display = "none";
+      
       document.getElementById("back-btn").classList.add("invisible");
 
       document.dispatchEvent(

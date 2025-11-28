@@ -58,8 +58,7 @@ document.addEventListener("difficulty:selected", async (e) => {
     saveLastScore({ score, correctCount, total: pool.length, ts: Date.now() });
 
     // hämta in namn från fältet ovanför spelet
-    const playerName =
-      document.getElementById("nameInput").value.trim() || "Anonym";
+    const playerName = "Anonym";
 
     // bygg upp ett resultatobjekt som sparas på leaderboarden
     const entry = {
