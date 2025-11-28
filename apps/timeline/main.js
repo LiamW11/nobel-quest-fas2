@@ -11,15 +11,13 @@ import { saveLastScore } from "./storage.js";
 import { gameState } from "./game2.js";
 import { startTimer } from "./game2.js";
 import { stopTimer } from "./game2.js";
-import { renderLeaderboard } from "./ui.js";
-import { addToLeaderboard } from "./storage.js";
+
 
 // huvudelementet där spelet ritas upp
 const app = document.getElementById("app");
 // visa startskärmen
 renderStart(app);
 // visa leaderboard direkt när sidan laddas
-renderLeaderboard();
 
 // ladda nobeldata i bakgrunden
 loadNobelData().then((list) => console.log("Antal pristagare:", list.length));
@@ -75,12 +73,6 @@ document.addEventListener("difficulty:selected", async (e) => {
     // stoppa timern nu när rundan är klar
     stopTimer();
 
-    // uppdatera leaderboarden och spara senaste resultatet
-    if (score > 0) {
-      addToLeaderboard(entry);
-      saveLastScore(entry);
-    }
-    renderLeaderboard();
 
     // skapa en snabb uppslagskarta från id till pristagare
     const laureateMap = {};
