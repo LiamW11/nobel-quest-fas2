@@ -58,8 +58,7 @@ document.addEventListener("difficulty:selected", async (e) => {
     saveLastScore({ score, correctCount, total: pool.length, ts: Date.now() });
 
     // hämta in namn från fältet ovanför spelet
-    const playerName =
-      document.getElementById("nameInput").value.trim() || "Anonym";
+    const playerName = "Anonym";
 
     // bygg upp ett resultatobjekt som sparas på leaderboarden
     const entry = {
@@ -81,7 +80,7 @@ document.addEventListener("difficulty:selected", async (e) => {
     // Bygg upp HTML för resultatskärmen
     let resultHTML = `
         <section class="max-w-3xl mx-auto">
-        <div class="text-center -mt-6">
+        <div class="text-center mt-1">
         <p class="text-white mb-1 text-2xl">
         Rätt: ${correctCount}/${pool.length} • 
         Poäng: <span class="score-display">${score}</span> • 

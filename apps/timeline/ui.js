@@ -8,7 +8,7 @@ export function renderStart(root) {
   root.innerHTML = `
   <section class="mx-auto max-w-2xl text-center">
     <div class="flex flex-col gap-4 items-center">
-      <button 
+      <button id="startButton"
         class="mt-2 py-4 text-base w-3/4 sm:w-2/3 md:w-1/2 rounded-lg bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952]" 
         data-level="play">
         Spela
@@ -23,8 +23,7 @@ export function renderStart(root) {
   </section>
    
   <div id="howToModal"
-    class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
-    aria-hidden="true">
+    class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
     <div class="bg-[#C5A572] text-[#002952] max-w-md w-11/12 rounded-lg shadow-2xl p-6 relative">
 
       <button id="closeHowTo" class="absolute top-3 right-4 text-2xl leading-none"
@@ -54,7 +53,7 @@ export function renderStart(root) {
   root.querySelectorAll("[data-level]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const level = e.currentTarget.dataset.level;
-      document.getElementById("nameInput").style.display = "none";
+      
       document.getElementById("back-btn").classList.add("invisible");
 
       document.dispatchEvent(
@@ -71,17 +70,21 @@ export function renderStart(root) {
 
   function openModal() {
     howToModal.classList.remove("hidden");
-    howToModal.setAttribute("aria-hidden", "false");
   }
 
   function closeModal() {
     howToModal.classList.add("hidden");
-    howToModal.setAttribute("aria-hidden", "true");
   }
 
   howToButton.addEventListener("click", openModal);
+  
   closeHowTo.addEventListener("click", closeModal);
-  okHowTo.addEventListener("click", closeModal);
+
+  okHowTo.addEventListener("click", () => {
+    closeModal();
+    document.getElementById("startButton").click();
+  }
+);
 
   // stäng om man klickar på overlay
   howToModal.addEventListener("click", (event) => {
@@ -96,7 +99,7 @@ export function renderBoard(root, cards) {
   console.log(gameState.yearCorrect);
   root.innerHTML = `
 <section class="max-w-3xl mx-auto">
-  <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur-sm pb-3 -mt-6 pt-3 sticky">
+  <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur-sm pb-3 pt-3 sticky">
     <p id="timer" class="text-xl font-bold text-center text-white">
       Tid kvar:
     </p>
