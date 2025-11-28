@@ -1,4 +1,4 @@
-import { auth, db } from './firebase-config.js';
+import { auth, db } from '../shared/firebase-config.js';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
@@ -76,7 +76,7 @@ form.addEventListener("submit", async (e) => {
 
         // Omdirigera till meny-sidan efter en kort fördröjning
         setTimeout(() => {
-            window.location.href = "../game/menu.html";
+            window.location.href = "../mainMenu/menu.html";
         }, 1500);
 
     } catch (error) {
