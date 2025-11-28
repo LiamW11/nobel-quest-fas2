@@ -9,56 +9,95 @@
   <body class="bg-[#0b1e39] text-[#C5A572]" data-page-title="Instruktioner">
     <div id="app-header"></div>
 
-        <!-- DROPDOWN -->
+    <div class="max-w-2xl mx-auto p-4">
+      <div class="bg-[#142844] p-6 rounded-lg shadow">
+
+      <!-- DROPDOWN -->
      <script>
      function toggleMenu() {
       document.getElementById("dropdownMenu").classList.toggle("hidden");
       }
       </script>
 
-      <!-- HALVGRÅ BAKGRUND STYLING -->
-      <div class="max-w-2xl mx-auto p-4">
-      <div class="mb-4 text-[#C5A572]">
-      </div>
-      <div class="bg-[#142844] p-6 rounded-lg shadow">
+        <!-- KNAPPAR -->
+        <button id="btn-TimeLine" onclick="toggleInfoHelp('TimeLine')" 
+          class="dev-btn font-bold bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+          <div class="text-[#142844]">Timeline - Spelinstruktioner</div>
+        </button>
 
-    <!-- GAME-SPECIFIC CONTENT: Match Master -->
-    <div class="mb-6 max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
-      <h2 class="text-2xl font-bold mb-4">Match Master - Spelinstruktioner</h2>
-      <ol class="list-decimal ml-6">
-        <li>Du får åtta nobelpristagare i en slumpad lista.</li>
-        <li>Ordna dem så att den som fick priset tidigast hamnar högst och den som fick senast hamnar längst ned.</li>
-        <li>Poängberäkning: +100 per rätt, -25 per fel och (tid kvar)/100.</li>
-      </ol>
-    </div>
+        <button id="btn-MatchMaster" onclick="toggleInfoHelp('MatchMaster')" 
+          class="dev-btn font-bold bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+          <div class="text-[#142844]">Match Master - Spelinstruktioner</div>
+        </button>
+
+        <button id="btn-TriviaRush" onclick="toggleInfoHelp('TriviaRush')" 
+          class="dev-btn font-bold bg-[#C5A572] p-6 rounded-lg shadow w-full text-left">
+          <div class="text-[#142844]">Trivia Rush - Spelinstruktioner</div>
+        </button>
+
+        <!-- GAME-SPECIFIC CONTENT: Match Master -->
+        <div id="info-MatchMaster" 
+          onclick="toggleInfoHelp('MatchMaster')" 
+          class="dev-info hidden max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
+          <h2 class="text-2xl font-bold mb-4">Match Master - Spelinstruktioner</h2>
+          <ol class="list-decimal ml-6">
+            <li>Du får åtta nobelpristagare i en slumpad lista.</li>
+            <li>Ordna dem så att den som fick priset tidigast hamnar högst och den som fick senast hamnar längst ned.</li>
+            <li>Poäng: +100 per rätt, -25 per fel och (tid kvar)/100.</li>
+          </ol>
+        </div>
+
         <!-- GAME-SPECIFIC CONTENT: Timeline -->
-    <div class="mb-6 max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
-      <h2 class="text-2xl font-bold mb-4">Timeline - Spelinstruktioner</h2>
-      <ol class="list-decimal ml-6">
-        <li>Starta spelet.</li>
-        <li>Matcha nobelpristagaren med rätt kategori.</li>
-        <li>Vinn spelet!</li>
-      </ol>
-    </div>
+        <div id="info-TimeLine" 
+          onclick="toggleInfoHelp('TimeLine')" 
+          class="dev-info hidden max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
+          <h2 class="text-2xl font-bold mb-4">Timeline - Spelinstruktioner</h2>
+          <ol class="list-decimal ml-6">
+            <li>Starta spelet.</li>
+            <li>Matcha nobelpristagaren med rätt kategori.</li>
+            <li>Vinn spelet!</li>
+          </ol>
+        </div>
+
         <!-- GAME-SPECIFIC CONTENT: Trivia Rush -->
-    <div class="max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
-      <h2 class="text-2xl font-bold mb-4">Trivia Rush - Spelinstruktioner</h2>
-      <ol class="list-decimal ml-6">
-        <li>Välj en eller flera kategorier (t.ex. fysik, medicin, litteratur).</li>
-        <li>Klicka på Starta Quiz för att börja.</li>
-        <li>Du får 10 frågor om Nobelpriset och pristagare.</li>
-        <li>Du har 15 sekunder per fråga. Svara så snabbt och rätt du kan för att samla poäng.</li>
-        <li>Rätt svar ger poäng + tidspoäng. Flera rätt i rad ger en streak-bonus.</li>
-        <li>När quizet är klart ser du din totalpoäng och kan jämföra med ditt bästa resultat – och spela igen.</li>
-      </ol>
-    </div>
-    </div>
-    </div>
+        <div id="info-TriviaRush" 
+          onclick="toggleInfoHelp('TriviaRush')" 
+          class="dev-info hidden max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
+          <h2 class="text-2xl font-bold mb-4">Trivia Rush - Spelinstruktioner</h2>
+          <ol class="list-decimal ml-6">
+            <li>Välj en eller flera kategorier.</li>
+            <li>Klicka på Starta Quiz.</li>
+            <li>Du får 10 frågor om Nobelpriset.</li>
+            <li>Du har 15 sekunder per fråga.</li>
+            <li>Rätt svar + tidspoäng + streakbonus.</li>
+            <li>Jämför din poäng efteråt.</li>
+          </ol>
+        </div>
+
+      </div>
     </div>
 
     <div id="app-footer"></div>
 
     <script src="/shared/js/load-components.js"></script>
     <script src="/shared/js/auth-check.js"></script>
+
+    <!-- TOGGLE SCRIPT -->
+    <script>
+      function toggleInfoHelp(name) {
+        const allButtons = document.querySelectorAll(".dev-btn");
+        const allInfos = document.querySelectorAll(".dev-info");
+        const info = document.getElementById("info-" + name);
+
+        if (info.classList.contains("hidden")) {
+          allButtons.forEach(b => b.classList.add("hidden"));
+          allInfos.forEach(i => i.classList.add("hidden"));
+          info.classList.remove("hidden");
+        } else {
+          info.classList.add("hidden");
+          allButtons.forEach(b => b.classList.remove("hidden"));
+        }
+      }
+    </script>
   </body>
 </html>
