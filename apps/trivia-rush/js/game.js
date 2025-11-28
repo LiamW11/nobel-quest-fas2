@@ -82,8 +82,6 @@ function startGame(selectedCategories) {
 
   loadQuestion();
 
-  document.getElementById("question-progress-bar").style.width = "0%";
-
   const scorePill = document.getElementById("score-pill");
   const timeScorePill = document.getElementById("time-score-pill");
   const nextBtn = document.getElementById("btn-next");
@@ -535,8 +533,3 @@ window.startGame = startGame;
 if (state.streak == 1){
   console.log("First streak achieved!");
 }
-
-
-
-
-

@@ -1,8 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-  
-  // Din webbapps Firebase-konfiguration
-  const firebaseConfig = {
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
     apiKey: "AIzaSyD_rYe_EMMxlIQ1CLzVly9UtfVROLwawpQ",
     authDomain: "te4-nobelquest.firebaseapp.com",
     projectId: "te4-nobelquest",
@@ -10,19 +10,10 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase
     messagingSenderId: "1067428082128",
     appId: "1:1067428082128:web:a53068bd2ae98bb9c489d5",
     measurementId: "G-NMF366H8XL"
-  };
+};
 
-  // Initialisera Firebase
-  const app = initializeApp(firebaseConfig);
-  
-  
-  // Exportera 'app' för andra Firebase-tjänster (som Auth) att använda
-  // Vi exporterar inte 'analytics' då den inte används av auth.js
-  export { app };
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-// Spara inloggning i LocalStorage (auto-inloggning)
-auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+export { app, auth, db };

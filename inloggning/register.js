@@ -1,5 +1,5 @@
-import {auth, db} from './firebase-config.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { auth, db } from '../shared/firebase-config.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
 const form = document.getElementById('registerForm');
@@ -15,11 +15,11 @@ function showMessage(text, type) {
     messageDiv.classList.remove('hidden');
 }
 
-form.addeventListener("submit", async (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = emailInput.value.trim();
 
-    //validate email format
+    // Validate email format
     if (!email) {
         showMessage("Vänligen ange en giltig e-postadress.", "error");
         return;
@@ -44,7 +44,7 @@ form.addeventListener("submit", async (e) => {
             console.log("Inloggning lyckades för användare:", user.uid);
         } catch (loginError) {
             if (loginError.code === 'auth/user-not-found' ||
-                loginError.code === 'auth/invalid-credentials' ||
+                loginError.code === 'auth/invalid-credential' ||
                 loginError.code === 'auth/invalid-login-credentials') {
 
                 const userCredential = await createUserWithEmailAndPassword(auth, email, SHARED_PASSWORD);
@@ -67,16 +67,16 @@ form.addeventListener("submit", async (e) => {
             }
         }
 
-        //spara localt för permanent inloggning
+        // Spara lokalt för permanent inloggning
         localStorage.setItem("userEmail", email);
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userUid", user.uid);
 
         showMessage(isNewUser ? "Konto skapat och inloggad!" : "Inloggning lyckades!", "success");
 
-        //omdirigera till meny-sidan efter en kort fördröjning
+        // Omdirigera till meny-sidan efter en kort fördröjning
         setTimeout(() => {
-            window.location.href = "menu.html";
+            window.location.href = "../mainMenu/menu.html";
         }, 1500);
 
     } catch (error) {
@@ -84,7 +84,7 @@ form.addeventListener("submit", async (e) => {
 
         let errorMessage = "Ett fel uppstod. Vänligen försök igen.";
         if (error.code === 'auth/email-already-in-use') {
-         errorMessage = "E-postadressen är redan registreradd.";
+            errorMessage = "E-postadressen är redan registrerad.";
         } else if (error.code === 'auth/invalid-email') {
             errorMessage = "Ogiltig e-postadress.";
         } else if (error.code === 'auth/operation-not-allowed') {
@@ -95,8 +95,6 @@ form.addeventListener("submit", async (e) => {
 
         showMessage(errorMessage, "error");
         saveButton.disabled = false;
-        saveButton.textContent = "Spara e-post";
+        saveButton.textContent = "Registrera och börja spela";
     }
-}); 
-
-
+});

@@ -1,19 +1,23 @@
 <header class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative">
-  <button class="text-2xl" onclick="window.history.back()">←</button>
-  <h1 id="page-title">Nobel Quest</h1>
+  <!-- lägg till icon namn här -->
 
-  <!-- Detta är knappen som ska öppna dropdownen -->
+  <!-- Låtsas-element för vänster sida (tomt) -->
+  <div style="width:24px;"></div>
+
+  <h1 id="page-title" class="text-center flex-1">Nobel Quest</h1>
+
+  <!-- Menyknapp -->
   <button onclick="toggleMenu()">☰</button>
 
-  <!-- Dropdown placerad i headern och kopplad till knappen ovan -->
-<div id="dropdownMenu" class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
-  <a href="help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
-  <a href="leaderboard.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
-  <a href="menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
-  <a href="information.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
-  <a href="development.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
-</div>
+  <div id="dropdownMenu" class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
+    <a href="help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
+    <a href="leaderboard.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
+    <a href="menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
+    <a href="information.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
+    <a href="development.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
+  </div>
 </header>
+
 
 <style>
   :root {

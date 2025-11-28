@@ -6,7 +6,8 @@
 .env.local
 .env.*.local
 firebase-config.real.js
-
+# shared/firebase-config.js
+# firebase-config.js
 # OS files
 .DS_Store
 Thumbs.db

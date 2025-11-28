@@ -11,7 +11,7 @@ function renderCards() {
       const cardEl = document.createElement("div");
       cardEl.classList.add("game-card");
       cardEl.setAttribute("data-card-id", card.id);
-      
+
       const innerEl = document.createElement("div");
       innerEl.classList.add("game-card-inner");
 
@@ -22,8 +22,8 @@ function renderCards() {
       const backEl = document.createElement("div");
       backEl.classList.add("game-card-back");
 
- if (card.type === "person") {
-  backEl.innerHTML = `
+      if (card.type === "person") {
+        backEl.innerHTML = `
     <div class="flex flex-col h-full w-full relative">
       ${
         card.imageUrl
@@ -31,16 +31,18 @@ function renderCards() {
           : ""
       }
       <div class="absolute bottom-0 left-0 right-0 w-full py-2.5 px-2 bg-[#1e3a5f]/90 backdrop-blur-sm">
-        <div class="font-bold text-sm sm:text-base leading-tight text-white drop-shadow-lg">${card.name}</div>
+        <div class="font-bold text-sm sm:text-base leading-tight text-white drop-shadow-lg text-center">${
+          card.name
+        }</div>
       </div>
     </div>
   `;
       } else if (card.type === "achievement") {
         backEl.innerHTML = `
-    <div class="flex flex-col justify-between h-full text-white p-2">
-      <div class="font-bold text-base sm:text-lg text-center text-yellow-400" >${card.category}</div>
-<div class="text-base sm:text-lg font-semibold text-center flex-1 flex items-center justify-center px-1 text-white break-words">${card.achievement}</div>
-    <div class="text-xs sm:text-center text-center text-white/90">${card.year}</div>
+    <div class="flex flex-col justify-between h-full text-white p-1.5">
+    <div class="font-bold text-base sm:text-lg text-center text-white" >${card.category}</div>
+    <div class="text-[10px] sm:text-lg font-semibold text-center flex-1 flex items-center justify-center px-1 text-white break-words">${card.achievement}</div>
+    <div class="text-xs sm:text-center text-center text-white">${card.year}</div>
     </div>
   `;
       }
@@ -49,10 +51,10 @@ function renderCards() {
       innerEl.appendChild(frontEl);
       innerEl.appendChild(backEl);
       cardEl.appendChild(innerEl);
-      
+
       // Lägg till click handler
       cardEl.onclick = () => flipCard(card.id);
-      
+
       container.appendChild(cardEl);
     });
   }
@@ -80,7 +82,7 @@ function renderCards() {
       cardEl.classList.remove("flipped");
     }
   });
-  
+
   // Uppdatera stats
 }
 
@@ -94,42 +96,42 @@ function showEndScreen() {
   document.getElementById("gameScreen").classList.add("hidden");
   const endScreen = document.getElementById("endScreen");
   endScreen.classList.remove("hidden");
-  
-// Ändra rubrik beroende på om spelaren gav upp eller vann
-const heading = document.querySelector("#endScreen h2");
-if (game.gaveUp) {
-  heading.textContent = "Spelet avbrutet";
-  heading.className = "text-4xl font-bold text-center mb-8 text-white/80";
-} else {
-  heading.textContent = "Grattis! 🎉";
-  heading.className = "text-4xl font-bold text-center mb-8 text-[#C5A572]";
-   confetti({
-    particleCount: 100,
-    spread: 70,
-    origin: { y: 0.6 },
-    colors: ['#C5A572', '#D4B88C', '#E5D4B0', '#A38A5F']
-  });
 
-  setTimeout(() => {
+  // Ändra rubrik beroende på om spelaren gav upp eller vann
+  const heading = document.querySelector("#endScreen h2");
+  if (game.gaveUp) {
+    heading.textContent = "Spelet avbrutet";
+    heading.className = "text-4xl font-bold text-center mb-8 text-white/80";
+  } else {
+    heading.textContent = "Grattis! 🎉";
+    heading.className = "text-4xl font-bold text-center mb-8 text-[#C5A572]";
     confetti({
-      particleCount: 50,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      colors: ['#C5A572', '#D4B88C', '#E5D4B0', '#A38A5F']
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ["#C5A572", "#D4B88C", "#E5D4B0", "#A38A5F"],
     });
-  }, 250);
-  
-  setTimeout(() => {
-    confetti({
-      particleCount: 50,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
-      colors: ['#C5A572', '#D4B88C', '#E5D4B0', '#A38A5F']
-    });
-  }, 400);
-}
+
+    setTimeout(() => {
+      confetti({
+        particleCount: 50,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: ["#C5A572", "#D4B88C", "#E5D4B0", "#A38A5F"],
+      });
+    }, 250);
+
+    setTimeout(() => {
+      confetti({
+        particleCount: 50,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: ["#C5A572", "#D4B88C", "#E5D4B0", "#A38A5F"],
+      });
+    }, 400);
+  }
 
   // Uppdatera resultat
   document.getElementById("finalScore").textContent = finalScore;

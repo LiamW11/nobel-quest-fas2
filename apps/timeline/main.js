@@ -11,15 +11,13 @@ import { saveLastScore } from "./storage.js";
 import { gameState } from "./game2.js";
 import { startTimer } from "./game2.js";
 import { stopTimer } from "./game2.js";
-import { renderLeaderboard } from "./ui.js";
-import { addToLeaderboard } from "./storage.js";
+
 
 // huvudelementet där spelet ritas upp
 const app = document.getElementById("app");
 // visa startskärmen
 renderStart(app);
 // visa leaderboard direkt när sidan laddas
-renderLeaderboard();
 
 // ladda nobeldata i bakgrunden
 loadNobelData().then((list) => console.log("Antal pristagare:", list.length));
@@ -60,8 +58,7 @@ document.addEventListener("difficulty:selected", async (e) => {
     saveLastScore({ score, correctCount, total: pool.length, ts: Date.now() });
 
     // hämta in namn från fältet ovanför spelet
-    const playerName =
-      document.getElementById("nameInput").value.trim() || "Anonym";
+    const playerName = "Anonym";
 
     // bygg upp ett resultatobjekt som sparas på leaderboarden
     const entry = {
@@ -75,12 +72,6 @@ document.addEventListener("difficulty:selected", async (e) => {
     // stoppa timern nu när rundan är klar
     stopTimer();
 
-    // uppdatera leaderboarden och spara senaste resultatet
-    if (score > 0) {
-      addToLeaderboard(entry);
-      saveLastScore(entry);
-    }
-    renderLeaderboard();
 
     // skapa en snabb uppslagskarta från id till pristagare
     const laureateMap = {};
@@ -89,7 +80,7 @@ document.addEventListener("difficulty:selected", async (e) => {
     // Bygg upp HTML för resultatskärmen
     let resultHTML = `
         <section class="max-w-3xl mx-auto">
-        <div class="text-center -mt-6">
+        <div class="text-center mt-1">
         <p class="text-white mb-1 text-2xl">
         Rätt: ${correctCount}/${pool.length} • 
         Poäng: <span class="score-display">${score}</span> • 

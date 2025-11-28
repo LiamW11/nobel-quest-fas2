@@ -1,4 +1,4 @@
-import { auth } from './firebase-config.js'; 
+import { auth } from '../shared/firebase-config.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
 //kontrollera om användaren är inloggad
@@ -12,7 +12,7 @@ export function requireAuth(redirectTo = 'register.html') {
       } else {
         // Användaren är inte inloggad, omdirigera till inloggningssidan
         console.log("Användaren är inte inloggad");
-        window.location.href = redirectURl;
+        window.location.href = redirectTo;
         reject(new Error("Användaren är inte inloggad"));
       }
     });

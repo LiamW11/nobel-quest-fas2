@@ -1,5 +1,4 @@
 // bygger upp användargränssnittet: startskärm, spelbråde och leaderboard
-import { getLeaderboard } from "./storage.js";
 import { gameState } from "./game2.js";
 
 
@@ -9,7 +8,7 @@ export function renderStart(root) {
   root.innerHTML = `
   <section class="mx-auto max-w-2xl text-center">
     <div class="flex flex-col gap-4 items-center">
-      <button 
+      <button id="startButton"
         class="mt-2 py-4 text-base w-3/4 sm:w-2/3 md:w-1/2 rounded-lg bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952]" 
         data-level="play">
         Spela
@@ -24,8 +23,7 @@ export function renderStart(root) {
   </section>
    
   <div id="howToModal"
-    class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
-    aria-hidden="true">
+    class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
     <div class="bg-[#C5A572] text-[#002952] max-w-md w-11/12 rounded-lg shadow-2xl p-6 relative">
 
       <button id="closeHowTo" class="absolute top-3 right-4 text-2xl leading-none"
@@ -55,7 +53,7 @@ export function renderStart(root) {
   root.querySelectorAll("[data-level]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const level = e.currentTarget.dataset.level;
-      document.getElementById("nameInput").style.display = "none";
+      
       document.getElementById("back-btn").classList.add("invisible");
 
       document.dispatchEvent(
@@ -72,17 +70,21 @@ export function renderStart(root) {
 
   function openModal() {
     howToModal.classList.remove("hidden");
-    howToModal.setAttribute("aria-hidden", "false");
   }
 
   function closeModal() {
     howToModal.classList.add("hidden");
-    howToModal.setAttribute("aria-hidden", "true");
   }
 
   howToButton.addEventListener("click", openModal);
+  
   closeHowTo.addEventListener("click", closeModal);
-  okHowTo.addEventListener("click", closeModal);
+
+  okHowTo.addEventListener("click", () => {
+    closeModal();
+    document.getElementById("startButton").click();
+  }
+);
 
   // stäng om man klickar på overlay
   howToModal.addEventListener("click", (event) => {
@@ -97,7 +99,7 @@ export function renderBoard(root, cards) {
   console.log(gameState.yearCorrect);
   root.innerHTML = `
 <section class="max-w-3xl mx-auto">
-  <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur-sm pb-3 -mt-6 pt-3 sticky">
+  <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur-sm pb-3 pt-3 sticky">
     <p id="timer" class="text-xl font-bold text-center text-white">
       Tid kvar:
     </p>
@@ -147,39 +149,3 @@ export function renderBoard(root, cards) {
   });
 }
 
-// renderar leaderboard-sektionen under spelet
-export function renderLeaderboard() {
-  const leaderboard = getLeaderboard();
-  const container = document.getElementById("leaderboard-entries");
-
-  // om det inte finns några sparade resultat
-  if (leaderboard.length === 0) {
-    container.innerHTML =
-      '<p class="text-neutral-500 text-center py-4">Inga resultat än</p>';
-    return;
-  }
-
-  // skapa en rad per resultat i leaderboarden
-  container.innerHTML = leaderboard
-    .map(
-      (entry, index) => `
-    <div class="text-white flex items-center justify-between gap-4 p-3 bg-[#142845]/95 rounded-lg ring-1 ring-white/30 shadow-sm mb-2">
-      <div class="flex items-center gap-3">
-        <span class="font-bold text-lg w-6">${index + 1}.</span>
-        <div>
-          <p class="font-bold max-w-60 text-white block truncate">${
-            entry.name
-          }</p>
-          <p class="text-sm text-neutral-300">
-            ${entry.correctCount}/${entry.total} rätt • Tid kvar: ${
-        entry.timeLeft
-      }
-          </p>
-        </div>
-      </div>
-      <span class="text-xl font-bold text-white">${entry.score}</span>
-    </div>
-  `
-    )
-    .join("");
-}
