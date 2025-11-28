@@ -6,22 +6,30 @@ import { gameState } from "./game2.js";
 // visa startskärmen där spelaren väljer svårighetsgrad
 export function renderStart(root) {
   root.innerHTML = `
-  <section class="mx-auto max-w-2xl text-center">
+  <section class="bg-[#142845]/95 mx-auto w-[91%] mt-20 py-6 max-w-2xl text-center shadow-2xl ring-1 ring-white/10 rounded-3xl">
     <div class="flex flex-col gap-4 items-center">
+
+            <p class="text-white/85 leading-relaxed text-lg">
+              Läs Hur spelar man, och tryck sedan Spela för att påbörja spelet
+              <p class="text-xl font-semibold text-white">Lycka Till!</p>
+            </p>  
+
       <button id="startButton"
-        class="mt-2 py-4 text-base w-3/4 sm:w-2/3 md:w-1/2 rounded-lg bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952]" 
+        class="inline-flex items-center justify-center px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952] font-semibold shadow-lg shadow-black/30 transition" 
         data-level="play">
         Spela
       </button>
 
       <button 
         id="howToButton" 
-        class="py-3 text-base w-3/4 sm:w-2/3 md:w-1/2 rounded-lg bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952] flex items-center justify-center gap-2">
-        <span>Hur spelar man?</span>
+        class="block w-full text-sm text-white/80 underline hover:text-white">
+        <span>Hur spelar man? — Nobel Timeline</span>
       </button>
     </div>
   </section>
-   
+
+
+
   <div id="howToModal"
     class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
     <div class="bg-[#C5A572] text-[#002952] max-w-md w-11/12 rounded-lg shadow-2xl p-6 relative">
@@ -53,8 +61,6 @@ export function renderStart(root) {
   root.querySelectorAll("[data-level]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const level = e.currentTarget.dataset.level;
-      
-      document.getElementById("back-btn").classList.add("invisible");
 
       document.dispatchEvent(
         new CustomEvent("difficulty:selected", { detail: { level } })

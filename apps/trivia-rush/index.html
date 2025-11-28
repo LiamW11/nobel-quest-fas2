@@ -13,10 +13,14 @@
 
 
 <header class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative">
-  <button onclick="window.history.back()">← Backa</button>
-  <h1 id="page-title">Nobel Trivia Rush</h1>
+  <!-- lägg till icon namn här -->
 
-  <!-- Detta är knappen som ska öppna dropdownen -->
+  <!-- Låtsas-element för vänster sida (tomt) -->
+  <div style="width:24px;"></div>
+
+  <h1 id="page-title" class="text-center flex-1">Nobel Trivia Rush</h1>
+
+  <!-- Menyknapp -->
   <button onclick="toggleMenu()">☰</button>
 
   <!-- Dropdown placerad i headern och kopplad till knappen ovan -->
@@ -100,8 +104,9 @@
               id="quizvy"
               class="flex justify-center left-24 items-center justify-between mb-4 text-white/80 text-sm"
             >
-              <div class="flex items-center gap-3">
-                <div id="score-pill" class="font-semibold">Poäng: 0</div>
+              <div class="flex items-center">
+                <div id="question-pill">0/10</div>
+                <div id="score-pill" class="absolute left-10 font-semibold">Poäng: 0</div>
                 <div id="streak-box" class="relative left-24">
                   <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none"></div>
                 </div>
@@ -143,10 +148,6 @@
             >
               Nästa
             </button>
-            <div><br></div>
-              <div class=" w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div id="question-progress-bar" class="h-2 bg-[#C5A572] rounded-full" style="width: 0%"></div>
-              </div>
             </div>
           </section>
 

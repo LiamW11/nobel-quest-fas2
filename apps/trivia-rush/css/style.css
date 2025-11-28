@@ -1560,3 +1560,19 @@ body {
   animation-iteration-count: infinite;
   animation-fill-mode: both;
 }
+s
+.score-pill {
+  background: linear-gradient(135deg, #C5A572 0%, #e3c892 100%);
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: #002952;
+  font-size: 0.9rem;
+  box-shadow: 0 0 10px rgba(197,165,114,0.5);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Lägg pulserande effekt vid poängökning */
+.score-pill.bump {
+  transform: scale(1.15);
+  box-shadow: 0 0 18px rgba(197,165,114,0.9);
+}
