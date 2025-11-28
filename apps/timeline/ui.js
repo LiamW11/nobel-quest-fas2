@@ -6,12 +6,12 @@ import { gameState } from "./game2.js";
 // visa startskärmen där spelaren väljer svårighetsgrad
 export function renderStart(root) {
   root.innerHTML = `
-  <section class="bg-[#142845]/95 mx-auto mt-16 py-6 max-w-2xl text-center shadow-2xl ring-1 ring-white/10 rounded-3xl">
+  <section class="bg-[#142845]/95 mx-auto w-[91%] mt-20 py-6 max-w-2xl text-center shadow-2xl ring-1 ring-white/10 rounded-3xl">
     <div class="flex flex-col gap-4 items-center">
 
             <p class="text-white/85 leading-relaxed text-lg">
-              Läs Hur spelar man?, och tryck sedan Spela för att påbörja spelet
-              <p class="font-semibold text-white">Lycka Till!</p>
+              Läs Hur spelar man, och tryck sedan Spela för att påbörja spelet
+              <p class="text-xl font-semibold text-white">Lycka Till!</p>
             </p>  
 
       <button id="startButton"
@@ -23,7 +23,7 @@ export function renderStart(root) {
       <button 
         id="howToButton" 
         class="block w-full text-sm text-white/80 underline hover:text-white">
-        <span>Hur spelar man?</span>
+        <span>Hur spelar man? — Nobel Timeline</span>
       </button>
     </div>
   </section>
@@ -61,8 +61,6 @@ export function renderStart(root) {
   root.querySelectorAll("[data-level]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const level = e.currentTarget.dataset.level;
-      
-      document.getElementById("back-btn").classList.add("invisible");
 
       document.dispatchEvent(
         new CustomEvent("difficulty:selected", { detail: { level } })
