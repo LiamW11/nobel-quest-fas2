@@ -1,5 +1,4 @@
 // bygger upp användargränssnittet: startskärm, spelbråde och leaderboard
-import { getLeaderboard } from "./storage.js";
 import { gameState } from "./game2.js";
 
 
@@ -146,39 +145,3 @@ export function renderBoard(root, cards) {
   });
 }
 
-// renderar leaderboard-sektionen under spelet
-export function renderLeaderboard() {
-  const leaderboard = getLeaderboard();
-  const container = document.getElementById("leaderboard-entries");
-
-  // om det inte finns några sparade resultat
-  if (leaderboard.length === 0) {
-    container.innerHTML =
-      '<p class="text-neutral-500 text-center py-4">Inga resultat än</p>';
-    return;
-  }
-
-  // skapa en rad per resultat i leaderboarden
-  container.innerHTML = leaderboard
-    .map(
-      (entry, index) => `
-    <div class="text-white flex items-center justify-between gap-4 p-3 bg-[#142845]/95 rounded-lg ring-1 ring-white/30 shadow-sm mb-2">
-      <div class="flex items-center gap-3">
-        <span class="font-bold text-lg w-6">${index + 1}.</span>
-        <div>
-          <p class="font-bold max-w-60 text-white block truncate">${
-            entry.name
-          }</p>
-          <p class="text-sm text-neutral-300">
-            ${entry.correctCount}/${entry.total} rätt • Tid kvar: ${
-        entry.timeLeft
-      }
-          </p>
-        </div>
-      </div>
-      <span class="text-xl font-bold text-white">${entry.score}</span>
-    </div>
-  `
-    )
-    .join("");
-}
