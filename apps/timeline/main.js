@@ -81,7 +81,7 @@ document.addEventListener("difficulty:selected", async (e) => {
     let resultHTML = `
         <section class="max-w-3xl mx-auto">
         <div class="text-center mt-1">
-        <p class="text-white mb-1 text-2xl">
+        <p class="text-white mb-1 text-xl">
         Rätt: ${correctCount}/${pool.length} • 
         Poäng: <span class="score-display">${score}</span> • 
         ${
@@ -93,14 +93,14 @@ document.addEventListener("difficulty:selected", async (e) => {
 
     <p 
     id="time-multiplier"
-    class="text-xl font-bold text-center text-white py-2 mb-2"
+    class="text-md font-bold text-center text-white py-2 mb-2"
     >
     Extrapoäng baserat på tid: ${gameState.timeBonus}
     </p>
 
       <button
         id="again"
-        class="bg-[#C5A572] text-[#002952] hover:bg-[#A38A5F] mb-2 text-xl text-base font-bold py-2 px-4 rounded-lg restart-btn"
+        class="inline-flex items-center justify-center px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
       >
         Spela igen
       </button>
