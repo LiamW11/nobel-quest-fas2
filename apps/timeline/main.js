@@ -80,7 +80,7 @@ document.addEventListener("difficulty:selected", async (e) => {
     // Bygg upp HTML för resultatskärmen
     let resultHTML = `
         <section class="max-w-3xl mx-auto">
-        <div class="text-center -mt-6">
+        <div class="text-center mt-1">
         <p class="text-white mb-1 text-2xl">
         Rätt: ${correctCount}/${pool.length} • 
         Poäng: <span class="score-display">${score}</span> • 
