@@ -1,9 +1,5 @@
-// bygger upp användargränssnittet: startskärm, spelbråde och leaderboard
 import { gameState } from "./game2.js";
 
-
-// visa startskärmen där spelaren väljer svårighetsgrad
-// visa startskärmen där spelaren väljer svårighetsgrad
 export function renderStart(root) {
   root.innerHTML = `
   <section class="bg-[#142845]/95 mx-auto w-[91%] mt-20 py-6 max-w-2xl text-center shadow-2xl ring-1 ring-white/10 rounded-3xl">
@@ -57,7 +53,7 @@ export function renderStart(root) {
   </div>
   `;
 
-  // --- spel-knappen ---
+  // spel-knappen
   root.querySelectorAll("[data-level]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const level = e.currentTarget.dataset.level;
@@ -68,7 +64,7 @@ export function renderStart(root) {
     });
   });
 
-  // --- modal-logik ---
+  // modal-logik
   const howToButton = root.querySelector("#howToButton");
   const howToModal = document.querySelector("#howToModal");
   const closeHowTo = howToModal.querySelector("#closeHowTo");
@@ -83,14 +79,13 @@ export function renderStart(root) {
   }
 
   howToButton.addEventListener("click", openModal);
-  
+
   closeHowTo.addEventListener("click", closeModal);
 
   okHowTo.addEventListener("click", () => {
     closeModal();
     document.getElementById("startButton").click();
-  }
-);
+  });
 
   // stäng om man klickar på overlay
   howToModal.addEventListener("click", (event) => {
@@ -102,7 +97,6 @@ export function renderStart(root) {
 
 // visa själva spelet: lista med kort som går att sortera och knapp för att skicka in
 export function renderBoard(root, cards) {
-  console.log(gameState.yearCorrect);
   root.innerHTML = `
 <section class="max-w-3xl mx-auto">
   <div class="top-[env(safe-area-inset-top)] z-10 backdrop-blur-sm pb-3 pt-3 sticky">
@@ -120,9 +114,13 @@ export function renderBoard(root, cards) {
   </div>
 
 
-    <p class="text-center text-[#002952] text-xl font-bold w-full bg-[#C5A572] rounded-lg">${gameState.yearCorrect[0]}</p>
+    <p class="text-center text-[#002952] text-xl font-bold w-full bg-[#C5A572] rounded-lg">${
+      gameState.yearCorrect[0]
+    }</p>
     <ul id="sortable-list" class="p-1 space-y-3" aria-label="Sortera pristagarna"></ul>
-    <p class="text-center text-[#002952] text-xl font-bold w-full bg-[#C5A572] rounded-lg">${gameState.yearCorrect[gameState.yearCorrect.length - 1]}</p>
+    <p class="text-center text-[#002952] text-xl font-bold w-full bg-[#C5A572] rounded-lg">${
+      gameState.yearCorrect[gameState.yearCorrect.length - 1]
+    }</p>
 
 
     <div class="mt-4">
@@ -134,24 +132,20 @@ export function renderBoard(root, cards) {
   const list = root.querySelector("#sortable-list");
 
   // skapa ett list-element per nobelpristagare
-  cards.forEach((c) => {
+  cards.forEach((card) => {
     const li = document.createElement("li");
     li.className =
-      //bra fix för scroll problemet oskar upptäckte
       "draggable card p-2 w-10/12 md:w-full bg-[#142845]/95 shadow-sm flex items-start gap-4 ring-1 ring-white/20";
     li.draggable = true;
-    li.dataset.id = c.id;
-    li.innerHTML =
-      //Första raden är onödig tycker jag
-      `
-        <img src="${c.imageUrl}" alt="${c.name}" class="w-20 h-20 object-cover rounded-lg" loading="lazy"/>
-        <div class="">
-        <h4 class="text-white font-bold truncate w-[90%]">${c.name}</h4>
-        <span class="text-[#EBCB96]">${c.category}</span>
-        <span class="text-white text-sm">: ${c.achievement}</span>
+    li.dataset.id = card.id;
+    li.innerHTML = `
+        <img src="${card.imageUrl}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg" loading="lazy"/>
+        <div>
+        <h4 class="text-white font-bold truncate w-[90%]">${card.name}</h4>
+        <span class="text-[#EBCB96]">${card.category}</span>
+        <span class="text-white text-sm">: ${card.achievement}</span>
         </div>
         `;
     list.appendChild(li);
   });
 }
-

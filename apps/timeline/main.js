@@ -1,11 +1,11 @@
 // kopplar ihop data, spel-logik, drag and drop och användargränssnittet
 import { renderStart } from "./ui.js";
 import { loadNobelData } from "./data.js";
-import { countBy, setDifficulty } from "./game2.js";
+import { setDifficulty } from "./game2.js";
 import { shuffle } from "./data.js";
 import { renderBoard } from "./ui.js";
 import { wireDnD } from "./dnd.js";
-import { setPools, submitAndScore, showScore } from "./game2.js";
+import { setPools, submitAndScore } from "./game2.js";
 import { readUserOrder } from "./dnd.js";
 import { saveLastScore } from "./storage.js";
 import { gameState } from "./game2.js";
@@ -20,7 +20,7 @@ renderStart(app);
 // visa leaderboard direkt när sidan laddas
 
 // ladda nobeldata i bakgrunden
-loadNobelData().then((list) => console.log("Antal pristagare:", list.length));
+loadNobelData();
 
 // lyssna på custom event som triggas när spelaren väljer svårighetsgrad
 document.addEventListener("difficulty:selected", async (e) => {
@@ -31,7 +31,7 @@ document.addEventListener("difficulty:selected", async (e) => {
   setDifficulty(level);
 
   // hur många kort ska användas för vald svårighetsgrad
-  const count = countBy(level);
+  const count = 8;
 
   // välj ut ett antal slumpade pristagare
   const pool = shuffle(all).slice(0, count);
@@ -46,7 +46,7 @@ document.addEventListener("difficulty:selected", async (e) => {
   wireDnD(app);
 
   // starta timern för denna svårighetsgrad
-  startTimer(level);
+  startTimer();
 
   // koppla knappen "kolla ordning" så att den rättar spelet
   app.querySelector("#submit").addEventListener("click", () => {
@@ -144,7 +144,7 @@ document.addEventListener("difficulty:selected", async (e) => {
       }" class="w-20 h-20 object-cover rounded-lg flex-shrink-0" loading="lazy" />
           <div class="flex-1 min-w-0">
             <h4 class="text-white font-bold break-words">${laureate.name}</h4>
-            <span class="text-[#EBCB96] text-sm break-words">${
+            <span class="text-[#EBCB96] break-words">${
               laureate.category
             }</span>
             <span class="text-white text-sm break-words">: ${
@@ -158,7 +158,7 @@ document.addEventListener("difficulty:selected", async (e) => {
               ${laureate.year}
             </p>
             <p class="text-sm text-white/60 whitespace-nowrap">
-              ${isCorrect ? `+${showScore()} Poäng` : "-25 Poäng"}
+              ${isCorrect ? `+100 Poäng` : "-25 Poäng"}
             </p>
            
           </div>
