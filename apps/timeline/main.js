@@ -11,6 +11,7 @@ import { saveLastScore } from "./storage.js";
 import { gameState } from "./game2.js";
 import { startTimer } from "./game2.js";
 import { stopTimer } from "./game2.js";
+import { submitScore } from "../leaderboard/leaderboardManager.js";
 
 
 // huvudelementet där spelet ritas upp
@@ -71,6 +72,10 @@ document.addEventListener("difficulty:selected", async (e) => {
     };
     // stoppa timern nu när rundan är klar
     stopTimer();
+
+    // DESSA TVÅ RADER ÄR HELT NÖDVÄNDIGA
+    const finalScore = Math.round(score);
+    submitScore("LB-timeline", finalScore);
 
 
     // skapa en snabb uppslagskarta från id till pristagare
