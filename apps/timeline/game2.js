@@ -97,6 +97,11 @@ export function startTimer(difficulty) {
   let totalTime = 45;
   if (difficulty === "play") totalTime = 45;
 
+  if (gameState.timerInterval) {
+    clearInterval(gameState.timerInterval);
+    gameState.timerInterval = null;
+  }
+
   gameState.timeLeft = totalTime;
 
   function updateTimerUI() {
