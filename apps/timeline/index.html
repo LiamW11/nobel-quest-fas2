@@ -20,7 +20,7 @@
   <button onclick="toggleMenu()">☰</button>
 
   <div id="dropdownMenu" class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
-    <a href="help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
+    <a href="#" onclick="event.preventDefault(); openHowTo('timeline');" class=" border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20 ">Instruktioner</a>
     <a href="leaderboard.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
     <a href="menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
     <a href="information.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
@@ -29,7 +29,17 @@
 </header>
 
   <body class="bg-[#0b1e39]">
+      <div id="howto-container"></div>
+  <script>
+    (async function() {
+      const response = await fetch('/apps/Shared-how-to/howto-modals.html');
+      const html = await response.text();
+      document.getElementById('howto-container').innerHTML = html;
+    })();
+  </script>
+  
     <main id="app" class="game-container px-2"></main>
+      <script src="/apps/Shared-how-to/howto.js"></script>
     <script type="module" src="main.js"></script>
   </body>
 
@@ -37,7 +47,8 @@
     <div class="mb-2">
       <a
         id="help-link"
-        href="help.html"
+        href="#"
+        onclick="event.preventDefault(); openHowTo('timeline');"
         class="text-[#142844] hover:underline mx-2"
         >Instruktioner</a
       >

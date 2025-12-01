@@ -48,67 +48,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===========================
-  // HOW TO PLAY / INSTRUKTIONER
-  // ===========================
-
+ // How-to knapp
   const howtoBtn = document.getElementById("btn-howto");
-  const helpLink = document.getElementById("help-link");
-  const howtoOverlay = document.getElementById("howto-overlay");
-  const howtoClose = document.getElementById("howto-close");
-  const howtoGotIt = document.getElementById("howto-gotit");
-
-  function openHowTo() {
-    if (!howtoOverlay) return;
-    howtoOverlay.classList.remove("hidden");
-  }
-
-  function closeHowTo() {
-    if (!howtoOverlay) return;
-    howtoOverlay.classList.add("hidden");
-  }
-
-  // Knappen under Starta Quiz
   if (howtoBtn) {
-    howtoBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      openHowTo();
+    howtoBtn.addEventListener("click", () => {
+      openHowTo('trivia');
     });
   }
 
-  // Länken "Instruktioner" i footern → exakt samma popup
+  // Help-länk i footer
+  const helpLink = document.getElementById("help-link");
   if (helpLink) {
     helpLink.addEventListener("click", (e) => {
       e.preventDefault();
-      openHowTo();
+      openHowTo('trivia');
     });
   }
-
-  // Stäng med krysset
-  if (howtoClose) {
-    howtoClose.addEventListener("click", () => {
-      closeHowTo();
-    });
-  }
-
-  // "Jag fattar – kör igång!"
-  if (howtoGotIt) {
-    howtoGotIt.addEventListener("click", () => {
-      closeHowTo();
-      // Om du vill att quizet ska starta direkt här:
-      if (startBtn) startBtn.click();
-    });
-  }
-
-  // Klick utanför rutan stänger också
-  if (howtoOverlay) {
-    howtoOverlay.addEventListener("click", (e) => {
-      if (e.target === howtoOverlay) closeHowTo();
-    });
-  }
-
-  // ESC stänger
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeHowTo();
-  });
 });
