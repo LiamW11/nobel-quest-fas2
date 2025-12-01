@@ -23,17 +23,13 @@
     <!-- Menyknapp -->
     <button onclick="toggleMenu()">☰</button>
 
-    <div id="dropdownMenu"
-      class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
-      <a href="help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
-      <a href="leaderboard.html"
-        class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
-      <a href="menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
-      <a href="information.html"
-        class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
-      <a href="development.html"
-        class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
-    </div>
+<div id="dropdownMenu" class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
+  <a href="/mainMenu/help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
+  <a href="/mainMenu/leaderboard.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
+  <a href="/mainMenu/menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
+  <a href="/mainMenu/information.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
+  <a href="/mainMenu/development.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
+</div>
   </header>
 
   <div class="container mx-auto px-4 max-w-4xl flex-1 py-4">
@@ -103,9 +99,9 @@
   <footer class="footer-brand p-4 text-center text-sm mt-8">
     <div class="mb-2">
       <a id="help-link" href="#" class="text-[#142844] hover:underline mx-2">Instruktioner</a>
-      <a id="leaderboard-link" href="leaderboard.html" class="text-[#142844] hover:underline mx-2">Topplista</a>
-      <a id="menu-link" href="menu.html" class="text-[#142844] hover:underline mx-2">Huvudmeny</a>
-      <a id="information-link" href="information.html" class="text-[#142844] hover:underline mx-2">Information</a>
+      <a id="leaderboard-link" href="/mainMenu/leaderboard.html" class="text-[#142844] hover:underline mx-2">Topplista</a>
+      <a id="menu-link" href="/mainMenu/menu.html" class="text-[#142844] hover:underline mx-2">Huvudmeny</a>
+      <a id="information-link" href="/mainMenu/information.html" class="text-[#142844] hover:underline mx-2">Information</a>
       <span id="user-status"></span>
     </div>
     <p class="text-[#142844]">&copy; 2025 Nobel Quest</p>
@@ -202,5 +198,4 @@
   <script src="js/ui.js"></script>
   <script src="js/main.js"></script>
 </body>
-
 </html>
