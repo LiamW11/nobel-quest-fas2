@@ -1,58 +1,38 @@
-// kopplar ihop data, spel-logik, drag and drop och användargränssnittet
 import { renderStart, renderBoard } from "./ui.js";
 import { loadNobelData, shuffle } from "./data.js";
-import { setDifficulty, setPools, submitAndScore, gameState, startTimer, stopTimer } from "./game2.js";
+import {
+  setDifficulty,
+  setPools,
+  submitAndScore,
+  gameState,
+  startTimer,
+  stopTimer,
+} from "./game2.js";
 import { wireDnD, readUserOrder } from "./dnd.js";
 import { saveLastScore } from "./storage.js";
 
-
-// huvudelementet där spelet ritas upp
 const app = document.getElementById("app");
-// visa startskärmen
 renderStart(app);
-
-// ladda nobeldata i bakgrunden
 loadNobelData();
 
-// lyssna på custom event som triggas när spelaren väljer svårighetsgrad
 document.addEventListener("difficulty:selected", async (e) => {
-  // hämta alla möjliga nobelpristagare
   const all = await loadNobelData();
-
   const level = e.detail.level;
   setDifficulty(level);
-
-  // hur många kort ska användas för vald svårighetsgrad
-  const count = 8;
-
-  // välj ut ett antal slumpade pristagare
-  const pool = shuffle(all).slice(0, count);
-
-  // spara poolen och den korrekta ordningen i gameState
+  const pool = shuffle(all).slice(0, 8);
   setPools(pool);
-
-  // rita ut spelbrädet med dessa pristagare
   renderBoard(app, pool);
-
   // aktivera drag and drop på listan
   wireDnD(app);
-
-  // starta timern för denna svårighetsgrad
   startTimer();
 
   // koppla knappen "kolla ordning" så att den rättar spelet
   app.querySelector("#submit").addEventListener("click", () => {
-    // läs av den ordning som spelaren har sorterat fram
     const order = readUserOrder(app);
-
-    // beräkna poäng och hur många som är rätt
     const { score, correctCount } = submitAndScore(order);
     saveLastScore({ score, correctCount, total: pool.length, ts: Date.now() });
-
-    // hämta in namn från fältet ovanför spelet
     const playerName = "Anonym";
 
-    // bygg upp ett resultatobjekt som sparas på leaderboarden
     const entry = {
       name: playerName,
       score: Math.round(score),
@@ -61,9 +41,7 @@ document.addEventListener("difficulty:selected", async (e) => {
       timeLeft: gameState.timeLeft,
       ts: Date.now(),
     };
-    // stoppa timern nu när rundan är klar
     stopTimer();
-
 
     // skapa en snabb uppslagskarta från id till pristagare
     const laureateMap = {};
@@ -119,8 +97,6 @@ document.addEventListener("difficulty:selected", async (e) => {
 
 
      `;
-
-    // lägg till ett kort i resultatlistan för varje placerad pristagare
     // lägg till ett kort i resultatlistan för varje placerad pristagare
     order.forEach((placedId, index) => {
       const laureate = laureateMap[placedId];
@@ -136,9 +112,7 @@ document.addEventListener("difficulty:selected", async (e) => {
       }" class="w-20 h-20 object-cover rounded-lg flex-shrink-0" loading="lazy" />
           <div class="flex-1 min-w-0">
             <h4 class="text-white font-bold break-words">${laureate.name}</h4>
-            <span class="text-[#EBCB96] break-words">${
-              laureate.category
-            }</span>
+            <span class="text-[#EBCB96] break-words">${laureate.category}</span>
             <span class="text-white text-sm break-words">: ${
               laureate.achievement
             }</span>
@@ -193,7 +167,6 @@ document.addEventListener("difficulty:selected", async (e) => {
 
     // visa resultatskärmen istället för spelet
     app.innerHTML = resultHTML;
-    // restart-knappen startar ny omgång med samma svårighetsgrad
     app.querySelector("#again").addEventListener("click", () => {
       document.dispatchEvent(
         new CustomEvent("difficulty:selected", {
@@ -204,8 +177,6 @@ document.addEventListener("difficulty:selected", async (e) => {
 
     const userOrderEl = app.querySelector("#user-order");
     const correctOrderEl = app.querySelector("#correct-order");
-    const orderTitle = app.querySelector("#order-title");
-
     const userOrderBtn = app.querySelector("#btn-user-order");
     const correctOrderBtn = app.querySelector("#btn-correct-order");
 
