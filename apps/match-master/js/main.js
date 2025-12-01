@@ -8,57 +8,49 @@ const gameSound = {
 gameSound.flip.volume= 0.5;
 gameSound.match.volume= 0.6;
 gameSound.win.volume= 0.7;
+const startbtn = document.getElementById("btn-start");
 
 window.addEventListener("DOMContentLoaded", () => {
-  // Starta spelet direkt när sidan laddas
-  startGame();
+  // Starta spelet när användaren klickar på Spela
+  const startbtn = document.getElementById("btn-start");
 
-  // Help-länk i footer (onclick hanteras redan i HTML, men detta är backup)
-  const helpLink = document.getElementById("help-link");
-  if (helpLink && !helpLink.onclick) {
-    helpLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (typeof openHowTo === 'function') {
-        openHowTo('match');
-      } else {
-        setTimeout(() => openHowTo('match'), 100);
-      }
-    });
+  if (startbtn) {
+    startbtn.onclick = () => {
+      document.getElementById("view-start").classList.add("hidden");
+      document.getElementById("gameScreen").classList.remove("hidden");
+      startGame();
+    };
   }
-  // ========== GE UPP MODAL FUNKTIONALITET ==========
   
+  // ===== GE UPP MODAL =====
   const giveupOverlay = document.getElementById("giveup-overlay");
   const giveupCancel = document.getElementById("giveup-cancel");
   const giveupConfirm = document.getElementById("giveup-confirm");
 
-  // Funktion för att öppna ge upp-modal
   function openGiveUpModal() {
-    if (!giveupOverlay) return;
     giveupOverlay.classList.remove("hidden");
   }
 
-  // Funktion för att stänga ge upp-modal
   function closeGiveUpModal() {
-    if (!giveupOverlay) return;
     giveupOverlay.classList.add("hidden");
   }
 
-  // Koppla "Avbryt"-knappen
-  if (giveupCancel) {
-    giveupCancel.addEventListener("click", closeGiveUpModal);
-  }
+  giveupCancel.onclick = closeGiveUpModal;
 
-  // Koppla "Ge upp" (bekräfta)-knappen
-  if (giveupConfirm) {
-    giveupConfirm.addEventListener("click", () => {
-      closeGiveUpModal();
-      game.gaveUp = true;
-      stopTimer();
-      showEndScreen();
-   });
-  }
-  // Koppla "Ge upp"-knappen
-  document.getElementById("giveUpBtn").onclick = () => {
-    openGiveUpModal();
+  giveupConfirm.onclick = () => {
+    closeGiveUpModal();
+    game.gaveUp = true;
+    stopTimer();
+    showEndScreen();
   };
+
+  document.getElementById("giveUpBtn").onclick = openGiveUpModal;
 });
+
+
+startbtn.onclick = () => {
+  document.getElementById("view-start").classList.add("hidden");
+  document.getElementById("gameScreen").classList.remove("hidden");
+  startGame();
+};
+
