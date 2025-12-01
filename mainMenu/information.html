@@ -7,7 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-[#0b1e39] text-[#C5A572]" data-page-title="Information">
-    <div id="app-header"></div>
+    <div class="relative sticky top-0 z-40 shadow-l" 
+    id="app-header"></div>
     
     <!-- DROPDOWN -->
     <script>
@@ -151,6 +152,7 @@ function toggleCategoryMenu() {
   }
 }
 
+// KATEGORIER. NU ÄR DEN KOMPATIBEL MED PERSONER SOM HAR VUNNIT 2+ NOBELPRIS I OLIKA KATEGORIER (Pauling och Curie)
   function filterCategory(cat) {
   document.getElementById("categoryMenu").classList.add("hidden");
 
