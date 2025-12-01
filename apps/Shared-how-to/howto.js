@@ -18,26 +18,25 @@
     });
   }
 
-  // När DOM är laddad, sätt upp event listeners
-  document.addEventListener('DOMContentLoaded', function() {
-    
-    // Stäng-knappar (X)
-    document.querySelectorAll('.howto-close').forEach(btn => {
-      btn.addEventListener('click', closeAllHowTo);
-    });
+  // 🔁 Event delegation istället för DOMContentLoaded + querySelectorAll
+  document.addEventListener('click', function(e) {
+    // Klick på X-knapp
+    if (e.target.closest('.howto-close')) {
+      e.preventDefault();
+      closeAllHowTo();
+      return;
+    }
 
-    // "Jag fattar"-knappar
-    document.querySelectorAll('.howto-gotit').forEach(btn => {
-      btn.addEventListener('click', closeAllHowTo);
-    });
+    // Klick på "Jag fattar – kör igång!" / "Okej, jag fattar!"
+    if (e.target.closest('.howto-gotit')) {
+      e.preventDefault();
+      closeAllHowTo();
+      return;
+    }
 
-    // Stäng om man klickar på overlay (utanför modalen)
-    document.querySelectorAll('.howto-modal').forEach(modal => {
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          closeAllHowTo();
-        }
-      });
-    });
+    // Klick på overlay (utanför själva rutan)
+    if (e.target.classList.contains('howto-modal')) {
+      closeAllHowTo();
+    }
   });
 })();
