@@ -31,6 +31,14 @@
     <a href="development.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
   </div>
 </header>
+<div id="howto-container"></div>
+  <script>
+    (async function() {
+      const response = await fetch('/apps/Shared-how-to/howto-modals.html');
+      const html = await response.text();
+      document.getElementById('howto-container').innerHTML = html;
+    })();
+  </script>
 
 
   <div class="container mx-auto px-4 max-w-4xl flex-1 py-4">
@@ -125,11 +133,13 @@
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="/apps/Shared-how-to/howto.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/data.js"></script>
   <script src="js/game1.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/main.js"></script>
+  <script src="../../shared/components/footer.js"></script>
 </body>
 
 </html>
