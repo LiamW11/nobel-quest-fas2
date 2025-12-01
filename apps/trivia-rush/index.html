@@ -9,8 +9,17 @@
   </head>
 
   <body class="min-h-screen bg-[#0b1e39] text-white flex flex-col">
+    
+    <!-- Ladda How-To modaler från gemensam fil -->
+    <div id="howto-container"></div>
+    <script>
+      (async function() {
+        const response = await fetch('/apps/Shared-how-to/howto-modals.html');
+        const html = await response.text();
+        document.getElementById('howto-container').innerHTML = html;
+      })();
+    </script>
     <!-- Header -->
-
 
 <header
   class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative sticky top-0 z-40 shadow-lg">
@@ -23,16 +32,21 @@
   <!-- Menyknapp -->
   <button onclick="toggleMenu()">☰</button>
 
-  <!-- Dropdown meny -->
-  <div id="dropdownMenu"
-    class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
-    <a href="help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
-    <a href="leaderboard.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
-    <a href="menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
-    <a href="information.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
-    <a href="development.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
-  </div>
+  <!-- Dropdown placerad i headern och kopplad till knappen ovan -->
+<div id="dropdownMenu" class="absolute right-4 top-full hidden bg-[#C5A572] rounded-xl shadow-xl mt-2 p-2 space-y-1">
+ <a href="#" onclick="event.preventDefault(); openHowTo('trivia');" class="block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
+  <a href="leaderboard.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
+  <a href="menu.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
+  <a href="information.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
+  <a href="development.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
 
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+      />
+</div>
 </header>
 
 <style>
@@ -198,87 +212,16 @@
     </main>
  
    
-    <footer class="footer-brand p-4 text-center text-sm mt-8">
-  <div class="mb-2">
-    <a id="help-link" href="#" class="text-[#142844] hover:underline mx-2">Instruktioner</a>
-    <a id="leaderboard-link" href="leaderboard.html" class="text-[#142844] hover:underline mx-2">Topplista</a>
-    <a id="menu-link" href="menu.html" class="text-[#142844] hover:underline mx-2">Huvudmeny</a>
-    <a id="information-link" href="information.html" class="text-[#142844] hover:underline mx-2">Information</a>
-    <span id="user-status"></span>
-  </div>
-  <p class="text-[#142844]">&copy; 2025 Nobel Quest</p>
-</footer>
-
-<style>
-  /* Nobel Quest Branding */
-  :root {
-    --nobel-secondary: #C5A572;
-  }
-.footer-brand {
-  background-color: var(--nobel-secondary);
-  color: white;
-}
-</style>
-
-<!-- HOW TO PLAY MODAL -->
-<div
-  id="howto-overlay"
-  class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
->
-  <div
-    class="bg-[#142845] text-white max-w-lg w-full mx-4 rounded-2xl p-6 relative shadow-2xl"
-  >
-    <!-- Stäng-kors -->
-    <button
-      type="button"
-      id="howto-close"
-      class="absolute top-3 right-4 text-white/60 hover:text-white text-2xl leading-none"
-      aria-label="Stäng"
-    >
-      &times;
-    </button>
-
-    <h2 class="text-2xl font-semibold mb-4 text-center">
-      How to play – Nobel Trivia Rush
-    </h2>
-
-    <p class="text-sm md:text-base text-white/80 mb-4">
-      Spelet är gjort för gymnasieelever och går ut på att testa dina kunskaper
-      om Nobelpristagare på tid.
-    </p>
-
-    <ol class="list-decimal list-inside space-y-3 text-sm md:text-base text-white/85 text-left">
-      <li>Klicka på <span class="font-semibold">Starta Quiz</span> för att börja.</li>
-      <li>Du får <span class="font-semibold">10 frågor</span> om Nobelpriset och pristagare.</li>
-      <li>
-        Du har <span class="font-semibold">15 sekunder</span> per fråga. Svara så
-        snabbt och rätt du kan för att samla poäng.
-      </li>
-      <li>
-        Rätt svar ger poäng + tidspoäng. Flera rätt i rad ger en
-        <span class="font-semibold">streak-bonus</span>.
-      </li>
-      <li>
-        När quizet är klart ser du <span class="font-semibold">din totalpoäng</span>
-        och kan jämföra med ditt bästa resultat – och spela igen.
-      </li>
-    </ol>
-
-    <button
-      type="button"
-      id="howto-gotit"
-      class="mt-6 w-full px-4 py-2 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
-    >
-      Jag fattar – kör igång!
-    </button>
-  </div>
-</div>
+  <div id="footer-placeholder"></div>
 
 
 
+
+      <script src="/apps/Shared-how-to/howto.js"></script>
     <script src="js/data.js"></script>
     <script src="js/game.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/main.js"></script>
+    <script src="../../shared/components/footer.js"></script>
   </body>
 </html>
