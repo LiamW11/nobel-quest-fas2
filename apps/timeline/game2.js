@@ -55,6 +55,13 @@ export function startTimer() {
   const timeLeftEl = document.getElementById("timer");
   const timerBar = document.getElementById("timer-bar");
   let totalTime = 45;
+  if (difficulty === "play") totalTime = 45;
+
+  if (gameState.timerInterval) {
+    clearInterval(gameState.timerInterval);
+    gameState.timerInterval = null;
+  }
+
   gameState.timeLeft = totalTime;
 
   function updateTimerUI() {
