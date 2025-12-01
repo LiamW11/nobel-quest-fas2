@@ -11,9 +11,8 @@
   <body class="min-h-screen bg-[#0b1e39] text-white flex flex-col">
     <!-- Header -->
 
-
-<header class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative">
-  <!-- lägg till icon namn här -->
+<header
+  class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative sticky top-0 z-40 shadow-lg">
 
   <!-- Låtsas-element för vänster sida (tomt) -->
   <div style="width:24px;"></div>
@@ -23,22 +22,18 @@
   <!-- Menyknapp -->
   <button onclick="toggleMenu()">☰</button>
 
-  <!-- Dropdown placerad i headern och kopplad till knappen ovan -->
-<div id="dropdownMenu" class="absolute right-4 top-full hidden bg-[#C5A572] rounded-xl shadow-xl mt-2 p-2 space-y-1">
-  <a href="help.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
-  <a href="leaderboard.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
-  <a href="menu.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
-  <a href="information.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
-  <a href="development.html" class="block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
+  <!-- Dropdown meny -->
+  <div id="dropdownMenu"
+    class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
+    <a href="help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
+    <a href="leaderboard.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
+    <a href="menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
+    <a href="information.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
+    <a href="development.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
+  </div>
 
-   <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
-        rel="stylesheet"
-      />
-</div>
 </header>
+
 
 <style>
   :root {
