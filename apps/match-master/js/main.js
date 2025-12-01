@@ -13,39 +13,18 @@ window.addEventListener("DOMContentLoaded", () => {
   // Starta spelet direkt när sidan laddas
   startGame();
 
+  // Help-länk i footer (onclick hanteras redan i HTML, men detta är backup)
   const helpLink = document.getElementById("help-link");
-  const howtoOverlay = document.getElementById("howto-overlay");
-  const howtoClose = document.getElementById("howto-close");
-  const howtoGotIt = document.getElementById("howto-gotit");
-
-  // Funktion för att öppna modal
-  function openHowTo(e) {
-    if (e) e.preventDefault(); // Förhindra länkens standardbeteende
-    if (!howtoOverlay) return;
-    howtoOverlay.classList.remove("hidden");
+  if (helpLink && !helpLink.onclick) {
+    helpLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (typeof openHowTo === 'function') {
+        openHowTo('match');
+      } else {
+        setTimeout(() => openHowTo('match'), 100);
+      }
+    });
   }
-
-  // Funktion för att stänga modal
-  function closeHowTo() {
-    if (!howtoOverlay) return;
-    howtoOverlay.classList.add("hidden");
-  }
-
-  // Koppla "How to Play"-länken i footern
-  if (helpLink) {
-    helpLink.addEventListener("click", openHowTo);
-  }
-
-  // Koppla stäng-knappen (X)
-  if (howtoClose) {
-    howtoClose.addEventListener("click", closeHowTo);
-  }
-
-  // Koppla "Jag fattar"-knappen
-  if (howtoGotIt) {
-    howtoGotIt.addEventListener("click", closeHowTo);
-  }
- 
   // ========== GE UPP MODAL FUNKTIONALITET ==========
   
   const giveupOverlay = document.getElementById("giveup-overlay");
