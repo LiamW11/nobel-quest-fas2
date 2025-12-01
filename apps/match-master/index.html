@@ -18,7 +18,7 @@
   <!-- Låtsas-element för vänster sida (tomt) -->
   <div style="width:24px;"></div>
 
-  <h1 id="page-title" class="text-center flex-1">Nobel Timeline</h1>
+  <h1 id="page-title" class="text-center flex-1">Nobel Match-Master</h1>
 
   <!-- Menyknapp -->
   <button onclick="toggleMenu()">☰</button>
@@ -32,11 +32,40 @@
   </div>
 </header>
 
+<section id="view-start" class="flex justify-center mt-20 px-4">
+
+  <div class="bg-[#142845]/95 mx-auto w-[91%] py-6 max-w-2xl text-center shadow-2xl ring-1 ring-white/10 rounded-3xl">
+    <p class="text-white/85 leading-relaxed mb-8 text-lg">
+      Läs Hur spelar man, och tryck sedan Spela för att påbörja spelet
+      <span class="font-semibold text-white">Lycka Till!</span>
+    </p>  
+    <div class="text-center">
+      <button id="btn-start" class="inline-flex items-center justify-center px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952]  font-semibold shadow-lg shadow-black/30 transition" 
+> Spela
+</button>
+      
+    </div>
+
+    <button type="button" id="btn-howto" class="mt-4 block w-full text-sm text-white/80 underline hover:text-white"> 
+      Hur spelar man? - Nobel Match Master
+
+    </button>
+    </div>
+</section>
+
+<section id="view-game" class="hidden">
+  <!-- Allt ditt befintliga spelinnehåll här -->
+</section>
+
+<!-- SLUTSKÄRM (ändra från id="endScreen" till detta) -->
+<section id="view-result" class="hidden">
+  <!-- Allt ditt befintliga slutskärmsinnehåll här -->
+</section>
 
   <div class="container mx-auto px-4 max-w-4xl flex-1 py-4">
 
     <!--SPELSKÄRM-->
-    <div id="gameScreen">
+    <div id="gameScreen" class="hidden">
 
       <div
         class="bg-[#142845]/95 px-4 py-4 rounded-xl mb-4 ring-1 ring-white/10 shadow-xl sticky top-[60px] z-30 backdrop-blur-sm">
