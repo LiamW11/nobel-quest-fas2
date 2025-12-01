@@ -11,6 +11,9 @@ import {
 import { wireDnD, readUserOrder } from "./dnd.js";
 import { saveLastScore } from "./storage.js";
 
+import { submitScore } from "../leaderboard/leaderboardManager.js";
+
+
 const app = document.getElementById("app");
 renderStart(app);
 loadNobelData();
@@ -42,6 +45,12 @@ document.addEventListener("difficulty:selected", async (e) => {
       ts: Date.now(),
     };
     stopTimer();
+
+    // Melvins kod för att skicka poäng till leaderboard
+    const finalScore = Math.round(score);
+    submitScore("LB-timeline", finalScore);
+
+
 
     // skapa en snabb uppslagskarta från id till pristagare
     const laureateMap = {};
