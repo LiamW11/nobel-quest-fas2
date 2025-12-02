@@ -30,21 +30,6 @@
     if (e.target.closest(".howto-gotit")) {
       e.preventDefault();
       closeAllHowTo();
-
-      // ⭐ Endast Timeline har starta-spel-logik
-      if (window.location.pathname.includes("timeline")) {
-        const gameActive = document.getElementById("timer") !== null;
-
-        // Starta bara nytt spel om vi är på startskärmen
-        if (!gameActive) {
-          document.dispatchEvent(
-            new CustomEvent("difficulty:selected", {
-              detail: { level: "play" },
-            })
-          );
-        }
-      }
-
       return;
     }
 

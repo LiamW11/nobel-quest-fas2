@@ -180,14 +180,6 @@ document.addEventListener("difficulty:selected", async (e) => {
 
     // visa resultatskärmen istället för spelet
     app.innerHTML = resultHTML;
-    app.querySelector("#again").addEventListener("click", () => {
-      document.dispatchEvent(
-        new CustomEvent("difficulty:selected", {
-          detail: { level: gameState.difficulty },
-        })
-      );
-    });
-
     const userOrderEl = app.querySelector("#user-order");
     const correctOrderEl = app.querySelector("#correct-order");
     const userOrderBtn = app.querySelector("#btn-user-order");
