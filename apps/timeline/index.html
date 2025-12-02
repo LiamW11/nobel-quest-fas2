@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+   <link rel="apple-touch-icon" sizes="180x180" href="../../Favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../Favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../Favicon/favicon-16x16.png">
+<link rel="manifest" href="../../Favicon/site.webmanifest">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nobel Timeline</title>
@@ -20,48 +24,18 @@
       <h1 id="page-title" class="text-center flex-1">Nobel Timeline</h1>
 
       <!-- Menyknapp -->
-      <button onclick="toggleMenu()">☰</button>
+<div id="menu-container"></div>
+  <button onclick="toggleMenu()">☰</button>
 
-      <div
-        id="dropdownMenu"
-        class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1"
-      >
-        <a
-          href="#"
-          onclick="event.preventDefault(); openHowTo('timeline');"
-          class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20"
-          >Instruktioner</a
-        >
-        <a
-          href="leaderboard.html"
-          class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20"
-          >Topplista</a
-        >
-        <a
-          href="menu.html"
-          class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20"
-          >Huvudmeny</a
-        >
-        <a
-          href="information.html"
-          class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20"
-          >Information</a
-        >
-        <a
-          href="development.html"
-          class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20"
-          >Utvecklingsteam</a
-        >
-      </div>
     </header>
-    <div id="howto-container"></div>
-    <script>
-      (async function () {
-        const response = await fetch("/apps/Shared-how-to/howto-modals.html");
-        const html = await response.text();
-        document.getElementById("howto-container").innerHTML = html;
-      })();
-    </script>
+   <script>
+  (async function () {
+    const res = await fetch("../../shared/components/shared-menu.html");
+    const html = await res.text();
+    document.getElementById("menu-container").innerHTML = html;
+  })();
+</script>
+
 
     <script>
       function toggleMenu() {

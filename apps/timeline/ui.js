@@ -33,6 +33,7 @@ export function renderStart(root) {
       );
     });
   });
+  
   // --- how-to knapp ---
   const howtoBtn = root.querySelector("#btn-howto");
   if (howtoBtn) {
@@ -75,7 +76,7 @@ export function renderBoard(root, cards) {
 
 
     <div class="mt-4">
-    <button id="submit" class="bg-[#C5A572] hover:bg-[#A38A5F] text-[#002952] w-full rounded-lg py-4 text-base">Kolla ordning</button>
+    <button id="submit" class="inline-flex items-center justify-center w-full px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952] font-semibold shadow-lg shadow-black/30 transition">Se resultat</button>
     </div>
     </section>
     `;

@@ -1,6 +1,3 @@
-// leaderboardManager.js (KORRIGERAD OCH SLUTGILTIG VERSION)
-
-// Denna sökväg ser korrekt ut:
 import { db, auth } from "../../shared/firebase-config.js"; 
 import { doc, setDoc, collection, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
@@ -30,8 +27,6 @@ export async function submitScore(gameId, score) {
     const { uid, displayName } = playerInfo;
     
     try {
-        // KORREKT SÖKVÄG FÖR ATT SKRIVA: (Collection: gameId, Document: uid)
-        // Poängen sparas nu i t.ex. /LB-timeline/[användar-UID]
         const scoreDocRef = doc(db, gameId, uid); 
         
         await setDoc(scoreDocRef, {
@@ -54,7 +49,7 @@ export async function submitScore(gameId, score) {
 
 export async function getTopScores(gameId) {
     // KORREKT SÖKVÄG FÖR ATT LÄSA: (Collection: gameId)
-    const scoresCollectionRef = collection(db, gameId); // <-- FIXAR FELET
+    const scoresCollectionRef = collection(db, gameId);
 
     const q = query(scoresCollectionRef, orderBy("score", "desc"), limit(5));
 
