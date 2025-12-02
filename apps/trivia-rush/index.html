@@ -219,5 +219,12 @@
     <script src="js/ui.js"></script>
     <script src="js/main.js"></script>
     <script src="../../shared/components/footer.js"></script>
+
+    <script type="module">
+      import { submitScore } from "../leaderboard/leaderboardManager.js";
+  
+      // Gör submitScore tillgänglig globalt
+      window.submitScore = submitScore;
+    </script>
   </body>
 </html>
