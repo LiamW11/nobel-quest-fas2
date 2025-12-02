@@ -277,7 +277,7 @@ function checkAnswer(selected) {
 
   // Add scores if answer is correct
   if (selected === question.correct) {
-    state.score += 1;
+    state.score += 20;
     state.timeScore += timeBonus;
     // Streak logic
     state.streak++;
