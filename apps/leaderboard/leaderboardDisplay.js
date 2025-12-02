@@ -1,5 +1,3 @@
-// leaderboardDisplay.js
-
 // Importerar funktionen som hämtar data från Firestore (från leaderboardManager.js)
 import { getTopScores } from "./leaderboardManager.js"; 
 
