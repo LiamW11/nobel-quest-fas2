@@ -142,11 +142,6 @@ function showEndScreen() {
   document.getElementById("finalAttempts").textContent = game.moves;
 
   // "Spela igen"-knapp
-  document.getElementById("playAgain").onclick = () => {
-    endScreen.classList.add("hidden");
-    document.getElementById("gameScreen").classList.remove("hidden");
-    // Rensa korten så nya skapas
-    document.getElementById("cardGrid").innerHTML = "";
-    startGame();
+ 
   };
-}
+
