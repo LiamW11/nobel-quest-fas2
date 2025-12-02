@@ -88,6 +88,9 @@ function renderCards() {
 
 function showEndScreen() {
   const finalScore = finalizeScore();
+  if (window.submitScore) {
+    window.submitScore("LB-match", finalScore);
+  }
   const minutes = Math.floor(game.timer / 60);
   const seconds = game.timer % 60;
   const timeFormatted = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
