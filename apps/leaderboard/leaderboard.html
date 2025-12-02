@@ -1,81 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leaderboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      .animate-fade-in {
-        animation: fadeIn 0.5s ease-out forwards;
-      }
-    </style>
-  </head>
-  <body class="bg-[#0b1e39] text-white" data-page-title="Topplista">
-    <div id="app-header"></div>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nobel Quest Leaderboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /*
+    *** BORTTAGEN ***
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .animate-slide-in {
+      animation: slideIn 0.4s ease-out forwards;
+    }
+    */
+    
+    /* Trophy animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .trophy-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Button active state */
+    .tab-btn {
+      transition: all 0.3s ease;
+    }
+    .tab-btn.active {
+      background: #C5A572;
+      color: #0b1e39;
+      transform: scale(1.05);
+    }
+    
+    /* Medal gradients */
+    .rank-1 { 
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+    }
+    .rank-2 { 
+      background: linear-gradient(135deg, #E8E8E8, #C0C0C0);
+    }
+    .rank-3 { 
+      background: linear-gradient(135deg, #CD7F32, #B8860B);
+    }
+    
+    /* Header styling */
+    :root {
+      --nobel-primary: #C5A572;
+    }
 
-    <script>
-      function toggleMenu() {
-        document.getElementById("dropdownMenu").classList.toggle("hidden");
-      }
-    </script>
-
-    <div class="max-w-md mx-auto p-4 pb-8">
+    .header-brand {
+      background-color: var(--nobel-primary);
+    }
+    
+    .sticky-tabs {
+      position: sticky;
+      top: 72px;
+      z-index: 40;
+      background: #0b1e39;
+      padding-bottom: 1rem;
+    }
+    
+    /* Remove scrollbar but keep scrolling */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#0b1e39] text-white min-h-screen">
+  
+  <div class="max-w-lg mx-auto">
+    
+    <header class="sticky top-0 z-50 header-brand text-[#142844] p-4 flex justify-between items-center shadow-lg">
+      <div style="width:24px;"></div>
+      <h1 id="page-title" class="text-center flex-1 text-xl font-bold">Topplista</h1>
+      <button onclick="toggleMenu()" class="text-2xl">☰</button>
       
-      <!-- Nobel Timeline -->
-      <div class="mb-6">
-        <h2 class="text-2xl font-bold mb-4 text-[#C5A572] text-center flex items-center justify-center gap-2">
-          <span class="text-3xl">⏰</span>
-          Nobel Timeline
-        </h2>
-        <div class="bg-[#C5A572] p-4 rounded-2xl shadow-xl">
-          <ol id="list-timeline" class="space-y-3">
-            <li class="text-center py-3 text-[#0b1e39]/60">Laddar poäng...</li> 
+      <div id="dropdownMenu" class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
+        <a href="../../mainMenu/help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
+        <a href="../../apps/leaderboard/leaderboard.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
+        <a href="../../mainMenu/menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
+        <a href="../../mainMenu/information.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
+        <a href="../../mainMenu/development.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
+      </div>
+    </header>
+    
+    <div class="text-center py-4 px-4">
+      <div class="trophy-float inline-block text-4xl mb-2">🏆</div>
+      <h2 class="text-xl font-bold text-[#C5A572] mb-1">Nobel Quest Leaderboard</h2>
+      <p class="text-gray-300 text-xs">Tävla mot dina klasskamrater!</p>
+    </div>
+
+    <div class="sticky-tabs px-4">
+      <button onclick="switchTab('combined')" id="btn-combined" class="tab-btn active w-full px-4 py-3 rounded-xl font-bold bg-[#142844] transition text-sm mb-2">
+         Kombinerad Top 10
+      </button>
+      <div class="grid grid-cols-3 gap-2">
+        <button onclick="switchTab('timeline')" id="btn-timeline" class="tab-btn px-3 py-2.5 rounded-xl font-bold bg-[#142844] transition text-xs">
+           Timeline
+        </button>
+        <button onclick="switchTab('match')" id="btn-match" class="tab-btn px-3 py-2.5 rounded-xl font-bold bg-[#142844] transition text-xs">
+           Match
+        </button>
+        <button onclick="switchTab('trivia')" id="btn-trivia" class="tab-btn px-3 py-2.5 rounded-xl font-bold bg-[#142844] transition text-xs">
+           Trivia
+        </button>
+      </div>
+    </div>
+
+    <div class="px-4 pb-6">
+      
+      <div id="view-combined" class="leaderboard-view">
+        <div class="bg-gradient-to-r from-[#C5A572] to-[#d4b882] p-3 rounded-t-2xl">
+          <h2 class="text-lg font-bold text-[#0b1e39] text-center">
+            ⭐ Kombinerad Top 10
+          </h2>
+          <p class="text-center text-[#0b1e39] text-xs opacity-80">Alla spel sammanräknade</p>
+        </div>
+        <div class="bg-[#142844] rounded-b-2xl shadow-2xl p-4">
+          <ol id="list-combined" class="space-y-2">
+            <li class="text-center py-8 text-gray-400 text-sm">Laddar poäng...</li>
           </ol>
         </div>
       </div>
 
-      <!-- Nobel Match Master -->
-      <div class="mb-6">
-        <h2 class="text-2xl font-bold mb-4 text-[#C5A572] text-center flex items-center justify-center gap-2">
-          <span class="text-3xl">🎴</span>
-          Nobel Match Master
-        </h2>
-        <div class="bg-[#C5A572] p-4 rounded-2xl shadow-xl">
-          <ol id="list-match" class="space-y-3">
-            <li class="text-center py-3 text-[#0b1e39]/60">Laddar poäng...</li>
+      <div id="view-timeline" class="leaderboard-view hidden">
+        <div class="bg-gradient-to-r from-[#C5A572] to-[#d4b882] p-3 rounded-t-2xl">
+          <h2 class="text-lg font-bold text-[#0b1e39] text-center flex items-center justify-center gap-2">
+            <span class="text-xl">⏰</span>
+            Nobel Timeline
+          </h2>
+        </div>
+        <div class="bg-[#142844] rounded-b-2xl shadow-2xl p-4">
+          <ol id="list-timeline" class="space-y-2">
+            <li class="text-center py-8 text-gray-400 text-sm">Laddar poäng...</li>
           </ol>
         </div>
       </div>
 
-      <!-- Nobel Trivia Rush -->
-      <div class="mb-6">
-        <h2 class="text-2xl font-bold mb-4 text-[#C5A572] text-center flex items-center justify-center gap-2">
-          <span class="text-3xl">🧠</span>
-          Nobel Trivia Rush
-        </h2>
-        <div class="bg-[#C5A572] p-4 rounded-2xl shadow-xl">
-          <ol id="list-trivia" class="space-y-3">
-            <li class="text-center py-3 text-[#0b1e39]/60">Laddar poäng...</li>
+      <div id="view-match" class="leaderboard-view hidden">
+        <div class="bg-gradient-to-r from-[#C5A572] to-[#d4b882] p-3 rounded-t-2xl">
+          <h2 class="text-lg font-bold text-[#0b1e39] text-center flex items-center justify-center gap-2">
+            <span class="text-xl">🎯</span>
+            Match Master
+          </h2>
+        </div>
+        <div class="bg-[#142844] rounded-b-2xl shadow-2xl p-4">
+          <ol id="list-match" class="space-y-2">
+            <li class="text-center py-8 text-gray-400 text-sm">Laddar poäng...</li>
+          </ol>
+        </div>
+      </div>
+
+      <div id="view-trivia" class="leaderboard-view hidden">
+        <div class="bg-gradient-to-r from-[#C5A572] to-[#d4b882] p-3 rounded-t-2xl">
+          <h2 class="text-lg font-bold text-[#0b1e39] text-center flex items-center justify-center gap-2">
+            <span class="text-xl">🧠</span>
+            Trivia Rush
+          </h2>
+        </div>
+        <div class="bg-[#142844] rounded-b-2xl shadow-2xl p-4">
+          <ol id="list-trivia" class="space-y-2">
+            <li class="text-center py-8 text-gray-400 text-sm">Laddar poäng...</li>
           </ol>
         </div>
       </div>
 
     </div>
 
-    <div id="app-footer"></div>
+    <div class="text-center pb-6 px-4">
+      <p class="text-gray-400 text-xs">
+        Poängen uppdateras automatiskt 🎮
+      </p>
+    </div>
 
-    <script src="../../shared/js/load-components.js"></script>
-    <script type="module" src="../../auth-check.js"></script> 
-    <script type="module" src="./leaderboardDisplay.js"></script> 
-    
-    <script type="module">
-      import { initAutoAuth, requireAuth } from "../../auth-check.js";
-      initAutoAuth(); 
-    </script> 
-  </body>
+  </div>
+
+  <script type="module">
+    // Import Firebase functions
+    import { db } from "../../shared/firebase-config.js";
+    import { collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    // Toggle menu function
+    window.toggleMenu = function() {
+      document.getElementById("dropdownMenu").classList.toggle("hidden");
+    }
+
+    // Tab switching functionality
+    window.switchTab = function(tabName) {
+      document.querySelectorAll('.leaderboard-view').forEach(view => {
+        view.classList.add('hidden');
+      });
+      
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      document.getElementById(`view-${tabName}`).classList.remove('hidden');
+      document.getElementById(`btn-${tabName}`).classList.add('active');
+    }
+
+    // Create leaderboard item with mobile-optimized design
+    function createLeaderboardItem(rank, name, score, isTopThree = false) {
+      let rankBadge = '';
+      let itemClass = 'bg-[#1e3458]';
+      
+      if (rank === 1) {
+        rankBadge = '<div class="rank-1 w-9 h-9 rounded-full flex items-center justify-center text-lg font-black flex-shrink-0">🥇</div>';
+        itemClass = 'bg-gradient-to-r from-[#1e3458] to-[#2a4a6f] border-2 border-yellow-500';
+      } else if (rank === 2) {
+        rankBadge = '<div class="rank-2 w-9 h-9 rounded-full flex items-center justify-center text-lg font-black flex-shrink-0">🥈</div>';
+        itemClass = 'bg-gradient-to-r from-[#1e3458] to-[#2a4a6f] border-2 border-gray-400';
+      } else if (rank === 3) {
+        rankBadge = '<div class="rank-3 w-9 h-9 rounded-full flex items-center justify-center text-lg font-black flex-shrink-0">🥉</div>';
+        itemClass = 'bg-gradient-to-r from-[#1e3458] to-[#2a4a6f] border-2 border-orange-600';
+      } else {
+        rankBadge = `<div class="w-9 h-9 bg-[#0b1e39] rounded-full flex items-center justify-center flex-shrink-0">
+                      <span class="text-base font-bold text-gray-400">${rank}</span>
+                    </div>`;
+      }
+
+      // Denna rad har uppdaterats för att ta bort animeringsklassen och 'style' attributet
+      return `
+        <li class="flex items-center p-2.5 ${itemClass} rounded-xl shadow-lg transition duration-300 active:scale-95">
+          ${rankBadge}
+          
+          <div class="w-9 h-9 bg-gradient-to-br from-[#C5A572] to-[#d4b882] rounded-full mx-2.5 flex items-center justify-center flex-shrink-0 shadow-lg">
+            <span class="text-base font-black text-[#0b1e39]">${name.charAt(0).toUpperCase()}</span>
+          </div>
+          
+          <div class="flex-grow min-w-0">
+            <p class="text-sm font-bold text-white truncate leading-tight">${name}</p>
+          </div>
+          
+          <div class="flex-shrink-0 ml-2 text-right">
+            <p class="text-base font-black text-[#C5A572] leading-tight">${score}</p>
+            <p class="text-xs text-gray-400 -mt-0.5">pts</p>
+          </div>
+        </li>
+      `;
+    }
+
+    // Render leaderboard
+    function renderLeaderboard(listId, data) {
+      const listElement = document.getElementById(listId);
+      if (!listElement) return;
+      
+      if (data.length === 0) {
+        listElement.innerHTML = '<li class="text-center py-8 text-gray-400 text-sm">Inga poäng registrerade än 🎯</li>';
+        return;
+      }
+      
+      listElement.innerHTML = data.map((item, index) => 
+        createLeaderboardItem(index + 1, item.displayName, item.score, index < 3)
+      ).join('');
+    }
+
+    // Fetch scores from Firebase
+    async function getTopScores(gameId) {
+      const scoresCollectionRef = collection(db, gameId);
+      const q = query(scoresCollectionRef, orderBy("score", "desc"), limit(10));
+
+      try {
+        const querySnapshot = await getDocs(q);
+        const topScores = [];
+        querySnapshot.forEach((doc) => {
+          topScores.push(doc.data());
+        });
+        return topScores;
+      } catch (error) {
+        console.error(`Fel vid hämtning av poäng för ${gameId}:`, error);
+        return [];
+      }
+    }
+
+    // Combine scores from all games
+    async function getCombinedScores() {
+      const games = ['LB-timeline', 'LB-match', 'LB-trivia'];
+      const allScores = {};
+
+      for (const gameId of games) {
+        const scores = await getTopScores(gameId);
+        scores.forEach(scoreEntry => {
+          const userId = scoreEntry.userId;
+          if (!allScores[userId]) {
+            allScores[userId] = {
+              displayName: scoreEntry.displayName,
+              score: 0,
+              userId: userId
+            };
+          }
+          allScores[userId].score += scoreEntry.score;
+        });
+      }
+
+      // Convert to array and sort by total score
+      const combinedArray = Object.values(allScores);
+      combinedArray.sort((a, b) => b.score - a.score);
+      
+      // Return top 10
+      return combinedArray.slice(0, 10);
+    }
+
+    // Load all leaderboards
+    async function loadAllLeaderboards() {
+      try {
+        // Load combined scores
+        const combinedScores = await getCombinedScores();
+        renderLeaderboard('list-combined', combinedScores);
+
+        // Load individual game scores
+        const timelineScores = await getTopScores('LB-timeline');
+        renderLeaderboard('list-timeline', timelineScores);
+
+        const matchScores = await getTopScores('LB-match');
+        renderLeaderboard('list-match', matchScores);
+
+        const triviaScores = await getTopScores('LB-trivia');
+        renderLeaderboard('list-trivia', triviaScores);
+
+      } catch (error) {
+        console.error("Fel vid laddning av leaderboards:", error);
+      }
+    }
+
+    // Load data when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      loadAllLeaderboards();
+    });
+  </script>
+
+</body>
 </html>
