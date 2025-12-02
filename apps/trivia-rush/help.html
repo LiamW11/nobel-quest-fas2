@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+   <link rel="apple-touch-icon" sizes="180x180" href="../../Favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../Favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../Favicon/favicon-16x16.png">
+<link rel="manifest" href="../../Favicon/site.webmanifest">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nobel Trivia Rush – Instruktioner</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts (samma som index.html) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-[#0b1e39] text-white flex flex-col">
+
+    <!-- 🔵 HEADER — exakt kopierad från index.html -->
+    <header class="text-center py-10">
+      <h1 class="text-4xl font-extrabold tracking-tight drop-shadow-md">
+        Nobel Trivia Rush
+      </h1>
+      <p class="text-white/70 mt-2 text-sm">
+        Testa dina kunskaper om Nobelpriser – fråga för fråga.
+      </p>
+    </header>
+
+    <!-- 🟦 MAIN CONTENT -->
+    <main class="flex-1 flex items-start justify-center px-6 pb-16">
+      <div class="w-full max-w-3xl bg-[#142845]/90 backdrop-blur-md shadow-2xl ring-1 ring-white/10 p-10 rounded-3xl">
+
+        <h2 class="text-center text-2xl font-semibold text-[#C5A572] mb-6">
+          Hur spelet fungerar
+        </h2>
+
+        <p class="text-white/85 leading-relaxed mb-8 text-lg text-center">
+          Nobel Trivia Rush är ett snabbt och roligt quiz som testar dina kunskaper om Nobelpriset.
+          Det är gjort för att vara enkelt att förstå och gå snabbt att spela.
+        </p>
+
+        <!-- STEG 1 -->
+        <div class="bg-white/5 border border-white/10 rounded-xl p-6 mb-6">
+          <h3 class="text-[#C5A572] text-lg font-semibold mb-3">1. Starta spelet</h3>
+          <p>
+            När du trycker på <strong>Starta Quiz</strong>
+            hämtar spelet 10 slumpmässiga frågor som du ska svara på.
+          </p>
+        </div>
+
+        <!-- STEG 2 -->
+        <div class="bg-white/5 border border-white/10 rounded-xl p-6 mb-6">
+          <h3 class="text-[#C5A572] text-lg font-semibold mb-3">2. Svara på frågorna</h3>
+          <p>
+            Du får en fråga i taget, med fyra svarsalternativ.  
+            Välj ett alternativ och klicka sedan på <em>Nästa</em>.
+          </p>
+          <p class="mt-2">
+            Du får direkt veta om du svarat rätt eller fel innan nästa fråga visas.
+          </p>
+        </div>
+
+        <!-- STEG 3 -->
+        <div class="bg-white/5 border border-white/10 rounded-xl p-6 mb-6">
+          <h3 class="text-[#C5A572] text-lg font-semibold mb-3">3. Se ditt resultat</h3>
+          <p>När alla frågor är besvarade får du:</p>
+          <ul class="list-disc list-inside ml-2 mt-2 space-y-1">
+            <li>Antal rätt</li>
+            <li>Procentresultat</li>
+            <li>Ditt bästa resultat hittills</li>
+          </ul>
+          <p class="mt-3">
+            Du kan alltid spela igen och försöka slå ditt rekord!
+          </p>
+        </div>
+
+        <!-- TILLBAKA KNAPP -->
+        <div class="text-center mt-10">
+          <a
+            href="index.html"
+            class="inline-block bg-[#C5A572] text-[#002952] px-8 py-3 rounded-xl font-semibold shadow-lg hover:bg-[#b08f57] transition"
+          >
+            Tillbaka till spelet
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- 🟦 FOOTER — exakt kopierad från index.html -->
+    <footer class="text-center py-8 mt-12 bg-[#142844] text-white">
+      <div class="flex flex-col items-center space-y-2 text-sm">
+        <div class="flex space-x-4">
+          <a href="index.html" class="text-[#C5A572] hover:underline">Start</a>
+          <a href="help.html" class="text-[#C5A572] hover:underline">Instruktioner</a>
+        </div>
+        <p class="text-white/50 text-xs">© Nobel Trivia Rush</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
