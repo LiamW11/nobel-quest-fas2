@@ -518,20 +518,6 @@ function endGame() {
 
 }
 
-// Restart the game
-document.getElementById("btn-restart").addEventListener("click", () => {
-  // Clear timer
-  if (state.timer) {
-    clearInterval(state.timer);
-  }
-
-  document.getElementById("view-result").classList.add("hidden");
-  document.getElementById("view-start").classList.remove("hidden");
-
-  const intro = document.getElementById("intro-text");
-  if (intro) intro.classList.remove("hidden");
-});
-
 // Expose startGame for main.js
 window.startGame = startGame;
 
