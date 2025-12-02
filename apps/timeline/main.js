@@ -76,14 +76,6 @@ document.addEventListener("difficulty:selected", async (e) => {
     >
     Extrapoäng baserat på tid: ${gameState.timeBonus}
     </p>
-
-      <button
-        id="again"
-        class="inline-flex items-center justify-center px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952] font-semibold shadow-lg shadow-black/30 transition"
-      >
-        Spela igen
-      </button>
-
     </div>
 
  <div class="flex flex-row justify-between items-center w-full max-w-3xl mx-auto mt-4 pb-2 gap-2">
@@ -176,14 +168,6 @@ document.addEventListener("difficulty:selected", async (e) => {
 
     // visa resultatskärmen istället för spelet
     app.innerHTML = resultHTML;
-    app.querySelector("#again").addEventListener("click", () => {
-      document.dispatchEvent(
-        new CustomEvent("difficulty:selected", {
-          detail: { level: gameState.difficulty },
-        })
-      );
-    });
-
     const userOrderEl = app.querySelector("#user-order");
     const correctOrderEl = app.querySelector("#correct-order");
     const userOrderBtn = app.querySelector("#btn-user-order");
