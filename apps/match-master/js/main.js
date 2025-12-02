@@ -21,6 +21,13 @@ window.addEventListener("DOMContentLoaded", () => {
       startGame();
     };
   }
+  const howtoBtn = document.getElementById("btn-howto");
+  if (howtoBtn) {
+    howtoBtn.onclick = (e) => {
+      e.preventDefault();
+      openHowTo('match');
+    };
+  }
   
   // ===== GE UPP MODAL =====
   const giveupOverlay = document.getElementById("giveup-overlay");
