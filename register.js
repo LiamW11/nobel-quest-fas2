@@ -48,9 +48,9 @@ form.addEventListener("submit", async (e) => {
         return;
     }
 
-    //  EDU email restriction
-    if (!email.endsWith("@edu.huddinge.se") && !email.endsWith("@huddinge.se")) {
-        showMessage("Endast edu.huddinge.se eller huddinge.se adresser är tillåtna.", "error");
+    // 🔥 EDU email restriction
+    if (!email.endsWith("@edu.huddinge.se")) {
+        showMessage("Endast edu.huddinge.se-adresser är tillåtna.", "error");
         return;
     }
 

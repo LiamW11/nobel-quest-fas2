@@ -450,6 +450,11 @@ function endGame() {
   const totalScore = state.score + state.timeScore + state.bonusScore;
   const maxTotalScore = state.totalQuestions + maxTimeScore;
 
+  // Skicka poäng till leaderboard (backend teamet la till denna rad)
+  if (window.submitScore) {
+    window.submitScore("LB-trivia", totalScore);
+  }
+
   document.getElementById(
     "final-bonus-score"
   ).textContent = `Bonuspoäng: ${state.bonusScore}`;

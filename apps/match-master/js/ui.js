@@ -88,6 +88,9 @@ function renderCards() {
 
 function showEndScreen() {
   const finalScore = finalizeScore();
+  if (window.submitScore) {
+    window.submitScore("LB-match", finalScore);
+  }
   const minutes = Math.floor(game.timer / 60);
   const seconds = game.timer % 60;
   const timeFormatted = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
@@ -139,11 +142,6 @@ function showEndScreen() {
   document.getElementById("finalAttempts").textContent = game.moves;
 
   // "Spela igen"-knapp
-  document.getElementById("playAgain").onclick = () => {
-    endScreen.classList.add("hidden");
-    document.getElementById("gameScreen").classList.remove("hidden");
-    // Rensa korten så nya skapas
-    document.getElementById("cardGrid").innerHTML = "";
-    startGame();
+ 
   };
-}
+

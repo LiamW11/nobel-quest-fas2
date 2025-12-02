@@ -11,7 +11,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
   <body class="bg-[#0b1e39] text-[#C5A572]" data-page-title="Utvecklingsteam">
-    <div id="app-header"></div>
+    <div class="relative sticky top-0 z-40 shadow-l" 
+    id="app-header"></div>
 
         <!-- DROPDOWN -->
      <script>
@@ -26,29 +27,16 @@
       </div>
       <div class="bg-[#142844] p-6 rounded-lg shadow">
 
-            <!-- KNAPPAR -->
-            <button id="btn-Max" onclick="toggleInfo('Max')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Max Rubinsson</div>
+            <button id="btn-Arthur" onclick="toggleInfo('Arthur')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Arthur Brobäck</div>
             </button>
 
-            <button id="btn-Eylul" onclick="toggleInfo('Eylul')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Eylul Uzel</div>
+            <button id="btn-Christian" onclick="toggleInfo('Christian')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Christian Eriksson</div>
             </button>
 
-            <button id="btn-Melvin" onclick="toggleInfo('Melvin')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Melvin Stenholm</div>
-            </button>
-
-            <button id="btn-Malte" onclick="toggleInfo('Malte')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Malte Mohr</div>
-            </button>
-
-            <button id="btn-Oskar" onclick="toggleInfo('Oskar')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Oskar Sobala</div>
-            </button>
-
-            <button id="btn-Liam" onclick="toggleInfo('Liam')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Liam Wiklund</div>
+            <button id="btn-Jonas" onclick="toggleInfo('Jonas')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Jonas Garbuzas</div>
             </button>
 
             <button id="btn-Theodor" onclick="toggleInfo('Theodor')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
@@ -58,30 +46,30 @@
             <button id="btn-Jesper" onclick="toggleInfo('Jesper')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
                 <div class="text-[#142844]">Jesper Lundholm</div>
             </button>
-
-            <button id="btn-Christian" onclick="toggleInfo('Christian')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Christian Eriksson</div>
+            
+            <button id="btn-Malte" onclick="toggleInfo('Malte')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Malte Mohr</div>
             </button>
 
-            <button id="btn-Arthur" onclick="toggleInfo('Arthur')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Arthur Brobäck</div>
+            <button id="btn-Max" onclick="toggleInfo('Max')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Max Rubinsson</div>
             </button>
 
-            <button id="btn-Jonas" onclick="toggleInfo('Jonas')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Jonas Garbuzas</div>
+            <button id="btn-Oskar" onclick="toggleInfo('Oskar')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Oskar Sobala</div>
             </button>
 
-            <button id="btn-Michael" onclick="toggleInfo('Michael')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Michael Herkommer</div>
+            <button id="btn-Melvin" onclick="toggleInfo('Melvin')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Melvin Stenholm</div>
             </button>
 
-            <div id ="kontakta-Teamet" class="dev-btn max-w-2xl p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
-                <h2 class="mb-4 font-bold">Kontakta teamet:</h2>
-                <ol class="space-y-2">
-                    <li>Email: NobelQuestContactTE4@gmail.com</li>
-                </ol>
-            </div>
-        </header>
+            <button id="btn-Eylul" onclick="toggleInfo('Eylul')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Eylul Uzel</div>
+            </button>
+
+            <button id="btn-Liam" onclick="toggleInfo('Liam')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
+                <div class="text-[#142844]">Liam Wiklund</div>
+            </button>
 
         <!-- DOLDA INFO-RUTOR -->
         <div id="info-Max" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left"
@@ -90,9 +78,9 @@
             <div>
             Befattning: Lead Frontend Developer<br>
             Team: Platform <br>
-            Ålder: 19 <br>
             Github: Maxrub06<br>
-            LinkedIn: <a href="https://www.linkedin.com/in/max-edvin-rubinsson-563084268/" target="_blank" class="underline hover:text-[#0b1e39]">Max Rubinsson</a>
+            LinkedIn: <a href="https://www.linkedin.com/in/max-edvin-rubinsson-563084268/" target="_blank" class="underline hover:text-[#0b1e39]">Max Rubinsson</a><br>
+            Framtida Mål:
         </div>
         </div>
 
@@ -103,6 +91,8 @@
             Befattning: Backend Developer<br>
             Team: Platform <br>
             Github: Eyluluz<br>
+             LinkedIn: <a href="" target="_blank" class="underline hover:text-[#0b1e39]">Eylul Uzel</a><br>
+        Framtida Mål:
         </div>
         </div>
 
@@ -112,8 +102,9 @@
             <div>
             Befattning: Backend Developer<br>
             Team: Platform <br>
-            Ålder: 19 <br>
             Github: Stenholmmelvin<br>
+             LinkedIn: <a href="" target="_blank" class="underline hover:text-[#0b1e39]">Melvin Stenholm</a><br>
+        Framtida Mål:
         </div>
         </div>
 
@@ -123,8 +114,9 @@
             <div>
             Befattning: Backend Developer<br>
             Team: Trivia Rush <br>
-            Ålder: 19 <br>
             Github: Maotmo06<br>
+             LinkedIn: <a href="" target="_blank" class="underline hover:text-[#0b1e39]">Malte Mhor</a><br>
+        Framtida Mål:
         </div>
         </div>
 
@@ -134,8 +126,9 @@
             <div>
             Befattning: Backend Developer<br>
             Team: Trivia Rush <br>
-            Ålder: 19 <br>
             Github: Oskar-Sobala<br>
+             LinkedIn: <a href="" target="_blank" class="underline hover:text-[#0b1e39]">Oskar Sobala</a><br>
+        Framtida Mål:
         </div>
         </div>
 
@@ -145,8 +138,9 @@
             <div>
             Befattning: Fullstack Developer<br>
             Team: Timeline <br>
-            Ålder: 19 <br>
             Github: LiamW11<br>
+             LinkedIn: <a href="" target="_blank" class="underline hover:text-[#0b1e39]">Liam Wiklund</a><br>
+        Framtida Mål:
         </div>
         </div>
 
@@ -156,9 +150,9 @@
             <div>
             Befattning: Backend Developer<br>
             Team: Match Master <br>
-            Ålder: 19 <br>
             Github: TheodorLandell<br>
-            LinkedIn: <a href="https://www.linkedin.com/in/theodor-landell-4b972b310/" target="_blank" class="underline hover:text-[#0b1e39]">Theodor Landell</a>
+            LinkedIn: <a href="https://www.linkedin.com/in/theodor-landell-4b972b310/" target="_blank" class="underline hover:text-[#0b1e39]">Theodor Landell</a><br>
+        Framtida Mål: Bli en välutvecklad programerare
         </div>
         </div>
 
@@ -168,8 +162,9 @@
             <div>
             Befattning: Backend Developer<br>
             Team: Match Master <br>
-            Ålder: 19 <br>
             Github: Jesper-Lundholm06<br>
+        LinkedIn: <a href="" target="_blank" class="underline hover:text-[#0b1e39]">Jesper Lundholm</a> <br>
+        Framtida Mål:
         </div>
         </div>
 
@@ -179,9 +174,9 @@
             <div>
             Befattning: Fullstack Developer <br>
             Team: Timeline <br>
-            Ålder: 19 <br>
             Github: christianeriksson06<br>
-            LinkedIn: <a href="https://www.linkedin.com/in/christian-eriksson-7b676a310/" target="_blank" class="underline hover:text-[#0b1e39]">Christian Eriksson</a>
+            LinkedIn: <a href="https://www.linkedin.com/in/christian-eriksson-7b676a310/" target="_blank" class="underline hover:text-[#0b1e39]">Christian Eriksson</a> <br>
+             Framtida Mål: 
         </div>
         </div>
 
@@ -191,9 +186,10 @@
             <div>
             Befattning: Fullstack Developer<br>
             Team: Timeline <br>
-            Ålder: 19 <br>
             Github: <br>
-            LinkedIn: </div>
+            LinkedIn: <br>
+             Framtida Mål: 
+        </div>
         </div>
 
         <div id="info-Jonas" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow"
@@ -202,20 +198,12 @@
             <div>
             Befattning: Frontend developer<br>
             Team: Trivia Rush <br>
-            Ålder: 19 <br>
             Github: JonasG06<br>
-            LinkedIn: <a href="https://www.linkedin.com/in/jonas-garbuzas-61bba9310/" target="_blank" class="underline hover:text-[#0b1e39]">Jonas Garbuzas</a>
+            LinkedIn: <a href="https://www.linkedin.com/in/jonas-garbuzas-61bba9310/" target="_blank" class="underline hover:text-[#0b1e39]">Jonas Garbuzas</a><br>
+            Framtida Mål: 
         </div>
         </div>
 
-        <div id="info-Michael" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow"
-             onclick="toggleInfo('Michael')">
-            <div class="font-bold text-xl mb-2">Michael Herkommer</div>
-            <div>
-            Befattning: Project Manager<br>
-            Team: Projektledning <br>
-        </div>
-        </div>
     </div>
     </div>
         </div>

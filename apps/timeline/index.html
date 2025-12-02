@@ -12,61 +12,44 @@
     <link rel="stylesheet" href="starter-kit\styles.css" />
   </head>
 
-<header class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative">
-  <!-- lägg till icon namn här -->
+  <body class="bg-[#0b1e39]">
+    <header
+      class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative"
+    >
+      <!-- lägg till icon namn här -->
 
-  <!-- Låtsas-element för vänster sida (tomt) -->
-  <div style="width:24px;"></div>
+      <!-- Låtsas-element för vänster sida (tomt) -->
+      <div style="width: 24px"></div>
 
-  <h1 id="page-title" class="text-center flex-1">Nobel Timeline</h1>
+      <h1 id="page-title" class="text-center flex-1">Nobel Timeline</h1>
 
-  <!-- Menyknapp -->
+      <!-- Menyknapp -->
+<div id="menu-container"></div>
   <button onclick="toggleMenu()">☰</button>
 
-  <div id="dropdownMenu" class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
-    <a href="help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
-    <a href="leaderboard.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
-    <a href="menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
-    <a href="information.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
-    <a href="development.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
-  </div>
-</header>
+    </header>
+   <script>
+  (async function () {
+    const res = await fetch("../../shared/components/shared-menu.html");
+    const html = await res.text();
+    document.getElementById("menu-container").innerHTML = html;
+  })();
+</script>
 
-  <body class="bg-[#0b1e39]">
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("hidden");
+      }
+    </script>
+
     <main id="app" class="game-container px-2"></main>
+    <script src="/apps/Shared-how-to/howto.js"></script>
     <script type="module" src="main.js"></script>
-  </body>
+    <script src="../../shared/components/footer.js"></script>
 
-  <footer class="footer-brand p-4 text-center text-sm mt-8">
-    <div class="mb-2">
-      <a
-        id="help-link"
-        href="help.html"
-        class="text-[#142844] hover:underline mx-2"
-        >Instruktioner</a
-      >
-      <a
-        id="leaderboard-link"
-        href="leaderboard.html"
-        class="text-[#142844] hover:underline mx-2"
-        >Topplista</a
-      >
-      <a
-        id="menu-link"
-        href="menu.html"
-        class="text-[#142844] hover:underline mx-2"
-        >Huvudmeny</a
-      >
-      <a
-        id="information-link"
-        href="information.html"
-        class="text-[#142844] hover:underline mx-2"
-        >Information</a
-      >
-      <span id="user-status"></span>
-    </div>
-    <p class="text-[#142844]">&copy; 2025 Nobel Quest</p>
-  </footer>
+    <div id="footer-placeholder"></div>
+  </body>
 </html>
 
 <style>
@@ -98,10 +81,6 @@
 
   :root {
     --nobel-secondary: #c5a572;
-  }
-  .footer-brand {
-    background-color: var(--nobel-secondary);
-    color: white;
   }
 
   .header {
@@ -191,17 +170,11 @@
     display: none;
   }
 
-    :root {
-    --nobel-primary: #C5A572;
+  :root {
+    --nobel-primary: #c5a572;
   }
 
   .header-brand {
     background-color: var(--nobel-primary);
   }
 </style>
-
-<script>
-  function toggleMenu() {
-    document.getElementById("dropdownMenu").classList.toggle("hidden");
-  }
-</script>
