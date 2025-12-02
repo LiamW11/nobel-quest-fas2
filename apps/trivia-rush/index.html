@@ -30,18 +30,24 @@
   <h1 id="page-title" class="text-center flex-1">Nobel Trivia Rush</h1>
 
   <!-- Menyknapp -->
+  <div id="menu-container"></div>
   <button onclick="toggleMenu()">☰</button>
 
-  <!-- Dropdown meny -->
-  <div id="dropdownMenu"
-    class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
-    <a href="help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Instruktioner</a>
-    <a href="leaderboard.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
-    <a href="menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Huvudmeny</a>
-    <a href="information.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Information</a>
-    <a href="development.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
-  </div>
+    </header>
+   <script>
+  (async function () {
+    const res = await fetch("../../shared/components/shared-menu.html");
+    const html = await res.text();
+    document.getElementById("menu-container").innerHTML = html;
+  })();
+</script>
 
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("hidden");
+      }
+    </script>
 </header>
 
 
@@ -55,11 +61,6 @@
   }
 </style>
 
-<script>
-  function toggleMenu() {
-    document.getElementById("dropdownMenu").classList.toggle("hidden");
-  }
-</script>
 
     
 
@@ -227,5 +228,8 @@
       // Gör submitScore tillgänglig globalt
       window.submitScore = submitScore;
     </script>
+
+
+
   </body>
 </html>
