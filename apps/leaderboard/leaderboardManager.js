@@ -14,6 +14,9 @@ function getPlayerInfo() {
     return { uid: user.uid, displayName: displayName };
 }
 
+/**
+ * Skickar in poäng till Firebase
+ */
 export async function submitScore(gameId, score) {
     const playerInfo = getPlayerInfo();
     if (!playerInfo) return;
@@ -47,11 +50,12 @@ export async function submitScore(gameId, score) {
     }
 }
 
-export async function getTopScores(gameId) {
-    // KORREKT SÖKVÄG FÖR ATT LÄSA: (Collection: gameId)
+/**
+ * Hämtar top poäng från en specifik spel-collection
+ */
+export async function getTopScores(gameId, limitCount = 10) {
     const scoresCollectionRef = collection(db, gameId);
-
-    const q = query(scoresCollectionRef, orderBy("score", "desc"), limit(5));
+    const q = query(scoresCollectionRef, orderBy("score", "desc"), limit(limitCount));
 
     try {
         const querySnapshot = await getDocs(q);
@@ -61,7 +65,7 @@ export async function getTopScores(gameId) {
         });
         return topScores;
     } catch (error) {
-        console.error("Fel vid hämtning av Top 5 poäng:", error);
+        console.error(`Fel vid hämtning av poäng för ${gameId}:`, error);
         return [];
     }
 }
