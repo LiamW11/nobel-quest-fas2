@@ -166,7 +166,7 @@ document.addEventListener("difficulty:selected", async (e) => {
 
     resultHTML += `
         </div> 
-           <div class="text-center mt-8 mb-6">
+           <div class="text-center mt-3 pb-3">
       <button
       onclick="window.location.href='/apps/match-master/index.html'"
         id="again"
