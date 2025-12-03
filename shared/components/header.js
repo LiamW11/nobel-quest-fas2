@@ -36,6 +36,16 @@ window.addEventListener('DOMContentLoaded', async () => {
     const html = await response.text();
     document.getElementById('header-container').innerHTML = html;
     
+// Denna kod uppdaterar det som står i headern baserat på data-page-title
+const pageTitle = document.body.getAttribute('data-page-title');
+if (pageTitle) {
+  setTimeout(() => {
+    const titleEl = document.getElementById('page-title');
+    if (titleEl) titleEl.textContent = pageTitle;
+  }, 50);
+}
+
+    
     // Vänta lite så elementen hinner skapas
     setTimeout(updateProfile, 100);
   } catch (error) {
