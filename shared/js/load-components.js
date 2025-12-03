@@ -7,7 +7,6 @@ async function loadComponent(id, path) {
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadComponent("app-header", "/shared/components/header.html");
-  await loadComponent("app-footer", "/shared/components/footer.html");
 
   const title = document.body.getAttribute("data-page-title");
   if (title) document.getElementById("page-title").textContent = title;
