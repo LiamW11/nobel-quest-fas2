@@ -15,36 +15,25 @@ export function renderStart(root) {
         data-level="play">
         Spela
       </button>
-
-       <button 
-        type="button"
-        id="btn-howto" 
-        class="mt-4 text-sm text-white/80 underline hover:text-white">
-        How to play – så funkar spelet
-      </button>
 `;
 
- // --- spel-knappen ---
+ // --- spel-knappen öppnar howto först ---
   root.querySelectorAll("[data-level]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      const level = e.currentTarget.dataset.level;
-      document.dispatchEvent(
-        new CustomEvent("difficulty:selected", { detail: { level } })
-      );
+      e.preventDefault();
+      window.__timelineLevel = e.currentTarget.dataset.level;
+      openHowTo('timeline');
     });
   });
-  
-  // --- how-to knapp ---
-  const howtoBtn = root.querySelector("#btn-howto");
-  if (howtoBtn) {
-    howtoBtn.addEventListener("click", () => {
-      if (typeof openHowTo === 'function') {
-        openHowTo('timeline');
-      } else {
-        setTimeout(() => openHowTo('timeline'), 100);
-      }
-    });
-  }
+
+  // Gör startfunktion tillgänglig globalt
+  window.launchTimelineGame = function() {
+    const level = window.__timelineLevel || 'play';
+    document.dispatchEvent(
+      new CustomEvent("difficulty:selected", { detail: { level } })
+    );
+  };
+ 
 }
 
 // visa själva spelet: lista med kort som går att sortera och knapp för att skicka in

@@ -20,13 +20,27 @@
 
   // 🔁 Event delegation istället för DOMContentLoaded + querySelectorAll
   document.addEventListener("click", function (e) {
-    // Klick på X-knapp
-    if (e.target.closest(".howto-close")) {
+    // Trivia-specifik "Jag fattar"-knapp - startar spelet
+    if (e.target.closest(".howto-gotit-trivia")) {
       e.preventDefault();
       closeAllHowTo();
+      if (typeof window.launchTriviaGame === 'function') {
+        window.launchTriviaGame();
+      }
+      return;
+    }
+    
+// Timeline-specifik "Jag fattar"-knapp
+    if (e.target.closest(".howto-gotit-timeline")) {
+      e.preventDefault();
+      closeAllHowTo();
+      if (typeof window.launchTimelineGame === 'function') {
+        window.launchTimelineGame();
+      }
       return;
     }
 
+    // Generell "Jag fattar"-knapp (för dropdown-menyn etc)
     if (e.target.closest(".howto-gotit")) {
       e.preventDefault();
       closeAllHowTo();
