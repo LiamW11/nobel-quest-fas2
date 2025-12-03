@@ -114,7 +114,8 @@
       <div class="px-4 pb-6">
         <!-- Combined -->
         <div id="view-combined" class="leaderboard-view">
-          <div
+          
+          <!--<div
             class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl"
           >
             <h2 class="text-lg font-bold text-nobel-blue text-center">
@@ -123,7 +124,8 @@
             <p class="text-center text-nobel-blue text-xs opacity-80">
               Alla spel sammanräknade
             </p>
-          </div>
+          </div> -->
+
           <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
             <ol id="list-combined" class="space-y-2">
               <li class="text-center py-8 text-gray-400 text-sm animate-pulse">
@@ -134,8 +136,9 @@
         </div>
 
         <!-- Timeline -->
-        <div id="view-timeline" class="leaderboard-view hidden">
-          <div
+        
+         <div id="view-timeline" class="leaderboard-view hidden">
+          <!--<div
             class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl"
           >
             <h2
@@ -144,6 +147,8 @@
               <span class="text-xl">⏰</span>Nobel Timeline
             </h2>
           </div>
+        -->
+
           <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
             <ol id="list-timeline" class="space-y-2">
               <li class="text-center py-8 text-gray-400 text-sm animate-pulse">
@@ -155,7 +160,8 @@
 
         <!-- Match -->
         <div id="view-match" class="leaderboard-view hidden">
-          <div
+          
+          <!--<div
             class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl"
           >
             <h2
@@ -163,7 +169,8 @@
             >
               <span class="text-xl">🎯</span>Match Master
             </h2>
-          </div>
+          </div>-->
+
           <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
             <ol id="list-match" class="space-y-2">
               <li class="text-center py-8 text-gray-400 text-sm animate-pulse">
@@ -175,7 +182,8 @@
 
         <!-- Trivia -->
         <div id="view-trivia" class="leaderboard-view hidden">
-          <div
+         
+          <!--<div
             class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl"
           >
             <h2
@@ -183,7 +191,8 @@
             >
               <span class="text-xl">🧠</span>Trivia Rush
             </h2>
-          </div>
+          </div> -->
+
           <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
             <ol id="list-trivia" class="space-y-2">
               <li class="text-center py-8 text-gray-400 text-sm animate-pulse">
@@ -192,11 +201,6 @@
             </ol>
           </div>
         </div>
-      </div>
-
-      <!-- Footer -->
-      <div class="text-center pb-6 px-4">
-        <p class="text-gray-400 text-xs">Poängen uppdateras automatiskt 🎮</p>
       </div>
     </div>
 
@@ -232,5 +236,12 @@
     <!-- Import leaderboard display -->
     <script type="module" src="./leaderboardDisplay.js"></script>
     <script type="module" src="../../shared/components/header.js"></script>
+
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+        switchTab("combined"); // Markera Top 10 direkt
+    });
+    </script>
+
   </body>
 </html>

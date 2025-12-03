@@ -50,9 +50,6 @@
       
     </div>
 
-     <button type="button" id="btn-howto" class="mt-4 block w-full text-sm text-white/80 underline hover:text-white">
-            How to play – så funkar spelet
-            </button>
     </div>
 </section>
 
@@ -173,6 +170,17 @@
     // Gör submitScore tillgänglig global
     window.submitScore = submitScore;
   </script>
+  <!-- Lägg till detta PRECIS FÖRE </body> -->
+<div id="howto-modals-container"></div>
+<script>
+  (async function () {
+    const res = await fetch("/apps/Shared-how-to/howto-modals.html");
+    const html = await res.text();
+    document.getElementById("howto-modals-container").innerHTML = html;
+  })();
+</script>
+
+</body>
 </body>
 
 </html>

@@ -10,15 +10,22 @@ gameSound.match.volume= 0.6;
 gameSound.win.volume= 0.7;
 const startbtn = document.getElementById("btn-start");
 
+// Funktion för att starta spelet (anropas från howto-knappen)
+window.launchMatchGame = function() {
+  document.getElementById("view-start").classList.add("hidden");
+  document.getElementById("gameScreen").classList.remove("hidden");
+  startGame();
+};
+
 window.addEventListener("DOMContentLoaded", () => {
   // Starta spelet när användaren klickar på Spela
   const startbtn = document.getElementById("btn-start");
 
   if (startbtn) {
-    startbtn.onclick = () => {
-      document.getElementById("view-start").classList.add("hidden");
-      document.getElementById("gameScreen").classList.remove("hidden");
-      startGame();
+   startbtn.onclick = (e) => {
+    e.preventDefault();
+    openHowTo('match')
+   
     };
   }
   const howtoBtn = document.getElementById("btn-howto");
@@ -52,12 +59,20 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   document.getElementById("giveUpBtn").onclick = openGiveUpModal;
+  
+  // Instruktioner i dropdown öppnar how-to popup
+  setTimeout(() => {
+    const menuInstructions = document.getElementById("menu-instructions");
+    if (menuInstructions) {
+      menuInstructions.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("dropdownMenu").classList.add("hidden");
+        openHowTo('match');
+      });
+    }
+  }, 500);
 });
 
 
-startbtn.onclick = () => {
-  document.getElementById("view-start").classList.add("hidden");
-  document.getElementById("gameScreen").classList.remove("hidden");
-  startGame();
-};
+
 
