@@ -121,12 +121,13 @@
             </select>
           </div>
           <button
-            type="submit"
-            id="saveEmail"
-            class="start-quest-btn w-full bg-[#C5A572] hover:bg-[#d4b882] text-[#0b1e39] font-bold py-3 px-4 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Start Quest!
-          </button>
+          type="submit"
+          id="saveEmail"
+          disabled
+          class="start-quest-btn w-full bg-[#C5A572] hover:bg-[#d4b882] text-[#0b1e39] font-bold py-3 px-4 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Start Quest!
+        </button>
         </form>
 
         
@@ -250,7 +251,6 @@
         color: #86efac;
       }
 
-      /* Make the button flash subtly */
 .start-quest-btn {
     position: relative;
     overflow: hidden;
@@ -258,28 +258,15 @@
     animation: flashGlow 2s infinite alternate;
 }
 
-/* Pop animation when clicked */
 .start-quest-btn:active {
     transform: scale(0.92);
 }
 
-/* Hover pop */
 .start-quest-btn:hover {
     transform: scale(1.08);
     box-shadow: 0 0 15px #d4b882, 0 0 25px #C5A572;
 }
 
-/* Flash glow animation */
-@keyframes flashGlow {
-    0% {
-        box-shadow: 0 0 6px #C5A572;
-    }
-    100% {
-        box-shadow: 0 0 15px #d4b882;
-    }
-}
-
-/* Optional spark effect */
 .start-quest-btn::after {
     content: "";
     position: absolute;
@@ -298,5 +285,22 @@
     transform: scale(1);
 }
     </style>
+
+    <script type="module" src="register.js"></script>
+    <script>
+        // Enable button only when both fields are filled
+        const emailInput = document.getElementById('email');
+        const classSelect = document.querySelector("select[name='klass']");
+        const submitButton = document.getElementById('saveEmail');
+
+        function checkFormValidity() {
+            const emailFilled = emailInput.value.trim().length > 0;
+            const classSelected = classSelect.value !== 'Placeholder';
+            submitButton.disabled = !(emailFilled && classSelected);
+        }
+
+        emailInput.addEventListener('input', checkFormValidity);
+        classSelect.addEventListener('change', checkFormValidity);
+    </script>
   </body>
 </html>
