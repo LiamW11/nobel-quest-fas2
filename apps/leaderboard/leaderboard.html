@@ -1,81 +1,236 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
   <head>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../Favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../Favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../Favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../../Favicon/site.webmanifest" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leaderboard</title>
+    <title>Nobel Quest Leaderboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "nobel-gold": "#C5A572",
+              "nobel-gold-light": "#d4b882",
+              "nobel-blue": "#0b1e39",
+              "nobel-blue-medium": "#142844",
+              "nobel-blue-light": "#1e3458",
+              "nobel-blue-lighter": "#2a4a6f",
+              "nobel-menu": "#243D5E",
+              "nobel-text": "#E3C776",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-8px)" },
+              },
+            },
+            animation: {
+              float: "float 3s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script>
     <style>
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+      /* Medal gradients */
+      .rank-1 {
+        background: linear-gradient(135deg, #ffd700, #ffa500);
       }
-      .animate-fade-in {
-        animation: fadeIn 0.5s ease-out forwards;
+      .rank-2 {
+        background: linear-gradient(135deg, #e8e8e8, #c0c0c0);
+      }
+      .rank-3 {
+        background: linear-gradient(135deg, #cd7f32, #b8860b);
       }
     </style>
   </head>
-  <body class="bg-[#0b1e39] text-white" data-page-title="Topplista">
-    <div id="app-header"></div>
+  <body class="bg-nobel-blue text-white min-h-screen overflow-x-hidden">
+    <div id="header-container"></div>
 
-    <script>
-      function toggleMenu() {
-        document.getElementById("dropdownMenu").classList.toggle("hidden");
-      }
-    </script>
-
-    <div class="max-w-md mx-auto p-4 pb-8">
-      
-      <!-- Nobel Timeline -->
-      <div class="mb-6">
-        <h2 class="text-2xl font-bold mb-4 text-[#C5A572] text-center flex items-center justify-center gap-2">
-          <span class="text-3xl">⏰</span>
-          Nobel Timeline
+    <div class="max-w-lg mx-auto">
+      <!-- Hero -->
+      <div class="text-center py-4 px-4">
+        <div class="animate-float inline-block text-4xl mb-2">🏆</div>
+        <h2 class="text-xl font-bold text-nobel-gold mb-1">
+          Nobel Quest Leaderboard
         </h2>
-        <div class="bg-[#C5A572] p-4 rounded-2xl shadow-xl">
-          <ol id="list-timeline" class="space-y-3">
-            <li class="text-center py-3 text-[#0b1e39]/60">Laddar poäng...</li> 
-          </ol>
+        <p class="text-gray-300 text-xs">Tävla mot dina klasskamrater!</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="top-[72px] z-40 bg-nobel-blue px-4 pb-4">
+        <button
+          onclick="switchTab('combined')"
+          id="btn-combined"
+          class="tab-btn w-full px-4 py-3 rounded-xl font-bold bg-nobel-blue-medium transition-all duration-300 text-sm mb-2 active:scale-95"
+        >
+          ⭐ Top 10
+        </button>
+        <div class="grid grid-cols-3 gap-2">
+          <button
+            onclick="switchTab('timeline')"
+            id="btn-timeline"
+            class="tab-btn px-3 py-2.5 rounded-xl font-bold bg-nobel-blue-medium transition-all duration-300 text-xs active:scale-95"
+          >
+            Timeline
+          </button>
+          <button
+            onclick="switchTab('match')"
+            id="btn-match"
+            class="tab-btn px-3 py-2.5 rounded-xl font-bold bg-nobel-blue-medium transition-all duration-300 text-xs active:scale-95"
+          >
+            Match-Master
+          </button>
+          <button
+            onclick="switchTab('trivia')"
+            id="btn-trivia"
+            class="tab-btn px-3 py-2.5 rounded-xl font-bold bg-nobel-blue-medium transition-all duration-300 text-xs active:scale-95"
+          >
+            Trivia Rush
+          </button>
         </div>
       </div>
 
-      <!-- Nobel Match Master -->
-      <div class="mb-6">
-        <h2 class="text-2xl font-bold mb-4 text-[#C5A572] text-center flex items-center justify-center gap-2">
-          <span class="text-3xl">🎴</span>
-          Nobel Match Master
-        </h2>
-        <div class="bg-[#C5A572] p-4 rounded-2xl shadow-xl">
-          <ol id="list-match" class="space-y-3">
-            <li class="text-center py-3 text-[#0b1e39]/60">Laddar poäng...</li>
-          </ol>
+      <!-- Leaderboards -->
+      <div class="px-4 pb-6">
+        <!-- Combined -->
+        <div id="view-combined" class="leaderboard-view">
+          <div
+            class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl"
+          >
+            <h2 class="text-lg font-bold text-nobel-blue text-center">
+              ⭐ Kombinerad Top 10
+            </h2>
+            <p class="text-center text-nobel-blue text-xs opacity-80">
+              Alla spel sammanräknade
+            </p>
+          </div>
+          <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
+            <ol id="list-combined" class="space-y-2">
+              <li class="text-center py-8 text-gray-400 text-sm animate-pulse">
+                Laddar poäng...
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div id="view-timeline" class="leaderboard-view hidden">
+          <div
+            class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl"
+          >
+            <h2
+              class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2"
+            >
+              <span class="text-xl">⏰</span>Nobel Timeline
+            </h2>
+          </div>
+          <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
+            <ol id="list-timeline" class="space-y-2">
+              <li class="text-center py-8 text-gray-400 text-sm animate-pulse">
+                Laddar poäng...
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Match -->
+        <div id="view-match" class="leaderboard-view hidden">
+          <div
+            class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl"
+          >
+            <h2
+              class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2"
+            >
+              <span class="text-xl">🎯</span>Match Master
+            </h2>
+          </div>
+          <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
+            <ol id="list-match" class="space-y-2">
+              <li class="text-center py-8 text-gray-400 text-sm animate-pulse">
+                Laddar poäng...
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Trivia -->
+        <div id="view-trivia" class="leaderboard-view hidden">
+          <div
+            class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl"
+          >
+            <h2
+              class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2"
+            >
+              <span class="text-xl">🧠</span>Trivia Rush
+            </h2>
+          </div>
+          <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
+            <ol id="list-trivia" class="space-y-2">
+              <li class="text-center py-8 text-gray-400 text-sm animate-pulse">
+                Laddar poäng...
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
 
-      <!-- Nobel Trivia Rush -->
-      <div class="mb-6">
-        <h2 class="text-2xl font-bold mb-4 text-[#C5A572] text-center flex items-center justify-center gap-2">
-          <span class="text-3xl">🧠</span>
-          Nobel Trivia Rush
-        </h2>
-        <div class="bg-[#C5A572] p-4 rounded-2xl shadow-xl">
-          <ol id="list-trivia" class="space-y-3">
-            <li class="text-center py-3 text-[#0b1e39]/60">Laddar poäng...</li>
-          </ol>
-        </div>
+      <!-- Footer -->
+      <div class="text-center pb-6 px-4">
+        <p class="text-gray-400 text-xs">Poängen uppdateras automatiskt 🎮</p>
       </div>
-
     </div>
 
-    <div id="app-footer"></div>
+    <script>
+      // Toggle menu
+      window.toggleMenu = function () {
+        document.getElementById("dropdownMenu").classList.toggle("hidden");
+      };
 
-    <script src="../../shared/js/load-components.js"></script>
-    <script type="module" src="../../inloggning/auth-check.js"></script> 
-    <script type="module" src="./leaderboardDisplay.js"></script> 
-    
-    <script type="module">
-      import { initAutoAuth, requireAuth } from "../../inloggning/auth-check.js";
-      initAutoAuth(); 
-    </script> 
+      // Tab switching
+      window.switchTab = function (tabName) {
+        document.querySelectorAll(".leaderboard-view").forEach((view) => {
+          view.classList.add("hidden");
+        });
+
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("bg-nobel-gold", "text-nobel-blue", "scale-105");
+          btn.classList.add("bg-nobel-blue-medium");
+        });
+
+        document.getElementById(`view-${tabName}`).classList.remove("hidden");
+
+        const activeBtn = document.getElementById(`btn-${tabName}`);
+        activeBtn.classList.remove("bg-nobel-blue-medium");
+        activeBtn.classList.add(
+          "bg-nobel-gold",
+          "text-nobel-blue",
+          "scale-105"
+        );
+      };
+    </script>
+
+    <!-- Import leaderboard display -->
+    <script type="module" src="./leaderboardDisplay.js"></script>
+    <script type="module" src="../../shared/components/header.js"></script>
   </body>
 </html>
