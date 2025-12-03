@@ -128,7 +128,7 @@ document.addEventListener("difficulty:selected", async (e) => {
               ${laureate.year}
             </p>
             <p class="text-sm text-white/60 whitespace-nowrap">
-              ${isCorrect ? `+100 Poäng` : "-25 Poäng"}
+              ${isCorrect ? `+60 Poäng` : "-15 Poäng"}
             </p>
            
           </div>
@@ -166,7 +166,7 @@ document.addEventListener("difficulty:selected", async (e) => {
 
     resultHTML += `
         </div> 
-           <div class="text-center mt-8 mb-6">
+           <div class="text-center mt-3 pb-3">
       <button
       onclick="window.location.href='/apps/match-master/index.html'"
         id="again"

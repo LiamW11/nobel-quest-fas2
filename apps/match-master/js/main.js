@@ -10,15 +10,22 @@ gameSound.match.volume= 0.6;
 gameSound.win.volume= 0.7;
 const startbtn = document.getElementById("btn-start");
 
+// Funktion för att starta spelet (anropas från howto-knappen)
+window.launchMatchGame = function() {
+  document.getElementById("view-start").classList.add("hidden");
+  document.getElementById("gameScreen").classList.remove("hidden");
+  startGame();
+};
+
 window.addEventListener("DOMContentLoaded", () => {
   // Starta spelet när användaren klickar på Spela
   const startbtn = document.getElementById("btn-start");
 
   if (startbtn) {
-    startbtn.onclick = () => {
-      document.getElementById("view-start").classList.add("hidden");
-      document.getElementById("gameScreen").classList.remove("hidden");
-      startGame();
+   startbtn.onclick = (e) => {
+    e.preventDefault();
+    openHowTo('match')
+   
     };
   }
   const howtoBtn = document.getElementById("btn-howto");
@@ -55,9 +62,5 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-startbtn.onclick = () => {
-  document.getElementById("view-start").classList.add("hidden");
-  document.getElementById("gameScreen").classList.remove("hidden");
-  startGame();
-};
+
 

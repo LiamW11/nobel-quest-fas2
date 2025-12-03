@@ -28,7 +28,7 @@ export function setPools(laureates) {
 }
 
 export function submitAndScore(userIds) {
-  const pointsPerCorrect = 100;
+  const pointsPerCorrect = 60;
   // (jämför användarens ordning med den korrekta ordningen)
   // .filter() går igenom varje element i listan userIds,
   // är användarens id på plats i samma som det korrekta id:t på plats i
@@ -42,7 +42,7 @@ export function submitAndScore(userIds) {
   // tidsbonus beräknas som en procentandel baserat på timeLeft
   // exempel: om timeLeft är 30, blir det 30 % av baspoängen
   const timeBonus = Math.round(basePoints * (gameState.timeLeft / 100));
-  let score = basePoints + timeBonus - incorrect * 25;
+  let score = basePoints + timeBonus - incorrect * 15;
   if (score < 0) score = 0;
 
   gameState.score = score;

@@ -41,6 +41,16 @@
     }
 
     // Generell "Jag fattar"-knapp (för dropdown-menyn etc)
+if (e.target.closest(".howto-gotit-match")) {
+      e.preventDefault();
+      closeAllHowTo();
+      if(typeof window.launchMatchGame === "function") {
+        window.launchMatchGame();
+      }
+      return;
+    }
+
+
     if (e.target.closest(".howto-gotit")) {
       e.preventDefault();
       closeAllHowTo();
