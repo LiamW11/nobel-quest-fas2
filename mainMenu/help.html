@@ -1,90 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
- <link rel="apple-touch-icon" sizes="180x180" href="../Favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
-<link rel="manifest" href="../Favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
+    <link rel="manifest" href="../Favicon/site.webmanifest">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>How to Play</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "nobel-gold": "#C5A572",
+              "nobel-gold-light": "#d4b882",
+              "nobel-blue": "#0b1e39",
+              "nobel-blue-medium": "#142844",
+              "nobel-blue-light": "#1e3458",
+              "nobel-blue-lighter": "#2a4a6f",
+              "nobel-menu": "#243D5E",
+              "nobel-text": "#E3C776",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-8px)" },
+              },
+            },
+            animation: {
+              float: "float 3s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script>
   </head>
-  <body class="bg-[#0b1e39] text-[#C5A572]" data-page-title="Instruktioner">
-    <div class="relative sticky top-0 z-40 shadow-l" 
-    id="app-header"></div>
-    <div class="mb-4 text-[#C5A572]"></div>
+  <body class="bg-nobel-blue text-white min-h-screen overflow-x-hidden" data-page-title="Instruktioner">
+    <div id="header-container"></div>
 
-    <div class="max-w-2xl mx-auto p-4">
+    <div class="max-w-lg mx-auto">
+      <!-- Hero -->
+      <div class="text-center py-4 px-4">
+        <div class="animate-float inline-block text-4xl mb-2">📖</div>
+        <h2 class="text-xl font-bold text-nobel-gold mb-1">
+          Hur man spelar
+        </h2>
+      </div>
 
-      <!-- DROPDOWN -->
-     <script>
-     function toggleMenu() {
-      document.getElementById("dropdownMenu").classList.toggle("hidden");
-      }
-      </script>
+      <!-- Buttons -->
+      <div class="px-4 pb-4 text-xl">
+        <div class="grid grid-cols-1 gap-3 max-w-md mx-auto">
+          <button 
+            id="btn-TimeLine" 
+            onclick="toggleInfoHelp('TimeLine')" 
+            class="dev-btn px-4 py-3 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light">
+            <span>Timeline</span>
+          </button>
 
-        <!-- KNAPPAR -->
-        <button id="btn-TimeLine" onclick="toggleInfoHelp('TimeLine')" 
-          class="dev-btn font-bold bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-          <div class="text-[#142844]">Timeline - Spelinstruktioner</div>
-        </button>
+          <button 
+            id="btn-MatchMaster" 
+            onclick="toggleInfoHelp('MatchMaster')" 
+            class="dev-btn px-4 py-3 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light">
+            <span>Match Master</span>
+          </button>
 
-        <button id="btn-MatchMaster" onclick="toggleInfoHelp('MatchMaster')" 
-          class="dev-btn font-bold bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-          <div class="text-[#142844]">Match Master - Spelinstruktioner</div>
-        </button>
+          <button 
+            id="btn-TriviaRush" 
+            onclick="toggleInfoHelp('TriviaRush')" 
+            class="dev-btn px-4 py-3 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light">
+            <span>Trivia Rush</span>
+          </button>
+        </div>
+      </div>
 
-        <button id="btn-TriviaRush" onclick="toggleInfoHelp('TriviaRush')" 
-          class="dev-btn font-bold bg-[#C5A572] p-6 rounded-lg shadow w-full text-left">
-          <div class="text-[#142844]">Trivia Rush - Spelinstruktioner</div>
-        </button>
-
-        <!-- GAME-SPECIFIC CONTENT: Match Master -->
-        <div id="info-MatchMaster" 
-          onclick="toggleInfoHelp('MatchMaster')" 
-          class="dev-info hidden max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
-          <h2 class="text-2xl font-bold mb-4">Match Master - Spelinstruktioner</h2>
-          <ol class="list-decimal ml-6">
-            <li>Starta spelet.</li>
-            <li>Matcha rätt person med rätt kort.</li>
-            <li>Rätt matchning ger 100 poäng, ett fel ger -10 poäng</li>
-            <li>Man får också en liten tids bonus i slutet</li>
-            <li>Vinn spelet!</li>
-          </ol>
+      <!-- Game Info Cards -->
+      <div class="px-4 pb-6">
+        <!-- Timeline -->
+        <div 
+          id="info-TimeLine" 
+          class="dev-info hidden ring-1 ring-white/30 rounded-2xl -mt-4">
+          <div class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl relative">
+            <h2 class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2">
+              <span class="text-xl">Timeline</span>
+            </h2>
+            <button 
+              onclick="toggleInfoHelp('TimeLine')" 
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-nobel-blue text-2xl font-bold hover:scale-110 transition-transform">
+              ✕
+            </button>
+          </div>
+          <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
+            <ol class="list-decimal ml-6 space-y-3 text-md">
+              <li>Du får åtta nobelpristagare i en slumpad lista.</li>
+              <li>Ordna dem så att den som fick priset tidigast hamnar högst och den som fick senast hamnar längst ned.</li>
+              <li>Poäng: +60 per rätt, -15 per fel och (tid kvar)/100.</li>
+            </ol>
+          </div>
         </div>
 
-        <!-- GAME-SPECIFIC CONTENT: Timeline -->
-        <div id="info-TimeLine" 
-          onclick="toggleInfoHelp('TimeLine')" 
-          class="dev-info hidden max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
-          <h2 class="text-2xl font-bold mb-4">Timeline - Spelinstruktioner</h2>
-          <ol class="list-decimal ml-6">
-            <li>Du får åtta nobelpristagare i en slumpad lista.</li>
-            <li>Ordna dem så att den som fick priset tidigast hamnar högst och den som fick senast hamnar längst ned.</li>
-            <li>Poäng: +100 per rätt, -25 per fel och (tid kvar)/100.</li>
-          </ol>
+        <!-- Match Master -->
+        <div 
+          id="info-MatchMaster" 
+          class="dev-info hidden ring-1 ring-white/30 rounded-2xl -mt-4">
+          <div class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl relative">
+            <h2 class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2">
+              <span class="text-xl">Match Master</span>
+            </h2>
+            <button 
+              onclick="toggleInfoHelp('MatchMaster')" 
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-nobel-blue text-2xl font-bold hover:scale-110 transition-transform">
+              ✕
+            </button>
+          </div>
+          <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
+            <ol class="list-decimal ml-6 space-y-3 text-md">
+              <li>Starta spelet.</li>
+              <li>Matcha rätt person med rätt kort.</li>
+              <li>Rätt matchning ger 100 poäng, ett fel ger -10 poäng</li>
+              <li>Man får också en liten tids bonus i slutet</li>
+              <li>Vinn spelet!</li>
+            </ol>
+          </div>
         </div>
 
-        <!-- GAME-SPECIFIC CONTENT: Trivia Rush -->
-        <div id="info-TriviaRush" 
-          onclick="toggleInfoHelp('TriviaRush')" 
-          class="dev-info hidden max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
-          <h2 class="text-2xl font-bold mb-4">Trivia Rush - Spelinstruktioner</h2>
-          <ol class="list-decimal ml-6">
-            <li>Klicka på Starta Quiz.</li>
-            <li>Du får 10 frågor om Nobelpristagare.</li>
-            <li>Du har 15 sekunder per fråga.</li>
-            <li>Rätt svar ger poäng + en tids bonus.</li>
-            <li>Din streak ger di bonus på + 40% poäng per streak (max 120% bonus)</li>
-            <li>Jämför din poäng med andra på leaderboard.</li>
-          </ol>
+        <!-- Trivia Rush -->
+        <div 
+          id="info-TriviaRush" 
+          class="dev-info hidden ring-1 ring-white/30 rounded-2xl -mt-4">
+          <div class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl relative">
+            <h2 class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2">
+              <span class="text-xl">Trivia Rush</span>
+            </h2>
+            <button 
+              onclick="toggleInfoHelp('TriviaRush')" 
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-nobel-blue text-2xl font-bold hover:scale-110 transition-transform">
+              ✕
+            </button>
+          </div>
+          <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
+            <ol class="list-decimal ml-6 space-y-3 text-md">
+              <li>Klicka på Starta Quiz.</li>
+              <li>Du får 10 frågor om Nobelpristagare.</li>
+              <li>Du har 15 sekunder per fråga.</li>
+              <li>Rätt svar ger poäng + en tids bonus.</li>
+              <li>Din streak ger dig bonus på + 40% poäng per streak (max 120% bonus)</li>
+              <li>Jämför din poäng med andra på leaderboard.</li>
+            </ol>
+          </div>
         </div>
+      </div>
     </div>
 
-    
-
-    <script src="/shared/js/load-components.js"></script>
+    <script type="module" src="../shared/components/header.js"></script>
     <script type="module" src="../auth-check.js"></script>
 
     <!-- TOGGLE SCRIPT -->
