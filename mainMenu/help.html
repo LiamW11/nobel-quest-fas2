@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="apple-touch-icon" sizes="180x180" href="../Favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
-    <link rel="manifest" href="../Favicon/site.webmanifest">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../Favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../Favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../Favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../Favicon/site.webmanifest" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>How to Play</title>
@@ -37,39 +51,43 @@
       };
     </script>
   </head>
-  <body class="bg-nobel-blue text-white min-h-screen overflow-x-hidden" data-page-title="Instruktioner">
+  <body
+    class="bg-nobel-blue text-white min-h-screen overflow-x-hidden"
+    data-page-title="Instruktioner"
+  >
     <div id="header-container"></div>
 
     <div class="max-w-lg mx-auto">
       <!-- Hero -->
       <div class="text-center py-4 px-4">
         <div class="animate-float inline-block text-4xl mb-2">📖</div>
-        <h2 class="text-xl font-bold text-nobel-gold mb-1">
-          Hur man spelar
-        </h2>
+        <h2 class="text-xl font-bold text-nobel-gold mb-1">Hur man spelar</h2>
       </div>
 
       <!-- Buttons -->
       <div class="px-4 pb-4 text-xl">
         <div class="grid grid-cols-1 gap-3 max-w-md mx-auto">
-          <button 
-            id="btn-TimeLine" 
-            onclick="toggleInfoHelp('TimeLine')" 
-            class="dev-btn px-4 py-3 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light">
+          <button
+            id="btn-TimeLine"
+            onclick="toggleInfoHelp('TimeLine')"
+            class="dev-btn px-4 py-3 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light"
+          >
             <span>Timeline</span>
           </button>
 
-          <button 
-            id="btn-MatchMaster" 
-            onclick="toggleInfoHelp('MatchMaster')" 
-            class="dev-btn px-4 py-3 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light">
+          <button
+            id="btn-MatchMaster"
+            onclick="toggleInfoHelp('MatchMaster')"
+            class="dev-btn px-4 py-3 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light"
+          >
             <span>Match Master</span>
           </button>
 
-          <button 
-            id="btn-TriviaRush" 
-            onclick="toggleInfoHelp('TriviaRush')" 
-            class="dev-btn px-4 py-3 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light">
+          <button
+            id="btn-TriviaRush"
+            onclick="toggleInfoHelp('TriviaRush')"
+            class="dev-btn px-4 py-3 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light"
+          >
             <span>Trivia Rush</span>
           </button>
         </div>
@@ -78,39 +96,54 @@
       <!-- Game Info Cards -->
       <div class="px-4 pb-6">
         <!-- Timeline -->
-        <div 
-          id="info-TimeLine" 
-          class="dev-info hidden ring-1 ring-white/30 rounded-2xl -mt-4">
-          <div class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl relative">
-            <h2 class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2">
+        <div
+          id="info-TimeLine"
+          class="dev-info hidden ring-1 ring-white/30 rounded-2xl -mt-4"
+        >
+          <div
+            class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl relative"
+          >
+            <h2
+              class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2"
+            >
               <span class="text-xl">Timeline</span>
             </h2>
-            <button 
-              onclick="toggleInfoHelp('TimeLine')" 
-              class="absolute right-3 top-1/2 -translate-y-1/2 text-nobel-blue text-2xl font-bold hover:scale-110 transition-transform">
+            <button
+              onclick="toggleInfoHelp('TimeLine')"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-nobel-blue text-2xl font-bold hover:scale-110 transition-transform"
+            >
               ✕
             </button>
           </div>
           <div class="bg-nobel-blue-medium rounded-b-2xl shadow-2xl p-4">
             <ol class="list-decimal ml-6 space-y-3 text-md">
               <li>Du får åtta nobelpristagare i en slumpad lista.</li>
-              <li>Ordna dem så att den som fick priset tidigast hamnar högst och den som fick senast hamnar längst ned.</li>
+              <li>
+                Ordna dem så att den som fick priset tidigast hamnar högst och
+                den som fick senast hamnar längst ned.
+              </li>
               <li>Poäng: +60 per rätt, -15 per fel och (tid kvar)/100.</li>
             </ol>
           </div>
         </div>
 
         <!-- Match Master -->
-        <div 
-          id="info-MatchMaster" 
-          class="dev-info hidden ring-1 ring-white/30 rounded-2xl -mt-4">
-          <div class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl relative">
-            <h2 class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2">
+        <div
+          id="info-MatchMaster"
+          class="dev-info hidden ring-1 ring-white/30 rounded-2xl -mt-4"
+        >
+          <div
+            class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl relative"
+          >
+            <h2
+              class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2"
+            >
               <span class="text-xl">Match Master</span>
             </h2>
-            <button 
-              onclick="toggleInfoHelp('MatchMaster')" 
-              class="absolute right-3 top-1/2 -translate-y-1/2 text-nobel-blue text-2xl font-bold hover:scale-110 transition-transform">
+            <button
+              onclick="toggleInfoHelp('MatchMaster')"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-nobel-blue text-2xl font-bold hover:scale-110 transition-transform"
+            >
               ✕
             </button>
           </div>
@@ -126,16 +159,22 @@
         </div>
 
         <!-- Trivia Rush -->
-        <div 
-          id="info-TriviaRush" 
-          class="dev-info hidden ring-1 ring-white/30 rounded-2xl -mt-4">
-          <div class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl relative">
-            <h2 class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2">
+        <div
+          id="info-TriviaRush"
+          class="dev-info hidden ring-1 ring-white/30 rounded-2xl -mt-4"
+        >
+          <div
+            class="bg-gradient-to-r from-nobel-gold to-nobel-gold-light p-3 rounded-t-2xl relative"
+          >
+            <h2
+              class="text-lg font-bold text-nobel-blue text-center flex items-center justify-center gap-2"
+            >
               <span class="text-xl">Trivia Rush</span>
             </h2>
-            <button 
-              onclick="toggleInfoHelp('TriviaRush')" 
-              class="absolute right-3 top-1/2 -translate-y-1/2 text-nobel-blue text-2xl font-bold hover:scale-110 transition-transform">
+            <button
+              onclick="toggleInfoHelp('TriviaRush')"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-nobel-blue text-2xl font-bold hover:scale-110 transition-transform"
+            >
               ✕
             </button>
           </div>
@@ -145,7 +184,10 @@
               <li>Du får 10 frågor om Nobelpristagare.</li>
               <li>Du har 15 sekunder per fråga.</li>
               <li>Rätt svar ger poäng + en tids bonus.</li>
-              <li>Din streak ger dig bonus på + 40% poäng per streak (max 120% bonus)</li>
+              <li>
+                Din streak ger dig bonus på + 40% poäng per streak (max 120%
+                bonus)
+              </li>
               <li>Jämför din poäng med andra på leaderboard.</li>
             </ol>
           </div>
@@ -158,18 +200,22 @@
 
     <!-- TOGGLE SCRIPT -->
     <script>
+      window.toggleMenu = function () {
+        document.getElementById("dropdownMenu").classList.toggle("hidden");
+      };
+
       function toggleInfoHelp(name) {
         const allButtons = document.querySelectorAll(".dev-btn");
         const allInfos = document.querySelectorAll(".dev-info");
         const info = document.getElementById("info-" + name);
 
         if (info.classList.contains("hidden")) {
-          allButtons.forEach(b => b.classList.add("hidden"));
-          allInfos.forEach(i => i.classList.add("hidden"));
+          allButtons.forEach((b) => b.classList.add("hidden"));
+          allInfos.forEach((i) => i.classList.add("hidden"));
           info.classList.remove("hidden");
         } else {
           info.classList.add("hidden");
-          allButtons.forEach(b => b.classList.remove("hidden"));
+          allButtons.forEach((b) => b.classList.remove("hidden"));
         }
       }
     </script>
