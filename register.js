@@ -7,6 +7,8 @@ const form = document.getElementById('registerForm');
 const emailInput = document.getElementById('email');
 const saveButton = document.getElementById('saveEmail');
 const messageDiv = document.getElementById('message');
+const classSelect = document.querySelector("select[name='klass']");
+const button = document.getElementById("saveEmail");
 
 const SHARED_PASSWORD = "Nobel2025!";
 
