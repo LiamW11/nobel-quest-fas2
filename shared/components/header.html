@@ -1,20 +1,19 @@
-<header class="relative sticky top-0 z-50 header-brand text-[#142844] p-4 flex justify-center items-center mb-2 relative">
+<header class="relative sticky top-0 z-50 header-brand text-[#142844] p-4 flex justify-between items-center mb-2">
   <!-- Profilsektion till vänster -->
   <div class="flex items-center gap-2">
     <div class="w-10 h-10 bg-[#142844] rounded-full flex items-center justify-center text-white font-bold">
       <span id="userInitial">?</span>
     </div>
-    <div">
-      <p id="userDisplayName" class="text-sm font-semibold">Läser in...</p>
-    </div>
   </div>
-  <h1 id="page-title" class="flex-1 text-center">Nobel Quest</h1>
 
-  <!-- Menyknapp -->
-  <button onclick="toggleMenu()">☰</button>
+  <!-- Titel i mitten -->
+  <h1 id="page-title" class="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold">Nobel Quest</h1>
 
+  <!-- Menyknapp till höger -->
+  <button onclick="toggleMenu()" class="text-2xl font-bold">☰</button>
+
+  <!-- Dropdown-meny -->
   <div id="dropdownMenu" class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
-
     <a href="../../mainMenu/help.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20 z-40">Instruktioner</a>
     <a href="../../mainMenu/menu.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Nobel-Quest</a>
     <a href="../../apps/leaderboard/leaderboard.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Topplista</a>
@@ -22,7 +21,6 @@
     <a href="../../mainMenu/development.html" class="border-b-4 border-black block px-4 py-2 rounded-lg hover:bg-white/20">Utvecklingsteam</a>
   </div>
 </header>
-
 
 <style>
   :root {
