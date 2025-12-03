@@ -14,12 +14,12 @@ const SHARED_PASSWORD = "Nobel2025!";
 
 // AV för tillfället, avkommentera för 
 // att sätta igång perma login
- onAuthStateChanged(auth, (user) => {
-   if (user) {
-     // om loggad in, skicka till huvudmenyn
-     window.location.href = 'mainMenu/menu.html';
-   }
- });
+//  onAuthStateChanged(auth, (user) => {
+//    if (user) {
+//      // om loggad in, skicka till huvudmenyn
+//      window.location.href = 'mainMenu/menu.html';
+//    }
+//  });
 
 
 function showMessage(text, type) {
