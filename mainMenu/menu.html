@@ -9,31 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main Menu</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="../../shared/components/header.js"></script>
   </head>
   <body class="bg-[#0b1e39] text-white" data-page-title="Huvudmeny">
-    <div class="relative sticky top-0 z-40 shadow-l" 
-    id="app-header"></div>
+    <div id="header-container"></div>
+    <div class="relative sticky top-0 z-40 shadow-l">
     
     <!-- DROPDOWN -->
-    <script type="module">
-  import { auth } from '../shared/firebase-config.js';
-  import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      window.location.href = '../index.html';
-    } else {
-      console.log('Welcome back:', user.email);
-    }
-  });
-
-  function toggleMenu() {
-    document.getElementById("dropdownMenu").classList.toggle("hidden");
-  }
-  
-  // Make toggleMenu available globally
-  window.toggleMenu = toggleMenu;
-</script>
+     <script>
+     function toggleMenu() {
+      document.getElementById("dropdownMenu").classList.toggle("hidden");
+      }
+      </script>
 
     <!-- Login check: Show login or game content -->
     <div id="login-container"></div>
@@ -58,12 +45,11 @@
     onclick="window.location.href='../apps/timeline/index.html'">
       <div class="flex justify-between items-center">
         <div>
-          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Timeline</h1>
+          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Timeline <img src="https://cdn4.iconfinder.com/data/icons/eldorado-player/40/symbol_play_1-1024.png" width="15%" style="float: right; margin-left: 10px"></h1>
         </div>
         <button 
         class="text-[#142844]"
         onclick="window.location.href='../apps/timeline/index.html'">
-        ▶️
       </button>
       </div>
     </header>
@@ -73,12 +59,11 @@
     onclick="window.location.href='../apps/match-master/index.html'">
       <div class="flex justify-between items-center">
         <div>
-          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Match Master</h1>
+          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Match Master <img src="https://cdn4.iconfinder.com/data/icons/eldorado-player/40/symbol_play_1-1024.png" width="15%" style="float: right; margin-left: 10px"></h1>
         </div>
         <button 
         class="text-[#142844]"
         onclick="window.location.href='../apps/match-master/index.html'">
-        ▶️
       </button>
       </div>
     </header>
@@ -88,19 +73,18 @@
     onclick="window.location.href='../apps/trivia-rush/index.html'">
       <div class="flex justify-between items-center">
         <div>
-          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Trivia Rush</h1>
+          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Trivia Rush <img src="https://cdn4.iconfinder.com/data/icons/eldorado-player/40/symbol_play_1-1024.png" width="15%" style="float: right; margin-left: 10px"></h1>
+          
         </div>
         <button 
         class="text-[#142844]"
         onclick="window.location.href='../apps/trivia-rush/index.html'">
-        ▶️
       </button>
       </div>
     </header>
 
-    <script src="/shared/js/load-components.js"></script>
-  </body>
-</html>
+    
+
         </div>
       </div>
     </div>
@@ -108,5 +92,6 @@
     
 
     <script type="module" src="../auth-check.js"></script>
+    
   </body>
 </html>
