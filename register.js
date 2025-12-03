@@ -1,5 +1,6 @@
 import { auth, db } from '../shared/firebase-config.js';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
 const form = document.getElementById('registerForm');
@@ -8,6 +9,16 @@ const saveButton = document.getElementById('saveEmail');
 const messageDiv = document.getElementById('message');
 
 const SHARED_PASSWORD = "Nobel2025!";
+
+// AV för tillfället, avkommentera för 
+// att sätta igång perma login
+// onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     // om loggad in, skicka till huvudmenyn
+//     window.location.href = 'mainMenu/menu.html';
+//   }
+// });
+
 
 function showMessage(text, type) {
     messageDiv.textContent = text;
