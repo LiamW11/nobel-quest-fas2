@@ -14,6 +14,7 @@
   </head>
 
   <body class="bg-[#0b1e39]">
+    <div id="header-container"></div>
     <!-- Ladda How-To modaler från gemensam fil -->
     <div id="howto-container"></div>
     <script>
@@ -23,20 +24,6 @@
         document.getElementById('howto-container').innerHTML = html;
       })();
     </script>
-    <header
-      class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative"
-    >
-      <!-- lägg till icon namn här -->
-
-      <!-- Låtsas-element för vänster sida (tomt) -->
-      <div style="width: 24px"></div>
-
-      <h1 id="page-title" class="text-center flex-1">Nobel Timeline</h1>
-
-      <!-- Menyknapp -->
-<div id="menu-container"></div>
-  <button onclick="toggleMenu()">☰</button>
-    </header>
    <script>
   (async function () {
     const res = await fetch("../../shared/components/shared-menu.html");
@@ -55,7 +42,7 @@
     <main id="app" class="game-container px-2"></main>
     <script src="/apps/Shared-how-to/howto.js"></script>
     <script type="module" src="main.js"></script>
-    <script src="../../shared/components/footer.js"></script>
+    <script type="module" src="../../shared/components/header.js"></script>
 
     
   </body>
