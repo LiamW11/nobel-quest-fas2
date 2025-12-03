@@ -1,10 +1,14 @@
-<header class="relative sticky header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative">
-  <!-- lägg till icon namn här -->
-
-  <!-- Låtsas-element för vänster sida (tomt) -->
-  <div style="width:24px;"></div>
-
-  <h1 id="page-title" class="text-center flex-1">Nobel Quest</h1>
+<header class="relative sticky top-0 z-50 header-brand text-[#142844] p-4 flex justify-center items-center mb-2 relative">
+  <!-- Profilsektion till vänster -->
+  <div class="flex items-center gap-2">
+    <div class="w-10 h-10 bg-[#142844] rounded-full flex items-center justify-center text-white font-bold">
+      <span id="userInitial">?</span>
+    </div>
+    <div">
+      <p id="userDisplayName" class="text-sm font-semibold">Läser in...</p>
+    </div>
+  </div>
+  <h1 id="page-title" class="flex-1 text-center">Nobel Quest</h1>
 
   <!-- Menyknapp -->
   <button onclick="toggleMenu()">☰</button>
