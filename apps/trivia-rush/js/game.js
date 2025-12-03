@@ -277,8 +277,8 @@ function checkAnswer(selected) {
 
   // Add scores if answer is correct
   if (selected === question.correct) {
-    state.score += 20;
-    state.timeScore += timeBonus;
+    state.score += 25;
+    state.timeScore += timeBonus * 2;
     // Streak logic
     state.streak++;
 
@@ -388,7 +388,7 @@ if (state.streak == 2) {
                 document.getElementById("question-pill").textContent = `${state.currentIndex} / ${state.totalQuestions}`;
     };
 
-  // Enable next buttonx
+  // Enable next button
   nextBtn.disabled = false;
   nextBtn.classList.remove("opacity-60", "cursor-not-allowed");
   nextBtn.classList.add("hover:bg-[#C5A572]/20", "transition");
