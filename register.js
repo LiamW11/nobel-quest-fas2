@@ -49,8 +49,8 @@ form.addEventListener("submit", async (e) => {
     }
 
     // 🔥 EDU email restriction
-    if (!email.endsWith("@edu.huddinge.se")) {
-        showMessage("Endast edu.huddinge.se-adresser är tillåtna.", "error");
+    if (!email.endsWith("@edu.huddinge.se") && !email.endsWith("@huddinge.se")) {
+        showMessage("Endast edu.huddinge.se/huddinge.se är tillåtna.", "error");
         return;
     }
 
@@ -117,7 +117,7 @@ form.addEventListener("submit", async (e) => {
 
         setTimeout(() => {
             window.location.href = "../mainMenu/menu.html";
-        }, 1500);
+        }, 150);
 
     } catch (error) {
         console.error("Fel vid inloggning/registrering:", error.code, error.message);
