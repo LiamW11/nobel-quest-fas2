@@ -9,10 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main Menu</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="../../shared/components/header.js"></script>
   </head>
   <body class="bg-[#0b1e39] text-white" data-page-title="Huvudmeny">
-    <div class="relative sticky top-0 z-40 shadow-l" 
-    id="app-header"></div>
+    <div id="header-container"></div>
+    <div class="relative sticky top-0 z-40 shadow-l">
     
     <!-- DROPDOWN -->
      <script>
@@ -82,8 +83,8 @@
       </div>
     </header>
 
-    <script src="/shared/js/load-components.js"></script>
-</html>
+    
+
         </div>
       </div>
     </div>
@@ -91,5 +92,6 @@
     
 
     <script type="module" src="../auth-check.js"></script>
+    
   </body>
 </html>
