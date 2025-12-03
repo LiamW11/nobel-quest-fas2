@@ -15,7 +15,7 @@ function showMessage(text, type) {
     messageDiv.classList.remove('hidden');
 }
 
-// 🔥 Extract "John D. CLASS"
+// 🔥 Extract "Melvin S. CLASS"
 function extractDisplayName(email, userClass) {
     const beforeAt = email.split("@")[0];
     const parts = beforeAt.split(/[\.\-\_]/).filter(Boolean);
