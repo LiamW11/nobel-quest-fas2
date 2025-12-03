@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,9 +25,6 @@
             <div class="light light-green"></div>
         </div>
 
-  <body
-    class="bg-[#0b1e39] text-white min-h-screen flex items-center justify-center p-4"
-  >
     <div class="max-w-md w-full">
       <!-- Header -->
       <div class="text-center mb-8">
@@ -139,8 +137,6 @@
       </p>
     </div>
 
-    <script type="module" src="register.js"></script>
-
     <style>
         .message.error {
             background-color: rgba(239, 68, 68, 0.1);
@@ -238,31 +234,23 @@
                 box-shadow: 0 0 5px currentColor;
             }
         }
-      .message.error {
-        background-color: rgba(239, 68, 68, 0.1);
-        border: 1px solid #ef4444;
-        color: #fca5a5;
-      }
-
-      .message.success {
-        background-color: rgba(34, 197, 94, 0.1);
-      
-        border: 1px solid #22c55e;
-        color: #86efac;
-      }
 
 .start-quest-btn {
     position: relative;
     overflow: hidden;
     transition: transform 0.2s ease;
+}
+
+/* Only apply glow animation when button is NOT disabled */
+.start-quest-btn:not(:disabled) {
     animation: flashGlow 2s infinite alternate;
 }
 
-.start-quest-btn:active {
+.start-quest-btn:active:not(:disabled) {
     transform: scale(0.92);
 }
 
-.start-quest-btn:hover {
+.start-quest-btn:hover:not(:disabled) {
     transform: scale(1.08);
     box-shadow: 0 0 15px #d4b882, 0 0 25px #C5A572;
 }
@@ -280,9 +268,18 @@
     transition: 0.4s ease-out;
 }
 
-.start-quest-btn:hover::after {
+.start-quest-btn:hover:not(:disabled)::after {
     opacity: 1;
     transform: scale(1);
+}
+
+@keyframes flashGlow {
+    0% {
+        box-shadow: 0 0 5px #C5A572;
+    }
+    100% {
+        box-shadow: 0 0 20px #d4b882, 0 0 30px #C5A572;
+    }
 }
     </style>
 
