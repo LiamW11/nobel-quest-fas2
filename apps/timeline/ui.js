@@ -92,7 +92,7 @@ export function renderBoard(root, cards) {
     li.dataset.id = card.id;
     li.innerHTML = `
         <img src="${card.imageUrl}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg" loading="lazy"/>
-        <div>
+        <div class="w-[90%]">
         <h4 class="text-white font-bold truncate w-[90%]">${card.name}</h4>
         <span class="text-[#EBCB96]">${card.category}</span>
         <span class="text-white text-sm">: ${card.achievement}</span>
