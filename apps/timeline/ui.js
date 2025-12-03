@@ -15,36 +15,25 @@ export function renderStart(root) {
         data-level="play">
         Spela
       </button>
-
-       <button 
-        type="button"
-        id="btn-howto" 
-        class="mt-4 text-sm text-white/80 underline hover:text-white">
-        How to play – så funkar spelet
-      </button>
 `;
 
- // --- spel-knappen ---
+ // --- spel-knappen öppnar howto först ---
   root.querySelectorAll("[data-level]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      const level = e.currentTarget.dataset.level;
-      document.dispatchEvent(
-        new CustomEvent("difficulty:selected", { detail: { level } })
-      );
+      e.preventDefault();
+      window.__timelineLevel = e.currentTarget.dataset.level;
+      openHowTo('timeline');
     });
   });
-  
-  // --- how-to knapp ---
-  const howtoBtn = root.querySelector("#btn-howto");
-  if (howtoBtn) {
-    howtoBtn.addEventListener("click", () => {
-      if (typeof openHowTo === 'function') {
-        openHowTo('timeline');
-      } else {
-        setTimeout(() => openHowTo('timeline'), 100);
-      }
-    });
-  }
+
+  // Gör startfunktion tillgänglig globalt
+  window.launchTimelineGame = function() {
+    const level = window.__timelineLevel || 'play';
+    document.dispatchEvent(
+      new CustomEvent("difficulty:selected", { detail: { level } })
+    );
+  };
+ 
 }
 
 // visa själva spelet: lista med kort som går att sortera och knapp för att skicka in
@@ -75,8 +64,8 @@ export function renderBoard(root, cards) {
     }</p>
 
 
-    <div class="mt-4">
-    <button id="submit" class="inline-flex items-center justify-center w-full px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952] font-semibold shadow-lg shadow-black/30 transition">Se resultat</button>
+    <div class="mt-4 pb-3">
+    <button id="submit" class="inline-flex items-center justify-center w-full px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952] font-semibold shadow-lg shadow-black/30 transition">Lämna in</button>
     </div>
     </section>
     `;
@@ -92,7 +81,7 @@ export function renderBoard(root, cards) {
     li.dataset.id = card.id;
     li.innerHTML = `
         <img src="${card.imageUrl}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg" loading="lazy"/>
-        <div>
+        <div class="w-[90%]">
         <h4 class="text-white font-bold truncate w-[90%]">${card.name}</h4>
         <span class="text-[#EBCB96]">${card.category}</span>
         <span class="text-white text-sm">: ${card.achievement}</span>
