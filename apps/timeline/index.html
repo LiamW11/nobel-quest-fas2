@@ -14,6 +14,15 @@
   </head>
 
   <body class="bg-[#0b1e39]">
+    <!-- Ladda How-To modaler från gemensam fil -->
+    <div id="howto-container"></div>
+    <script>
+      (async function() {
+        const response = await fetch('/apps/Shared-how-to/howto-modals.html');
+        const html = await response.text();
+        document.getElementById('howto-container').innerHTML = html;
+      })();
+    </script>
     <header
       class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative"
     >
