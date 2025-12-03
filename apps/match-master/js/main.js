@@ -59,6 +59,18 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   document.getElementById("giveUpBtn").onclick = openGiveUpModal;
+  
+  // Instruktioner i dropdown öppnar how-to popup
+  setTimeout(() => {
+    const menuInstructions = document.getElementById("menu-instructions");
+    if (menuInstructions) {
+      menuInstructions.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("dropdownMenu").classList.add("hidden");
+        openHowTo('match');
+      });
+    }
+  }, 500);
 });
 
 
