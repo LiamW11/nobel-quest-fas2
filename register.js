@@ -146,3 +146,9 @@ form.addEventListener("submit", async (e) => {
         saveButton.textContent = "Registrera och börja spela";
     }
 });
+window.onload = function() {
+    const loggedIn = localStorage.getItem("isLoggedIn");
+    if (loggedIn === "true") {
+        window.location.href = "mainMenu/menu.html";
+    }
+};
