@@ -19,7 +19,17 @@
   }
 
   // 🔁 Event delegation istället för DOMContentLoaded + querySelectorAll
-  document.addEventListener("click", function (e) {
+document.addEventListener("click", function (e) {
+ 
+  // Stäng-knappen (X)
+  if (e.target.closest(".howto-close")) {
+    e.preventDefault();
+    closeAllHowTo();
+    return;
+  }
+
+  // Trivia-specifik "Jag fattar"-knapp
+  if (e.target.closest(".howto-gotit-trivia")) 
    
     // Trivia-specifik "Jag fattar"-knapp
     if (e.target.closest(".howto-gotit-trivia")) {
