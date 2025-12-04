@@ -32,10 +32,9 @@
     <div id="wiki-links" class="max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
 
       <h2 class="text-2xl font-bold mb-6">Wikipedia</h2>
-
+<button onclick="toggleCategory('fysikKnapp')" class="w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Fysik</button>
       <div class="mb-8">
-        <h3 class=" text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">Fysik </h3>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <ul id="fysikKnapp" class="grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Albert_Einstein" class="hover:underline">Albert Einstein ↗  </a></li>  
           <li><a href="https://sv.wikipedia.org/wiki/André_Geim" class="hover:underline">André Geim ↗ </a></li> 
           <li><a href="https://sv.wikipedia.org/wiki/Carl_Sagan" class="hover:underline">Carl Sagan ↗ </a></li> 
@@ -53,9 +52,9 @@
           </li>
         </ul>
       </div>
-
+<button onclick="toggleCategory('kemiKnapp')" class=" w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Kemi</button>
       <div class="mb-8">
-        <h3 class=" text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">Kemi </h3>
+        <ul id="kemiKnapp" class="grid grid-cols-1 md:grid-cols-2 gap-2">
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Ahmed_Zewail" class="hover:underline">Ahmed Zewail ↗ </a></li> 
           <li><a href="https://sv.wikipedia.org/wiki/Dorothy_Hodgkin" class="hover:underline">Dorothy Hodgkin ↗ </a></li> 
@@ -64,9 +63,9 @@
         </ul>
       </div>
 
+      <button onclick="toggleCategory('medicinKnapp')" class="w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Medicin</button>
       <div class="mb-8">
-        <h3 class="text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">Medicin</h3>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <ul id="medicinKnapp" class="grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Alexander_Fleming" class="hover:underline">Alexander Fleming ↗</a> </li>
           <li><a href="https://sv.wikipedia.org/wiki/Barbara_McClintock" class="hover:underline">Barbara McClintock ↗ </a></li>
           <li><a href="https://sv.wikipedia.org/wiki/Edvard_Moser" class="hover:underline">Edvard Moser ↗ </a></li> 
@@ -84,9 +83,9 @@
           <li><a href="https://sv.wikipedia.org/wiki/Tu_Youyou" class="hover:underline">Tu Youyou ↗ </a></li> 
         </ul>
       </div>
+            <button onclick="toggleCategory('litteraturKnapp')" class="w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Litteratur</button>
       <div class="mb-8">
-        <h3 class="text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2"> Litteratur</h3>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <ul id="litteraturKnapp" class="grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Abdulrazak_Gurnah" class="hover:underline">Abdulrazak Gurnah ↗ </a></li> 
           <li><a href="https://sv.wikipedia.org/wiki/Alice_Munro" class="hover:underline">Alice Munro ↗ </a></li> 
           <li><a href="https://sv.wikipedia.org/wiki/Doris_Lessing" class="hover:underline">Doris Lessing ↗ </a></li> 
@@ -105,10 +104,9 @@
           <li><a href="https://sv.wikipedia.org/wiki/William_Faulkner" class="hover:underline">William Faulkner ↗ </a></li> 
         </ul>
       </div>
-
+      <button onclick="toggleCategory('fredKnapp')" class=" w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Fred</button>
       <div class="mb-8">
-        <h3 class="text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2"> Fred</h3>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <ul id="fredKnapp" class="grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Aung_San_Suu_Kyi" class="hover:underline">Aung San Suu Kyi ↗ </a></li> 
           <li><a href="https://sv.wikipedia.org/wiki/Barack_Obama" class="hover:underline">Barack Obama ↗ </a></li> 
           <li><a href="https://sv.wikipedia.org/wiki/Desmond_Tutu" class="hover:underline">Desmond Tutu ↗ </a></li> 
@@ -125,10 +123,9 @@
           <li><a href="https://sv.wikipedia.org/wiki/Wangari_Maathai" class="hover:underline">Wangari Maathai ↗ </a></li> 
         </ul>
       </div>
-
+      <button onclick="toggleCategory('ekonomiKnapp')" class=" w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Ekonomi</button>
       <div class="mb-8">
-        <h3 class="text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2"> Ekonomi</h3>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <ul id="ekonomiKnapp" class="grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Esther_Duflo" class="hover:underline">Esther Duflo ↗ </a></li> 
         </ul>
       </div>
@@ -149,6 +146,14 @@
     a.setAttribute("target", "_blank");
     a.setAttribute("rel", "noopener noreferrer");
   });
+
+  
+
+  function toggleCategory(kategoriId) {
+    document.getElementById(kategoriId).classList.toggle("hidden");
+
+  }
+
 </script>
 
 
