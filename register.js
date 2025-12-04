@@ -10,15 +10,11 @@ const messageDiv = document.getElementById('message');
 
 const SHARED_PASSWORD = "Nobel2025!";
 
-// AV för tillfället, avkommentera för 
-// att sätta igång perma login
- onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, (user) => {
     if (user) {
-//      om loggad in, skicka till huvudmenyn
-      window.location.href = 'mainMenu/menu.html';
+        window.location.href = 'mainMenu/menu.html';
     }
-  });
-
+});
 
 function showMessage(text, type) {
     messageDiv.textContent = text;
@@ -30,6 +26,8 @@ function showMessage(text, type) {
 function extractDisplayName(email, userClass) {
     const beforeAt = email.split("@")[0];
     const parts = beforeAt.split(/[\.\-\_]/).filter(Boolean);
+    console.log("Extracted parts from email:", parts);
+    console.log("User class:", userClass);
 
     const first = parts[0] || "";
     const last = parts[1] || "";
@@ -101,26 +99,29 @@ form.addEventListener("submit", async (e) => {
 
         // 🔥 VIKTIGT: Uppdatera ALLTID Firestore OCH Auth-profil (även vid inloggning!)
         try {
-            await setDoc(doc(db, "users", user.uid), {
-                email: email,
-                displayName: displayName,
-                class: userClass,
-                updatedAt: new Date().toISOString(),
-                uid: user.uid
-            }, { merge: true });
-            console.log("Firestore-dokument uppdaterat med displayName:", displayName);
-        } catch (dbError) {
-            console.error("Fel vid uppdatering av användardokument:", dbError);
-        }
-
-        // 🔥 Uppdatera Auth-profil med det nya namnet
-        try {
             await updateProfile(user, { displayName });
+            console.log("✅ Auth-profil uppdaterad med displayName:", displayName);
+    
+            // Force reload auth state
             await auth.currentUser.reload();
             console.log("✅ User reloadad, nytt displayName:", auth.currentUser.displayName);
-            console.log("Auth-profil uppdaterad med displayName:", displayName);
+    
         } catch (err) {
-            console.warn("Kunde inte uppdatera auth profile:", err);
+            console.error("❌ Kunde inte uppdatera auth profile:", err);
+        }
+
+        // 🔥 SEDAN: Uppdatera Firestore
+        try {
+            await setDoc(doc(db, "users", user.uid), {
+            email: email,
+            displayName: displayName,
+            class: userClass,
+            updatedAt: new Date().toISOString(),
+            uid: user.uid
+        }, { merge: true });
+            console.log("✅ Firestore-dokument uppdaterat med displayName:", displayName);
+        } catch (dbError) {
+            console.error("❌ Fel vid uppdatering av användardokument:", dbError);
         }
         
 
@@ -133,7 +134,7 @@ form.addEventListener("submit", async (e) => {
 
         setTimeout(() => {
             window.location.href = "../mainMenu/menu.html";
-        }, 1500);
+        }, 500);
 
     } catch (error) {
         console.error("Fel vid inloggning/registrering:", error.code, error.message);
@@ -144,6 +145,8 @@ form.addEventListener("submit", async (e) => {
         else if (error.code === 'auth/operation-not-allowed') errorMessage = "E-post måste aktiveras i Firebase-konsolen.";
         else if (error.code === 'auth/network-request-failed') errorMessage = "Nätverksfel. Kontrollera din internetanslutning.";
 
+        showMessage(errorMessage, "error");
+        saveButton.disabled = false;
         showMessage(errorMessage, "error");
         saveButton.disabled = false;
         saveButton.textContent = "Registrera och börja spela";
