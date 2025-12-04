@@ -15,7 +15,6 @@ let state = {
 
 // Start the quiz
 function startGame(selectedCategories) {
-  console.log("Quiz started with categories:", selectedCategories);
   state.selectedCategories = selectedCategories;
 
   // Gather questions from selected categories
@@ -77,8 +76,6 @@ function startGame(selectedCategories) {
                 </div>
               </div>`;
               document.getElementById("question-pill").textContent = `${state.currentIndex + 1} / ${state.totalQuestions}`;
-
-  console.log(`Totalt ${state.totalQuestions} frågor valda:`, state.questions);
 
   loadQuestion();
 
