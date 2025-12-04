@@ -26,6 +26,8 @@ function showMessage(text, type) {
 function extractDisplayName(email, userClass) {
     const beforeAt = email.split("@")[0];
     const parts = beforeAt.split(/[\.\-\_]/).filter(Boolean);
+    console.log("Extracted parts from email:", parts);
+    console.log("User class:", userClass);
 
     const first = parts[0] || "";
     const last = parts[1] || "";
@@ -143,6 +145,8 @@ form.addEventListener("submit", async (e) => {
         else if (error.code === 'auth/operation-not-allowed') errorMessage = "E-post måste aktiveras i Firebase-konsolen.";
         else if (error.code === 'auth/network-request-failed') errorMessage = "Nätverksfel. Kontrollera din internetanslutning.";
 
+        showMessage(errorMessage, "error");
+        saveButton.disabled = false;
         showMessage(errorMessage, "error");
         saveButton.disabled = false;
         saveButton.textContent = "Registrera och börja spela";
