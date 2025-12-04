@@ -5,13 +5,16 @@ export function renderStart(root) {
   <section class="bg-[#142845]/95 mx-auto w-[91%] mt-20 py-6 max-w-2xl text-center shadow-2xl ring-1 ring-white/10 rounded-3xl">
     <div class="flex flex-col gap-4 items-center">
 
-            <p class="text-white/85 leading-relaxed text-lg">
-              Läs Hur spelar man, och tryck sedan Spela för att påbörja spelet
-              <p class="text-xl font-semibold text-white">Lycka Till!</p>
+            <p class="text-white/85 leading-relaxed p-2">
+              <span class="text-xl">Välkommen till <strong class="text-[#C5A572]">Nobel Timeline</strong>!</span>
+              <br>
+              <br>
+              <span class="text-lg">I detta spel kommer du att utmanas att placera Nobelpristagare i rätt kronologisk ordning baserat på deras vinstår.</span>
+              <p class="text-lg font-semibold text-white">Lycka Till!</p>
             </p>  
 
       <button id="startButton"
-        class="inline-flex items-center justify-center px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952] font-semibold shadow-lg shadow-black/30 transition" 
+        class="inline-flex items-center w-[95%] justify-center px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952] font-semibold shadow-lg shadow-black/30 transition" 
         data-level="play">
         Spela
       </button>
