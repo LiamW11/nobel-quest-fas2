@@ -7,20 +7,14 @@ const form = document.getElementById('registerForm');
 const emailInput = document.getElementById('email');
 const saveButton = document.getElementById('saveEmail');
 const messageDiv = document.getElementById('message');
-const classSelect = document.querySelector("select[name='klass']");
-const button = document.getElementById("saveEmail");
 
 const SHARED_PASSWORD = "Nobel2025!";
 
-// AV för tillfället, avkommentera för 
-// att sätta igång perma login
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     // om loggad in, skicka till huvudmenyn
-//     window.location.href = 'mainMenu/menu.html';
-//   }
-// });
-
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        window.location.href = 'mainMenu/menu.html';
+    }
+});
 
 function showMessage(text, type) {
     messageDiv.textContent = text;
@@ -98,30 +92,38 @@ form.addEventListener("submit", async (e) => {
                 isNewUser = true;
                 console.log("Användare skapad:", user.uid);
 
-                // 🔥 Save Firestore user document
-                try {
-                    await setDoc(doc(db, "users", user.uid), {
-                        email: email,
-                        displayName: displayName,
-                        class: userClass,
-                        createdAt: new Date().toISOString(),
-                        uid: user.uid
-                    });
-                } catch (dbError) {
-                    console.error("Fel vid skapande av användardokument:", dbError);
-                }
-
-                // 🔥 Update Auth profile
-                try {
-                    await updateProfile(user, { displayName });
-                } catch (err) {
-                    console.warn("Kunde inte uppdatera auth profile:", err);
-                }
-
             } else {
                 throw loginError;
             }
         }
+
+        // 🔥 VIKTIGT: Uppdatera ALLTID Firestore OCH Auth-profil (även vid inloggning!)
+        try {
+            await updateProfile(user, { displayName });
+            console.log("✅ Auth-profil uppdaterad med displayName:", displayName);
+    
+            // Force reload auth state
+            await auth.currentUser.reload();
+            console.log("✅ User reloadad, nytt displayName:", auth.currentUser.displayName);
+    
+        } catch (err) {
+            console.error("❌ Kunde inte uppdatera auth profile:", err);
+        }
+
+        // 🔥 SEDAN: Uppdatera Firestore
+        try {
+            await setDoc(doc(db, "users", user.uid), {
+            email: email,
+            displayName: displayName,
+            class: userClass,
+            updatedAt: new Date().toISOString(),
+            uid: user.uid
+        }, { merge: true });
+            console.log("✅ Firestore-dokument uppdaterat med displayName:", displayName);
+        } catch (dbError) {
+            console.error("❌ Fel vid uppdatering av användardokument:", dbError);
+        }
+        
 
         // Save locally
         localStorage.setItem("userEmail", email);
@@ -132,7 +134,7 @@ form.addEventListener("submit", async (e) => {
 
         setTimeout(() => {
             window.location.href = "../mainMenu/menu.html";
-        }, 150);
+        }, 500);
 
     } catch (error) {
         console.error("Fel vid inloggning/registrering:", error.code, error.message);

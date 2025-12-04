@@ -9,6 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main Menu</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "nobel-blue-medium": "#142844",
+          "nobel-blue-light": "#1e3458",
+        },
+      },
+    },
+  };
+</script>
     <script type="module" src="../../shared/components/header.js"></script>
   </head>
   <body class="bg-[#0b1e39] text-white">
@@ -36,60 +48,36 @@
 
   <p class="text-white/90 text-base leading-relaxed">
     Spelet består av tre utmaningar där du kan lära dig mer
-    om Nobelpriset.
+    om nobelpristagarna.
   </p>
 </div>
             
-<!-- GAME-SPECIFIC CONTENT: Nobel Timeline -->
-    <header class="bg-[#C5A572] rounded-lg shadow-lg p-4 mb-6" 
-    onclick="window.location.href='../apps/timeline/index.html'">
-      <div class="flex justify-between items-center">
-        <div>
-          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Timeline <img src="https://cdn4.iconfinder.com/data/icons/eldorado-player/40/symbol_play_1-1024.png" width="15%" style="float: right; margin-left: 10px"></h1>
-        </div>
-        <button 
-        class="text-[#142844]"
-        onclick="window.location.href='../apps/timeline/index.html'">
-      </button>
-      </div>
-    </header>
-
-    <!-- GAME-SPECIFIC CONTENT: Nobel Match Master -->
-    <header class="bg-[#C5A572] rounded-lg shadow-lg p-4 mb-6"
-    onclick="window.location.href='../apps/match-master/index.html'">
-      <div class="flex justify-between items-center">
-        <div>
-          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Match Master <img src="https://cdn4.iconfinder.com/data/icons/eldorado-player/40/symbol_play_1-1024.png" width="15%" style="float: right; margin-left: 10px"></h1>
-        </div>
-        <button 
-        class="text-[#142844]"
-        onclick="window.location.href='../apps/match-master/index.html'">
-      </button>
-      </div>
-    </header>
-
-    <!-- GAME-SPECIFIC CONTENT: Nobel Trivia -->
-    <header class="bg-[#C5A572] rounded-lg shadow-lg p-4"
-    onclick="window.location.href='../apps/trivia-rush/index.html'">
-      <div class="flex justify-between items-center">
-        <div>
-          <h1 class="text-2xl text-[#142844] font-bold nobel-text-gradient">Nobel Trivia Rush <img src="https://cdn4.iconfinder.com/data/icons/eldorado-player/40/symbol_play_1-1024.png" width="15%" style="float: right; margin-left: 10px"></h1>
-          
-        </div>
-        <button 
-        class="text-[#142844]"
-        onclick="window.location.href='../apps/trivia-rush/index.html'">
-      </button>
-      </div>
-    </header>
 
     
+    <!-- GAME BUTTONS -->
+<div class="grid grid-cols-1 gap-3 max-w-md mx-auto">
+  <!-- Nobel Timeline -->
+  <button 
+    onclick="window.location.href='../apps/timeline/index.html'"
+    class="px-4 py-4 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light text-2xl text-white">
+    Nobel Timeline
+  </button>
 
-        </div>
-      </div>
-    </div>
+  <!-- Nobel Match Master -->
+  <button 
+    onclick="window.location.href='../apps/match-master/index.html'"
+    class="px-4 py-4 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light text-2xl text-white">
+    Nobel Match Master
+  </button>
 
-    
+  <!-- Nobel Trivia Rush -->
+  <button 
+    onclick="window.location.href='../apps/trivia-rush/index.html'"
+    class="px-4 py-4 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light text-2xl text-white">
+    Nobel Trivia Rush
+  </button>
+</div>
+
 
     <script type="module" src="../auth-check.js"></script>
     
