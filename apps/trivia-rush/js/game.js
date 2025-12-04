@@ -67,7 +67,7 @@ function startGame(selectedCategories) {
   state.streak = 0;
   document.getElementById("streak-pill").textContent = ``;
   document.getElementById("quizvy").innerHTML = `<div class="flex items-center">
-                <div id="question-pill">0/10</div>
+                <div id="question-pill">1/10</div>
                 <div id="score-pill" 
                     class="score-pill absolute left-10 font-bold">
                   Poäng: 0
@@ -76,7 +76,7 @@ function startGame(selectedCategories) {
                   <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none"></div>
                 </div>
               </div>`;
-              document.getElementById("question-pill").textContent = `${state.currentIndex} / ${state.totalQuestions}`;
+              document.getElementById("question-pill").textContent = `${state.currentIndex + 1} / ${state.totalQuestions}`;
 
   console.log(`Totalt ${state.totalQuestions} frågor valda:`, state.questions);
 
@@ -173,7 +173,7 @@ function handleTimeOut() {
                     <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none"></div>
                   </div>
                 </div>`;
-                document.getElementById("question-pill").textContent = `${state.currentIndex} / ${state.totalQuestions}`;
+                document.getElementById("question-pill").textContent = `${state.currentIndex + 1} / ${state.totalQuestions}`;
   
   state.streak = 0;
 
@@ -371,7 +371,7 @@ if (state.streak == 2) {
                     <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none"></div>
                   </div>
                 </div>`;
-                document.getElementById("question-pill").textContent = `${state.currentIndex} / ${state.totalQuestions}`;
+                document.getElementById("question-pill").textContent = `${state.currentIndex + 1} / ${state.totalQuestions}`;
     }
   if (state.streak == 0){
     // Remove the flame when streak breaks - preserve question-pill
@@ -385,7 +385,7 @@ if (state.streak == 2) {
                     <div id="streak-pill" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white z-10 pointer-events-none"></div>
                   </div>
                 </div>`;
-                document.getElementById("question-pill").textContent = `${state.currentIndex} / ${state.totalQuestions}`;
+                document.getElementById("question-pill").textContent = `${state.currentIndex + 1} / ${state.totalQuestions}`;
     };
 
   // Enable next button
@@ -414,7 +414,7 @@ document.getElementById("btn-next").addEventListener("click", () => {
 
 // Update progress bar
 function updateProgress() {
-  const progress = (state.currentIndex / state.totalQuestions) * 100;
+  const progress = (state.currentIndex + 1 / state.totalQuestions) * 100;
 
   // Update scoreboard
   document.getElementById("score-pill").textContent =
@@ -428,7 +428,7 @@ function updateProgress() {
   const bar = document.getElementById("question-progress-bar");
   const text = document.getElementById("progress-text");
 
-  document.getElementById("question-pill").textContent = `${state.currentIndex} / ${state.totalQuestions}`;
+  document.getElementById("question-pill").textContent = `${state.currentIndex + 1} / ${state.totalQuestions}`;
   if (bar) bar.style.width = `${progress}%`;
   if (text) text.textContent = `${state.currentIndex} / ${state.totalQuestions}`;
 }
@@ -460,7 +460,7 @@ function endGame() {
   ).textContent = `Bonuspoäng: ${state.bonusScore}`;
   document.getElementById(
     "final-score"
-  ).textContent = `Du fick ${state.score} av 250 rätt.`;
+  ).textContent = `Du fick ${state.score/25} av 10 rätt.`;
   document.getElementById(
     "final-time-score"
   ).textContent = `Tidspoäng: ${state.timeScore} av 300 möjliga`;
