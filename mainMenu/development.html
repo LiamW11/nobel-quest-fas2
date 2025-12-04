@@ -1,249 +1,607 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<link rel="apple-touch-icon" sizes="180x180" href="../Favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
-<link rel="manifest" href="../Favicon/site.webmanifest">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../Favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../Favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../Favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../Favicon/site.webmanifest" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Utvecklingsteam</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
+  </head>
   <body class="bg-[#0b1e39] text-[#C5A572]" data-page-title="Utvecklingsteam">
     <div id="header-container"></div>
-    <div class="relative sticky top-0 z-40 shadow-l" >
-
-        <!-- DROPDOWN -->
-     <script>
-     function toggleMenu() {
-      document.getElementById("dropdownMenu").classList.toggle("hidden");
-      }
+    <div class="relative sticky top-0 z-40 shadow-l">
+      <!-- DROPDOWN -->
+      <script>
+        function toggleMenu() {
+          document.getElementById("dropdownMenu").classList.toggle("hidden");
+        }
       </script>
-    
+
       <!-- HALVGRÅ BAKGRUND STYLING -->
       <div class="max-w-2xl mx-auto p-4">
-      <div class="mb-4 text-[#C5A572]">
-      </div>
+        <div class="mb-4 text-[#C5A572]"></div>
 
-            <button id="btn-Arthur" onclick="toggleInfo('Arthur')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Arthur Brobäck</div>
-            </button>
+        <button
+          id="btn-Arthur"
+          onclick="toggleInfo('Arthur')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Arthur Brobäck</div>
+        </button>
 
-            <button id="btn-Christian" onclick="toggleInfo('Christian')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Christian Eriksson</div>
-            </button>
+        <button
+          id="btn-Christian"
+          onclick="toggleInfo('Christian')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Christian Eriksson</div>
+        </button>
 
-            <button id="btn-Jonas" onclick="toggleInfo('Jonas')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Jonas Garbuzas</div>
-            </button>
+        <button
+          id="btn-Jonas"
+          onclick="toggleInfo('Jonas')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Jonas Garbuzas</div>
+        </button>
 
-            <button id="btn-Theodor" onclick="toggleInfo('Theodor')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Theodor Landell</div>
-            </button>
+        <button
+          id="btn-Theodor"
+          onclick="toggleInfo('Theodor')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Theodor Landell</div>
+        </button>
 
-            <button id="btn-Jesper" onclick="toggleInfo('Jesper')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Jesper Lundholm</div>
-            </button>
-            
-            <button id="btn-Malte" onclick="toggleInfo('Malte')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Malte Mohr</div>
-            </button>
+        <button
+          id="btn-Jesper"
+          onclick="toggleInfo('Jesper')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Jesper Lundholm</div>
+        </button>
 
-            <button id="btn-Max" onclick="toggleInfo('Max')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Max Rubinsson</div>
-            </button>
+        <button
+          id="btn-Malte"
+          onclick="toggleInfo('Malte')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Malte Mohr</div>
+        </button>
 
-            <button id="btn-Oskar" onclick="toggleInfo('Oskar')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Oskar Sobala</div>
-            </button>
+        <button
+          id="btn-Max"
+          onclick="toggleInfo('Max')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Max Rubinsson</div>
+        </button>
 
-            <button id="btn-Melvin" onclick="toggleInfo('Melvin')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Melvin Stenholm</div>
-            </button>
+        <button
+          id="btn-Oskar"
+          onclick="toggleInfo('Oskar')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Oskar Sobala</div>
+        </button>
 
-            <button id="btn-Eylul" onclick="toggleInfo('Eylul')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Eylul Uzel</div>
-            </button>
+        <button
+          id="btn-Melvin"
+          onclick="toggleInfo('Melvin')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Melvin Stenholm</div>
+        </button>
 
-            <button id="btn-Liam" onclick="toggleInfo('Liam')" class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left">
-                <div class="text-[#142844]">Liam Wiklund</div>
-            </button>
+        <button
+          id="btn-Eylul"
+          onclick="toggleInfo('Eylul')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Eylul Uzel</div>
+        </button>
+
+        <button
+          id="btn-Liam"
+          onclick="toggleInfo('Liam')"
+          class="font-bold dev-btn bg-[#C5A572] p-6 rounded-lg shadow mb-4 w-full text-left"
+        >
+          <div class="text-[#142844]">Liam Wiklund</div>
+        </button>
 
         <!-- DOLD INFO -->
-        <div id="info-Arthur" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Arthur')">
-            <div class="font-bold text-xl mb-2">Arthur Brobäck</div>
-            <div>
-            Befattning: Fullstack Developer<br>
-            Team: Timeline <br>
-            Github: <a href="https://github.com/arthurbroback" target="_blank" class="underline">Arthurbroback</a><br>
-        </div>
-        <!-- PILKNAPPAR -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button nav-button-disabled" disabled>←</button>
-          <span class="text-sm font-semibold">1 / 11</span>
-          <button class="nav-button" onclick="navigateNext('Arthur')">→</button>
-        </div>
-        </div>
-
-        <div id="info-Christian" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Christian')">
-            <div class="font-bold text-xl mb-2">Christian Eriksson</div>
-            <div>
-            Befattning: Fullstack Developer <br>
-            Team: Timeline <br>
-            Github: <a href="https://github.com/christianeriksson06" target="_blank" class="underline">Christianeriksson06</a><br>
-            LinkedIn: <a href="https://www.linkedin.com/in/christian-eriksson-7b676a310/" target="_blank" class="underline">Christian Eriksson</a> <br>
-        </div>
-        <!-- PILKNAPPAR -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button" onclick="navigatePrev('Christian')">←</button>
-          <span class="text-sm font-semibold">2 / 11</span>
-          <button class="nav-button" onclick="navigateNext('Christian')">→</button>
-        </div>
-        </div>
-
-        <div id="info-Jonas" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Jonas')">
-            <div class="font-bold text-xl mb-2">Jonas Garbuzas</div>
-            <div>
-            Befattning: Frontend developer<br>
-            Team: Trivia Rush <br>
-            Github: <a href="https://github.com/JonasG06" target="_blank" class="underline">JonasG06</a><br>
-            LinkedIn: <a href="https://www.linkedin.com/in/jonas-garbuzas-61bba9310/" target="_blank" class="underline">Jonas Garbuzas</a><br>
-             Framtida Mål: Jobba med Frontend Utveckling
-        </div>
-        <!-- PILKNAPPAR -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button" onclick="navigatePrev('Jonas')">←</button>
-          <span class="text-sm font-semibold">3 / 11</span>
-          <button class="nav-button" onclick="navigateNext('Jonas')">→</button>
-        </div>
+        <div
+          id="info-Arthur"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Arthur')"
+        >
+          <div class="font-bold text-xl mb-2">Arthur Brobäck</div>
+          <div>
+            Befattning: Fullstack Developer<br />
+            Team: Timeline <br />
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/arthurbroback"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- PILKNAPPAR -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button nav-button-disabled" disabled>←</button>
+            <span class="text-sm font-semibold">1 / 11</span>
+            <button class="nav-button" onclick="navigateNext('Arthur')">
+              →
+            </button>
+          </div>
         </div>
 
-        <div id="info-Theodor" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Theodor')">
-            <div class="font-bold text-xl mb-2">Theodor Landell</div>
-            <div>
-            Befattning: Backend Developer<br>
-            Team: Match Master <br>
-            Github: <a href="https://github.com/TheodorLandell" target="_blank" class="underline">TheodorLandell</a><br>
-            LinkedIn: <a href="https://www.linkedin.com/in/theodor-landell-4b972b310/" target="_blank" class="underline">Theodor Landell</a><br>
-        Framtida Mål: Bli en välutvecklad programerare
-        </div>
-        <!-- PILKNAPPAR -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button" onclick="navigatePrev('Theodor')">←</button>
-          <span class="text-sm font-semibold">4 / 11</span>
-          <button class="nav-button" onclick="navigateNext('Theodor')">→</button>
-        </div>
+        <div
+          id="info-Christian"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Christian')"
+        >
+          <div class="font-bold text-xl mb-2">Christian Eriksson</div>
+          <div>
+            Befattning: Fullstack Developer <br />
+            Team: Timeline <br />
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/christianeriksson06"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+
+              <!-- LinkedIn ikon -->
+              <a
+                href="https://www.linkedin.com/in/christian-eriksson-7b676a310/"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2 4 0 4.8 2.6 4.8 6V24h-4v-7.8c0-1.8 0-4-2.5-4s-2.8 2-2.8 3.9V24h-4V8z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- PILKNAPPAR -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button" onclick="navigatePrev('Christian')">
+              ←
+            </button>
+            <span class="text-sm font-semibold">2 / 11</span>
+            <button class="nav-button" onclick="navigateNext('Christian')">
+              →
+            </button>
+          </div>
         </div>
 
-        <div id="info-Jesper" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Jesper')">
-            <div class="font-bold text-xl mb-2">Jesper Lundholm</div>
-            <div>
-            Befattning: Backend Developer<br>
-            Team: Match Master <br>
-            Github: <a href="https://github.com/Jesper-Lundholm06" target="_blank" class="underline">Jesper-Lundholm06</a><br>
-        </div>
-        <!-- NPILKNAPPAR -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button" onclick="navigatePrev('Jesper')">←</button>
-          <span class="text-sm font-semibold">5 / 11</span>
-          <button class="nav-button" onclick="navigateNext('Jesper')">→</button>
-        </div>
+        <div
+          id="info-Jonas"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Jonas')"
+        >
+          <div class="font-bold text-xl mb-2">Jonas Garbuzas</div>
+          <div>
+            Befattning: Frontend developer<br />
+            Team: Trivia Rush <br />
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/JonasG06"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+
+              <!-- LinkedIn ikon -->
+              <a
+                href="https://www.linkedin.com/in/jonas-garbuzas-61bba9310/"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2 4 0 4.8 2.6 4.8 6V24h-4v-7.8c0-1.8 0-4-2.5-4s-2.8 2-2.8 3.9V24h-4V8z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- PILKNAPPAR -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button" onclick="navigatePrev('Jonas')">
+              ←
+            </button>
+            <span class="text-sm font-semibold">3 / 11</span>
+            <button class="nav-button" onclick="navigateNext('Jonas')">
+              →
+            </button>
+          </div>
         </div>
 
-        <div id="info-Malte" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Malte')">
-            <div class="font-bold text-xl mb-2">Malte Mohr</div>
-            <div>
-            Befattning: Backend Developer<br>
-            Team: Trivia Rush <br>
-            Github: <a href="https://github.com/Maotmo06" target="_blank" class="underline">Maotmo06</a><br>
-        </div>
-        <!-- PILKNAPPAR -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button" onclick="navigatePrev('Malte')">←</button>
-          <span class="text-sm font-semibold">6 / 11</span>
-          <button class="nav-button" onclick="navigateNext('Malte')">→</button>
-        </div>
+        <div
+          id="info-Theodor"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Theodor')"
+        >
+          <div class="font-bold text-xl mb-2">Theodor Landell</div>
+          <div>
+            Befattning: Backend Developer<br />
+            Team: Match Master <br />
+            Framtida Mål: Bli en välutvecklad programerare
+
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/TheodorLandell"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+
+              <!-- LinkedIn ikon -->
+              <a
+                href="https://www.linkedin.com/in/theodor-landell-4b972b310/"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2 4 0 4.8 2.6 4.8 6V24h-4v-7.8c0-1.8 0-4-2.5-4s-2.8 2-2.8 3.9V24h-4V8z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- PILKNAPPAR -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button" onclick="navigatePrev('Theodor')">
+              ←
+            </button>
+            <span class="text-sm font-semibold">4 / 11</span>
+            <button class="nav-button" onclick="navigateNext('Theodor')">
+              →
+            </button>
+          </div>
         </div>
 
-        <div id="info-Max" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Max')">
-            <div class="font-bold text-xl mb-2">Max Rubinsson</div>
-            <div>
-            Befattning: Lead Frontend Developer<br>
-            Team: Platform <br>
-            Github: <a href="https://github.com/maxrub06" target="_blank" class="underline">MaxRub06</a><br>
-            LinkedIn: <a href="https://www.linkedin.com/in/max-edvin-rubinsson-563084268/" target="_blank" class="underline">Max Rubinsson</a><br>
+        <div
+          id="info-Jesper"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Jesper')"
+        >
+          <div class="font-bold text-xl mb-2">Jesper Lundholm</div>
+          <div>
+            Befattning: Backend Developer<br />
+            Team: Match Master <br />
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/Jesper-Lundholm06"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- NPILKNAPPAR -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button" onclick="navigatePrev('Jesper')">
+              ←
+            </button>
+            <span class="text-sm font-semibold">5 / 11</span>
+            <button class="nav-button" onclick="navigateNext('Jesper')">
+              →
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="info-Malte"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Malte')"
+        >
+          <div class="font-bold text-xl mb-2">Malte Mohr</div>
+          <div>
+            Befattning: Backend Developer<br />
+            Team: Trivia Rush <br />
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/Maotmo06"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- PILKNAPPAR -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button" onclick="navigatePrev('Malte')">
+              ←
+            </button>
+            <span class="text-sm font-semibold">6 / 11</span>
+            <button class="nav-button" onclick="navigateNext('Malte')">
+              →
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="info-Max"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Max')"
+        >
+          <div class="font-bold text-xl mb-2">Max Rubinsson</div>
+          <div>
+            Befattning: Lead Frontend Developer<br />
+            Team: Platform <br />
             Framtida Mål: Jobba med IT
-        </div>
-        <!-- PILKNAPPAR -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button" onclick="navigatePrev('Max')">←</button>
-          <span class="text-sm font-semibold">7 / 11</span>
-          <button class="nav-button" onclick="navigateNext('Max')">→</button>
-        </div>
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/maxrub06"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+
+              <!-- LinkedIn ikon -->
+              <a
+                href="https://www.linkedin.com/in/max-edvin-rubinsson-563084268/"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2 4 0 4.8 2.6 4.8 6V24h-4v-7.8c0-1.8 0-4-2.5-4s-2.8 2-2.8 3.9V24h-4V8z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- PILKNAPPAR -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button" onclick="navigatePrev('Max')">←</button>
+            <span class="text-sm font-semibold">7 / 11</span>
+            <button class="nav-button" onclick="navigateNext('Max')">→</button>
+          </div>
         </div>
 
-        <div id="info-Oskar" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Oskar')">
-            <div class="font-bold text-xl mb-2">Oskar Sobala</div>
-            <div>
-            Befattning: Backend Developer<br>
-            Team: Trivia Rush <br>
-            Github: <a href="https://github.com/Oskar-Sobala" target="_blank" class="underline">Oskar-Sobala</a><br>
-        </div>
-        <!-- Navigation Buttons -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button" onclick="navigatePrev('Oskar')">←</button>
-          <span class="text-sm font-semibold">8 / 11</span>
-          <button class="nav-button" onclick="navigateNext('Oskar')">→</button>
-        </div>
-        </div>
-
-        <div id="info-Melvin" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Melvin')">
-            <div class="font-bold text-xl mb-2">Melvin Stenholm</div>
-            <div>
-            Befattning: Backend Developer<br>
-            Team: Platform <br>
-            Github: <a href="https://github.com/stenholmmelvin" target="_blank" class="underline">Stenholmmelvin</a><br>
-        </div>
-        <!-- PILKNAPPAR -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button" onclick="navigatePrev('Melvin')">←</button>
-          <span class="text-sm font-semibold">9 / 11</span>
-          <button class="nav-button" onclick="navigateNext('Melvin')">→</button>
-        </div>
-        </div>
-
-        <div id="info-Eylul" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Eylul')">
-            <div class="font-bold text-xl mb-2">Eylul Uzel</div>
-            <div>
-            Befattning: Backend Developer<br>
-            Team: Platform <br>
-            Github: <a href="https://github.com/eyluluz" target="_blank" class="underline">Eyluluz</a><br>
-        </div>
-        <!-- PILKNAPPAR -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button" onclick="navigatePrev('Eylul')">←</button>
-          <span class="text-sm font-semibold">10 / 11</span>
-          <button class="nav-button" onclick="navigateNext('Eylul')">→</button>
-        </div>
+        <div
+          id="info-Oskar"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Oskar')"
+        >
+          <div class="font-bold text-xl mb-2">Oskar Sobala</div>
+          <div>
+            Befattning: Backend Developer<br />
+            Team: Trivia Rush <br />
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/Oskar-Sobala"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button" onclick="navigatePrev('Oskar')">
+              ←
+            </button>
+            <span class="text-sm font-semibold">8 / 11</span>
+            <button class="nav-button" onclick="navigateNext('Oskar')">
+              →
+            </button>
+          </div>
         </div>
 
-        <div id="info-Liam" class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer" onclick="toggleInfo('Liam')">
-            <div class="font-bold text-xl mb-2">Liam Wiklund</div>
-            <div>
-            Befattning: Fullstack Developer<br>
-            Team: Timeline <br>
-            Github: <a href="https://github.com/LiamW11" target="_blank" class="underline">LiamW11</a><br>
+        <div
+          id="info-Melvin"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Melvin')"
+        >
+          <div class="font-bold text-xl mb-2">Melvin Stenholm</div>
+          <div>
+            Befattning: Backend Developer<br />
+            Team: Platform <br />
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/stenholmmelvin"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- PILKNAPPAR -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button" onclick="navigatePrev('Melvin')">
+              ←
+            </button>
+            <span class="text-sm font-semibold">9 / 11</span>
+            <button class="nav-button" onclick="navigateNext('Melvin')">
+              →
+            </button>
+          </div>
         </div>
-        <!-- PILKNAPPAR -->
-        <div class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]" onclick="event.stopPropagation()">
-          <button class="nav-button" onclick="navigatePrev('Liam')">←</button>
-          <span class="text-sm font-semibold">11 / 11</span>
-          <button class="nav-button nav-button-disabled" disabled>→</button>
+
+        <div
+          id="info-Eylul"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Eylul')"
+        >
+          <div class="font-bold text-xl mb-2">Eylul Uzel</div>
+          <div>
+            Befattning: Backend Developer<br />
+            Team: Platform <br />
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/eyluluz"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- PILKNAPPAR -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button" onclick="navigatePrev('Eylul')">
+              ←
+            </button>
+            <span class="text-sm font-semibold">10 / 11</span>
+            <button class="nav-button" onclick="navigateNext('Eylul')">
+              →
+            </button>
+          </div>
         </div>
+
+        <div
+          id="info-Liam"
+          class="dev-info hidden bg-[#C5A572] text-[#142844] p-6 rounded-lg shadow w-full text-left cursor-pointer"
+          onclick="toggleInfo('Liam')"
+        >
+          <div class="font-bold text-xl mb-2">Liam Wiklund</div>
+          <div>
+            Befattning: Fullstack Developer<br />
+            Team: Timeline <br />
+            <div class="flex items-center gap-4 mt-2">
+              <!-- GitHub ikon -->
+              <a
+                href="https://github.com/LiamW11"
+                target="_blank"
+                class="text-[#142844] hover:text-[#0b1e39]"
+              >
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2.17c-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.79 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72 0-1.27.45-2.31 1.2-3.12-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.85 1.2 3.12 0 4.45-2.69 5.43-5.25 5.71.42.36.79 1.09.79 2.21v3.28c0 .31.21.67.79.56A10.99 10.99 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- PILKNAPPAR -->
+          <div
+            class="flex justify-between items-center mt-6 pt-4 border-t border-[#142844]"
+            onclick="event.stopPropagation()"
+          >
+            <button class="nav-button" onclick="navigatePrev('Liam')">←</button>
+            <span class="text-sm font-semibold">11 / 11</span>
+            <button class="nav-button nav-button-disabled" disabled>→</button>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-</div>
 
     <!-- SCRIPTS -->
     <script type="module" src="../../shared/components/header.js"></script>
@@ -251,9 +609,21 @@
 
     <!-- TOGGLE SCRIPT -->
     <script>
-    const teamMembers = ['Arthur', 'Christian', 'Jonas', 'Theodor', 'Jesper', 'Malte', 'Max', 'Oskar', 'Melvin', 'Eylul', 'Liam'];
+      const teamMembers = [
+        "Arthur",
+        "Christian",
+        "Jonas",
+        "Theodor",
+        "Jesper",
+        "Malte",
+        "Max",
+        "Oskar",
+        "Melvin",
+        "Eylul",
+        "Liam",
+      ];
 
-    function toggleInfo(name) {
+      function toggleInfo(name) {
         const allButtons = document.querySelectorAll(".dev-btn");
         const allInfos = document.querySelectorAll(".dev-info");
 
@@ -262,52 +632,59 @@
 
         //INFO DOLD
         if (info.classList.contains("hidden")) {
-            allButtons.forEach(b => b.classList.add("hidden"));
-            allInfos.forEach(i => i.classList.add("hidden"));
-            info.classList.remove("hidden");
-        } 
-        else {
-            //INFO SYNLIG
-            info.classList.add("hidden");
-            allButtons.forEach(b => b.classList.remove("hidden"));
+          allButtons.forEach((b) => b.classList.add("hidden"));
+          allInfos.forEach((i) => i.classList.add("hidden"));
+          info.classList.remove("hidden");
+        } else {
+          //INFO SYNLIG
+          info.classList.add("hidden");
+          allButtons.forEach((b) => b.classList.remove("hidden"));
         }
-    }
+      }
 
-    function navigateNext(currentName) {
+      function navigateNext(currentName) {
         const currentIndex = teamMembers.indexOf(currentName);
         if (currentIndex < teamMembers.length - 1) {
-            const nextName = teamMembers[currentIndex + 1];
-            //VISA NYA
-            document.getElementById("info-" + currentName).classList.add("hidden");
-            document.getElementById("info-" + nextName).classList.remove("hidden");
+          const nextName = teamMembers[currentIndex + 1];
+          //VISA NYA
+          document
+            .getElementById("info-" + currentName)
+            .classList.add("hidden");
+          document
+            .getElementById("info-" + nextName)
+            .classList.remove("hidden");
         }
-    }
+      }
 
-    function navigatePrev(currentName) {
+      function navigatePrev(currentName) {
         const currentIndex = teamMembers.indexOf(currentName);
         if (currentIndex > 0) {
-            const prevName = teamMembers[currentIndex - 1];
-            //VISA FÖRRA
-            document.getElementById("info-" + currentName).classList.add("hidden");
-            document.getElementById("info-" + prevName).classList.remove("hidden");
+          const prevName = teamMembers[currentIndex - 1];
+          //VISA FÖRRA
+          document
+            .getElementById("info-" + currentName)
+            .classList.add("hidden");
+          document
+            .getElementById("info-" + prevName)
+            .classList.remove("hidden");
         }
-    }
+      }
     </script>
     <style>
       .nav-button {
         background-color: #0b1e39;
-        color: #C5A572;
+        color: #c5a572;
         padding: 8px 16px;
         border-radius: 6px;
         cursor: pointer;
         font-size: 14px;
         transition: background-color 0.3s;
-        border: 2px solid #C5A572;
+        border: 2px solid #c5a572;
         font-weight: bold;
       }
 
       .nav-button:hover:not(.nav-button-disabled) {
-        background-color: #C5A572;
+        background-color: #c5a572;
         color: #0b1e39;
       }
 
@@ -323,5 +700,5 @@
         color: #888;
       }
     </style>
-</body>
+  </body>
 </html>
