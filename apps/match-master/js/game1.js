@@ -61,8 +61,7 @@ function flipCard(cardId) {
     startTimer();
   }
 
-  gameSound.flip.currentTime = 0;
-  gameSound.flip.play().catch((e) => console.log("ljud"));
+ 
 
   // Vänd kortet
   card.flipped = true;
@@ -91,8 +90,7 @@ function checkMatch() {
     game.matches++;
     game.score += 100;
     game.flippedCards = [];
-    gameSound.match.currentTime = 0;
-    gameSound.match.play().catch((e) => console.log("Ljud"));
+    
 
     renderCards();
     document.getElementById("score").textContent = game.score + "pts";
@@ -103,8 +101,7 @@ function checkMatch() {
     // Kolla om spelet är klart
     if (game.matches === game.pairsNeeded) {
       stopTimer();
-      gameSound.win.currentTime = 0;
-      gameSound.win.play().catch((e) => console.log("Win-ljud fel:", e));
+      
 
       setTimeout(() => {
         showEndScreen();
@@ -121,7 +118,7 @@ function checkMatch() {
     const card1Element = document.querySelector(`[data-card-id="${id1}"]`);
     const card2Element = document.querySelector(`[data-card-id="${id2}"]`);
 
-    gameSound.wrong.play().catch((e) => console.log("ljud"));
+   
 
     if (card1Element) card1Element.classList.add("shake");
     if (card2Element) card2Element.classList.add("shake");
