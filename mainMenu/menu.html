@@ -7,6 +7,7 @@
 <link rel="manifest" href="../Favicon/site.webmanifest">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
     <title>Main Menu</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,6 +17,7 @@
         colors: {
           "nobel-blue-medium": "#142844",
           "nobel-blue-light": "#1e3458",
+          "nobel-gold": "#C5A572",
         },
       },
     },
@@ -43,7 +45,7 @@
     <div class="w-full text-center px-6 mt-6 mb-10">
   <h2 class="text-3xl font-semibold text-[#C5A572] leading-snug mb-4">
     Välkommen till<br>
-    Nobel-Quest!
+    Nobel Quest!
   </h2>
 
   <p class="text-white/90 text-base leading-relaxed">
@@ -59,21 +61,21 @@
   <!-- Nobel Timeline -->
   <button 
     onclick="window.location.href='../apps/timeline/index.html'"
-    class="px-4 py-4 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light text-2xl text-white">
+    class="w-full px-6 py-4 rounded-xl font-bold text-lg text-white bg-nobel-blue-medium border-2 border-nobel-gold/60 shadow-lg shadow-nobel-gold/10 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light hover:border-nobel-gold hover:shadow-nobel-gold/25 hover:-translate-y-1">
     Nobel Timeline
   </button>
 
   <!-- Nobel Match Master -->
   <button 
     onclick="window.location.href='../apps/match-master/index.html'"
-    class="px-4 py-4 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light text-2xl text-white">
-    Nobel Match Master
+class="w-full px-6 py-4 rounded-xl font-bold text-lg text-white bg-nobel-blue-medium border-2 border-nobel-gold/60 shadow-lg shadow-nobel-gold/10 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light hover:border-nobel-gold hover:shadow-nobel-gold/25 hover:-translate-y-1"> 
+   Nobel Match Master
   </button>
 
   <!-- Nobel Trivia Rush -->
   <button 
     onclick="window.location.href='../apps/trivia-rush/index.html'"
-    class="px-4 py-4 rounded-xl font-bold bg-nobel-blue-medium ring-1 ring-white/30 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light text-2xl text-white">
+class="w-full px-6 py-4 rounded-xl font-bold text-lg text-white bg-nobel-blue-medium border-2 border-nobel-gold/60 shadow-lg shadow-nobel-gold/10 transition-all duration-300 active:scale-95 hover:bg-nobel-blue-light hover:border-nobel-gold hover:shadow-nobel-gold/25 hover:-translate-y-1">
     Nobel Trivia Rush
   </button>
 </div>
