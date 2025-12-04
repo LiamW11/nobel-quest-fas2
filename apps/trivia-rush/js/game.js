@@ -460,10 +460,10 @@ function endGame() {
   ).textContent = `Bonuspoäng: ${state.bonusScore}`;
   document.getElementById(
     "final-score"
-  ).textContent = `Du fick ${state.score} av ${state.totalQuestions} rätt.`;
+  ).textContent = `Du fick ${state.score} av 250 rätt.`;
   document.getElementById(
     "final-time-score"
-  ).textContent = `Tidspoäng: ${state.timeScore} av ${maxTimeScore} möjliga`;
+  ).textContent = `Tidspoäng: ${state.timeScore} av 300 möjliga`;
   document.getElementById(
     "final-total-score"
   ).textContent = `Totalt: ${totalScore} poäng`;
