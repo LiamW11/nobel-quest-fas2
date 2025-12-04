@@ -6,39 +6,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const viewQuiz = document.getElementById("view-quiz");
   const form = document.getElementById("category-form");
 
-  // Starta quizet
+// Funktion för att faktiskt starta spelet
+  async function launchGame() {
+    await window.quizReady;
+
+    let selected = Array.from(
+      document.querySelectorAll("input[name='categories']:checked")
+    ).map((i) => i.value);
+
+    if (selected.length === 0) {
+      selected = [
+        "physics",
+        "chemistry",
+        "medicine",
+        "literature",
+        "peace",
+        "economics",
+      ];
+    }
+
+    const success = startGame(selected);
+
+    if (success) {
+      if (viewStart) viewStart.classList.add("hidden");
+      if (viewQuiz) viewQuiz.classList.remove("hidden");
+    }
+  }
+
+  // Klick på "Starta Quiz" öppnar how-to popup
   if (startBtn) {
-    startBtn.addEventListener("click", async () => {
-      // Vänta tills Nobel-datan är laddad
-      await window.quizReady;
-
-      // Hämta valda kategorier
-      let selected = Array.from(
-        document.querySelectorAll("input[name='categories']:checked")
-      ).map((i) => i.value);
-
-      // Om inget valt → kör alla
-      if (selected.length === 0) {
-        selected = [
-          "physics",
-          "chemistry",
-          "medicine",
-          "literature",
-          "peace",
-          "economics",
-        ];
-      }
-
-      // Försök starta spelet
-      const success = startGame(selected);
-
-      // Gå vidare om spelet startade
-      if (success) {
-        if (viewStart) viewStart.classList.add("hidden");
-        if (viewQuiz) viewQuiz.classList.remove("hidden");
-      }
+    startBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openHowTo('trivia');
     });
   }
+
+  // Gör launchGame tillgänglig globalt för howto-knappen
+  window.launchTriviaGame = launchGame;
 
   // Formuläret ska inte reloada sidan
   if (form) {
@@ -64,4 +68,17 @@ document.addEventListener("DOMContentLoaded", () => {
       openHowTo('trivia');
     });
   }
+
+  // Instruktioner i dropdown öppnar how-to popup
+  setTimeout(() => {
+    const menuInstructions = document.getElementById("menu-instructions");
+    if (menuInstructions) {
+      menuInstructions.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("dropdownMenu").classList.add("hidden");
+        openHowTo('trivia');
+      });
+    }
+  }, 500);
+  
 });

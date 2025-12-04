@@ -18,6 +18,18 @@ const app = document.getElementById("app");
 renderStart(app);
 loadNobelData();
 
+// Instruktioner i dropdown öppnar how-to popup
+setTimeout(() => {
+  const menuInstructions = document.getElementById("menu-instructions");
+  if (menuInstructions) {
+    menuInstructions.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("dropdownMenu").classList.add("hidden");
+      openHowTo('timeline');
+    });
+  }
+}, 500);
+
 document.addEventListener("difficulty:selected", async (e) => {
   const all = await loadNobelData();
   const level = e.detail.level;

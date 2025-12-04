@@ -117,45 +117,6 @@ function generateQuizQuestions() {
     createCountryQuestion("Esther Duflo", "economics", allLaureates),
     createAchievementQuestion("Esther Duflo", allLaureates),
     createWhoWonQuestion("Fattigdomsforskning", "economics", allLaureates),
-
-    // Custom economics questions
-    {
-      question: "Vilket år delades det första ekonomipriset ut?",
-      options: ["1969", "1901", "1975", "1955"],
-      correct: "1969",
-      category: "economics"
-    },
-    {
-      question: "Hur många nobelpristagare i ekonomi finns med i vår databas?",
-      options: ["1", "5", "10", "15"],
-      correct: "1",
-      category: "economics"
-    },
-    {
-      question: "Vilken organisation delar ut ekonomipriset?",
-      options: ["Sveriges Riksbank", "FN", "Nobelstiftelsen", "Europaparlamentet"],
-      correct: "Sveriges Riksbank",
-      category: "economics"
-    },
-
-    {
-      question: "Vilket område belönas oftast i ekonomipriset?",
-      options: ["Makroekonomi", "Astrologi", "Arkeologi", "Botanik"],
-      correct: "Makroekonomi",
-      category: "economics"
-    },
-    {
-      question: "Vilken av följande är ett vanligt forskningsområde inom ekonomi?",
-      options: ["Spelteori", "Fotosyntes", "Cellbiologi", "Astrofysik"],
-      correct: "Spelteori",
-      category: "economics"
-    },
-    {
-      question: "Vilket begrepp används ofta inom ekonomi för att beskriva hur människor fattar beslut?",
-      options: ["Rationellt beteende", "Fotosyntes", "Gravitation", "Evolution"],
-      correct: "Rationellt beteende",
-      category: "economics"
-    }
   ];
 }
 

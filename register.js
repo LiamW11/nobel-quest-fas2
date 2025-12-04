@@ -1,5 +1,6 @@
 import { auth, db } from '../shared/firebase-config.js';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
 const form = document.getElementById('registerForm');
@@ -8,6 +9,16 @@ const saveButton = document.getElementById('saveEmail');
 const messageDiv = document.getElementById('message');
 
 const SHARED_PASSWORD = "Nobel2025!";
+
+// AV för tillfället, avkommentera för 
+// att sätta igång perma login
+ onAuthStateChanged(auth, (user) => {
+    if (user) {
+//      om loggad in, skicka till huvudmenyn
+      window.location.href = 'mainMenu/menu.html';
+    }
+  });
+
 
 function showMessage(text, type) {
     messageDiv.textContent = text;
@@ -83,30 +94,35 @@ form.addEventListener("submit", async (e) => {
                 isNewUser = true;
                 console.log("Användare skapad:", user.uid);
 
-                // 🔥 Save Firestore user document
-                try {
-                    await setDoc(doc(db, "users", user.uid), {
-                        email: email,
-                        displayName: displayName,
-                        class: userClass,
-                        createdAt: new Date().toISOString(),
-                        uid: user.uid
-                    });
-                } catch (dbError) {
-                    console.error("Fel vid skapande av användardokument:", dbError);
-                }
-
-                // 🔥 Update Auth profile
-                try {
-                    await updateProfile(user, { displayName });
-                } catch (err) {
-                    console.warn("Kunde inte uppdatera auth profile:", err);
-                }
-
             } else {
                 throw loginError;
             }
         }
+
+        // 🔥 VIKTIGT: Uppdatera ALLTID Firestore OCH Auth-profil (även vid inloggning!)
+        try {
+            await setDoc(doc(db, "users", user.uid), {
+                email: email,
+                displayName: displayName,
+                class: userClass,
+                updatedAt: new Date().toISOString(),
+                uid: user.uid
+            }, { merge: true });
+            console.log("Firestore-dokument uppdaterat med displayName:", displayName);
+        } catch (dbError) {
+            console.error("Fel vid uppdatering av användardokument:", dbError);
+        }
+
+        // 🔥 Uppdatera Auth-profil med det nya namnet
+        try {
+            await updateProfile(user, { displayName });
+            await auth.currentUser.reload();
+            console.log("✅ User reloadad, nytt displayName:", auth.currentUser.displayName);
+            console.log("Auth-profil uppdaterad med displayName:", displayName);
+        } catch (err) {
+            console.warn("Kunde inte uppdatera auth profile:", err);
+        }
+        
 
         // Save locally
         localStorage.setItem("userEmail", email);
@@ -117,7 +133,7 @@ form.addEventListener("submit", async (e) => {
 
         setTimeout(() => {
             window.location.href = "../mainMenu/menu.html";
-        }, 150);
+        }, 1500);
 
     } catch (error) {
         console.error("Fel vid inloggning/registrering:", error.code, error.message);

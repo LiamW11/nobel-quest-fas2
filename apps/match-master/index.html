@@ -12,29 +12,9 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="min-h-screen flex flex-col bg-gradient-to-br from-[#0b1e39] to-[#142845] ">
-
-
-<header class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative sticky top-0 z-40 shadow-l">
-  <!-- lägg till icon namn här -->
-
-  <!-- Låtsas-element för vänster sida (tomt) -->
-  <div style="width:24px;"></div>
-
-  <h1 id="page-title" class="text-center flex-1">Nobel Match-Master</h1>
-
-  <!-- Menyknapp -->
-  <div id="menu-container"></div>
-  <button onclick="toggleMenu()">☰</button>
-
-    </header>
-   <script>
-  (async function () {
-    const res = await fetch("../../shared/components/shared-menu.html");
-    const html = await res.text();
-    document.getElementById("menu-container").innerHTML = html;
-  })();
-</script>
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-[#0b1e39] to-[#142845]" data-page-title="Nobel Match Master">
+  <div id="header-container"></div>
+  
 
 <section id="view-start" class="flex justify-center mt-20 px-4">
 
@@ -162,6 +142,7 @@
   <script src="js/ui.js"></script>
   <script src="js/main.js"></script>
   <script src="../../shared/components/footer.js"></script>
+  <script type="module" src="../../shared/components/header.js"></script>
 
 
   <script type="module">

@@ -20,18 +20,45 @@
 
   // 🔁 Event delegation istället för DOMContentLoaded + querySelectorAll
   document.addEventListener("click", function (e) {
-    // Klick på X-knapp
-    if (e.target.closest(".howto-close")) {
+   
+    // Trivia-specifik "Jag fattar"-knapp
+    if (e.target.closest(".howto-gotit-trivia")) {
       e.preventDefault();
       closeAllHowTo();
+      // Starta bara om vi är på startsidan (view-start är synlig)
+      const viewStart = document.getElementById("view-start");
+      if (viewStart && !viewStart.classList.contains("hidden")) {
+        if (typeof window.launchTriviaGame === 'function') {
+          window.launchTriviaGame();
+        }
+      }
+      return;
+    }
+    
+    // Timeline-specifik "Jag fattar"-knapp
+    if (e.target.closest(".howto-gotit-timeline")) {
+      e.preventDefault();
+      closeAllHowTo();
+      // Starta bara om startknappen finns (vi är på startsidan)
+      const startButton = document.getElementById("startButton");
+      if (startButton) {
+        if (typeof window.launchTimelineGame === 'function') {
+          window.launchTimelineGame();
+        }
+      }
       return;
     }
 
-if (e.target.closest(".howto-gotit-match")) {
+    // Match-specifik "Jag fattar"-knapp
+    if (e.target.closest(".howto-gotit-match")) {
       e.preventDefault();
       closeAllHowTo();
-      if(typeof window.launchMatchGame === "function") {
-        window.launchMatchGame();
+      // Starta bara om vi är på startsidan (view-start är synlig)
+      const viewStart = document.getElementById("view-start");
+      if (viewStart && !viewStart.classList.contains("hidden")) {
+        if (typeof window.launchMatchGame === "function") {
+          window.launchMatchGame();
+        }
       }
       return;
     }

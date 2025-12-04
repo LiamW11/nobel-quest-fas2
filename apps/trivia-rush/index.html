@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
-  <body class="min-h-screen bg-[#0b1e39] text-white flex flex-col">
+  <body class="min-h-screen bg-[#0b1e39] text-white flex flex-col" data-page-title="Nobel Trivia Rush">
+    <div id="header-container"></div>
     
     <!-- Ladda How-To modaler från gemensam fil -->
     <div id="howto-container"></div>
@@ -23,28 +24,7 @@
         document.getElementById('howto-container').innerHTML = html;
       })();
     </script>
-    <!-- Header -->
-
-<header
-  class="header-brand text-[#142844] p-4 flex justify-between items-center mb-2 relative sticky top-0 z-40 shadow-lg">
-
-  <!-- Låtsas-element för vänster sida (tomt) -->
-  <div style="width:24px;"></div>
-
-  <h1 id="page-title" class="text-center flex-1">Nobel Trivia Rush</h1>
-
-  <!-- Menyknapp -->
-  <div id="menu-container"></div>
-  <button onclick="toggleMenu()">☰</button>
-
-    </header>
-   <script>
-  (async function () {
-    const res = await fetch("../../shared/components/shared-menu.html");
-    const html = await res.text();
-    document.getElementById("menu-container").innerHTML = html;
-  })();
-</script>
+  
 
 
     <script>
@@ -99,10 +79,6 @@
               
               </div>
             </form>
-
-            <button type="button" id="btn-howto" class="mt-4 block w-full text-sm text-white/80 underline hover:text-white">
-            How to play – så funkar spelet
-            </button>
               </div>
 
           </section>
@@ -225,6 +201,7 @@
     <script src="js/ui.js"></script>
     <script src="js/main.js"></script>
     <script src="../../shared/components/footer.js"></script>
+    <script type="module" src="../../shared/components/header.js"></script>
 
     <script type="module">
       import { submitScore } from "../leaderboard/leaderboardManager.js";
