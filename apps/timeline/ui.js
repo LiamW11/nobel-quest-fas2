@@ -6,7 +6,7 @@ export function renderStart(root) {
     <div class="flex flex-col gap-4 items-center">
 
             <p class="text-white/85 leading-relaxed p-2">
-              <span class="text-xl">Välkommen till <strong class="text-[#C5A572]">Nobel Timeline</strong>!</span>
+              <span class="text-xl">Välkommen till <strong class="text-[#C5A572]">Timeline!</strong></span>
               <br>
               <br>
               <span class="text-lg">I detta spel kommer du att utmanas att placera Nobelpristagare i rätt kronologisk ordning baserat på deras vinstår.</span>
