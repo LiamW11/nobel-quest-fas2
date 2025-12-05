@@ -1,4 +1,3 @@
-
 import { auth, db } from '../firebase-config.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
@@ -28,6 +27,18 @@ function getInitials(name) {
     }
 }
 
+// Funktion för att hantera meny-toggle
+function toggleMenu(event) {
+    event.stopPropagation();
+    const menu = document.getElementById("dropdownMenu");
+    if (menu) {
+        menu.classList.toggle("hidden");
+    }
+}
+
+// Gör toggleMenu tillgänglig globalt
+window.toggleMenu = toggleMenu;
+
 // Ladda header automatiskt när sidan laddas
 window.addEventListener('DOMContentLoaded', async () => {
   try {
@@ -36,22 +47,40 @@ window.addEventListener('DOMContentLoaded', async () => {
     const html = await response.text();
     document.getElementById('header-container').innerHTML = html;
     
-// Denna kod uppdaterar det som står i headern baserat på data-page-title
-const pageTitle = document.body.getAttribute('data-page-title');
-if (pageTitle) {
-  setTimeout(() => {
-    const titleEl = document.getElementById('page-title');
-    if (titleEl) titleEl.textContent = pageTitle;
-  }, 50);
-}
+    // Denna kod uppdaterar det som står i headern baserat på data-page-title
+    const pageTitle = document.body.getAttribute('data-page-title');
+    if (pageTitle) {
+      setTimeout(() => {
+        const titleEl = document.getElementById('page-title');
+        if (titleEl) titleEl.textContent = pageTitle;
+      }, 50);
+    }
 
-    
     // Vänta lite så elementen hinner skapas
-    setTimeout(updateProfile, 100);
+    setTimeout(() => {
+        updateProfile();
+        setupMenuListeners();
+    }, 100);
   } catch (error) {
     console.error('Header-fel:', error);
   }
 });
+
+// Setup event listeners för menyn
+function setupMenuListeners() {
+    // Stäng menyn när man klickar utanför
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById("dropdownMenu");
+        const menuButton = document.getElementById("menuButton");
+        
+        // Kontrollera om klicket är utanför både menyn och knappen
+        if (menu && menuButton && !menu.classList.contains("hidden")) {
+            if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
+                menu.classList.add("hidden");
+            }
+        }
+    });
+}
 
 // Uppdatera profil
 function updateProfile() {
