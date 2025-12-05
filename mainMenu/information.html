@@ -11,6 +11,16 @@
   <meta name="google" content="notranslate" />
   <title>Pristagare</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .triangle {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .triangle.rotated {
+      transform: rotate(180deg);
+    }
+  </style>
 </head>
 
 <body class="bg-[#0b1e39] text-[#C5A572]" data-page-title="Pristagare">
@@ -33,7 +43,7 @@
     <div id="wiki-links" class="max-w-2xl mx-auto p-6 bg-[#C5A572] rounded-lg shadow text-[#0b1e39]">
 
       <h2 class="text-2xl font-bold mb-6">Pristagare</h2>
-<button onclick="toggleCategory('fysikKnapp')" class="w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Fysik</button>
+      <button onclick="toggleCategory('fysikKnapp', 'fysikTriangle')" class="w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2"><span class="triangle" id="fysikTriangle">▼</span> Fysik</button>
       <div class="mb-8">
         <ul id="fysikKnapp" class="hidden grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Albert_Einstein"  >Albert Einstein ↗  </a></li>  
@@ -53,7 +63,8 @@
           </li>
         </ul>
       </div>
-<button onclick="toggleCategory('kemiKnapp')" class=" w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Kemi</button>
+      
+      <button onclick="toggleCategory('kemiKnapp', 'kemiTriangle')" class=" w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2"><span class="triangle" id="kemiTriangle">▼</span> Kemi</button>
       <div class="mb-8">
         <ul id="kemiKnapp" class=" hidden grid grid-cols-1 md:grid-cols-2 gap-2">
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -63,8 +74,8 @@
           <li><a href="https://sv.wikipedia.org/wiki/Marie_Curie"  >Marie Curie ↗ </a></li> 
         </ul>
       </div>
-
-      <button onclick="toggleCategory('medicinKnapp')" class="w-full text-left   text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Medicin</button>
+      
+      <button onclick="toggleCategory('medicinKnapp', 'medicinTriangle')" class="w-full text-left   text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2"><span class="triangle" id="medicinTriangle">▼</span> Medicin</button>
       <div class="mb-8">
         <ul id="medicinKnapp" class="hidden grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Alexander_Fleming"  >Alexander Fleming ↗</a> </li>
@@ -84,7 +95,8 @@
           <li><a href="https://sv.wikipedia.org/wiki/Tu_Youyou"  >Tu Youyou ↗ </a></li> 
         </ul>
       </div>
-            <button onclick="toggleCategory('litteraturKnapp')" class="w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Litteratur</button>
+
+      <button onclick="toggleCategory('litteraturKnapp', 'litteraturTriangle')" class="w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2"><span class="triangle" id="litteraturTriangle">▼</span> Litteratur</button>
       <div class="mb-8">
         <ul id="litteraturKnapp" class="hidden grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Abdulrazak_Gurnah"  >Abdulrazak Gurnah ↗ </a></li> 
@@ -105,7 +117,8 @@
           <li><a href="https://sv.wikipedia.org/wiki/William_Faulkner"  >William Faulkner ↗ </a></li> 
         </ul>
       </div>
-      <button onclick="toggleCategory('fredKnapp')" class=" w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Fred</button>
+
+      <button onclick="toggleCategory('fredKnapp', 'fredTriangle')" class=" w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2"><span class="triangle" id="fredTriangle">▼</span> Fred</button>
       <div class="mb-8">
         <ul id="fredKnapp" class="hidden grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Aung_San_Suu_Kyi"  >Aung San Suu Kyi ↗ </a></li> 
@@ -124,20 +137,18 @@
           <li><a href="https://sv.wikipedia.org/wiki/Wangari_Maathai"  >Wangari Maathai ↗ </a></li> 
         </ul>
       </div>
-      <button onclick="toggleCategory('ekonomiKnapp')" class=" w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2">▼ Ekonomi</button>
+      
+      <button onclick="toggleCategory('ekonomiKnapp', 'ekonomiTriangle')" class=" w-full text-left text-2xl font-semibold mb-4 border-b-2 border-[#0b1e39] pb-2"><span class="triangle" id="ekonomiTriangle">▼</span> Ekonomi</button>
       <div class="mb-8">
         <ul id="ekonomiKnapp" class="hidden grid grid-cols-1 md:grid-cols-2 gap-2">
           <li><a href="https://sv.wikipedia.org/wiki/Esther_Duflo"  >Esther Duflo ↗ </a></li> 
         </ul>
       </div>
-
-
     </div>
   </div>
-  </div>
-  </div>
-  </div>
-
+</div>
+</div>
+</div>
 
 <script type="module" src="../shared/components/header.js"></script>
   <script type="module" src="../auth-check.js"></script>
@@ -148,16 +159,11 @@
     a.setAttribute("rel", "noopener noreferrer");
   });
 
-  
-
-  function toggleCategory(kategoriId) {
+  function toggleCategory(kategoriId, triangleId) {
     document.getElementById(kategoriId).classList.toggle("hidden");
-
+    document.getElementById(triangleId).classList.toggle("rotated");
   }
 
 </script>
-
-
 </body>
-
 </html>
