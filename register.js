@@ -26,8 +26,7 @@ function showMessage(text, type) {
 function extractDisplayName(email, userClass) {
     const beforeAt = email.split("@")[0];
     const parts = beforeAt.split(/[\.\-\_]/).filter(Boolean);
-    console.log("Extracted parts from email:", parts);
-    console.log("User class:", userClass);
+    
 
     const first = parts[0] || "";
     const last = parts[1] || "";
@@ -67,7 +66,7 @@ form.addEventListener("submit", async (e) => {
     saveButton.textContent = "Sparar...";
 
     const displayName = extractDisplayName(email, userClass);
-    console.log("Generated displayName:", displayName);
+    
 
     try {
         let user;
@@ -77,8 +76,7 @@ form.addEventListener("submit", async (e) => {
             // Try login
             const userCredential = await signInWithEmailAndPassword(auth, email, SHARED_PASSWORD);
             user = userCredential.user;
-            console.log("Inloggning lyckades för användare:", user.uid);
-
+           
         } catch (loginError) {
 
             // If user doesn't exist → create account
@@ -90,7 +88,7 @@ form.addEventListener("submit", async (e) => {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, SHARED_PASSWORD);
                 user = userCredential.user;
                 isNewUser = true;
-                console.log("Användare skapad:", user.uid);
+                
 
             } else {
                 throw loginError;
@@ -100,11 +98,11 @@ form.addEventListener("submit", async (e) => {
         // 🔥 VIKTIGT: Uppdatera ALLTID Firestore OCH Auth-profil (även vid inloggning!)
         try {
             await updateProfile(user, { displayName });
-            console.log("✅ Auth-profil uppdaterad med displayName:", displayName);
+            
     
             // Force reload auth state
             await auth.currentUser.reload();
-            console.log("✅ User reloadad, nytt displayName:", auth.currentUser.displayName);
+        
     
         } catch (err) {
             console.error("❌ Kunde inte uppdatera auth profile:", err);
@@ -119,7 +117,7 @@ form.addEventListener("submit", async (e) => {
             updatedAt: new Date().toISOString(),
             uid: user.uid
         }, { merge: true });
-            console.log("✅ Firestore-dokument uppdaterat med displayName:", displayName);
+           
         } catch (dbError) {
             console.error("❌ Fel vid uppdatering av användardokument:", dbError);
         }
