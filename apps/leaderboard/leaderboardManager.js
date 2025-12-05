@@ -39,11 +39,10 @@ export async function submitScore(gameId, score) {
             timestamp: new Date()
         }, { merge: true });
 
-        console.log(`Poäng för ${gameId} skickad: ${score}`);
         
     } catch (error) {
         if (error.code === 'permission-denied') {
-            console.log(`Poäng (${score}) är inte högre än befintlig. Sparades ej.`);
+          
         } else {
             console.error("Fel vid inlämning av poäng:", error);
         }

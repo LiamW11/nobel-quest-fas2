@@ -139,17 +139,16 @@ function checkMatch() {
 }
 
 async function startGame() {
-  console.log("🎮 Startar spel...");
+
 
   if (nobelData.length === 0) {
-    console.log("📥 Laddar Nobel-data...");
+    
     await loadNobelData();
   }
 
   game.pairsNeeded = 6;
   game.cards = createNobelCards();
 
-  console.log("✅ Kort skapade:", game.cards.length);
 
   if (game.cards.length === 0) {
     console.error("❌ Inga kort skapades!");
@@ -166,7 +165,7 @@ async function startGame() {
   document.getElementById("score").textContent = "0 pts";
   document.getElementById("timer").textContent = "0:00";
 
-  console.log("🎨 Renderar kort...");
+  
   renderCards();
 }
 
