@@ -35,10 +35,43 @@
         }
       </script>
 
+        <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "nobel-gold": "#C5A572",
+              "nobel-gold-light": "#d4b882",
+              "nobel-blue": "#0b1e39",
+              "nobel-blue-medium": "#142844",
+              "nobel-blue-light": "#1e3458",
+              "nobel-blue-lighter": "#2a4a6f",
+              "nobel-menu": "#243D5E",
+              "nobel-text": "#E3C776",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-8px)" },
+              },
+            },
+            animation: {
+              float: "float 3s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script>
+
       <!-- HALVGRÅ BAKGRUND STYLING -->
       <div class="max-w-2xl mx-auto p-4">
-        <div class="mb-4 text-[#C5A572]"></div>
-
+          <div class="text-center py-4 px-4 -mt-4">
+        <div class="animate-float inline-block text-4xl mb-2">👤👤👤</div>
+        <h2 class="text-xl font-bold text-nobel-gold mb-1">
+          Utvecklingsteam
+        </h2>
+        <p class="text-gray-300 text-sm">Mer om personerna bakom Nobel Quest!</p>
+      </div>
         <button
           id="btn-Arthur"
           onclick="toggleInfo('Arthur')"
