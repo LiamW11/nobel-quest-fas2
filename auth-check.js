@@ -7,11 +7,11 @@ export function requireAuth(redirectTo = 'register.html') {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // Användaren är inloggad
-        console.log("Användaren är inloggad:", user.uid);
+        
         resolve(user);
       } else {
         // Användaren är inte inloggad, omdirigera till inloggningssidan
-        console.log("Användaren är inte inloggad");
+       
         window.location.href = redirectTo;
         reject(new Error("Användaren är inte inloggad"));
       }
@@ -32,7 +32,7 @@ export function initAutoAuth() {
     if (user) {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('userEmail', user.email);
-      console.log("Användaren är aktiv");
+  
     }
   });
 }
