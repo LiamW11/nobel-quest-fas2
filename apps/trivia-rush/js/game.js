@@ -209,7 +209,6 @@ function loadQuestion() {
   }
 
   // Start timer for this question
-  console.log(state.streak);
   startTimer();
 
   // Update UI
@@ -280,7 +279,6 @@ function checkAnswer(selected) {
     state.streak++;
 
     if (state.streak == 1) {
-      console.log("First streak achieved!");
   const streakBox = document.getElementById("streak-box");
   streakBox.innerHTML = `
     <div id="streak-pill"
@@ -348,7 +346,6 @@ if (state.streak == 2) {
     const bonusPoints = Math.round(basePoints * bonusPercent);
     state.bonusScore += bonusPoints;
 
-    console.log(`Streak: ${state.streak}, Bonus +${bonusPoints}`);
     const streakPill = document.getElementById("streak-pill");
     if (streakPill) streakPill.textContent = `${state.streak}`;
   } else {
@@ -487,20 +484,6 @@ function endGame() {
 
   document.getElementById("final-feedback").textContent = feedback;
 
-  // Save best scores in localStorage
-  const bestCorrect = Math.max(
-    state.score,
-    parseInt(localStorage.getItem("bestScore") || "0")
-  );
-  const bestTime = Math.max(
-    state.timeScore,
-    parseInt(localStorage.getItem("bestTimeScore") || "0")
-  );
-  const bestTotal = Math.max(
-    totalScore,
-    parseInt(localStorage.getItem("bestTotalScore") || "0")
-  );
-
   localStorage.setItem("bestScore", bestCorrect);
   localStorage.setItem("bestTimeScore", bestTime);
   localStorage.setItem("bestTotalScore", bestTotal);
@@ -517,7 +500,3 @@ function endGame() {
 
 // Expose startGame for main.js
 window.startGame = startGame;
-
-if (state.streak == 1){
-  console.log("First streak achieved!");
-}
