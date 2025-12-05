@@ -10,7 +10,7 @@
   <h1 id="page-title" class="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold">Nobel Quest</h1>
 
   <!-- Menyknapp till höger -->
-  <button onclick="toggleMenu()" class="text-2xl font-bold">☰</button>
+  <button id="menuButton" onclick="toggleMenu(event)" class="text-2xl font-bold">☰</button>
 
   <!-- Dropdown-meny -->
   <div id="dropdownMenu" class="text-[#E3C776] absolute right-4 top-full hidden bg-[#243D5E] rounded-xl shadow-xl mt-2 p-2 space-y-1">
@@ -32,9 +32,3 @@
     background-color: var(--nobel-primary);
   }
 </style>
-
-<script>
-  function toggleMenu() {
-    document.getElementById("dropdownMenu").classList.toggle("hidden");
-  }
-</script>
