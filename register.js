@@ -98,10 +98,6 @@ form.addEventListener("submit", async (e) => {
         // 🔥 VIKTIGT: Uppdatera ALLTID Firestore OCH Auth-profil (även vid inloggning!)
         try {
             await updateProfile(user, { displayName });
-            
-    
-            // Force reload auth state
-            await auth.currentUser.reload();
         
     
         } catch (err) {
@@ -132,7 +128,7 @@ form.addEventListener("submit", async (e) => {
 
         setTimeout(() => {
             window.location.href = "../mainMenu/menu.html";
-        }, 500);
+        }, 5000);
 
     } catch (error) {
         console.error("Fel vid inloggning/registrering:", error.code, error.message);
