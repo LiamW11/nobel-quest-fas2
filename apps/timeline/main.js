@@ -204,15 +204,23 @@ document.addEventListener("difficulty:selected", async (e) => {
     });
 
     resultHTML += `
+    
         </div> 
            <div class="text-center mt-3 pb-3">
+             <button 
+         class="w-full mt-1 mb-4 px-6 py-3 rounded-lg bg-[#C5A572] hover:bg-[#b08f57] text-[#002952] font-semibold shadow-lg shadow-black/30 transition "
+        onclick="window.location.href='../leaderboard/leaderboard.html'">
+        Till Leaderboard
+      </button>
       <button
+      
       onclick="window.location.href='/apps/match-master/index.html'"
         id="again"
         class="inline-flex items-center justify-center px-10 py-3 rounded-xl bg-[#C5A572] hover:bg-[#b08f57] active:bg-[#9c7f4c] text-[#002952] font-semibold shadow-lg shadow-black/30 transition w-full"
       >
         Nästa spel
       </button>
+
     </div>
         </section>
         `;
