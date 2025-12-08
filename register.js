@@ -13,6 +13,22 @@ import {
 
 const SHARED_PASSWORD = "Nobel2025!";
 
+// 🔧 TESTING HELPER: Expose logout function globally for console testing
+window.testLogout = async function () {
+  try {
+    await auth.signOut();
+    localStorage.clear();
+    console.log(
+      "✅ Logged out successfully - refresh page to test registration"
+    );
+    setTimeout(() => window.location.reload(), 500);
+  } catch (error) {
+    console.error("❌ Logout error:", error);
+  }
+};
+
+console.log("💡 TIP: To test registration, open console and run: testLogout()");
+
 // 🔧 CRITICAL MOBILE FIX: Wait for DOM to be fully loaded
 // Mobile browsers often execute scripts before DOM is ready
 let form, emailInput, saveButton, messageDiv, classSelect;
@@ -220,7 +236,6 @@ function setupFormSubmit() {
           SHARED_PASSWORD
         );
         user = userCredential.user;
-        console.log("✅ Existing user logged in:", user.email);
       } catch (loginError) {
         // If user doesn't exist → create account
         if (
@@ -235,75 +250,41 @@ function setupFormSubmit() {
           );
           user = userCredential.user;
           isNewUser = true;
-          console.log("✅ New user created:", user.email);
         } else {
           throw loginError;
         }
       }
 
-      // 🔥 CRITICAL FIX: ALWAYS update Firestore (both login AND register!)
-      // This ensures displayName is ALWAYS correct, even if user re-registers or changes class
-      console.log("📝 Attempting to save to Firestore...");
-      console.log("📝 - User UID:", user.uid);
-      console.log("📝 - Email:", email);
-      console.log("📝 - DisplayName:", displayName);
-      console.log("📝 - Class:", userClass);
-      
-      try {
-        const userDocRef = doc(db, "users", user.uid);
-        await setDoc(
-          userDocRef,
-          {
-            email: email,
-            displayName: displayName,
-            class: userClass,
-            updatedAt: new Date().toISOString(),
-            uid: user.uid,
-          },
-          { merge: true }
-        );
-        console.log("✅ Firestore uppdaterad med displayName:", displayName);
-        
-        // 🔧 Verify it was actually saved
-        const verifyDoc = await getDoc(userDocRef);
-        console.log("🔍 Verification - Document exists:", verifyDoc.exists());
-        console.log("🔍 Verification - Document data:", verifyDoc.data());
-      } catch (dbError) {
-        console.error("❌ Fel vid uppdatering av användardokument:", dbError);
-        console.error("❌ Error code:", dbError.code);
-        console.error("❌ Error message:", dbError.message);
-        throw dbError; // Stoppa här om Firestore misslyckas
-      }
+      // 🔥 FIX: ALWAYS update Firestore (both new users AND returning users)
+      // This prevents race condition where header.js reads before Firestore is updated
+      await setDoc(
+        doc(db, "users", user.uid),
+        {
+          email: email,
+          displayName: displayName,
+          class: userClass,
+          updatedAt: new Date().toISOString(),
+          uid: user.uid,
+        },
+        { merge: true }
+      );
 
-      // 🔥 SEDAN: Uppdatera Auth-profil (sekundär backup)
-      try {
-        await updateProfile(user, { displayName });
-        // 🔧 CRITICAL iOS FIX: Force reload to ensure displayName is persisted before redirect
-        await user.reload();
-        // 🔧 Double-check that it was actually saved
-        const updatedUser = auth.currentUser;
-        console.log(
-          "✅ Auth profile uppdaterad med displayName:",
-          updatedUser.displayName
-        );
-      } catch (err) {
-        console.error("⚠️ Kunde inte uppdatera auth profile:", err);
-        // Fortsätt ändå - Firestore är viktigast!
-      }
+      // 🔥 FIX: Update Auth profile with displayName
+      await updateProfile(user, { displayName });
+      await user.reload();
 
-      // Save locally (backup för offline-läge)
+      // Save locally
       localStorage.setItem("userEmail", email);
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userUid", user.uid);
-      localStorage.setItem("displayName", displayName); // 🔥 Spara lokalt också
-      localStorage.setItem("userClass", userClass); // 🔥 Spara klass separat
+      localStorage.setItem("displayName", displayName);
+      localStorage.setItem("userClass", userClass);
 
       showMessage(
         isNewUser ? "Konto skapat och inloggad!" : "Inloggning lyckades!",
         "success"
       );
 
-      // 🔧 MOBILE FIX: Redirect to correct path (index.html is in root)
       setTimeout(() => {
         window.location.href = "mainMenu/menu.html";
       }, 1500);

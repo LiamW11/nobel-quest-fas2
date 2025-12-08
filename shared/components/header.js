@@ -95,7 +95,10 @@ function updateProfile() {
 
         console.log("🔍 DEBUG Header - user.displayName:", user.displayName);
         console.log("🔍 DEBUG Header - userData:", userData);
-        console.log("🔍 DEBUG Header - userData?.displayName:", userData?.displayName);
+        console.log(
+          "🔍 DEBUG Header - userData?.displayName:",
+          userData?.displayName
+        );
 
         // 🔧 iOS FIX: Prioritera Firestore (sanningskällan) över Auth
         // Auth displayName kan vara cached eller inte uppdaterad än
@@ -107,7 +110,10 @@ function updateProfile() {
         // 🔥 FIXEN: Klipp bort klassinformationen FÖRE visning
         const displayName = cleanDisplayName(rawDisplayName);
 
-        console.log("🔍 DEBUG Header - displayName (after clean):", displayName);
+        console.log(
+          "🔍 DEBUG Header - displayName (after clean):",
+          displayName
+        );
 
         const nameEl = document.getElementById("userDisplayName");
         const initialEl = document.getElementById("userInitial");
