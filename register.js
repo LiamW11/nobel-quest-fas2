@@ -13,6 +13,80 @@ import {
 
 const SHARED_PASSWORD = "Nobel2025!";
 
+// 🚫 PROFANITY FILTER - Ladda blockerade ord från JSON
+let BLOCKED_WORDS = [];
+
+// Ladda blocked words från JSON-fil
+async function loadBlockedWords() {
+  try {
+    const response = await fetch('./blocked-words.json');
+    const data = await response.json();
+    BLOCKED_WORDS = data.blockedWords;
+    console.log(`✅ Loaded ${BLOCKED_WORDS.length} blocked words`);
+  } catch (error) {
+    console.error('❌ Failed to load blocked words:', error);
+    // Fallback till tom array om filen inte hittas
+    BLOCKED_WORDS = [];
+  }
+}
+
+// Kör laddning av blockerade ord direkt
+await loadBlockedWords();
+
+// 🔍 Funktion för att hitta blockerade ord
+function containsBlockedWords(text) {
+  if (!text || BLOCKED_WORDS.length === 0) return false;
+  
+  // Normalisera text: lowercase + ta bort mellanslag/specialtecken
+  const normalized = text.toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/[0-9@$]/g, match => {
+      // Konvertera leetspeak tillbaka till bokstäver
+      const leet = { '0': 'o', '1': 'i', '3': 'e', '4': 'a', '5': 's', '7': 't', '8': 'b', '@': 'a', '$': 's' };
+      return leet[match] || match;
+    });
+  
+  // Kolla om någon del av texten innehåller blockerade ord
+  return BLOCKED_WORDS.some(word => {
+    // Exakt match eller innehåller ordet
+    return normalized === word || normalized.includes(word);
+  });
+}
+
+// 🛡️ Validera namn-delar (förnamn/efternamn)
+function validateNameParts(firstName, lastName) {
+  // Kolla längd
+  if (firstName.length < 2 || lastName.length < 2) {
+    throw new Error('För- och efternamn måste vara minst 2 tecken långa.');
+  }
+  
+  // Bara bokstäver (svenska alfabetet)
+  const namePattern = /^[a-zåäöéü]+$/i;
+  if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
+    throw new Error('Namnet får bara innehålla bokstäver (a-ö).');
+  }
+  
+  // Kolla mot blockerade ord
+  if (containsBlockedWords(firstName)) {
+    throw new Error('Denna mail existerar inte, ange din skolmail');
+  }
+  
+  if (containsBlockedWords(lastName)) {
+    throw new Error('Denna mail existerar inte, ange din skolmail');
+  }
+  
+  return true;
+}
+
+// 📊 Logga försök till blockerade namn
+function logBlockedAttempt(email, reason) {
+  console.warn(`🚫 Blocked registration attempt:`, {
+    email: email,
+    reason: reason,
+    timestamp: new Date().toISOString()
+  });
+}
+
 // 🔧 TESTING HELPER: Expose logout function globally for console testing
 window.testLogout = async function () {
   try {
@@ -141,12 +215,9 @@ function showMessage(text, type) {
   messageDiv.classList.remove("hidden");
 }
 
-// 🔥 Extract "Melvin S. CLASS" with mobile browser hardening
+// 🔥 Extract "Melvin S. CLASS" with mobile browser hardening + PROFANITY FILTER
 function extractDisplayName(email, userClass) {
   // 🔧 MOBILE FIX: Aggressive normalization to handle mobile browser quirks
-  // - Remove ALL whitespace (mobile keyboards can add spaces)
-  // - Force lowercase (iOS Safari autocapitalizes)
-  // - Trim each part separately (Android autofill artifacts)
   const normalizedEmail = email.toLowerCase().replace(/\s+/g, "");
 
   const beforeAt = normalizedEmail.split("@")[0];
@@ -163,8 +234,15 @@ function extractDisplayName(email, userClass) {
   }
 
   const first = parts[0];
-  // 🔧 FIX: Always use the LAST part as surname (handles middle names like aaaa.bbb.ccc)
   const last = parts[parts.length - 1];
+
+  // 🚫 VALIDERA NAMN MOT PROFANITY FILTER
+  try {
+    validateNameParts(first, last);
+  } catch (error) {
+    logBlockedAttempt(email, error.message);
+    throw error; // Kasta vidare felet till användaren
+  }
 
   const firstFormatted =
     first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
@@ -172,7 +250,6 @@ function extractDisplayName(email, userClass) {
 
   const displayName = `${firstFormatted} ${lastInitial}. ${userClass}`;
 
-  // 🔧 FIX: Always include last initial (guaranteed by validation above)
   return displayName;
 }
 
@@ -181,7 +258,6 @@ function setupFormSubmit() {
     e.preventDefault();
 
     // 🔧 MOBILE FIX: Final sanitization pass to catch any browser artifacts
-    // Mobile browsers can modify input values even after user finishes typing
     const email = emailInput.value.toLowerCase().replace(/\s+/g, "").trim();
 
     const userClass = form.querySelector("select[name='klass']").value;
@@ -221,6 +297,7 @@ function setupFormSubmit() {
       showMessage(err.message, "error");
       saveButton.disabled = false;
       saveButton.textContent = "Start Quest!";
+      isRegistering = false;
       return;
     }
 
@@ -256,7 +333,6 @@ function setupFormSubmit() {
       }
 
       // 🔥 FIX: ALWAYS update Firestore (both new users AND returning users)
-      // This prevents race condition where header.js reads before Firestore is updated
       await setDoc(
         doc(db, "users", user.uid),
         {
