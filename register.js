@@ -17,6 +17,29 @@ const messageDiv = document.getElementById("message");
 
 const SHARED_PASSWORD = "Nobel2025!";
 
+// 🔧 MOBILE FIX: Real-time input sanitization for mobile browsers
+// Handles autocorrect, autocapitalize, and autofill artifacts
+emailInput.addEventListener("input", (e) => {
+  // Force lowercase and remove spaces (mobile keyboard artifacts)
+  const sanitized = e.target.value.toLowerCase().replace(/\s+/g, "");
+  if (e.target.value !== sanitized) {
+    const cursorPos = e.target.selectionStart;
+    e.target.value = sanitized;
+    e.target.setSelectionRange(cursorPos, cursorPos);
+  }
+
+  // Enable submit button when email looks valid
+  const hasValidFormat = sanitized.includes(".") && sanitized.includes("@");
+  saveButton.disabled = !hasValidFormat;
+});
+
+// 🔧 MOBILE FIX: Handle autofill completion (fires after page load)
+emailInput.addEventListener("change", (e) => {
+  console.log("📧 Email changed (autofill?):", e.target.value);
+  // Trigger input event to sanitize autofilled values
+  emailInput.dispatchEvent(new Event("input"));
+});
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     window.location.href = "mainMenu/menu.html";
@@ -29,10 +52,24 @@ function showMessage(text, type) {
   messageDiv.classList.remove("hidden");
 }
 
-// 🔥 Extract "Melvin S. CLASS"
+// 🔥 Extract "Melvin S. CLASS" with mobile browser hardening
 function extractDisplayName(email, userClass) {
-  const beforeAt = email.split("@")[0];
-  const parts = beforeAt.split(/[\.\-\_]/).filter(Boolean);
+  // 🔧 MOBILE FIX: Aggressive normalization to handle mobile browser quirks
+  // - Remove ALL whitespace (mobile keyboards can add spaces)
+  // - Force lowercase (iOS Safari autocapitalizes)
+  // - Trim each part separately (Android autofill artifacts)
+  const normalizedEmail = email.toLowerCase().replace(/\s+/g, "");
+
+  console.log("📧 Original email:", email);
+  console.log("📧 Normalized email:", normalizedEmail);
+
+  const beforeAt = normalizedEmail.split("@")[0];
+  const parts = beforeAt
+    .split(/[\.\-\_]/)
+    .filter(Boolean)
+    .map((p) => p.trim());
+
+  console.log("📧 Extracted parts:", parts);
 
   // 🔧 FIX: Validate that email has both first and last name parts
   if (parts.length < 2) {
@@ -49,14 +86,21 @@ function extractDisplayName(email, userClass) {
     first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
   const lastInitial = last.charAt(0).toUpperCase();
 
+  const displayName = `${firstFormatted} ${lastInitial}. ${userClass}`;
+  console.log("👤 Generated displayName:", displayName);
+
   // 🔧 FIX: Always include last initial (guaranteed by validation above)
-  return `${firstFormatted} ${lastInitial}. ${userClass}`;
+  return displayName;
 }
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const email = emailInput.value.trim();
+  // 🔧 MOBILE FIX: Final sanitization pass to catch any browser artifacts
+  // Mobile browsers can modify input values even after user finishes typing
+  const email = emailInput.value.toLowerCase().replace(/\s+/g, "").trim();
+  console.log("📧 Final email for submission:", email);
+
   const userClass = form.querySelector("select[name='klass']").value;
 
   // Class validation
