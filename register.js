@@ -105,7 +105,6 @@ function initializeForm() {
 
   // 🔧 MOBILE FIX: Handle autofill completion (fires after page load)
   emailInput.addEventListener("change", (e) => {
-    console.log("📧 Email changed (autofill?):", e.target.value);
     // Trigger input event to sanitize autofilled values
     emailInput.dispatchEvent(new Event("input"));
   });
@@ -150,16 +149,11 @@ function extractDisplayName(email, userClass) {
   // - Trim each part separately (Android autofill artifacts)
   const normalizedEmail = email.toLowerCase().replace(/\s+/g, "");
 
-  console.log("📧 Original email:", email);
-  console.log("📧 Normalized email:", normalizedEmail);
-
   const beforeAt = normalizedEmail.split("@")[0];
   const parts = beforeAt
     .split(/[\.\-\_]/)
     .filter(Boolean)
     .map((p) => p.trim());
-
-  console.log("📧 Extracted parts:", parts);
 
   // 🔧 FIX: Validate that email has both first and last name parts
   if (parts.length < 2) {
@@ -177,7 +171,6 @@ function extractDisplayName(email, userClass) {
   const lastInitial = last.charAt(0).toUpperCase();
 
   const displayName = `${firstFormatted} ${lastInitial}. ${userClass}`;
-  console.log("👤 Generated displayName:", displayName);
 
   // 🔧 FIX: Always include last initial (guaranteed by validation above)
   return displayName;
@@ -190,7 +183,6 @@ function setupFormSubmit() {
     // 🔧 MOBILE FIX: Final sanitization pass to catch any browser artifacts
     // Mobile browsers can modify input values even after user finishes typing
     const email = emailInput.value.toLowerCase().replace(/\s+/g, "").trim();
-    console.log("📧 Final email for submission:", email);
 
     const userClass = form.querySelector("select[name='klass']").value;
 
