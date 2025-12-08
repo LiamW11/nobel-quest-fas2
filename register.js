@@ -219,6 +219,7 @@ function setupFormSubmit() {
           SHARED_PASSWORD
         );
         user = userCredential.user;
+        console.log("✅ Existing user logged in:", user.email);
       } catch (loginError) {
         // If user doesn't exist → create account
         if (
@@ -233,12 +234,14 @@ function setupFormSubmit() {
           );
           user = userCredential.user;
           isNewUser = true;
+          console.log("✅ New user created:", user.email);
         } else {
           throw loginError;
         }
       }
 
-      // 🔥 LÖSNING 1: Uppdatera Firestore FÖRST (detta är sanningskällan!)
+      // 🔥 CRITICAL FIX: ALWAYS update Firestore (both login AND register!)
+      // This ensures displayName is ALWAYS correct, even if user re-registers or changes class
       try {
         await setDoc(
           doc(db, "users", user.uid),

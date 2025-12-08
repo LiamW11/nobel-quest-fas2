@@ -93,13 +93,21 @@ function updateProfile() {
         const userDoc = await getDoc(doc(db, "users", user.uid));
         const userData = userDoc.data();
 
+        console.log("🔍 DEBUG Header - user.displayName:", user.displayName);
+        console.log("🔍 DEBUG Header - userData:", userData);
+        console.log("🔍 DEBUG Header - userData?.displayName:", userData?.displayName);
+
         // 🔧 iOS FIX: Prioritera Firestore (sanningskällan) över Auth
         // Auth displayName kan vara cached eller inte uppdaterad än
         const rawDisplayName =
           userData?.displayName || user.displayName || user.email.split("@")[0];
 
+        console.log("🔍 DEBUG Header - rawDisplayName:", rawDisplayName);
+
         // 🔥 FIXEN: Klipp bort klassinformationen FÖRE visning
         const displayName = cleanDisplayName(rawDisplayName);
+
+        console.log("🔍 DEBUG Header - displayName (after clean):", displayName);
 
         const nameEl = document.getElementById("userDisplayName");
         const initialEl = document.getElementById("userInitial");
