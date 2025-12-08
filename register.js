@@ -14,8 +14,37 @@ const form = document.getElementById("registerForm");
 const emailInput = document.getElementById("email");
 const saveButton = document.getElementById("saveEmail");
 const messageDiv = document.getElementById("message");
+const classSelect = document.querySelector("select[name='klass']");
 
 const SHARED_PASSWORD = "Nobel2025!";
+
+// 🔧 MOBILE FIX: Comprehensive validation function
+function validateFormInputs() {
+  const sanitized = emailInput.value.toLowerCase().replace(/\s+/g, "");
+  const classSelected = classSelect.value !== "Placeholder";
+
+  // Check if email has proper format AND correct domain
+  const hasProperStructure = sanitized.includes(".") && sanitized.includes("@");
+  const hasValidDomain =
+    sanitized.endsWith("@edu.huddinge.se") ||
+    sanitized.endsWith("@huddinge.se");
+
+  // Only enable if BOTH email is complete AND class is selected
+  const isValid = hasProperStructure && hasValidDomain && classSelected;
+
+  saveButton.disabled = !isValid;
+
+  // Visual feedback
+  if (sanitized.length > 0 && !hasValidDomain && hasProperStructure) {
+    emailInput.style.borderColor = "#ef4444"; // Red for wrong domain
+  } else if (isValid) {
+    emailInput.style.borderColor = "#22c55e"; // Green for valid
+  } else {
+    emailInput.style.borderColor = "#C5A572"; // Default gold
+  }
+
+  return isValid;
+}
 
 // 🔧 MOBILE FIX: Real-time input sanitization for mobile browsers
 // Handles autocorrect, autocapitalize, and autofill artifacts
@@ -28,9 +57,13 @@ emailInput.addEventListener("input", (e) => {
     e.target.setSelectionRange(cursorPos, cursorPos);
   }
 
-  // Enable submit button when email looks valid
-  const hasValidFormat = sanitized.includes(".") && sanitized.includes("@");
-  saveButton.disabled = !hasValidFormat;
+  // Run comprehensive validation
+  validateFormInputs();
+});
+
+// 🔧 MOBILE FIX: Validate when class selection changes
+classSelect.addEventListener("change", () => {
+  validateFormInputs();
 });
 
 // 🔧 MOBILE FIX: Handle autofill completion (fires after page load)

@@ -288,20 +288,5 @@
     </style>
 
     <script type="module" src="register.js"></script>
-    <script>
-        // Enable button only when both fields are filled
-        const emailInput = document.getElementById('email');
-        const classSelect = document.querySelector("select[name='klass']");
-        const submitButton = document.getElementById('saveEmail');
-
-        function checkFormValidity() {
-            const emailFilled = emailInput.value.trim().length > 0;
-            const classSelected = classSelect.value !== 'Placeholder';
-            submitButton.disabled = !(emailFilled && classSelected);
-        }
-
-        emailInput.addEventListener('input', checkFormValidity);
-        classSelect.addEventListener('change', checkFormValidity);
-    </script>
   </body>
 </html>
