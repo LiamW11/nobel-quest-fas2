@@ -131,7 +131,7 @@ form.addEventListener("submit", async (e) => {
   } catch (err) {
     showMessage(err.message, "error");
     saveButton.disabled = false;
-    saveButton.textContent = "Registrera och börja spela";
+    saveButton.textContent = "Start Quest!";
     return;
   }
 
@@ -166,14 +166,7 @@ form.addEventListener("submit", async (e) => {
       }
     }
 
-    // 🔥 VIKTIGT: Uppdatera ALLTID Firestore OCH Auth-profil (även vid inloggning!)
-    try {
-      await updateProfile(user, { displayName });
-    } catch (err) {
-      console.error("❌ Kunde inte uppdatera auth profile:", err);
-    }
-
-    // 🔥 SEDAN: Uppdatera Firestore
+    // 🔥 LÖSNING 1: Uppdatera Firestore FÖRST (detta är sanningskällan!)
     try {
       await setDoc(
         doc(db, "users", user.uid),
@@ -186,14 +179,28 @@ form.addEventListener("submit", async (e) => {
         },
         { merge: true }
       );
+      console.log("✅ Firestore uppdaterad med displayName:", displayName);
     } catch (dbError) {
       console.error("❌ Fel vid uppdatering av användardokument:", dbError);
+      throw dbError; // Stoppa här om Firestore misslyckas
     }
 
-    // Save locally
+    // 🔥 SEDAN: Uppdatera Auth-profil (sekundär backup)
+    try {
+      await updateProfile(user, { displayName });
+      await user.reload(); // 🔧 Tvinga reload av auth-profilen
+      console.log("✅ Auth profile uppdaterad med displayName:", displayName);
+    } catch (err) {
+      console.error("⚠️ Kunde inte uppdatera auth profile:", err);
+      // Fortsätt ändå - Firestore är viktigast!
+    }
+
+    // Save locally (backup för offline-läge)
     localStorage.setItem("userEmail", email);
     localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("userUid", user.uid);
+    localStorage.setItem("displayName", displayName); // 🔥 Spara lokalt också
+    localStorage.setItem("userClass", userClass); // 🔥 Spara klass separat
 
     showMessage(
       isNewUser ? "Konto skapat och inloggad!" : "Inloggning lyckades!",
@@ -202,7 +209,7 @@ form.addEventListener("submit", async (e) => {
 
     setTimeout(() => {
       window.location.href = "../mainMenu/menu.html";
-    }, 5000);
+    }, 1500); // 🔧 Kortare timeout (1.5s istället för 5s)
   } catch (error) {
     console.error(
       "Fel vid inloggning/registrering:",
@@ -222,8 +229,6 @@ form.addEventListener("submit", async (e) => {
 
     showMessage(errorMessage, "error");
     saveButton.disabled = false;
-    showMessage(errorMessage, "error");
-    saveButton.disabled = false;
-    saveButton.textContent = "Registrera och börja spela";
+    saveButton.textContent = "Start Quest!";
   }
 });
