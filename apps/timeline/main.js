@@ -204,6 +204,7 @@ document.addEventListener("difficulty:selected", async (e) => {
     });
 
     resultHTML += `
+    
         </div> 
            <div class="text-center mt-3 pb-3">
       <button
@@ -213,6 +214,7 @@ document.addEventListener("difficulty:selected", async (e) => {
       >
         Nästa spel
       </button>
+
     </div>
         </section>
         `;
