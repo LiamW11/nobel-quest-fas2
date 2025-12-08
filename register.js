@@ -8,6 +8,7 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/fi
 import {
   doc,
   setDoc,
+  getDoc,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const SHARED_PASSWORD = "Nobel2025!";
@@ -242,9 +243,16 @@ function setupFormSubmit() {
 
       // 🔥 CRITICAL FIX: ALWAYS update Firestore (both login AND register!)
       // This ensures displayName is ALWAYS correct, even if user re-registers or changes class
+      console.log("📝 Attempting to save to Firestore...");
+      console.log("📝 - User UID:", user.uid);
+      console.log("📝 - Email:", email);
+      console.log("📝 - DisplayName:", displayName);
+      console.log("📝 - Class:", userClass);
+      
       try {
+        const userDocRef = doc(db, "users", user.uid);
         await setDoc(
-          doc(db, "users", user.uid),
+          userDocRef,
           {
             email: email,
             displayName: displayName,
@@ -255,8 +263,15 @@ function setupFormSubmit() {
           { merge: true }
         );
         console.log("✅ Firestore uppdaterad med displayName:", displayName);
+        
+        // 🔧 Verify it was actually saved
+        const verifyDoc = await getDoc(userDocRef);
+        console.log("🔍 Verification - Document exists:", verifyDoc.exists());
+        console.log("🔍 Verification - Document data:", verifyDoc.data());
       } catch (dbError) {
         console.error("❌ Fel vid uppdatering av användardokument:", dbError);
+        console.error("❌ Error code:", dbError.code);
+        console.error("❌ Error message:", dbError.message);
         throw dbError; // Stoppa här om Firestore misslyckas
       }
 
