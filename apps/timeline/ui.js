@@ -58,11 +58,11 @@ export function renderBoard(root, cards) {
   </div>
 
 
-    <p class="text-center text-[#002952] text-xl font-bold w-full bg-[#C5A572] rounded-lg">${
+    <p class="text-center text-[#002952] text-xl font-bold w-full bg-[#A28455] rounded-lg">${
       gameState.yearCorrect[0]
     }</p>
     <ul id="sortable-list" class="p-1 space-y-3" aria-label="Sortera pristagarna"></ul>
-    <p class="text-center text-[#002952] text-xl font-bold w-full bg-[#C5A572] rounded-lg">${
+    <p class="text-center text-[#002952] text-xl font-bold w-full bg-[#A28455] rounded-lg">${
       gameState.yearCorrect[gameState.yearCorrect.length - 1]
     }</p>
 
