@@ -125,8 +125,13 @@ if (document.readyState === "loading") {
   initializeForm();
 }
 
+// 🔧 FIX: Prevent auto-redirect during registration
+let isRegistering = false;
+
 onAuthStateChanged(auth, (user) => {
-  if (user) {
+  // Don't redirect if we're in the middle of registration
+  // The form submit will handle the redirect after Firestore is saved
+  if (user && !isRegistering) {
     window.location.href = "mainMenu/menu.html";
   }
 });
@@ -212,6 +217,9 @@ function setupFormSubmit() {
 
     saveButton.disabled = true;
     saveButton.textContent = "Sparar...";
+    
+    // 🔧 FIX: Prevent race condition - block auto-redirect during registration
+    isRegistering = true;
 
     // 🔧 FIX: Wrap displayName extraction in try-catch to handle validation errors
     let displayName;
@@ -285,10 +293,14 @@ function setupFormSubmit() {
         "success"
       );
 
+      // 🔧 FIX: Now safe to redirect - Firestore is saved
+      isRegistering = false;
       setTimeout(() => {
         window.location.href = "mainMenu/menu.html";
       }, 1500);
     } catch (error) {
+      // 🔧 FIX: Re-enable auto-redirect on error
+      isRegistering = false;
       console.error(
         "Fel vid inloggning/registrering:",
         error.code,
