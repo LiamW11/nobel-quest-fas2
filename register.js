@@ -217,7 +217,7 @@ function setupFormSubmit() {
 
     saveButton.disabled = true;
     saveButton.textContent = "Sparar...";
-    
+
     // 🔧 FIX: Prevent race condition - block auto-redirect during registration
     isRegistering = true;
 
