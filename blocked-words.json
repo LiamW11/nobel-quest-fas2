@@ -1,6 +1,6 @@
 {
   "blockedWords": [
-    "fan", "helvete", "jävla", "jävlar", "jävel", "putin", "puta", "potatisplockare", "curwa", "kurwa", "slav", "slave", "kimjongun", "skit", "skiten", "satan", "piss",
+    "helvete", "jävla", "jävlar", "jävel", "putin", "puta", "potatisplockare", "curwa", "kurwa", "slav", "slave", "kimjongun", "skit", "skiten", "satan", "piss",
     "fitta", "fittan", "fittskalle", "kuk", "kuken", "kukskalle", "hora", "horan", "horunge", "slyna", "satanist", "osamabinladen", "charliekirk", "kirk", "terrorist", 
     "bög", "bögar", "bögdjur", "flata", "nigger", "neger", "blatte", "blattar", "svartskalle",
     "idiot", "idioten", "dumhuvud", "mongo", "cp", "cancer", "cancern", "aids",
@@ -12,7 +12,7 @@
     "kuksuger", "runkare", "runka", "runkar", "runkat", "wanka", "wanker",
     "våldta", "våldtagen", "våldtar", "pedofil", "pedo", "barnknullare",
     "rasse", "rasist", "nazist", "nasse", "svenne", "svennejävel",
-    "pajas", "pajja", "mes", "mesen", "fegis", "töntig", "tönt", "töntbög",
+    "pajas", "pajja", "mesen", "fegis", "töntig", "tönt", "töntbög",
     "snopp", "snippa", "stånd", "balle", "ballen", "pung", "pungen",
     "patta", "pattar", "bröst", "tuttar", "bröstvårtor",
     "penis", "vagina", "testiklar", "testikeln", "prostata",
@@ -42,7 +42,7 @@
     "azz", "asz", "a55", "a$$", "dik", "d!k", "dck",
     "psy", "pssy", "pssie", "pussi", "pusi", "p*ssy",
     "cok", "c0ck", "c0k", "kok", "k0k", "cock",
-    "n1gga", "n1gger", "nig", "nigg", "n!gger", "niga", "nigr", "aggin", "reggin",
+    "n1gga", "n1gger", "negus", "negis", "nigg", "n!gger", "niga", "nigr", "aggin", "reggin",
     "fucc", "fuc", "fuk", "phuk", "shiit", "shiet", "shet", "shyt",
     "biach", "beyotch", "beeyotch", "biotch", "byatch",
     "dik", "dck", "diq", "cocky", "peepee", "weiner", "wiener",
@@ -51,7 +51,7 @@
     "fanny", "colon", "sphincter", "taint", "gooch",
     "wog", "chink", "gook", "spic", "beaner", "wetback", "raghead",
     "sandnigger", "towelhead", "curry", "paki", "terrorist",
-    "ching chong", "chinaman", "jap", "nip", "zipperhead",
+    "ching chong", "chinaman", "nip", "zipperhead",
     "kike", "yid", "heeb", "jewboy", "sheeny",
     "pikey", "gypo", "gypsy", "wigger", "cracker", "redneck", "white trash",
     "coon", "jungle bunny", "porch monkey", "spade", "sambo",
@@ -86,7 +86,6 @@
     "faan", "phaen", "jefla", "jeflar", "satan", "saten", "djefvul",
     "fita", "phitta", "kook", "kukk", "kokk", "horra", "slynna",
     "böhg", "niga", "nigga", "blacke", "svartis",
-    "wtf", "stfu", "gtfo", "milf", "dilf", "gilf", "smh", "fml", "pos",
-    "sob", "mf", "omfg", "af", "bs", "nsfw"
+    "wtf", "stfu", "gtfo", "milf", "dilf", "gilf", "smh", "fml", "mf", "omfg", "af", "bs", "nsfw"
   ]
 }
