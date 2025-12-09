@@ -112,3 +112,23 @@ export async function getTopScores(gameId, limitCount = 10) {
     return [];
   }
 }
+
+/**
+ * Hämtar ALLA poäng från en specifik spel-collection (ingen limit)
+ */
+export async function getAllScores(gameId) {
+  const scoresCollectionRef = collection(db, gameId);
+  const q = query(scoresCollectionRef, orderBy("score", "desc"));
+
+  try {
+    const querySnapshot = await getDocs(q);
+    const allScores = [];
+    querySnapshot.forEach((doc) => {
+      allScores.push(doc.data());
+    });
+    return allScores;
+  } catch (error) {
+    console.error(`Fel vid hämtning av alla poäng för ${gameId}:`, error);
+    return [];
+  }
+}

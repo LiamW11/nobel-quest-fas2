@@ -1,5 +1,5 @@
 // Importerar funktionen som hämtar data från Firestore
-import { getTopScores } from "./leaderboardManager.js"; 
+import { getTopScores, getAllScores } from "./leaderboardManager.js"; 
 
 /**
  * Skapar en leaderboard-rad med mobiloptimerad design
@@ -65,7 +65,7 @@ async function getCombinedScores() {
     const allScores = {};
 
     for (const gameId of games) {
-        const scores = await getTopScores(gameId, 10);
+        const scores = await getAllScores(gameId);
         scores.forEach(scoreEntry => {
             const userId = scoreEntry.userId;
             if (!allScores[userId]) {
