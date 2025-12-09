@@ -60,6 +60,11 @@ function validateNameParts(firstName, lastName) {
     throw new Error('För- och efternamn måste vara minst 2 tecken långa.');
   }
   
+  // 🔍 Check for special characters (å, ä, ö, é, ñ, ü, ç, ß, æ, ø, -, _)
+  if (/[åäöéñüçßæø\-_]/i.test(firstName) || /[åäöéñüçßæø\-_]/i.test(lastName)) {
+    throw new Error('E-postadressen kan inte innehålla specialtecken.');
+  }
+  
   // Bara bokstäver (svenska alfabetet)
   const namePattern = /^[a-zåäöéü]+$/i;
   if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
@@ -221,8 +226,15 @@ function extractDisplayName(email, userClass) {
   const normalizedEmail = email.toLowerCase().replace(/\s+/g, "");
 
   const beforeAt = normalizedEmail.split("@")[0];
+  
+  // 🛡️ VALIDERA E-POSTADRESSEN INNAN UPPDELNING
+  // Kolla om den innehåller förbjudna specialtecken (-, _)
+  if (/[\-_+?'*^~:;]/.test(beforeAt)) {
+    throw new Error('E-postadressen kan inte innehålla specialtecken');
+  }
+  
   const parts = beforeAt
-    .split(/[\.\-\_]/)
+    .split(/[\.]/)  // Nu bara . som separator
     .filter(Boolean)
     .map((p) => p.trim());
 
