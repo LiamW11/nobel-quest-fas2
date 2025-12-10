@@ -1,4 +1,4 @@
-# Nobel Quest - Timeline
+# Nobel Quest - [Timeline]
 
 Multiplayer-spel utvecklat i team @ TE4 Academy som del av Nobel Quest-projektet.
 
