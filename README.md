@@ -1,3 +1,22 @@
+# Nobel Quest - Timeline
+
+Multiplayer-spel utvecklat i team @ TE4 Academy som del av Nobel Quest-projektet.
+
+## Min roll
+Jag var del av [Team namn]-teamet och ansvarade för:
+- [Konkret del 1 - t.ex. "Implementation av spellogik"]
+- [Konkret del 2 - t.ex. "Firebase authentication-integration"]
+- [Konkret del 3 - t.ex. "Leaderboard UI"]
+
+## Team
+Utvecklat tillsammans med:
+- [Teammedlem 1 - länk till deras GitHub]
+- [Teammedlem 2 - länk till deras GitHub]
+- [Teammedlem 3 - länk till deras GitHub]
+
+Se original repo för komplett projektdokumentation: 
+[Länk till TE4-Academy/nobel-quest-fas2]
+
 # Nobel Quest - Fas 2
 
 > **Production-ready Nobel Prize educational games with shared authentication and leaderboards**
